@@ -1,24 +1,21 @@
-import React from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 
 
 const SignIn = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
-    
-        const {
-            register,
-            handleSubmit,
-            formState: { errors }
-          } = useForm();
-    
-          const onSubmit = (data) => {
-            console.log(data);
-          };
+    const onSubmit = (data) => {
+        console.log(data);
+    };
 
     return (
         <div>
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen pb-4">
                 <div className=" flex-col items-center md:w-[480px]">
                     <div className=''>
                     <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png" alt="" />
