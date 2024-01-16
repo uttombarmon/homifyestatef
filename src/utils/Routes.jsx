@@ -13,8 +13,7 @@ export const router = createBrowserRouter([
       element:<LayOut></LayOut>,
       children:[
         {
-          path:'/signup',
-          element:<Signup></Signup>
+          
       }
       ]    
       
@@ -28,8 +27,4 @@ export const router = createBrowserRouter([
         path:'/signin',
         element:<SignIn></SignIn>
     }
-
-   
-
-
   ]);
