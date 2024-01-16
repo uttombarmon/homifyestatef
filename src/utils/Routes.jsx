@@ -8,28 +8,26 @@ import LayOut from "../components/mainLayout/LayOut";
 
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element:<LayOut></LayOut>,
-      children:[
-        {
-          path:'/signup',
-          element:<Signup></Signup>
+  {
+    path: "/",
+    element: <LayOut></LayOut>,
+    children: [
+      {
+        path: '/signup',
+        element: <Signup></Signup>
+      },
+      {
+        path: '/login',
+        element: <SignIn></SignIn>
       }
-      ]    
-      
-    },
+    ]
 
-    {
-        path:'/signup',
-        element:<Signup></Signup>
-    },
-    {
-        path:'/signin',
-        element:<SignIn></SignIn>
-    }
+  },
 
-   
+  
 
 
-  ]);
+
+
+
+]);
