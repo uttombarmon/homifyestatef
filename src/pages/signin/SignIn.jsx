@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 
 const SignIn = () => {
@@ -20,7 +21,7 @@ const SignIn = () => {
             <div className="hero min-h-screen">
                 <div className=" flex-col items-center md:w-[480px]">
                     <div className=''>
-                    <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/RQ2kP2R/Red-and-Black-Simple-Modern-Online-Shop-Website-Logo-1-removebg-preview-1.png" alt="" />
+                    <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png" alt="" />
                     <h1 className='text-center font-bold text-2xl my-4'>Sign in to your account</h1>
                     </div>
                     <div className="shadow-2xl bg-base-100">
@@ -68,6 +69,9 @@ const SignIn = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign in</button>
                             </div>
+
+                            {/* new here */}
+                            <p className="pt-5 text-center "><small className="text-base">Are you new here? || <Link to="/signup" className="text-blue-600">Sign Up</Link></small></p>
 
                             {/* or line */}
                             <div className='flex justify-between items-center text-center'>
