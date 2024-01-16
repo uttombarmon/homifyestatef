@@ -1,5 +1,5 @@
 
-import  "./footer.css"
+import  "./footers.css"
 import { FaRegEnvelope } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import { ImFacebook } from "react-icons/im";
