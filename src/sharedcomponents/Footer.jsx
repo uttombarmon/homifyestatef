@@ -7,7 +7,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 
-
+// ff
 
 const Footer = () => {
     return (
