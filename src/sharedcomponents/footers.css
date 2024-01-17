@@ -10,7 +10,7 @@ footer {
     line-height: 20px;
 }
 footer .row{
-    /* width: 85%; */
+    width: 85%;
     margin:  auto;
     display: flex;
     flex-wrap: wrap;
