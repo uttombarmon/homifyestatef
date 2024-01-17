@@ -14,7 +14,7 @@ const Features = () => {
     <>
 
      <h1 className=" w-full items-center text-center font-bold text-2xl "> Check Out the Lalstest  Real <br /> Estate Listing</h1>
-    <div className=" lg:w-[1100px] mt-8 md:w-[900px] mb-3 md:gap-6 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-2 grid-cols-1 bg-gray-200 ">   
+    <div className=" lg:w-[1100px] mt-8 md:w-[900px] mb-3 md:gap-6 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-2 grid-cols-1  ">   
       <div className=" relative rounded w-full lg:w-[350px] mx-auto h-[400px] justify-center ">
         <div className=" w-full lg:w-[350px]  top-0 h-[300px] bg-cover  shadow-xl relative">
           <img
@@ -109,7 +109,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
@@ -309,7 +309,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
@@ -407,7 +407,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
@@ -504,7 +504,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
@@ -600,7 +600,7 @@ const Features = () => {
         <div className="absolute px-3  rounded-full  right-[68%]  bottom-[300px]  w-[100px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
               <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full"> Rent </p>
-              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Fetcher</p>
+              <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">Features</p>
           </div>
         </div>
       </div>
