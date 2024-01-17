@@ -81,7 +81,7 @@ const Signup = () => {
 
                             {/* SignUp button  */}
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary hover:bg-red-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60">Sign up</button>
+                                <button className="btn bg-orange-400  hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60">Sign up</button>
                             </div>
 
                             {/* new here */}
