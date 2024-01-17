@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Review = () => {
     return (
         <div className='mt-8'>
@@ -12,7 +10,7 @@ const Review = () => {
                         <h2 className='font-bold'>Great Work</h2>
                         <img className='w-[25px] h-[25px]' src="https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png" alt="" />
                     </div>
-                    <p>"Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!"</p>
+                    <p>&quot;Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!&quot;</p>
                     <div className="rating items-center w-[70px] h-[70px]">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
@@ -35,7 +33,7 @@ const Review = () => {
                         <h2 className='font-bold'>Great Work</h2>
                         <img className='w-[25px] h-[25px]' src="https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png" alt="" />
                     </div>
-                    <p>"Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!"</p>
+                    <p>&quot;Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!&quot;</p>
                     <div className="rating items-center w-[70px] h-[70px]">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
@@ -58,7 +56,7 @@ const Review = () => {
                         <h2 className='font-bold'>Great Work</h2>
                         <img className='w-[25px] h-[25px]' src="https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png" alt="" />
                     </div>
-                    <p>"Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!"</p>
+                    <p>&quot;Incredible variety, easy navigation, and swift delivery! This website surpassed my expectations. A one-stop-shop for quality products with unbeatable prices. User-friendly interface and helpful customer support make it my go-to online destination. Highly satisfied!&quot;</p>
                     <div className="rating items-center w-[70px] h-[70px]">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />

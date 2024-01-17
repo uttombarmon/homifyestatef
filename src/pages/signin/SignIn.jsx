@@ -5,19 +5,19 @@ import { AuthContext } from "../../utils/provider/AuthProvider";
 
 
 const SignIn = () => {
-    const {register,handleSubmit,formState: { errors }} = useForm();
-    const {signupWihtGoogle,signinWithEmailAndPassword}= useContext(AuthContext)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { signupWihtGoogle, signinWithEmailAndPassword } = useContext(AuthContext)
 
     const onSubmit = (data) => {
         console.log(data);
-        signinWithEmailAndPassword(data.email,data.password)
-        .then(e=>console.log(e.user))
-        .catch(err=> console.log(err.message))
+        signinWithEmailAndPassword(data.email, data.password)
+            .then(e => console.log(e.user))
+            .catch(err => console.log(err.message))
     };
-    const signInWithGoogle= ()=>{
+    const signInWithGoogle = () => {
         signupWihtGoogle()
-        .then(e=> console.log(e.user))
-        .catch(err=> console.log(err))
+            .then(e => console.log(e.user))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -50,7 +50,10 @@ const SignIn = () => {
                                 <input type="password"
                                     {...register("password", { required: true })}
                                     placeholder="password" className="input input-bordered" />
-                                {errors.password && <span className="error-message text-red-500">Password is required</span>}
+                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                             </div>
 
                             <div className='flex justify-between items-center '>
@@ -71,7 +74,7 @@ const SignIn = () => {
 
                             {/* login button  */}
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign in</button>
+                                <button className="btn  bg-orange-400  hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60">Sign in</button>
                             </div>
 
                             {/* new here */}
@@ -80,18 +83,23 @@ const SignIn = () => {
                             <p className="text-center "><small className="text-base">Are you new here? || <Link to="/signup" className="text-blue-600">Sign Up</Link></small></p>
 
                             {/* or line */}
-                            <div className='flex justify-between items-center text-center'>
-                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" /></div>
+                            <div className='flex justify-between items-center text-center mt-3'>
+                                <div className='flex-1'>
+                                    <img src="https://i.ibb.co/GspjGPV/divider.png" alt="" className="h-5 w-32" />
+                                </div>
                                 <div className='flex-1'>Or continue with</div>
-                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" /></div>
+                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" className="h-5 w-32" /></div>
                             </div>
 
                             {/* social login  */}
                             <div className='text-center'>
                                 <button onClick={signInWithGoogle} className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
-                                <button className='px-4'>
-                                    <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
-                                </button>
+                                <div className='text-center mt-3'>
+                                    <button className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
+                                    <button className='px-4'>
+                                        <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
