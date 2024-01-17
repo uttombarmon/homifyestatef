@@ -17,7 +17,7 @@ const  Navbar = () => {
     <>
       <div>
         <div className="shadow-md  w-full  top-0 left-0">
-          <div className="md:flex items-center justify-between bg-orange-200 py-4 md:px-14 px-10">
+          <div className="md:flex items-center justify-between bg-[#FAC23E] py-4 md:px-14 px-10">
             <div className="font-bold text-2xl cursor-pointer flex items-center gap-1">
               <span className=" text-black uppercase">Homify Estate</span>
             </div>
@@ -32,7 +32,7 @@ const  Navbar = () => {
                 open ? "top-12" : "top-[-490px]"
               }`}
             >
-              {Links.map((link) => (
+              {Links?.map((link) => (
                 <li key={link.name} className="md:ml-8 md:my-0 my-7 font-semibold">
                   <a
                     href={link.link}
@@ -42,8 +42,9 @@ const  Navbar = () => {
                   </a>
                 </li>
               ))}
-             
-                <button className="btn bg-orange-500  btn-outline  text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static">
+
+             {/* SignUp  button   */}
+                <button className="btn bg-orange-500  btn-outline border-none text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static">
                  <Link to={"/signup"}> SignUp </Link>
                 </button>
               
