@@ -64,21 +64,23 @@ const SignIn = () => {
 
                             {/* login button  */}
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign in</button>
+                                <button className="btn  bg-orange-400  hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60">Sign in</button>
                             </div>
 
                             {/* new here */}
                             <p className="pt-5 text-center "><small className="text-base">Are you new here? || <Link to="/signup" className="text-blue-600">Sign Up</Link></small></p>
 
                             {/* or line */}
-                            <div className='flex justify-between items-center text-center'>
-                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" /></div>
+                            <div className='flex justify-between items-center text-center mt-3'>
+                                <div className='flex-1'>
+                                    <img src="https://i.ibb.co/GspjGPV/divider.png" alt="" className="h-5 w-32" />
+                                    </div>
                                 <div className='flex-1'>Or continue with</div>
-                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" /></div>
+                                <div className='flex-1'><img src="https://i.ibb.co/GspjGPV/divider.png" alt="" className="h-5 w-32" /></div>
                             </div>
 
                             {/* social login  */}
-                            <div className='text-center'>
+                            <div className='text-center mt-3'>
                                 <button className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
                                 <button className='px-4'>
                                 <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
