@@ -1,0 +1,44 @@
+[
+    {
+      "title": " Hemosa Casa al Norte",
+      "location": "1520-Dhaka Dinajpure",
+      "price": "$1,800",
+      "rating":4.5 ,
+      "beds": 4,
+      "baths": 3,
+      "sqft": 1200,
+      "image": "https://i.ibb.co/vQk7cL2/property-1.jpg"
+      
+    },
+    {
+       "title": "Modern Apartment",
+      "location": "Downtown",
+      "price": "$1,800",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/vQk7cL2/property-1.jpg"
+    
+    },
+    {
+       "title": "Modern Apartment",
+      "location": "Downtown",
+      "price": "$1,800",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/vQk7cL2/property-1.jpg"
+    },
+    {
+       "title": "Modern Apartment",
+      "location": "Downtown",
+      "price": "$1,800",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/vQk7cL2/property-1.jpg"
+    }
+  ]
