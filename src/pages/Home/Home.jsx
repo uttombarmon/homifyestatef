@@ -4,6 +4,7 @@ import Features from "../../components/homecomponents/features/Features";
 import LetesNews from "../../components/homecomponents/letestNews/LetesNews";
 
 import Review from "../../components/homecomponents/review/review";
+import Slider from "../../components/homecomponents/slider/Slider";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             </div>
             <LetesNews></LetesNews>
             <Choose></Choose>
+            <Slider></Slider>
             <Review></Review>
         </div>
     );
