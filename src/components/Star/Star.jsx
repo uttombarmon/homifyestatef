@@ -6,8 +6,8 @@ const Star = ({stars}) => {
         let number= index + 0.5;
 
         return (
-            <div>
-                <span className="" key={index}>
+            <div key={index}>
+                <span className="">
                     {
                         stars >= index + 1 ?( <FaStar className="text-2xl  text-orange-300"/>) :
                         stars >= number ? (<FaStarHalfAlt className="text-2xl text-orange-300"/>) :
