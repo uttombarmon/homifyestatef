@@ -26,13 +26,11 @@ const Slider = () => {
         modules={[Pagination,]}
         className="mySwiper"
       >
-        <SwiperSlide><img src='/public/1.jpg'></img></SwiperSlide>
-        <SwiperSlide><img src='/public/2.jpg'></img></SwiperSlide>
-        <SwiperSlide><img src='/public/3.jpg'></img></SwiperSlide>
-        <SwiperSlide><img src='/public/1.jpg'></img></SwiperSlide>
-        <SwiperSlide><img src='/public/3.jpg'></img></SwiperSlide>
-     
-    
+        <SwiperSlide><img src='https://i.ibb.co/qYjcJcp/1.jpg'></img></SwiperSlide>
+        <SwiperSlide><img src='https://i.ibb.co/bz3X3pj/2.jpg'></img></SwiperSlide>
+        <SwiperSlide><img src='https://i.ibb.co/C2WPhWp/3.jpg'></img></SwiperSlide>
+        <SwiperSlide><img src='https://i.ibb.co/qYjcJcp/1.jpg'></img></SwiperSlide>
+        <SwiperSlide><img src='https://i.ibb.co/bz3X3pj/2.jpg'></img></SwiperSlide>
       </Swiper>
         </div>
       
