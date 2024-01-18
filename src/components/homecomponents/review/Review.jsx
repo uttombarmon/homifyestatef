@@ -1,6 +1,9 @@
 
+
 import React, { useEffect, useState } from 'react';
 import Star from '../../Star/Star';
+
+
 
 
 const Review = () => {
@@ -15,6 +18,7 @@ const Review = () => {
     return (
         <div className='mt-8'>
             <h2 className='text-center font-semibold text-3xl'>Latest User Reivew</h2>
+
             <div className=' max-w-7xl mx-auto  grid md:grid-cols-2 lg:grid-cols-3'>
                 {reviews.map(review =>
                     <div key={review.id} className=' my-7 p-4 gap-4 bg-[#FFF7F5]'>
@@ -41,6 +45,12 @@ const Review = () => {
                                     </div>
                                 </div>
                             </div>
+
+           
+                
+               
+               
+
                         </div>
                     </div>
                 )}
@@ -50,3 +60,22 @@ const Review = () => {
 };
 
 export default Review;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
