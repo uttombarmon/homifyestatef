@@ -19,7 +19,7 @@ const Star = ({stars}) => {
     });
 
     return (
-        <div>
+        <div className="flex items-center gap-1">
             {ratingStar}
         </div>
     )
