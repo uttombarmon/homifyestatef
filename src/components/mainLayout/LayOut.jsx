@@ -6,7 +6,7 @@ import Navbar from "../../sharedcomponents/Navbar";
 
 const LayOut = () => {
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <div>
             <Navbar></Navbar>
             
