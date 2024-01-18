@@ -1,5 +1,6 @@
-import Features from "../../components/features/Features";
-import LetesNews from "../../components/homecomponents/letesNews/LetesNews";
+
+import Features from "../../components/homecomponents/features/Features";
+import LetesNews from "../../components/homecomponents/letestNews/LetesNews";
 import Review from "../../components/homecomponents/review/review";
 
 const Home = () => {
