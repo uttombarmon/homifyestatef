@@ -10,7 +10,7 @@ const Choose = () => {
             .then(data => setChooses(data))
     }, []);
     return (
-        <div className="bg-[#FFFFFF] my-5">
+        <div className="bg-[#FFFFFF] py-5">
             <div className="text-center">
                 <h3 className="text-2xl">WHY CHOOSE US</h3>
                 <h2 className="text-3xl font-semibold py-4">6 Reasons to Choose Estancy</h2>

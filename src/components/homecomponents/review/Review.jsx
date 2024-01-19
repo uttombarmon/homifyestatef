@@ -19,10 +19,10 @@ const Review = () => {
         <div className='mt-8'>
             <h2 className='text-center font-semibold text-3xl'>Latest User Reivew</h2>
 
-            <div className=' max-w-7xl mx-auto  grid md:grid-cols-2 lg:grid-cols-4'>
+            <div className=' max-w-7xl mx-auto px-1 grid md:grid-cols-2 lg:grid-cols-4'>
                 {reviews.map(review =>
-                    <div key={review.id} className=' my-7 p-4 '>
-                        <div className='min-h-[400px] flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl'>
+                    <div key={review.id} className=' my-7 p-4 lg:p-1'>
+                        <div className='min-h-[400px] h-full flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl'>
                             <div>
                                 <div className='flex pb-3 justify-between'>
                                     <h2 className='font-bold'>{review.title}</h2>

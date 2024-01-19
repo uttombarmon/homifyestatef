@@ -1,22 +1,27 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../utils/provider/AuthProvider";
 
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signupWihtGoogle, signinWithEmailAndPassword } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const onSubmit = (data) => {
         console.log(data);
         signinWithEmailAndPassword(data.email, data.password)
-            .then(e => console.log(e.user))
+            .then(()=>{
+                navigate("/")
+            })
             .catch(err => console.log(err.message))
     };
     const signInWithGoogle = () => {
         signupWihtGoogle()
-            .then(e => console.log(e.user))
+            .then( ()=>{
+                navigate("/")
+            })
             .catch(err => console.log(err))
     }
 
@@ -93,9 +98,8 @@ const SignIn = () => {
 
                             {/* social login  */}
                             <div className='text-center'>
-                                <button onClick={signInWithGoogle} className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
                                 <div className='text-center mt-3'>
-                                    <button className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
+                                    <button onClick={signInWithGoogle} className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
                                     <button className='px-4'>
                                         <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
                                     </button>
