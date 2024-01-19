@@ -6,9 +6,9 @@ const Banner = () => {
         <section className="bg-gray-100  md:h-[700px] relative border-4 grid items-end" style={{backgroundRepeat:'no-repeat',backgroundSize:'100% 700px',backgroundPosition:'center',backgroundImage: 'url(https://i.ibb.co/8PmVZMt/banner-bg.jpg)'}}>
             <div className="bg-white opacity-25 z-10 w-full h-full absolute"></div>
             <div className=" w-[90%] md:w-[80%] z-20 lg:w-[890px] xl:w-[1200px] mx-auto ">
-                <h1 className="md:text-5xl text-2xl lg:text-6xl  font-bold">Building houses that feel
+                <h1 className="md:text-4xl text-2xl lg:text-5xl  font-bold">Building houses that feel
                     like home - with us.</h1>
-                <p className="my-10 font-semibold  md:text-3xl  text-lg">Through a combination of lectures, readings, and discussions, students will gain a solid
+                <p className="my-8 font-md  md:text-2xl  text-lg">Through a combination of lectures, readings, and discussions, students will gain a solid
                     foundation  in educational psychology.</p>
             </div>
             <div className="z-20">
