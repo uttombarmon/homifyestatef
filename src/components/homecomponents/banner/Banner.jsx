@@ -3,7 +3,7 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 const Banner = () => {
 
     return (
-        <section className="bg-gray-100  md:h-[700px] relative border-4 grid items-end" style={{backgroundRepeat:'no-repeat',backgroundSize:'100% 700px',backgroundPosition:'center',backgroundImage: 'url(https://i.ibb.co/8PmVZMt/banner-bg.jpg)'}}>
+        <section className="bg-gray-100  md:h-[700px] relative border-4 grid items-end" style={{ backgroundRepeat: 'no-repeat', backgroundSize: '100% 700px', backgroundPosition: 'center', backgroundImage: 'url(https://i.ibb.co/8PmVZMt/banner-bg.jpg)' }}>
             <div className="bg-white opacity-25 z-10 w-full h-full absolute"></div>
             <div className=" w-[90%] md:w-[80%] z-20 lg:w-[890px] xl:w-[1200px] mx-auto ">
                 <h1 className="md:text-4xl text-2xl lg:text-5xl  font-bold">Building houses that feel
@@ -32,11 +32,11 @@ const Banner = () => {
                                             <span className="label-text">Location</span>
                                         </label>
                                         <div className="border">
-                                            <select className="select select-ghost w-full max-w-xs border">
-                                                <option disabled selected>Pick the best JS framework</option>
-                                                <option>Svelte</option>
-                                                <option>Vue</option>
-                                                <option>React</option>
+                                            <select defaultValue={"fgfgf"} className="select select-ghost w-full max-w-xs border">
+                                                <option disabled value={'fgfgf'}>value</option>
+                                                <option value={"svelte"}>Svelte</option>
+                                                <option value={"vue"}>Vue</option>
+                                                <option value={"react"}>React</option>
                                             </select>
                                         </div>
                                     </div>
@@ -45,11 +45,11 @@ const Banner = () => {
                                             <span className="label-text">Type</span>
                                         </label>
                                         <div className="border">
-                                            <select className="select select-ghost w-full max-w-xs border">
-                                                <option disabled selected>Pick the best JS framework</option>
-                                                <option>Svelte</option>
-                                                <option>Vue</option>
-                                                <option>React</option>
+                                            <select defaultValue={"fgfgf"} className="select select-ghost w-full max-w-xs border">
+                                                <option disabled value={"fgfgf"}>value</option>
+                                                <option value={"svelte"}>Svelte</option>
+                                                <option value={"vue"}>Vue</option>
+                                                <option value={"react"}>React</option>
                                             </select>
                                         </div>
                                     </div>
@@ -58,11 +58,11 @@ const Banner = () => {
                                             <span className="label-text">price</span>
                                         </label>
                                         <div className="border">
-                                            <select className="select select-ghost w-full max-w-xs border">
-                                                <option disabled selected>value</option>
-                                                <option>Svelte</option>
-                                                <option>Vue</option>
-                                                <option>React</option>
+                                            <select defaultValue={"fgfgf"} className="select select-ghost w-full max-w-xs border">
+                                                <option disabled value={'fgfgf'}>value</option>
+                                                <option value={"svelte"}>Svelte</option>
+                                                <option value={"vue"}>Vue</option>
+                                                <option value={"react"}>React</option>
                                             </select>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@ const Banner = () => {
                                         <input type="text" placeholder="Your Keyword" className="input input-bordered rounded-none" required />
                                     </div>
                                     <div className="mt-10 w-[165px] grid justify-end" >
-                                        
+
                                         <button className="btn  text-xl bg-yellow-300 hover:bg-yellow-400">Search</button>
                                     </div>
                                 </div>
