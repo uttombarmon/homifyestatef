@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <LayOut></LayOut>,
+    errorElement: <div>Page Not Found</div>,
     children: [
       {
         path:"",
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
         element: <Signup></Signup>
       },
       {
-        path: '/login',
+        path: '/signin',
         element: <SignIn></SignIn>
       }
     ]

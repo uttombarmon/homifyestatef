@@ -1,0 +1,48 @@
+[
+    {
+        "id": "1",
+        "title": "Amazing Experience",
+        "icon": "https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png",
+        "comment": "Homify, a standout real estate website, offers an immersive platform for property seekers. With a user-friendly interface, comprehensive listings, and innovative features, Homify simplifies the home-buying process. ",
+        "rating": 4.5,
+        "image": "https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png",
+        "name": "John Doe",
+        "address": "123 Main Street, Cityville, State"
+      },
+
+      {
+        "id": "2",
+        "title": "Great Food!",
+        "icon": "https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png",
+        "comment": "The food was delicious, and the atmosphere was perfect. I highly recommend their menu. Can't wait to visit again!Definitely coming back soon!",
+        "rating": 3,
+        "image": "https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png",
+        "name": "Jane Smith",
+        "address": "456, Townsville, State"
+      },
+
+      {
+        "id": "3",
+        "title": "Friendly Staff",
+        "icon": "https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png",
+        "comment": "The staff here is so friendly and welcoming. They went above and beyond to make our visit enjoyable. Definitely coming back soon!Definitely coming back soon!",
+        "rating": 4,
+        "image": "https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png",
+        "name": "Sam Johnson",
+        "address": "789 Villagetown, State"
+      },
+      {
+        "id": "4",
+        "title": "Well Site",
+        "icon": "https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png",
+        "comment": "Homify, a standout real estate website, offers an immersive platform for property seekers. With a user-friendly interface, comprehensive listings, and innovative features, Homify simplifies the home-buying process. ",
+        "rating": 3.5,
+        "image": "https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png",
+        "name": "Irfan Khan",
+        "address": "123 Main Street, Cityville, State"
+      }
+      
+      
+      
+    
+]

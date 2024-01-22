@@ -1,0 +1,64 @@
+[
+    {
+      "title": " Hemosa Casa al Norte",
+      "location": "1520-Dhaka Dinajpure",
+      "price": "$1,800",
+      "rating":4.5 ,
+      "beds": 4,
+      "baths": 3,
+      "sqft": 1200,
+      "image": "https://i.ibb.co/vQk7cL2/property-1.jpg"
+      
+    },
+    {
+       "title": "Modern Apartment",
+      "location": "Downtown",
+      "price": "$1,300",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/W037mk1/property-2.jpg"
+    
+    },
+    {
+       "title": "WaveWhirl",
+      "location": "Downtown",
+      "price": "$1,400",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/T8qfrvw/property-3.jpg"
+    },
+    {
+       "title": "BuoyantBlast",
+      "location": "Downtown",
+      "price": "$1,700",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/D5WD2Ht/property-4.jpg"
+    },
+    {
+       "title": "SplashFiesta",
+      "location": "Downtown",
+      "price": "$1,900",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/km0vhYq/property-5.jpg"
+    },
+    {
+       "title": "FloatFandango",
+      "location": "Downtown",
+      "price": "$1,100",
+      "rating":4.5 ,
+      "beds": 1,
+      "baths": 1,
+      "sqft": 1000,
+      "image": "https://i.ibb.co/nC3D9qw/property-6.jpg"
+    }
+  ]

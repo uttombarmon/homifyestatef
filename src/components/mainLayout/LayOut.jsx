@@ -6,7 +6,7 @@ import Navbar from "../../sharedcomponents/Navbar";
 
 const LayOut = () => {
     return (
-        <div>
+        <div className=" w-full lg:max-w-[1024px] bg-slate-50 overflow-x-hidden xl:max-w-[1440px] mx-auto font-poppins">
             <div>
             <Navbar></Navbar>
             

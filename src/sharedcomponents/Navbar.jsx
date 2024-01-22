@@ -1,10 +1,11 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import { AuthContext } from "../utils/provider/AuthProvider";
 
-const  Navbar = () => {
+const Navbar = () => {
   const Links = [
     { name: "HOME", link: "/" },
     { name: "SERVICE", link: "/" },
@@ -12,27 +13,36 @@ const  Navbar = () => {
     { name: "CONTACT", link: "/" },
   ];
   const [open, setOpen] = useState(false);
+  const { user,signout } = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const onSignout=()=>{
+    signout()
+    .then(()=>{
+      navigate("/signin")
+    })
+    .catch(err=>console.log(err))
+  }
 
   return (
     <>
       <div>
-        <div className="shadow-md  w-full  top-0 left-0">
-          <div className="md:flex items-center justify-between bg-orange-200 py-4 md:px-14 px-10">
-            <div className="font-bold text-2xl cursor-pointer flex items-center gap-1">
+        <div className="shadow-md text-sm lg:text-base w-full">
+          <div className="md:flex items-center justify-between bg-[#fac23ec5] py-2 md:px-14 px-10">
+            <div className="font-bold text-2xl md:text-xl cursor-pointer flex items-center">
               <span className=" text-black uppercase">Homify Estate</span>
             </div>
             <div
               onClick={() => setOpen(!open)}
-              className="absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7"
+              className="absolute right-8 top-4 cursor-pointer md:hidden w-7 h-7"
             >
               {open ? <FaTimes /> : <FaBars />}
             </div>
             <ul
-              className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static lg:bg-transparent bg-[#80856f6c]    md:z-auto z-50 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-                open ? "top-12" : "top-[-490px]"
-              }`}
+              className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:bg-transparent bg-white md:z-auto z-50 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-12" : "top-[-490px]"
+                }`}
             >
-              {Links.map((link) => (
+              {Links?.map((link) => (
                 <li key={link.name} className="md:ml-8 md:my-0 my-7 font-semibold">
                   <a
                     href={link.link}
@@ -42,11 +52,16 @@ const  Navbar = () => {
                   </a>
                 </li>
               ))}
-             
-                <button className="btn bg-orange-500  btn-outline  text-white md:ml-8 font-semibold px-3 py-1 rounded duration-500 md:static">
-                 <Link to={"/signup"}> SignUp </Link>
-                </button>
-              
+
+              {/* SignUp  button   */}
+              {
+                !user ?
+                  <Link to={"/signup"}>
+                    <button className="btn bg-orange-500  btn-outline border-none text-white md:ml-8 font-semibold rounded duration-500 md:static">SignUp</button>
+                  </Link> :
+                  <button onClick={onSignout} className="btn mx-3">SignOut</button>
+              }
+
             </ul>
           </div>
         </div>
@@ -57,4 +72,4 @@ const  Navbar = () => {
   );
 };
 
-export default  Navbar;
+export default Navbar;
