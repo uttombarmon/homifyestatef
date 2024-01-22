@@ -82,36 +82,36 @@ const Features = () => {
                     </div>
 
                     {/* reation  */}
-                    <p>
+                    <div>
                       <div className="rating rating-sm">
                         <input
                           type="radio"
                           name="rating-6"
-                          className="mask mask-star-2 bg-orange-400"
+                          className="mask mask-star-2 bg-orange-400" readOnly
                         />
                         <input
                           type="radio"
                           name="rating-6"
                           className="mask mask-star-2 bg-orange-400"
-                          checked
+                          checked readOnly
                         />
                         <input
                           type="radio"
                           name="rating-6"
-                          className="mask mask-star-2 bg-orange-400"
+                          className="mask mask-star-2 bg-orange-400" readOnly
                         />
                         <input
                           type="radio"
                           name="rating-6"
-                          className="mask mask-star-2 bg-orange-400"
+                          className="mask mask-star-2 bg-orange-400" readOnly
                         />
                         <input
                           type="radio"
                           name="rating-6"
-                          className="mask mask-star-2 bg-orange-400"
+                          className="mask mask-star-2 bg-orange-400" readOnly
                         />
                       </div>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
