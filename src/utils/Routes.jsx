@@ -5,6 +5,7 @@ import SignIn from "../pages/signin/SignIn";
 
 import LayOut from "../components/mainLayout/LayOut";
 import Home from "../pages/Home/Home";
+import PropertyDetails from "../pages/properties-details/PropertyDetails";
 
 
 
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>
+      },
+      {
+        path:"properties/:id",
+        element: <PropertyDetails></PropertyDetails>
       }
     ]
 
