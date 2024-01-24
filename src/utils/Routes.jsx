@@ -5,6 +5,7 @@ import SignIn from "../pages/signin/SignIn";
 
 import LayOut from "../components/mainLayout/LayOut";
 import Home from "../pages/Home/Home";
+import PropertyDetails from "../pages/properties-details/PropertyDetails";
 import Properties from "../pages/properties/Properties";
 import Private from "./privetRoute/Privet";
 import ErrorPage from "../components/errorPage/ErrorPage";
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>
+      },
+      {
+        path:"properties/:id",
+        element: <PropertyDetails></PropertyDetails>
       }
     ]
 

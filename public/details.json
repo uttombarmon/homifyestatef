@@ -1,0 +1,33 @@
+{
+    "title": "Urban Loft Living",
+    "location": "222 Loft Street, Metropolitan City",
+    "property_status": "For Rent",
+    "description": "Chic loft with industrial vibes in the heart of the city.",
+    "property_image":"https://i.ibb.co/vQk7cL2/property-1.jpg",
+    "property_details": {
+        "id": "MNO222",
+        "rooms": 2,
+        "status": "Available Now",
+        "price": "$2,800/month",
+        "garages": 0,
+        "bed_rooms": 1,
+        "type": "Loft",
+        "baths": 1,
+        "originating_year": 2018,
+        "size": "5000 sq ft",
+        "date_listed": "2022-08-15"
+    },
+    "facilities": [
+        "Exposed Brick Walls",
+        "City Views",
+        "Open Layout"
+    ],
+    "floor_plan": {
+        "image": "https://i.ibb.co/4MmWC0r/06372cef20d89b57c58bdfc140710c70.png",
+        "description": "Industrial aesthetics with modern conveniences."
+    },
+    "author": {
+        "name": "City Living Properties",
+        "contact": "info@cityliving.com"
+    }
+}
