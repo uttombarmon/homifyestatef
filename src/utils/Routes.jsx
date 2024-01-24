@@ -8,6 +8,7 @@ import Home from "../pages/Home/Home";
 import Properties from "../pages/properties/Properties";
 import Private from "./privetRoute/Privet";
 import ErrorPage from "../components/errorPage/ErrorPage";
+import Blog from "../pages/blog/Blog";
 
 
 
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path:"/properties",
         element: <Private><Properties></Properties></Private>
+      },
+      {
+        path:"/blog",
+        element: <Blog></Blog>
       },
       {
         path: '/signup',
