@@ -10,6 +10,7 @@ import Properties from "../pages/properties/Properties";
 import Private from "./privetRoute/Privet";
 import ErrorPage from "../components/errorPage/ErrorPage";
 import Blog from "../pages/blog/Blog";
+import Contact from "../pages/contact/Contact";
 
 
 
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path:"properties/:id",
         element: <PropertyDetails></PropertyDetails>
+      },
+      {
+        path:"/contact",
+        element:<Contact></Contact>
       }
     ]
 
