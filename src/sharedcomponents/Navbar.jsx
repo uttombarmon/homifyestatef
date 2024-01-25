@@ -12,7 +12,7 @@ const Navbar = () => {
     { name: "PROPETTIES", link: "/properties" },
     { name: "BLOG DETAILS", link: "/blog" },
     { name: "ABOUT", link: "/" },
-    { name: "CONTACT", link: "/" },
+    { name: "CONTACT", link: "/contact" },
   ];
   const [open, setOpen] = useState(false);
   const { user,signout } = useContext(AuthContext)
