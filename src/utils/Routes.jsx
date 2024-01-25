@@ -12,6 +12,7 @@ import ErrorPage from "../components/errorPage/ErrorPage";
 import Blog from "../pages/blog/Blog";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import Contact from "../pages/contact/Contact";
+import About from "../pages/about/About";
 
 
 export const router = createBrowserRouter([
@@ -47,6 +48,9 @@ export const router = createBrowserRouter([
       {
         path:"/contact",
         element:<Contact></Contact>
+      },{
+        path:"/about",
+        element:<About></About>
       }
     ]
 
