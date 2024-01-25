@@ -7,17 +7,19 @@ import { FaRegHeart } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 
 
 
 const Features = () => {
   const [properties, setProperties] = useState([]);
-
+  const axiosPublic = useAxiosPublic();
+  // this data is load from the db ;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("data.json");
-        const data = await response.json();
+        const response = await axiosPublic.get("/home/checkout");
+        const data = response.data;
         setProperties(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -25,11 +27,12 @@ const Features = () => {
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic]);
+
 
   return (
     <>
-      <div className=" w-full py-10">
+      <div className=" w-full py-10 ">
         <h1 className=" my-4 w-full items-center text-center font-bold text-2xl h-fit "> Check Out the Latest  Real <br /> Estate Listing</h1>
 
         <div className="grid relative  w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mx-auto bg-slate-100 gap-5">
