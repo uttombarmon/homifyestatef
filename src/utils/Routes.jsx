@@ -10,6 +10,7 @@ import Properties from "../pages/properties/Properties";
 import Private from "./privetRoute/Privet";
 import ErrorPage from "../components/errorPage/ErrorPage";
 import Blog from "../pages/blog/Blog";
+import DashboardLayout from "../pages/dashboard/DashboardLayout";
 
 
 
@@ -46,5 +47,19 @@ export const router = createBrowserRouter([
     ]
 
   },
+  {
+    path:"/dashboard",
+    element:<DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path:"",
+        element:<div> Contents</div>
+      },
+      {
+        path:"/agent/:user",
+        element:<div>Agent dashboard</div>
+      }
+    ]
+  }
 
 ]);
