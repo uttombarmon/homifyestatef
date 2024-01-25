@@ -9,8 +9,10 @@ const Navbar = () => {
   const Links = [
     { name: "HOME", link: "/" },
     { name: "SERVICE", link: "/" },
+    { name: "PROPETTIES", link: "/properties" },
+    { name: "BLOG DETAILS", link: "/blog" },
     { name: "ABOUT", link: "/" },
-    { name: "CONTACT", link: "/" },
+    { name: "CONTACT", link: "/contact" },
   ];
   const [open, setOpen] = useState(false);
   const { user,signout } = useContext(AuthContext)
