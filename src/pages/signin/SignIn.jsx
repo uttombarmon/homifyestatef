@@ -2,27 +2,55 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../utils/provider/AuthProvider";
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
+import { FaFacebook } from "react-icons/fa6";
 
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signupWihtGoogle, signinWithEmailAndPassword } = useContext(AuthContext)
+    const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate()
-
     const onSubmit = (data) => {
         console.log(data);
         signinWithEmailAndPassword(data.email, data.password)
-            .then(()=>{
+            .then(() => {
                 navigate("/")
             })
             .catch(err => console.log(err.message))
     };
     const signInWithGoogle = () => {
         signupWihtGoogle()
-            .then( ()=>{
+            .then(async (res) => {
+                const data = {
+                    name: res?.user?.displayName,
+                    photoURL: res?.user?.photoURL,
+                    email: res?.user?.email,
+                    role: 'user',
+                    method:'google'
+                }
+                const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
+                const userFromDB = getUser?.data?.email
+                console.log(userFromDB)
+                if (!userFromDB) {
+                    const result = await axiosPublic.post(`/users/user`, data);
+                    console.log(result)
+                    navigate("/")
+                }
                 navigate("/")
             })
             .catch(err => console.log(err))
+    };
+
+    const facebookSignin = () => {
+        signupWithFacebook()
+            .then(result => {
+                console.log(result)
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            });
     }
 
     return (
@@ -100,6 +128,7 @@ const SignIn = () => {
                             <div className='text-center'>
                                 <div className='text-center mt-3'>
                                     <button onClick={signInWithGoogle} className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
+                                    <button onClick={facebookSignin} className='px-4'><FaFacebook className="text-[43px] bg-white rounded-[20px] text-blue-400"></FaFacebook></button>
                                     <button className='px-4'>
                                         <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
                                     </button>
