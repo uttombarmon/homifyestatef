@@ -8,6 +8,7 @@ import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -38,7 +39,7 @@ const Features = () => {
         <div className="grid relative  w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mx-auto bg-slate-100 gap-5">
           {properties?.map((properties) => (
             <div
-              key={properties.id}
+              key={properties._id}
               className="  p-2 relative  rounded  lg:w-full md:w-[300px] w-[350px] mx-auto h-[400px] justify-center "
             >
               <div className="lg:w-full md:w-[300px] top-0 h-[300px]   shadow-xl relative">
@@ -78,9 +79,9 @@ const Features = () => {
                   <hr className=" w-[95%] mx-auto mt-2 font-bold " />
                   <div className=" flex justify-between px-2 mt-2 mb-2">
                     <div className="flex justify-center items-center gap-2">
-                      <button className="font-semibold text-sm ">
+                      <NavLink to={`/properties/${properties._id}`} className="font-semibold text-sm ">
                         More Details{" "}
-                      </button>
+                      </NavLink>
                       <FaArrowRight className="rounded-full bg-base-300"></FaArrowRight>
                     </div>
 

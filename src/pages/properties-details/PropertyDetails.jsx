@@ -9,20 +9,26 @@ import { LuClipboardCopy } from "react-icons/lu";
 import GoogleMapComponent from '../../components/propertiesdetails/googlemap/GoogleMap';
 import Reviews from '../../components/propertiesdetails/Review/Reviews';
 import ScheduleForm from '../../components/propertiesdetails/shcedule/Schedule';
+import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
+import { useParams } from 'react-router-dom';
 const PropertyDetails = () => {
     const [property, setProperty] = useState(null)
+    const axiosPublic = useAxiosPublic();
+    const params = useParams()
+    // this data is load from the db ;
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/public/details.json');
-                const data = await response.json();
-                setProperty(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+      const fetchData = async () => {
+        try {
+          const response = await axiosPublic.get(`/home/checkout/${params.id}`);
+          const data = response.data;
+          setProperty(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
         }
-        fetchData()
-    }, []);
+      };
+  
+      fetchData();
+    }, [axiosPublic,params]);
     return (
         <div className=' bg-slate-100'>
             {property ?
@@ -32,7 +38,7 @@ const PropertyDetails = () => {
                 <div className='flex justify-between flex-wrap'>
                     {/* details */}
                     <div className=' w-full mx-auto'>
-                        <img className=' w-full h-[500px]' src={property.property_image} alt="" />
+                        <img className=' w-full h-[500px]' src={property?.image} alt="" />
                     </div>
                     <div className='w-full md:w-7/12 flex flex-wrap mx-4 my-4'>
                         {/* title, price, location section */}
@@ -70,22 +76,22 @@ const PropertyDetails = () => {
                             <div>
                                 <h1 className=' text-xl font-bold my-2'>Property Details</h1>
                                 <div className=' grid grid-cols-2 md:grid-cols-3 justify-between'>
-                                    <p className='my-2'><span className='font-semibold'>Property Id:</span> {property.property_details.id}</p>
-                                    <p className='my-2'><span className='font-semibold'>Rooms:</span> {property.property_details.rooms}</p>
-                                    <p className='my-2'><span className='font-semibold'>Status:</span> {property.property_details.status}</p>
-                                    <p className='my-2'><span className='font-semibold'>Garages:</span> {property.property_details.garages}</p>
-                                    <p className='my-2'><span className='font-semibold'>Bed Rooms:</span> {property.property_details.bed_rooms}</p>
-                                    <p className='my-2'><span className='font-semibold'>Type:</span> {property.property_details.type}</p>
-                                    <p className='my-2'><span className='font-semibold'>Baths:</span> {property.property_details.baths}</p>
-                                    <p className='my-2'><span className='font-semibold'>Originting Year:</span> {property.property_details.date_listed}</p>
-                                    <p className='my-2'><span className='font-semibold'>Price:</span> {property.property_details.price}</p>
+                                    <p className='my-2'><span className='font-semibold'>Property Id:</span> {property?.property_details?.id}</p>
+                                    <p className='my-2'><span className='font-semibold'>Rooms:</span> {property?.property_details?.rooms}</p>
+                                    <p className='my-2'><span className='font-semibold'>Status:</span> {property?.property_details?.status}</p>
+                                    <p className='my-2'><span className='font-semibold'>Garages:</span> {property?.property_details?.garages}</p>
+                                    <p className='my-2'><span className='font-semibold'>Bed Rooms:</span> {property?.property_details?.bed_rooms}</p>
+                                    <p className='my-2'><span className='font-semibold'>Type:</span> {property?.property_details?.type}</p>
+                                    <p className='my-2'><span className='font-semibold'>Baths:</span> {property?.property_details?.baths}</p>
+                                    <p className='my-2'><span className='font-semibold'>Originting Year:</span> {property?.property_details?.date_listed}</p>
+                                    <p className='my-2'><span className='font-semibold'>Price:</span> {property?.property_details?.price}</p>
                                 </div>
                             </div>
                             <div>
                                 <h1 className=' text-xl font-bold my-2'>Facilities</h1>
                                 <div className=' grid grid-cols-2 md:grid-cols-3 justify-between'>
                                     {
-                                        property?.facilities.map(face => <p key={face} className='my-2 flex'><FaCheckCircle className=' self-center text-green-400 mr-1' /> {face}</p>)
+                                        property?.facilities?.map(face => <p key={face} className='my-2 flex'><FaCheckCircle className=' self-center text-green-400 mr-1' /> {face}</p>)
                                     }
                                 </div>
                             </div>

@@ -61,17 +61,13 @@ export const router = createBrowserRouter([
 
   },
   {
-    path:"/dashboard",
+    path:"dashboard",
     element:<DashboardLayout></DashboardLayout>,
     children: [
       {
         path:"",
         element:<div> Contents</div>
       },
-      // {
-      //   path:"/agent/:user",
-      //   element:<div>Agent dashboard</div>
-      // }
     ]
   }
 

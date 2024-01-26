@@ -129,9 +129,6 @@ const SignIn = () => {
                                 <div className='text-center mt-3'>
                                     <button onClick={signInWithGoogle} className='px-4'><img className="w-10" src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" /></button>
                                     <button onClick={facebookSignin} className='px-4'><FaFacebook className="text-[43px] bg-white rounded-[20px] text-blue-400"></FaFacebook></button>
-                                    <button className='px-4'>
-                                        <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
-                                    </button>
                                 </div>
                             </div>
                         </div>
