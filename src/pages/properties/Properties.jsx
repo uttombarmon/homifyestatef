@@ -12,16 +12,19 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 
 import { IoHome } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
+import { NavLink } from "react-router-dom";
 // import propatices from "../../public/data.json"
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
-
+  const axiosPublic = useAxiosPublic();
+  // this data is load from the db ;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("pagenation.json");
-        const data = await response.json();
+        const response = await axiosPublic.get("/home/checkout");
+        const data = response.data;
         setProperties(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,7 +32,7 @@ const Properties = () => {
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic]);
 
   //   pagination
 
@@ -382,9 +385,9 @@ const Properties = () => {
                   <hr className=" w-[95%] mx-auto mt-2 font-bold " />
                   <div className=" flex justify-between px-2 mt-2 mb-2">
                     <div className="flex justify-center items-center gap-2">
-                      <button className="font-semibold text-sm ">
+                      <NavLink to={`/properties/${properties._id}`} className="font-semibold text-sm ">
                         More Details{" "}
-                      </button>
+                      </NavLink>
                       <FaArrowRight className="rounded-full bg-base-300"></FaArrowRight>
                     </div>
 
@@ -474,9 +477,8 @@ const Properties = () => {
             </li>
             {numbers?.map((number) => (
               <li
-                className={`   hover:bg-gray-300  rounded-full py-2 px-2 ${
-                  currentPage === number ? "active" : ""
-                }`}
+                className={`   hover:bg-gray-300  rounded-full py-2 px-2 ${currentPage === number ? "active" : ""
+                  }`}
                 key={number.id}
               >
                 <a

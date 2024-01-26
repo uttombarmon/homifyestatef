@@ -12,18 +12,8 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubcribe = () => {
             onAuthStateChanged(auth, cuser => {
-                // setUser(cuser);
-                const email = cuser?.email;
+                setUser(cuser);
                 setLoading(false);
-                if (email !== null && email !== undefined) {
-                    axiosPublic.get(`/users/${email}`)
-                        .then(res => {
-                            const userInfo = res.data
-                            console.log(userInfo);
-                            setUser(userInfo);
-                        })
-                }
-
             })
         }
         return () => {
