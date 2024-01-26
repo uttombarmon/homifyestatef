@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import logo from './logo2.png';
+import Agent from '../../components/dashboard/agent/Agent';
 import UserNav from '../../components/dashboardcomponents/UserNav';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
+
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
     const [users, setUser] = useState(null)
@@ -48,18 +50,18 @@ const DashboardLayout = () => {
                 </div>
             </div>
             {/* dashboard nav section */}
-            <div className=" hidden lg:flex md:w-[200px] lg:w-[300px] bg-stone-700">
-                <div className='w-full flex-wrap'>
+            <div className=" hidden lg:flex md:w-[200px] lg:w-[300px]  bg-stone-700">
+                <div className='w-full flex-wrap '>
                     {/* drawer head */}
                     <div className=" w-full mt-6 hidden lg:inline text-center">
                         <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
                         <h1 className="font-bold mb-6 text-xl">HomifyEstate</h1>
                         <hr />
                     </div>
+                    <Agent></Agent>
                     {
                         users?.role == 'user' &&
                         <UserNav></UserNav>
-
                     }
                 </div>
             </div>
