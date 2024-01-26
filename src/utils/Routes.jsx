@@ -13,9 +13,11 @@ import Blog from "../pages/blog/Blog";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import Contact from "../pages/contact/Contact";
 import AgentDashboard from "../components/dashboard/agent/AgentDashboard";
-import AgentProfile from "../components/dashboard/agent/AgentProfile";
 import AgentOderList from "../components/dashboard/agent/AgentOderList";
 import AgentProperties from "../components/dashboard/agent/AgentProperties";
+import About from "../pages/about/About";
+import AgentProfile from "../pages/agentProfile/AgentProfile";
+
 
 
 export const router = createBrowserRouter([
@@ -51,6 +53,13 @@ export const router = createBrowserRouter([
       {
         path:"/contact",
         element:<Contact></Contact>
+      },{
+        path:"/about",
+        element:<About></About>
+      },
+      {
+        path:"/agentProfile",
+        element:<AgentProfile></AgentProfile>
       }
     ]
 

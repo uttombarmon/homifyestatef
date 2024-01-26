@@ -2,22 +2,30 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../utils/provider/AuthProvider";
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
+
 
 
 const Signup = () => {
+    const axiosPublic = useAxiosPublic()
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm();
-    const {creatuserwithemail}= useContext(AuthContext)
+    const { creatuserwithemail } = useContext(AuthContext)
     const navigate = useNavigate()
     const onSubmit = (data) => {
-        creatuserwithemail(data.email,data.password)
-        .then(()=>{
-            navigate("/")
-        })
-        .catch(err=> console.log(err))
+        data.role = 'user'
+        creatuserwithemail(data.email, data.password)
+            .then(async (result) => {
+                if (result.user) {
+                    const res = await axiosPublic.post('/users/user', data)
+                    console.log(res)
+                }
+                navigate("/")
+            })
+            .catch(err => console.log(err))
     };
 
     return (
@@ -25,11 +33,11 @@ const Signup = () => {
             <div className="hero min-h-screen pb-10">
                 <div className=" flex-col items-center md:w-[480px]">
                     <div className=''>
-                    <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png" alt="" />
-                    <h1 className='text-center font-bold text-2xl my-4'>Signup in to your account</h1>
+                        <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png" alt="" />
+                        <h1 className='text-center font-bold text-2xl my-4'>Signup in to your account</h1>
                     </div>
                     <div className="shadow-2xl bg-base-100">
-                        <form  onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                             {/* Name input box */}
                             <div className="form-control">
@@ -37,9 +45,9 @@ const Signup = () => {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text"
-                                 {...register('name', { required: true })}
-                                 placeholder="Your Name" className="input input-bordered" />
-                                 {errors.text && <span className="error-message text-red-500">Name is required</span>}
+                                    {...register('name', { required: true })}
+                                    placeholder="Your Name" className="input input-bordered" />
+                                {errors.text && <span className="error-message text-red-500">Name is required</span>}
                             </div>
                             {/* Photo URL box */}
                             <div className="form-control">
@@ -56,9 +64,9 @@ const Signup = () => {
                                     <span className="label-text">Email address</span>
                                 </label>
                                 <input type="email"
-                                 {...register('email', { required: true })}
-                                 placeholder="Your Email" className="input input-bordered" />
-                                 {errors.email && <span className="error-message text-red-500">Email is required</span>}
+                                    {...register('email', { required: true })}
+                                    placeholder="Your Email" className="input input-bordered" />
+                                {errors.email && <span className="error-message text-red-500">Email is required</span>}
                             </div>
 
                             {/* password input box */}
@@ -80,11 +88,11 @@ const Signup = () => {
 
                             {/* Terms and Conditions Checkbox */}
                             <div className="mt-2">
-                              <input type="checkbox" name="box" id="" className="mr-1" />
-                                <label className="inline-block" htmlFor="remember-me"> I agree to the 
-                                  <a className="underline" href="#">Terms and Conditions</a>
+                                <input type="checkbox" name="box" id="" className="mr-1" />
+                                <label className="inline-block" htmlFor="remember-me"> I agree to the
+                                    <a className="underline" href="#">Terms and Conditions</a>
                                 </label>
-                            </div>  
+                            </div>
 
                             {/* SignUp button  */}
                             <div className="form-control mt-6">
@@ -94,7 +102,7 @@ const Signup = () => {
                             {/* new here */}
                             <p className="py-6 text-center "><small className="text-base">Already have an account || <Link to="/signin" className="text-blue-600">Plese Login</Link></small></p>
 
-                          
+
                         </form>
                     </div>
                 </div>

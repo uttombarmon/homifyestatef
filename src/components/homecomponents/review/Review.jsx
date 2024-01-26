@@ -2,18 +2,21 @@
 
 import { useEffect, useState } from 'react';
 import Star from '../../Star/Star';
+import useAxiosPublic from '../../../hooks/axiosPublic/useAxiosPublic';
 
 
 
 
 const Review = () => {
     const [reviews, setReviews] = useState([]);
-
+    const axiospublic = useAxiosPublic();
     useEffect(() => {
-        fetch('reviews.json')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-    }, []);
+        axiospublic.get('/home/reviews')
+            .then(res => {
+                setReviews(res.data)
+            })
+
+    }, [axiospublic]);
 
     return (
         <div className='mt-8'>
