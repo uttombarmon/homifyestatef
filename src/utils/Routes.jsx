@@ -13,6 +13,7 @@ import Blog from "../pages/blog/Blog";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/about/About";
+import AgentProfile from "../pages/agentProfile/AgentProfile";
 
 
 export const router = createBrowserRouter([
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       },{
         path:"/about",
         element:<About></About>
+      },
+      {
+        path:"/agentProfile",
+        element:<AgentProfile></AgentProfile>
       }
     ]
 
@@ -63,10 +68,10 @@ export const router = createBrowserRouter([
         path:"",
         element:<div> Contents</div>
       },
-      {
-        path:"/agent/:user",
-        element:<div>Agent dashboard</div>
-      }
+      // {
+      //   path:"/agent/:user",
+      //   element:<div>Agent dashboard</div>
+      // }
     ]
   }
 
