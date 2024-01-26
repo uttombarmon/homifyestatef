@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import logo from './logo2.png';
+import Agent from '../../components/dashboard/agent/Agent';
+
 const DashboardLayout = () => {
     return (
         <div className=" text-red-50 flex overflow-x-hidden flex-wrap">
@@ -27,15 +29,15 @@ const DashboardLayout = () => {
                 </div>
             </div>
             {/* dashboard nav section */}
-            <div className=" hidden lg:flex md:w-[200px] lg:w-[300px] bg-stone-700">
-                <div className='w-full flex-wrap'>
+            <div className=" hidden lg:flex md:w-[200px] lg:w-[300px]  bg-stone-700">
+                <div className='w-full flex-wrap '>
                     {/* drawer head */}
                     <div className=" w-full mt-6 hidden lg:inline text-center">
                         <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
                         <h1 className="font-bold mb-6 text-xl">HomifyEstate</h1>
                         <hr />
                     </div>
-                    <div className=' w-full h-fit'>
+                    {/* <div className=' w-full h-fit'>
                         <ul className=" menu mt-0 top-0 p-0 w-full">
                             <li className='w-full'>
                                 <a>
@@ -56,7 +58,8 @@ const DashboardLayout = () => {
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
+                    <Agent></Agent>
                 </div>
             </div>
             {/* dashboard content section  */}

@@ -12,6 +12,10 @@ import ErrorPage from "../components/errorPage/ErrorPage";
 import Blog from "../pages/blog/Blog";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import Contact from "../pages/contact/Contact";
+import AgentDashboard from "../components/dashboard/agent/AgentDashboard";
+import AgentProfile from "../components/dashboard/agent/AgentProfile";
+import AgentOderList from "../components/dashboard/agent/AgentOderList";
+import AgentProperties from "../components/dashboard/agent/AgentProperties";
 
 
 export const router = createBrowserRouter([
@@ -52,7 +56,7 @@ export const router = createBrowserRouter([
 
   },
   {
-    path:"/dashboard",
+    path:"dashboard",
     element:<DashboardLayout></DashboardLayout>,
     children: [
       {
@@ -60,9 +64,22 @@ export const router = createBrowserRouter([
         element:<div> Contents</div>
       },
       {
-        path:"/agent/:user",
-        element:<div>Agent dashboard</div>
+        path:"agentDashboard",
+        element:<AgentDashboard></AgentDashboard>
+      },
+      {
+        path:"agentProfile",
+        element:<AgentProfile></AgentProfile>
+      },
+      {
+        path:"agentOrder",
+        element:<AgentOderList></AgentOderList>
+      },
+      {
+        path:"agentProperties",
+        element:<AgentProperties></AgentProperties>
       }
+      
     ]
   }
 
