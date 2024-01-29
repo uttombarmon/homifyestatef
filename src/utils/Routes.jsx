@@ -7,7 +7,6 @@ import LayOut from "../components/mainLayout/LayOut";
 import Home from "../pages/Home/Home";
 import PropertyDetails from "../pages/properties-details/PropertyDetails";
 import Properties from "../pages/properties/Properties";
-import Private from "./privetRoute/Privet";
 import ErrorPage from "../components/errorPage/ErrorPage";
 import Blog from "../pages/blog/Blog";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
@@ -32,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"/properties",
-        element: <Private><Properties></Properties></Private>
+        element: <Properties></Properties>
       },
       {
         path:"/blog",

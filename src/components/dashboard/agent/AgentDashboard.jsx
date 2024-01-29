@@ -228,7 +228,7 @@ const AgentDashboard = () => {
                 </div>
                 {/* section */}
 
-                <div className="max-w-md rounded-xl border bg-white p-6 pb-10 text-gray-900">
+                <div className="max-w-md rounded-xl border bg-white p-6 pb-10 mb-6 text-gray-900">
                     <p className="text-lg font-medium">Traffic Sources</p>
                     <div className="mt-4">
                         <p className="float-left mb-2">Direct</p>

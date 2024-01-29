@@ -11,16 +11,18 @@ const Blog = () => {
   return (
     <>
       <section
-        className="bg-gray-100 mb-12 h-[320px] md:h-[400px] relative border-4 grid items-end"
+        className="bg-gray-100 mb-12  h-[320px] md:h-[350px]  relative border-4 grid items-end"
         style={{
+         
           backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 700px",
+          backgroundSize: "100% 380px",
           backgroundPosition: "center",
           backgroundImage: "url(https://i.ibb.co/z5QV2NY/breadcrumbs-bg.jpg)",
+          
         }}
       >
         <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
-          <h1 className=" text-5xl "> Blog Details </h1>
+          <h1 className=" xl:text-5xl text-3xl "> Blog Details </h1>
           <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
           
             <IoHome></IoHome> Home . Blog details
@@ -31,7 +33,7 @@ const Blog = () => {
       <div className="  mt-5   ">
         {/* right site picethure */}
         <div className="px-8 w-full mx-auto flex flex-col md:flex-row lg:flex-row gap-6  justify-between  ">
-          <div className=" xl:w-[800px] lg:w-[500px]  md:w-[590px] xl:h-[600px]  h-full ">
+          <div className=" xl:w-[840px] lg:w-[500px]  md:w-[590px] xl:h-[500px]  h-full ">
             <img
               src="https://i.ibb.co/8PmVZMt/banner-bg.jpg"
               alt=""
@@ -54,26 +56,18 @@ const Blog = () => {
             </div>
             {/* discription image text */}
             <div className=" mt-5">
-              <h1 className=" xl:text-3xl text-2xl font-bold ">
+              <h1 className=" xl:text-3xl lg:text-2xl text-xl  font-bold ">
               
                 Maximize Room in Petite Bedroom spage
               </h1>
-              <p className=" mt-3 xl:text-2xl lg:text-xl font-semibold ">
-              
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Repellat nostrum cupiditate dicta deserunt cum odio quas
-                asperiores, ex sit iusto mollitia exercitationem in illo
-                accusantium molestiae? Illum similique alias impedit. ex sit
-                iusto mollitia exercitationem .
+              <p className=" mt-3    ">
+              Embark on a real estate journey of distinction with RealStacik. Our seasoned professionals redefine excellence, delivering seamless transactions, tailored solutions, and transparent communication. Whether buying or selling, trust RealStacik for unparalleled market insights and a personalized approach. Your ideal property awaits—experience the pinnacle of real estate service with us
               </p>
             </div>
             {/*  "" cotetion text imag disc... */}
             <div className=" xl:mt-10 mt-7 xl:px-20">
-              <p className="xl:text-xl text-xl font-medium py-1">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe,
-                eligendi, dicta, similique ipsum dolorem delectus dignissimos
-                officiis id facere maxime inventore! Exercitationem,
-                Consequuntur esse sapiente totam magni rem. equuntur esse 
+              <p className="  py-1">
+              RealStacik stands out in the real estate arena. With a commitment to excellence, our team ensures smooth transactions and client satisfaction. Whether buying or selling, benefit from our tailored approach, market expertise, and transparent communication. Elevate your real estate experience – choose RealStacik for a seamless journey towards your property goals
               </p>
             </div>
           </div>
@@ -88,7 +82,7 @@ const Blog = () => {
             <hr className=" xl:mt-14 mb-3" />
             {/* card 1 number */}
             <div className="xl:mt-10">
-              <h1 className=" xl:text-3xl lg:text-2xl text-xl  xl:mb-10 mb-3 font-bold ">
+              <h1 className=" xl:text-2xl lg:text-2xl text-xl  xl:mb-10 mb-3 font-bold ">
               
                 Popular Blog
               </h1>
@@ -102,11 +96,11 @@ const Blog = () => {
                   />
                 </div>
                 <div>
-                  <p className="  xl:text-xl text-sm   font-semibold flex items-center gap-2 mb-3">
+                  <p className=" xl:text-[17px] text-sm    flex items-center gap-2 mb-3">
                   
                     <BsCalendarDate></BsCalendarDate> march 23, 2024
                   </p>
-                  <h1 className=" xl:text-2xl lg:text-xl md:text-xl font-bold">
+                  <h1 className=" xl:text-[18px] lg:text-xl  text-sm font-semibold">
                   
                     The best Delicious Coffee Shop In bangkok china
                   </h1>
@@ -122,11 +116,11 @@ const Blog = () => {
                   />
                 </div>
                 <div>
-                  <p className=" xl:text-xl text-sm font-semibold flex items-center gap-2 mb-3">
+                  <p className=" xl:text-[17px] text-sm  flex items-center gap-2 mb-3">
                   
                     <BsCalendarDate></BsCalendarDate> march 23, 2024
                   </p>
-                  <h1 className=" xl:text-2xl  lg:md:text-xl  font-bold">
+                  <h1 className=" xl:text-[18px] lg:text-xl  text-sm  font-semibold">
                   
                     The best Delicious Coffee Shop In bangkok china
                   </h1>
@@ -135,72 +129,72 @@ const Blog = () => {
             </div>
             {/* poperty Catagories */}
             <div className=" mt-10">
-              <h1 className="xl:text-3xl lg:text-2xl  text-xl font-bold">
+              <h1 className="xl:text-2xl lg:text-2xl  text-xl font-bold">
                 Property Categories
               </h1>
 
-              <h1 className=" border p-2 px-7 xl:text-2xl lg:text-xl font-semibold mt-5 flex justify-between ">
+              <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px] font-semibold mt-5 flex justify-between ">
               
                 Real Estate <span> (6properties) </span>
               </h1>
-              <h1 className=" border p-2 px-7 xl:text-2xl lg:text-xl  font-semibold mt-5 flex justify-between ">
+              <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px]  font-semibold mt-5 flex justify-between ">
               
                 House <span> (4properties) </span>
               </h1>
-              <h1 className=" border p-2 px-7  xl:text-2xl lg:text-xl font-semibold mt-5 flex justify-between ">
+              <h1 className=" border p-2 px-7  xl:text-xl lg:text-[20px] text-sm font-semibold mt-5 flex justify-between ">
               
                 Home Land <span> (16properties) </span>
               </h1>
-              <h1 className=" border p-2 px-7 xl:text-2xl lg:text-xl font-semibold mt-5 flex justify-between ">
+              <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px] font-semibold mt-5 flex justify-between ">
               
                 Bath Beds <span> (76properties) </span>
               </h1>
             </div>
             {/* popular Tags */}
 
-            <div className=" md:mb-4">
+            <div className=" md:mb-4 w-[450px]  ">
               <h1 className=" xl:text-3xl lg:text-2xl text-xl font-bold mb-4 mt-10 ">
               
                 Popular Tags
               </h1>
-              <div className=" grid gap-3 justify-between items-center xl:grid-cols-4 lg:grid-cols-3 grid-cols-3 ">
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+              <div className=" grid gap-3 justify-between text-center items-center xl:grid-cols-3 lg:grid-cols-3 grid-cols-3 ">
+                <p className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 ">
                 
                   House build
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 ">
                 
                   Apartment
                 </p>
-                <p className=" text-sm  border px-1 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-1 font-bold py-2 hover:bg-orange-400 ">
                 
                   House Design
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 ">
                 
                   Real
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 ">
                 
                   Luxury
                 </p>
-                <p className=" text-sm  border px-1 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-400 ">
                 
                   House Rental
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2  hover:bg-orange-400 ">
                 
                   Estate
                 </p>
-                <p className=" text-sm  border  font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border  font-bold py-2  hover:bg-orange-400 ">
                 
                   Modern House
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2  hover:bg-orange-400 ">
                 
                   Modern Tree
                 </p>
-                <p className=" text-sm  border px-2 font-bold py-2 border-b-fuchsia-500 hover:bg-orange-400 ">
+                <p className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 ">
                 
                   House Sell
                 </p>
@@ -217,23 +211,19 @@ const Blog = () => {
           alt=""
         />
 
-        <h1 className=" xl:text-3xl lg:text-2xl text-xl font-bold mt-4  mb-5 ">
+        <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
         
           Embracing a sophisticated yet minimalist aesthetic.
         </h1>
-        <p className="xl:text-xl lg:text-xl  font-semibold">
+        <p className=" ">
         
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          molestias placeat perspiciatis repellendus, quia ab reiciendis,
-          similique nemo est culpa voluptate porro odio consequatur adipisci
-          officia dolorum sit molestiae deserunt quibusdam vitae. Consectetur
-          architecto quia porro distinctio, in autem nisi?
+        Discover your dream home with RealStacik! Our dedicated team offers expert guidance in buying or selling real estate. From personalized marketing strategies to seamless transactions, we prioritize your satisfaction. Trust us for transparent communication, market insights, and professional service. Your ideal home or investment property awaits  choose RealStacik for a rewarding real estate experience
         </p>
 
         {/* start section  */}
 
         <div className=" mt-20">
-          <p className="flex items-center gap-3 text-xl font-bold">
+          <p className="flex items-center gap-3 xl:text-xl font-serif">
           
             <MdOutlineStarPurple500></MdOutlineStarPurple500>
             <span>
@@ -241,7 +231,7 @@ const Blog = () => {
               Real estate devlopment involves the process of purching imporoving
             </span>
           </p>
-          <p className="flex items-center gap-3 mt-2 mb-2 text-xl font-bold">
+          <p className="flex items-center gap-3 mt-2 mb-2  xl:text-xl font-serif ">
           
             <MdOutlineStarPurple500></MdOutlineStarPurple500>
             <span>
@@ -250,7 +240,7 @@ const Blog = () => {
               & demand
             </span>
           </p>
-          <p className="flex items-center gap-3 text-xl font-bold">
+          <p className="flex items-center gap-3  xl:text-xl font-serif">
           
             <MdOutlineStarPurple500></MdOutlineStarPurple500>
             <span>
@@ -288,13 +278,13 @@ const Blog = () => {
         {/* comment section */}
 
         <div className="mt-10  px-4">
-          <h1 className="xl:text-3xl lg:text-2xl text-xl font-bold">
+          <h1 className="xl:text-2xl lg:text-2xl text-sm font-bold">
           
             2 Commnets
           </h1>
 
           <div className=" flex mt-5 items-center gap-4 px-4">
-            <div className="xl:w-24 lg:w-20 w-16 ">
+            <div className="xl:w-20 lg:w-20 w-16 ">
               <img
                 src="../../../public/Screenshot 2024-01-23 232016.png"
                 className="rounded-full"
@@ -309,12 +299,9 @@ const Blog = () => {
               </span>
             </h1>
           </div>
-          <p className="px-8 ml-24 mt-2 font-semibold">
+          <p className="px-8 ml-24 mt-2  xl:text-xl font-serif">
           
-            Lorem ipsum dolr sit amet consectetur adipisicing elit. Voluptas ad
-            nobis officiis iusto reiciendis quaerat, assumenda nisi quam optio
-            tenetur voluptates vitae voluptate numquam minus repellendus
-            dignissimos veritatis repellat cupiditate.
+          Exceptional real estate professionals! Sold our property swiftly with top-notch marketing strategies. Their market knowledge, professionalism, and integrity set them apart. Trustworthy and reliable—our go-to team for any future real estate needs!
           </p>
 
           <h1
@@ -331,11 +318,11 @@ const Blog = () => {
           {/* <h1 className="text-3xl font-bold"> 2 Commnets  </h1> */}
 
           <div className=" flex mt-5 items-center gap-4 px-4">
-            <div className="xl:w-24 lg:w-20 w-16 ">
+            <div className="xl:w-20 lg:w-20 w-16  ">
               <img
                 src="../../../public/416134857_361762533286846_594773232925n.jpg"
                 alt="logo"
-                className="rounded-full"
+                className="rounded-full  "
               />
             </div>
             <h1 className="xl:text-2xl lg:text-xl font-bold">
@@ -347,12 +334,9 @@ const Blog = () => {
               </span>
             </h1>
           </div>
-          <p className="px-8 mt-2  ml-24 font-semibold">
+          <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
           
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ad
-            nobis officiis iusto reiciendis quaerat, assumenda nisi quam optio
-            tenetur voluptates vitae voluptate numquam minus repellendus
-            dignissimos veritatis repellat cupiditate.
+          Outstanding real estate experience! The teams expertise and dedication made our home buying process smooth and enjoyable. Transparent communication, reliable service, and a genuine commitment to client satisfaction. Highly recommended
           </p>
 
           <h1
@@ -367,24 +351,21 @@ const Blog = () => {
         {/* thard comment */}
         <div className="mt-10  px-4">
           <div className=" flex mt-5 items-center gap-4 px-4">
-            <div className="xl:w-24 lg:w-20 w-16 ">
-              <img src="../../../public/Screen95133.png" className="rounded-full" />
+            <div className="xl:w-20 lg:w-20 w-16 ">
+              <img src="https://i.ibb.co/C6PG1MB/421249981-295989319767833-8050773694835611518-n.jpg" className=" rounded-full "  />
             </div>
             <h1 className="xl:text-2xl lg:text-xl font-bold">
             
-              Repon Chandra <br />
+              Ripon Chandra <br />
               <span className="uppercase font-semibold  text-sm">
               
                 march 26,2024 At 10.25pm
               </span>
             </h1>
           </div>
-          <p className="px-8 mt-2  ml-24 font-semibold">
+          <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
           
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ad
-            nobis officiis iusto reiciendis quaerat, assumenda nisi quam optio
-            tenetur voluptates vitae voluptate numquam minus repellendus
-            dignissimos veritatis repellat cupiditate.
+          Exceptional real estate service! Professional, responsive, and knowledgeable team. Seamless transactions and attention to detail. Highly recommend for buying or selling property. A trustworthy partner in real estate endeavors
           </p>
 
           <h1
