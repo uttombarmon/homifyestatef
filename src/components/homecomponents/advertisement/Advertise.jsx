@@ -4,7 +4,7 @@
 const Advertise = () => {
     return (
         <div className=" w-full p-2 mx-auto bg-white ">
-            <h1 className=" mb-7 items-start text-center text-2xl font-bold ">Advertisement section</h1>
+            <h1 className=" mb-7 items-start text-center text-2xl font-bold ">Advertisement</h1>
             <marquee direction="left">
 
                 <div className="flex lg:p-2   lg:w-[400px]  mt-3 gap-4">
