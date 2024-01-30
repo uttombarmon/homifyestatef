@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="shadow-md text-sm lg:text-base w-full">
           <div className="md:flex items-center justify-between bg-[#fac23ec5] py-2 md:px-6 px-10">
             <div className="font-bold text-xl md:text-2xl cursor-pointer flex items-center">
-              <NavLink to={""}><span className=" text-black uppercase font-serif">HomifyEstate</span></NavLink>
+              <Link to={""}><span className=" text-black uppercase font-serif">HomifyEstate</span></Link>
             </div>
             <div
               onClick={() => setOpen(!open)}
