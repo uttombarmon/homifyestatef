@@ -9,7 +9,7 @@ const Navbar = () => {
   const Links = [
     { name: "HOME", link: "/" },
     { name: "PROPETTIES", link: "/properties" },
-    { name: "BLOG DETAILS", link: "/blog" },
+    { name: "BLOG", link: "/blog" },
     { name: "ABOUT", link: "/about" },
     { name: "CONTACT", link: "/contact" },
   ];
@@ -29,13 +29,14 @@ const Navbar = () => {
     <>
       <div>
         <div className="shadow-md text-sm lg:text-base w-full">
-          <div className="md:flex items-center justify-between bg-[#fac23ec5] py-2 md:px-6 px-10">
-            <div className="font-bold text-xl md:text-2xl cursor-pointer flex items-center">
-              <Link to={""}><span className=" text-black uppercase font-serif">HomifyEstate</span></Link>
+          <div className="md:flex items-center justify-between bg-[#fac23ec5] py-2 md:px-6  px-10">
+            <div className="font-bold text-xl md:text-2xl cursor-pointer flex  items-center">
+            <img src="../../public/homify-logo.png" alt="" className=" xl:w-[15%] lg:w-[24%] w-[15%]  md:w-[9%]  " />
+              <h1 className=" text-black uppercase  xl:text-3xl lg:text-2xl md:text-xl text-sm  "> HomifyState </h1>
             </div>
             <div
               onClick={() => setOpen(!open)}
-              className="absolute right-8 top-4 cursor-pointer lg:hidden w-7 h-7"
+              className="absolute right-8 md:top-6 top-5 cursor-pointer lg:hidden w-7 h-7"
             >
               {open ? <FaTimes /> : <FaBars />}
             </div>
@@ -44,7 +45,7 @@ const Navbar = () => {
                 }`}
             >
               {Links?.map((link) => (
-                <li key={link.name} className="md:ml-8 md:my-0 my-7 font-medium text-normal">
+                <li key={link.name} className="md:ml-8 md:my-6 my-7 font-medium text-normal">
                   <a
                     href={link.link}
                     className="text-gray-800  hover:text-red-500 duration-500"
