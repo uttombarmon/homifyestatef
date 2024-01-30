@@ -8,7 +8,7 @@ const LetesNews = () => {
   return (
     <>
       <h1 className=" items-center text-2xl font-bold mb-2 mt-10 text-center w-full ">
-        Letes New & Articles
+        Letest New & Articles
       </h1>
       <div className=" w-full lg:w-[calc(100%-20px)] lg:p-7 mt-8 lg:px-0 mb-3 md:gap-2 md:px-1 gap-3 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-3 grid-cols-1 ">
         {/* section 1  */}
