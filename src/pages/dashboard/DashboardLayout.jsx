@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import logo from './logo2.png';
 import Agent from '../../components/dashboard/agent/Agent';
-import UserNav from '../../components/dashboardcomponents/UserNav';
+// import UserNav from '../../components/dashboardcomponents/UserNav';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
@@ -27,9 +27,9 @@ const DashboardLayout = () => {
     return (
         <div className=" text-red-50 flex overflow-x-hidden flex-wrap">
             {/* small devices nab bar  */}
-            <div className="navbar w-full lg:hidden bg-green-500">
+            <div className="navbar w-full lg:hidden bg-amber-300">
                 <div className="navbar-start">
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">HomifyEstate</a>
                 </div>
                 <div className="navbar-end">
                     <div className="dropdown">
@@ -59,10 +59,10 @@ const DashboardLayout = () => {
                         <hr />
                     </div>
                     <Agent></Agent>
-                    {
+                    {/* {
                         users?.role == 'user' &&
                         <UserNav></UserNav>
-                    }
+                    } */}
                 </div>
             </div>
             {/* dashboard content section  */}

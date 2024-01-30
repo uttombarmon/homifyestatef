@@ -1,25 +1,22 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase-auth/firebaseauthentication";
 import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const axiosPublic = useAxiosPublic();
     //check user
     useEffect(() => {
         const unSubcribe = () => {
             onAuthStateChanged(auth, cuser => {
                 setUser(cuser);
+                console.log(cuser);
                 setLoading(false);
             })
         }
-        return () => {
-            unSubcribe();
-        };
-    }, [axiosPublic]);
+        return unSubcribe();
+    }, []);
 
     //signin by email and password
     const creatuserwithemail = (email, password) => {

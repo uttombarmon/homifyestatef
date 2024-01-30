@@ -33,8 +33,6 @@ const Navbar = () => {
             <div className="font-bold text-xl md:text-2xl cursor-pointer flex  items-center">
             <img src="../../public/homify-logo.png" alt="" className=" xl:w-[15%] lg:w-[24%] w-[15%]  md:w-[9%]  " />
               <h1 className=" text-black uppercase  xl:text-3xl lg:text-2xl md:text-xl text-sm  "> HomifyState </h1>
-             
-             
             </div>
             <div
               onClick={() => setOpen(!open)}
