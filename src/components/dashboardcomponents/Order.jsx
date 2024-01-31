@@ -54,8 +54,9 @@ const Order = () => {
                   <td className=" font-thin border-gray-400  border">
                     {properties.price}
                   </td>
-                  <td className="text-xl  font-semibold font-mono hover:text-orange-300 border-gray-400  border">
-                    Cancel <span className="hidden"> Pay Now</span>
+                  <td className="text-xl   font-semibold font-mono hover:text-orange-300 border-gray-400  border">
+                    <span className=" border px-3  py-2 bg-orange-300 text-black text-[16px] hover:bg-orange-500  "> Cancel </span> 
+                    <span className=" border hidden px-3 py-2 bg-orange-300 text-black  text-[16px] hover:bg-orange-500 "> Pay Now</span>
                   </td>
                 </tr>
               </tbody>
