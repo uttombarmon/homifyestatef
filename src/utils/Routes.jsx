@@ -18,6 +18,7 @@ import About from "../pages/about/About";
 import AgentProfile from "../pages/agentProfile/AgentProfile";
 import UserProfile from "../components/dashboardcomponents/UserProfile";
 import Wishlist from "../components/dashboardcomponents/Wishlist";
+import Order from "../components/dashboardcomponents/Order";
 
 
 
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path:"wishlist",
         element:<Wishlist></Wishlist>
+      },
+      {
+          path:"order",
+          element:<Order></Order>
       }
       
     ]
