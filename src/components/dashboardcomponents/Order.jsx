@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { IoEyeSharp } from "react-icons/io5";
 
 const Order = () => {
   const [properties, setProperties] = useState([]);
@@ -24,15 +23,14 @@ const Order = () => {
       <div className="">
         <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
         <div className="overflow-x-auto px-3">
-          <table className="table table-xl">
+          <table className="table text-center table-xl">
             <thead>
               <tr className="xl:text-xl text-[17px] border bg-[#a4aca8a8] text-black">
-                <th className="border  bg-orange-400"> Serial </th>
-                <th className="border">Package</th>
-                <th className="border">Purchase Data</th>
-                <th className="border">Expired Date</th>
-                <th className="border bg-green-500">Price</th>
-                <th className="border   bg-red-500">Action</th>
+                <th className="border text-center bg-orange-300"> No </th>
+                <th className="border text-center">Property Name</th>
+                <th className="border"> Date</th>
+                <th className="border bg-green-400">Price</th>
+                <th className="border   bg-red-400">Action</th>
               </tr>
             </thead>
             {properties?.map((properties) => (
@@ -50,15 +48,14 @@ const Order = () => {
                   <td className=" font-poppins border-gray-400   border">
                     {properties.purchasedate}
                   </td>
-                  <td className=" font-poppins border-gray-400  border">
+                  {/* <td className=" font-poppins border-gray-400  border">
                     {properties.expireddate}
-                  </td>
+                  </td> */}
                   <td className=" font-thin border-gray-400  border">
                     {properties.price}
                   </td>
-                  <td className="text-3xl font-bold hover:text-orange-300 border-gray-400  border">
-                    
-                    <IoEyeSharp />
+                  <td className="text-xl  font-semibold font-mono hover:text-orange-300 border-gray-400  border">
+                    Cancel <span className="hidden"> Pay Now</span>
                   </td>
                 </tr>
               </tbody>
