@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import "./btn.css"
 const AgentProperties = () => {
   const [properties, setProperties] = useState([]);
 
@@ -24,7 +25,7 @@ const AgentProperties = () => {
      <div className="flex justify-between mt-7 items-center px-4">
      <h1 className="text-xl font-bold mb-6 mt-3 "> My Properties </h1>
      <Link to={"/dashboard/addProperty"}>
-     <button className=" xl:text-[17px] xl:font-semibold font-poppins xl:w-[170px]  py-2 border px-1 text-black  btn btn-warning  "> + Add Property</button>
+     <button className=" border-none mb-4 btn btn-outline bg-orange-400  "> + Add Property</button>
     </Link>
      </div>
       <div className="table-responsive">
