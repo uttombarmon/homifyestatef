@@ -19,40 +19,45 @@ const AddProperty = () => {
               required
             />
           </div>
+          
           <div className="form-control">
             <label className="label">
               <span className="label-text">property types</span>
             </label>
-            <input
-              type="text"
-              placeholder="property types"
-              className="input input-bordered"
-            />
-          </div>
-          {/* <div className="form-control">
-            <label className="label">
-              <span className="label-text">Country</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Select Country "
-              className="input input-bordered"
-              required
-            />
-          </div> */}
-          
-            <select className="select mt-8">
-            <label className="label">
-              <span className="label-text">Country</span>
-            </label>
-           
+            <select className="select">   
   <option disabled selected>Select Countray</option>
-  <option>Homer</option>
-  <option>Marge</option>
-  <option>Bart</option>
-  <option>Lisa</option>
-  <option>Maggie</option>
+  <option> Bangladesh </option>
+  <option> Russia </option>
+  <option> Japan </option>
+  <option> India</option>
+  <option>Malaysia </option>
+  
 </select>
+          </div>
+
+
+
+
+
+
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Country</span>
+            </label>
+            <select className="select">   
+  <option disabled selected>Select Countray</option>
+  <option>Bangladesh </option>
+  <option> Russia </option>
+  <option> Japan </option>
+  <option> India</option>
+  <option>Malaysia </option>
+  
+</select>
+          </div>
+          
+          
 
 
 
@@ -64,12 +69,16 @@ const AddProperty = () => {
             <label className="label">
               <span className="label-text">City</span>
             </label>
-            <input
-              type="text"
-              placeholder="Select City"
-              className="input input-bordered"
-            />
+            <select className="select">   
+  <option disabled selected>Select City</option>
+  <option>Bangladesh </option>
+  <option> Dinajpure </option>
+  <option> Dhaka </option>
+  <option> Rongpure</option>
+</select>
           </div>
+
+
           <div className="form-control">
             <label className="label">
               <span className="label-text">Address</span>
@@ -103,17 +112,20 @@ const AddProperty = () => {
               required
             />
           </div>
-          <div className="form-control">
+
+
+<div className="form-control">
             <label className="label">
               <span className="label-text">Purpose</span>
             </label>
-            <input
-              type="text"
-              placeholder="Select Purpose"
-              className="input input-bordered"
-              required
-            />
+            <select className="select">   
+  <option disabled selected>Select Purpose</option>
+  <option> rent</option>
+  <option> sell </option>
+
+</select>
           </div>
+          
 
           <div className="form-control">
             <label className="label">
@@ -147,7 +159,7 @@ const AddProperty = () => {
                 <span className="label-text">Total Unit</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Total Unit"
                 className="input input-bordered"
               />
@@ -157,7 +169,7 @@ const AddProperty = () => {
                 <span className="label-text">Total Room</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Total Room "
                 className="input input-bordered"
                 required
@@ -168,7 +180,7 @@ const AddProperty = () => {
                 <span className="label-text">Bedroom</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Bedroom"
                 className="input input-bordered"
               />
@@ -178,7 +190,7 @@ const AddProperty = () => {
                 <span className="label-text">Bathroom</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Bathroom"
                 className="input input-bordered"
                 required
@@ -189,7 +201,7 @@ const AddProperty = () => {
                 <span className="label-text">Total Floor</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Total Floor "
                 className="input input-bordered"
                 required
@@ -200,7 +212,7 @@ const AddProperty = () => {
                 <span className="label-text">Kitchen</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Kitchen"
                 className="input input-bordered"
                 required
@@ -260,7 +272,7 @@ const AddProperty = () => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Featured</span>
               </label>
@@ -269,7 +281,20 @@ const AddProperty = () => {
                 placeholder="Featured"
                 className="input  input-bordered"
               />
-            </div>
+            </div> */}
+
+<div className="form-control">
+            <label className="label">
+              <span className="label-text">Featured</span>
+            </label>
+            <select className="select">   
+  <option disabled selected>Select Featured</option>
+  <option> Yes</option>
+  <option> No </option>
+
+</select>
+          </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Facilities imafe</span>
