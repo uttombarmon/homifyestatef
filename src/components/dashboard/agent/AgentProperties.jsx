@@ -1,94 +1,98 @@
-
+import { useEffect, useState } from "react";
+import { RiDeleteBin7Line } from "react-icons/ri";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const AgentProperties = () => {
-    return (
-        <div>
-            <h2 className="text-center my-4 font-bold ">Agent Properties</h2>
-            
-                {/* sectiion 2 */}
-                <table className="border-collapse w-full">
-                    <thead>
-                        <tr>
-                            <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Company name</th>
-                            <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Country</th>
-                            <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
-                            <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
-                                KnobHome
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
-                                German
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                                <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold">deleted</span>
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline">Edit</a>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline pl-6">Remove</a>
-                            </td>
-                        </tr>
-                        <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
-                                Squary
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
-                                Schweden
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                                <span className="rounded bg-green-400 py-1 px-3 text-xs font-bold">active</span>
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline">Edit</a>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline pl-6">Remove</a>
-                            </td>
-                        </tr>
-                        <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
-                                ghome
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
-                                Switzerland
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                                <span className="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">inactive</span>
-                            </td>
-                            <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                                <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline">Edit</a>
-                                <a href="#" className="text-blue-400 hover:text-blue-600 underline pl-6">Remove</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                {/* pejitaion */}
-                {/* <div className="bg-white p-4 flex items-center flex-wrap ">
-                    <nav aria-label="Page navigation">
-                        <ul className="inline-flex">
-                            <li><button className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-r-0 border-green-600 rounded-l-lg focus:shadow-outline hover:bg-green-100">Prev</button></li>
-                            <li><button className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-r-0 border-green-600 focus:shadow-outline">1</button></li>
-                            <li><button className="px-4 py-2 text-white transition-colors duration-150 bg-green-600 border border-r-0 border-green-600 focus:shadow-outline">2</button></li>
-                            <li><button className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-r-0 border-green-600 focus:shadow-outline hover:bg-green-100">3</button></li>
-                            <li><button className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-green-600 rounded-r-lg focus:shadow-outline hover:bg-green-100">Next</button></li>
-                        </ul>
-                    </nav>
-                </div> */}
+  const [properties, setProperties] = useState([]);
 
-        </div>
-    );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("../.././../../public/wishlist.json");
+        const data = await response.json();
+        setProperties(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div className="w-full xl:w-[1000px] mx-auto overflow-x-auto bg-gray-100 px-2">
+     <div className="flex justify-between mt-7 items-center px-4">
+     <h1 className="text-xl font-bold mb-6 mt-3 "> My Properties </h1>
+     <Link to={"/dashboard/addProperty"}>
+     <button className=" xl:text-[17px] xl:font-semibold font-poppins xl:w-[170px]  py-2 border px-1 text-black  btn btn-warning  "> + Add Property</button>
+    </Link>
+     </div>
+      <div className="table-responsive">
+        <table className="w-full table">
+          {/* head */}
+          <thead className="h-[5px] bg-slate-200 border ">
+            <tr className="text-xl font-semibold text-black">
+              <th>
+                <h1>Images</h1>
+              </th>
+              <th>
+                <h1>Details</h1>
+              </th>
+              <th>Price</th>
+              <th>Purpose</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody className="px-6">
+            {/* row 1 */}
+            {properties?.map((property) => (
+              <tr key={property.id} className="border ">
+                <td className="w-full md:w-[150px] lg:w-[200px] xl:w-[200px] border">
+                  <img
+                    src={property.image}
+                    alt="logo"
+                    className="w-[120px] xl:h-[90px] md:h-24 lg:h-[100px] object-cover"
+                  />
+                </td>
+                <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[500px] border">
+                  <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px] font-semibold font-serif">
+                    {property.name}
+                  </h3>
+                  <p className="text-[15px] mb-1 font-medium">
+                    Posting date: {property.date}
+                  </p>
+                  <p className="font-medium">Review: {property.review}</p>
+                </td>
+                <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border text-xl font-medium font-serif">
+                  $ {property.price}
+                </td>
+                <td className="border">
+                  <button className="text-base md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    Sale
+                  </button>
+                </td>
+                <td className="border">
+                  <button className="text-base md:text-xl font-medium font-serif w-full md:w-[90px] lg:w-[90px] xl:w-[110px]  items-center gap-2">
+                    <span className="flex hover:text-orange-400 items-center gap-2">
+                      <FaEdit /> Edit
+                    </span>
+                    
+                    <span className="flex  hover:text-red-600 mt-2 items-center gap-2">
+                      <RiDeleteBin7Line />  Delete
+                    </span>
+                   
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default AgentProperties;
+
+
+// export default ;

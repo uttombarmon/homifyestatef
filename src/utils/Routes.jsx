@@ -19,6 +19,7 @@ import AgentProfile from "../pages/agentProfile/AgentProfile";
 import UserProfile from "../components/dashboardcomponents/UserProfile";
 import Wishlist from "../components/dashboardcomponents/Wishlist";
 import Order from "../components/dashboardcomponents/Order";
+import AddProperty from "../components/dashboard/agent/AddProperty";
 
 
 
@@ -101,6 +102,10 @@ export const router = createBrowserRouter([
       {
           path:"order",
           element:<Order></Order>
+      },
+      {
+          path:"addProperty",
+          element:<AddProperty/>
       }
       
     ]
