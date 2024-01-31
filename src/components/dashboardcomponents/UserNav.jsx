@@ -8,13 +8,13 @@ const UserNav = () => {
         <div className=' w-full h-fit'>
             <ul className=" menu mt-0 top-0 p-0 font-semibold text-lg w-full">
                 <li className='w-full pt-2'>
-                    <Link className="bg-transparent">
+                    <Link to={"/dashboard/userprofile"} className="bg-transparent">
                         <BsPersonCircle></BsPersonCircle>
                         Profile
                     </Link>
                 </li>
                 <li className='w-full pt-2'>
-                    <Link>
+                    <Link to={"/dashboard/wishlist"}>
                     <CiViewList></CiViewList>
                         Wishlist
                     </Link>

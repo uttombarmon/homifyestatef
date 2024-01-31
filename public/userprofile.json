@@ -1,0 +1,12 @@
+[
+    {
+      "id":1,
+        "name": "Nathaneal Down",
+        "email": "john.doe@example.com",
+        "phone": "+1 (555) 123-4567",
+        "city": "New York Washington",
+        "country": "USA",
+        "address": "123.4th street Washington DC.USA",
+        "image": "https://i.ibb.co/SrMcw7c/agent-details-img-1.jpg"
+      }
+]

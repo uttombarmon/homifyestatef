@@ -16,6 +16,8 @@ import AgentOderList from "../components/dashboard/agent/AgentOderList";
 import AgentProperties from "../components/dashboard/agent/AgentProperties";
 import About from "../pages/about/About";
 import AgentProfile from "../pages/agentProfile/AgentProfile";
+import UserProfile from "../components/dashboardcomponents/UserProfile";
+import Wishlist from "../components/dashboardcomponents/Wishlist";
 
 
 
@@ -86,6 +88,14 @@ export const router = createBrowserRouter([
       {
         path:"agentProperties",
         element:<AgentProperties></AgentProperties>
+      },
+      {
+        path:"userprofile",
+        element:<UserProfile></UserProfile>
+      },
+      {
+        path:"wishlist",
+        element:<Wishlist></Wishlist>
       }
       
     ]

@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import logo from './logo2.png';
 import Agent from '../../components/dashboard/agent/Agent';
-// import UserNav from '../../components/dashboardcomponents/UserNav';
+
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
+import UserNav from '../../components/dashboardcomponents/UserNav';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
@@ -59,10 +60,10 @@ const DashboardLayout = () => {
                         <hr />
                     </div>
                     <Agent></Agent>
-                    {/* {
+                    {
                         users?.role == 'user' &&
                         <UserNav></UserNav>
-                    } */}
+                    }
                 </div>
             </div>
             {/* dashboard content section  */}
