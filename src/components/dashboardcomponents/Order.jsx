@@ -1,55 +1,73 @@
-
+import { useEffect, useState } from "react";
+import { IoEyeSharp } from "react-icons/io5";
 
 const Order = () => {
-    return (
-        <div className="w-full xl:w-[1150px] mx-auto overflow-x-auto">
-            <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
-            <div className="overflow-x-auto px-3">
-  <table className="table table-xl">
-    <thead>
-      <tr className="text-xl border bg-[#88928d] text-black">
-        <th> Serial </th> 
-        <th>Package</th> 
-        <th>Purchase Data</th> 
-        <th>Expired Date</th> 
-        <th>Price</th> 
-        <th>Action</th> 
-      </tr>
-    </thead> 
-    <tbody>
-      <tr>
-        <th  className="text-center">1</th> 
-        <td>Cy Ganderton</td> 
-        <td>12/16/2020</td> 
-        <td>12/16/2020</td> 
-        <td>Littel, Schaden </td> 
-        <td>Canada</td> 
-        
-  
-      </tr>
-      <tr>
-        <th  className="text-center">2</th> 
-        <td>Hart Hagerty</td> 
-        <td>Desktop Support Technician</td> 
-        <td>Zemlak, Daniel and Leannon</td> 
-        <td>United States</td> 
-        <td>12/5/2020</td> 
+  const [properties, setProperties] = useState([]);
+  console.log(properties);
 
-      </tr>
-      <tr>
-        <th  className="text-center">3</th> 
-        <td>Brice Swyre</td> 
-        <td>Tax Accountant</td> 
-        <td>Carroll Group</td> 
-        <td>China</td> 
-        <td>8/15/2020</td> 
-       
-      </tr>
-    </tbody> 
-  </table>
-</div>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("../../../public/order.json");
+        const data = await response.json();
+        setProperties(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div className=" w-full xl:w-[1150px] mx-auto px-4 bg-slate-100  overflow-x-auto">
+      <div className="">
+        <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
+        <div className="overflow-x-auto px-3">
+          <table className="table table-xl">
+            <thead>
+              <tr className="xl:text-xl text-[17px] border bg-[#a4aca8a8] text-black">
+                <th className="border  bg-orange-400"> Serial </th>
+                <th className="border">Package</th>
+                <th className="border">Purchase Data</th>
+                <th className="border">Expired Date</th>
+                <th className="border bg-green-500">Price</th>
+                <th className="border   bg-red-500">Action</th>
+              </tr>
+            </thead>
+            {properties?.map((properties) => (
+              <tbody
+                key={properties.id}
+                className="text-black border cursor-pointer  xl:text-[17px] font-medium "
+              >
+                <tr>
+                  <th className="text-center border-gray-400  border">
+                    {properties.serial}
+                  </th>
+                  <td className=" font-serif border-gray-400 xl:text-[22px] border">
+                    {properties.package}
+                  </td>
+                  <td className=" font-poppins border-gray-400   border">
+                    {properties.purchasedate}
+                  </td>
+                  <td className=" font-poppins border-gray-400  border">
+                    {properties.expireddate}
+                  </td>
+                  <td className=" font-thin border-gray-400  border">
+                    {properties.price}
+                  </td>
+                  <td className="text-3xl font-bold hover:text-orange-300 border-gray-400  border">
+                    
+                    <IoEyeSharp />
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Order;
