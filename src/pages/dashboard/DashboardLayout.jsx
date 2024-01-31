@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import logo from './logo2.png';
-// import Agent from '../../components/dashboard/agent/Agent';
+import Agent from '../../components/dashboard/agent/Agent';
 
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
@@ -59,7 +59,7 @@ const DashboardLayout = () => {
                         <h1 className="font-bold mb-6 text-xl">HomifyEstate</h1>
                         <hr />
                     </div>
-                    {/* <Agent></Agent> */}
+                    <Agent></Agent>
                     {
                         users?.role == 'user' &&
                         <UserNav></UserNav>

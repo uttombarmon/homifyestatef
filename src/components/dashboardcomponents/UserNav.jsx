@@ -14,7 +14,7 @@ const UserNav = () => {
                     </Link>
                 </li>
                 <li className='w-full pt-2'>
-                    <Link>
+                    <Link to={"/dashboard/wishlist"}>
                     <CiViewList></CiViewList>
                         Wishlist
                     </Link>
