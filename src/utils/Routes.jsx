@@ -16,12 +16,12 @@ import AgentOderList from "../components/dashboard/agent/AgentOderList";
 import AgentProperties from "../components/dashboard/agent/AgentProperties";
 import About from "../pages/about/About";
 import AgentProfile from "../pages/agentProfile/AgentProfile";
-import UserProfile from "../components/dashboardcomponents/UserProfile";
-import Wishlist from "../components/dashboardcomponents/Wishlist";
-import Order from "../components/dashboardcomponents/Order";
 import PaymentSuccess from "../pages/paymentStatus/paymentSuccess";
 import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
 import AddProperty from "../components/dashboard/agent/AddProperty";
+import UserProfile from "../components/dashboard/user/UserProfile";
+import Wishlist from "../components/dashboard/user/Wishlist";
+import Order from "../components/dashboard/user/Order";
 
 
 
@@ -104,7 +104,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"userprofile",
-        element:<UserProfile></UserProfile>
+        element: <UserProfile></UserProfile>
       },
       {
         path:"wishlist",

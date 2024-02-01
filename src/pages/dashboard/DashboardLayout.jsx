@@ -5,7 +5,7 @@ import Agent from '../../components/dashboard/agent/Agent';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
-import UserNav from '../../components/dashboardcomponents/UserNav';
+import UserNav from '../../components/dashboard/user/UserNav';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
