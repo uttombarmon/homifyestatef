@@ -86,7 +86,7 @@ const UserProfile = () => {
 
       {/* frome start */}
 
-      <div className=" w-full xl:mt-14 xl:w-[1100px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
+      <div className=" w-full xl:mt-14 xl:w-[1000px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
         {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
 
         <div className=" border px-4 py-3  bg-slate-300 ">
@@ -165,7 +165,7 @@ const UserProfile = () => {
         </div>
 
 
-        <div className=" mt-9 border bg-slate-300 py-2 px-3 mb-7 ">
+        <div className=" mt-9 border bg-slate-300 py-2 px-5 mb-7 ">
             <h1 className="text-2xl font-semibold mb-3"> Update password</h1>
         <div className="grid lg:grid-cols-3 grid-cols-2  gap-2 ">
         <div className="form-control">
