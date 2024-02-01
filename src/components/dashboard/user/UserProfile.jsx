@@ -23,8 +23,8 @@ const UserProfile = () => {
   }, []);
 
   return (
-   
-        <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
+
+    <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
       <h1 className=" text-2xl mb-10  flex justify-center font-bold">
         Personalized Information
       </h1>
@@ -55,7 +55,7 @@ const UserProfile = () => {
             </p>
             <p className="text-[17px] flex gap-20  mt-4 justify-start ">
               <span className="font-semibold tex-[22px] mr-7 ">   City  :  </span>
-              {properties.city }
+              {properties.city}
             </p>
             <p className="text-[17px] flex gap-20  mt-4 justify-start ">
               <span className="font-semibold tex-[22px] "> Country:</span>
@@ -90,7 +90,7 @@ const UserProfile = () => {
         {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
 
         <div className=" border px-4 py-3  bg-slate-300 ">
-            <h1 className="text-2xl font-semibold"> Update Information </h1>
+          <h1 className="text-2xl font-semibold"> Update Information </h1>
           <div className="mt-4 xl:grid-cols-3 lg:grid-cols-3 grid-cols-2  grid text-center items-center justify-center gap-10 ">
             <div className="form-control">
               <label className="label">
@@ -157,18 +157,18 @@ const UserProfile = () => {
                 placeholder="Photo"
                 className="input items-center py-2 input-bordered"
                 required
-                
+
               />
             </div>
-          </div>          
+          </div>
           <button className=" mt-4 font-semibold px-2 hover:bg-yellow-500 bg-yellow-400 w-[160px] h-12 mb-6 "> Update Information </button>
         </div>
 
 
         <div className=" mt-9 border bg-slate-300 py-2 px-3 mb-7 ">
-            <h1 className="text-2xl font-semibold mb-3"> Update password</h1>
-        <div className="grid lg:grid-cols-3 grid-cols-2  gap-2 ">
-        <div className="form-control">
+          <h1 className="text-2xl font-semibold mb-3"> Update password</h1>
+          <div className="grid lg:grid-cols-3 grid-cols-2  gap-2 ">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Corrent password</span>
               </label>
@@ -179,7 +179,7 @@ const UserProfile = () => {
                 required
               />
             </div>
-        <div className="form-control">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">New password</span>
               </label>
@@ -190,7 +190,7 @@ const UserProfile = () => {
                 required
               />
             </div>
-        <div className="form-control">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Confirm password</span>
               </label>
@@ -201,16 +201,16 @@ const UserProfile = () => {
                 required
               />
             </div>
+          </div>
+          <div className=" flex justify-between items-center">
+            <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 "> Update password </button>
+            <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> <BsArrowUpCircle /> </p>
+          </div>
+
         </div>
-<div className=" flex justify-between items-center">
-<button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 "> Update password </button>
-       <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> <BsArrowUpCircle/> </p>
-    </div> 
-    
-           </div>
       </div>
     </div>
-  
+
   );
 };
 
