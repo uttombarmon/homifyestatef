@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const ScheduleForm = () => {
+  
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -20,7 +21,18 @@ const ScheduleForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
+    formData.amount = 4000
     console.log(formData);
+    fetch('http://localhost:5000/order',{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify(formData)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      window.location.replace(data.url)
+    })
   };
 
   return (
@@ -72,7 +84,7 @@ const ScheduleForm = () => {
           type="tel"
           id="phone"
           name="phone"
-          pattern="[0-9]{10}"
+          // pattern="[0-9]{10}"
           value={formData.phone}
           onChange={handleChange}
           placeholder="e.g., 1234567890"
@@ -111,7 +123,7 @@ const ScheduleForm = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
-          Submit
+          Payment
         </button>
       </form>
     </div>
