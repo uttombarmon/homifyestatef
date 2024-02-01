@@ -23,8 +23,7 @@ const UserProfile = () => {
   }, []);
 
   return (
-   
-        <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
+    <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
       <h1 className=" text-2xl mb-10  flex justify-center font-bold">
         Personalized Information
       </h1>
@@ -156,14 +155,12 @@ const UserProfile = () => {
                 type="file"
                 placeholder="Photo"
                 className="input items-center py-2 input-bordered"
-                required
-                
+                required               
               />
             </div>
           </div>          
           <button className=" mt-4 font-semibold px-2 hover:bg-yellow-500 bg-yellow-400 w-[160px] h-12 mb-6 "> Update Information </button>
         </div>
-
 
         <div className=" mt-9 border bg-slate-300 py-2 px-5 mb-7 ">
             <h1 className="text-2xl font-semibold mb-3"> Update password</h1>
@@ -179,7 +176,7 @@ const UserProfile = () => {
                 required
               />
             </div>
-        <div className="form-control">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">New password</span>
               </label>
@@ -201,16 +198,16 @@ const UserProfile = () => {
                 required
               />
             </div>
+          </div>
+          <div className=" flex justify-between items-center">
+            <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 "> Update password </button>
+            <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> <BsArrowUpCircle /> </p>
+          </div>
+
         </div>
-<div className=" flex justify-between items-center">
-<button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 "> Update password </button>
-       <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> <BsArrowUpCircle/> </p>
-    </div> 
-    
-           </div>
       </div>
     </div>
-  
+
   );
 };
 

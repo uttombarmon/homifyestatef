@@ -16,13 +16,15 @@ import AgentOderList from "../components/dashboard/agent/AgentOderList";
 import AgentProperties from "../components/dashboard/agent/AgentProperties";
 import About from "../pages/about/About";
 import AgentProfile from "../pages/agentProfile/AgentProfile";
+import Wishlist from "../components/dashboard/user/Wishlist";
+import UserProfile from "../components/dashboard/user/UserProfile";
+import ManageUsers from "../components/dashboard/admin/manageusers/ManageUsers";
+import AllProperties from "../components/dashboard/admin/allproperties/AllProperties";
+import ManageReviews from "../components/dashboard/admin/managereviews/ManageReviews";
 import PaymentSuccess from "../pages/paymentStatus/paymentSuccess";
 import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
 import AddProperty from "../components/dashboard/agent/AddProperty";
-import UserProfile from "../components/dashboard/user/UserProfile";
-import Wishlist from "../components/dashboard/user/Wishlist";
 import Order from "../components/dashboard/user/Order";
-
 
 
 
@@ -103,12 +105,28 @@ export const router = createBrowserRouter([
         element:<AgentProperties></AgentProperties>
       },
       {
-        path:"userprofile",
-        element: <UserProfile></UserProfile>
+        path:"profile",
+        element:<UserProfile></UserProfile>
       },
       {
         path:"wishlist",
         element:<Wishlist></Wishlist>
+      },
+      {
+        path:"allproperties",
+        element: <AllProperties></AllProperties>
+      },
+      {
+        path:"manageusers",
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path:"managereviews",
+        element: <ManageReviews></ManageReviews>
+      },
+      {
+        path:"alltransiction",
+        element: <div>Transiction History</div>
       },
       {
           path:"order",
@@ -118,7 +136,6 @@ export const router = createBrowserRouter([
           path:"addProperty",
           element:<AddProperty/>
       }
-      
     ]
   }
 

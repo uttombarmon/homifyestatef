@@ -72,8 +72,8 @@ const Navbar = () => {
                         <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                       </div>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                      <li> <button onClick={onSignout} className="md:btn md:mx-3">SignOut</button></li>
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[21] p-2 shadow bg-base-100 rounded-box w-52">
+                      <li onClick={onSignout} className=" h-fit btn">SignOut</li>
                     </ul>
                   </div>
               }
