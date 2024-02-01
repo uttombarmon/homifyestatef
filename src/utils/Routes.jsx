@@ -19,7 +19,10 @@ import AgentProfile from "../pages/agentProfile/AgentProfile";
 import UserProfile from "../components/dashboardcomponents/UserProfile";
 import Wishlist from "../components/dashboardcomponents/Wishlist";
 import Order from "../components/dashboardcomponents/Order";
+import PaymentSuccess from "../pages/paymentStatus/paymentSuccess";
+import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
 import AddProperty from "../components/dashboard/agent/AddProperty";
+
 
 
 
@@ -59,6 +62,14 @@ export const router = createBrowserRouter([
       },{
         path:"/about",
         element:<About></About>
+      },
+      {
+        path:"/payment/success/:transId",
+        element:<PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path:"/payment/fail/:transId",
+        element:<PaymentFailed></PaymentFailed>
       },
       {
         path:"/agentProfile",
