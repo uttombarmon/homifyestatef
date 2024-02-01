@@ -150,6 +150,7 @@ const AddProperty = () => {
               <input
                 type="text"
                 placeholder="Total Area(Square Feet)"
+                className="input input-bordered"
                 required
               />
             </div>
