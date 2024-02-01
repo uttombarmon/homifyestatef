@@ -1,15 +1,13 @@
-
 import { useEffect, useState } from "react";
-import { FaEye } from "react-icons/fa";
 
-const AgentOderList = () => {
+const Order = () => {
   const [properties, setProperties] = useState([]);
   console.log(properties);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../../public/order.json");
+        const response = await fetch("../../../public/order.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {
@@ -21,17 +19,16 @@ const AgentOderList = () => {
   }, []);
 
   return (
-    <div className=" w-full xl:w-[1000px] mx-auto px-4 bg-slate-100  overflow-x-auto">
+    <div className=" w-full xl:w-[1030px] mx-auto px-4 bg-slate-100  overflow-x-auto">
       <div className="">
-        <h1 className="text-xl  font-bold  mb-6 ml-4 mt-3"> Agent Order</h1>
+        <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
         <div className="overflow-x-auto px-3">
           <table className="table text-center table-xl">
             <thead>
               <tr className="xl:text-xl text-[17px] border bg-[#a4aca8a8] text-black">
-                <th className="border text-center bg-orange-300"> Serial  </th>
+                <th className="border text-center bg-orange-300"> No </th>
                 <th className="border text-center">Property Name</th>
-                <th className="border"> Purchase Date </th>
-                <th className="border"> Expired Date</th>
+                <th className="border"> Date</th>
                 <th className="border bg-green-400">Price</th>
                 <th className="border   bg-red-400">Action</th>
               </tr>
@@ -51,15 +48,15 @@ const AgentOderList = () => {
                   <td className=" font-poppins border-gray-400   border">
                     {properties.purchasedate}
                   </td>
-                  <td className=" font-poppins border-gray-400  border">
+                  {/* <td className=" font-poppins border-gray-400  border">
                     {properties.expireddate}
-                  </td>
+                  </td> */}
                   <td className=" font-thin border-gray-400  border">
                     {properties.price}
                   </td>
                   <td className="text-xl   font-semibold font-mono hover:text-orange-300 border-gray-400  border">
-                   < FaEye  className=" text-2xl hover:text-red-600 flex justify-center mx-auto"></FaEye>
-                   
+                    <span className=" border px-3  py-2 bg-orange-300 text-black text-[16px] hover:bg-orange-500  "> Cancel </span> 
+                    <span className=" border hidden px-3 py-2 bg-orange-300 text-black  text-[16px] hover:bg-orange-500 "> Pay Now</span>
                   </td>
                 </tr>
               </tbody>
@@ -71,8 +68,4 @@ const AgentOderList = () => {
   );
 };
 
-export default AgentOderList;
-
-
-
-
+export default Order;

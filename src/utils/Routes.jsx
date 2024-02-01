@@ -21,6 +21,10 @@ import UserProfile from "../components/dashboard/user/UserProfile";
 import ManageUsers from "../components/dashboard/admin/manageusers/ManageUsers";
 import AllProperties from "../components/dashboard/admin/allproperties/AllProperties";
 import ManageReviews from "../components/dashboard/admin/managereviews/ManageReviews";
+import PaymentSuccess from "../pages/paymentStatus/paymentSuccess";
+import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
+import AddProperty from "../components/dashboard/agent/AddProperty";
+import Order from "../components/dashboard/user/Order";
 
 
 
@@ -60,6 +64,14 @@ export const router = createBrowserRouter([
       },{
         path:"/about",
         element:<About></About>
+      },
+      {
+        path:"/payment/success/:transId",
+        element:<PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path:"/payment/fail/:transId",
+        element:<PaymentFailed></PaymentFailed>
       },
       {
         path:"/agentProfile",
@@ -115,6 +127,14 @@ export const router = createBrowserRouter([
       {
         path:"alltransiction",
         element: <div>Transiction History</div>
+      },
+      {
+          path:"order",
+          element:<Order></Order>
+      },
+      {
+          path:"addProperty",
+          element:<AddProperty/>
       }
     ]
   }

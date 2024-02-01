@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import "./btn.css"
-const AgentProperties = () => {
+const DashboardTabil = () => {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
@@ -21,13 +20,7 @@ const AgentProperties = () => {
   }, []);
 
   return (
-    <div className="w-full xl:w-[1000px] mx-auto overflow-x-auto bg-gray-100 px-2">
-     <div className="flex justify-between mt-7 items-center px-4">
-     <h1 className="text-xl font-bold mb-6 mt-3 "> My Properties </h1>
-     <Link to={"/dashboard/addProperty"}>
-     <button className=" border-none mb-4 btn btn-outline bg-orange-400  "> + Add Property</button>
-    </Link>
-     </div>
+    <div className="w-full xl:w-[980px]  overflow-x-auto bg-gray-100 px-2">
       <div className="table-responsive">
         <table className="w-full table">
           {/* head */}
@@ -40,7 +33,7 @@ const AgentProperties = () => {
                 <h1>Details</h1>
               </th>
               <th>Price</th>
-              <th>Purpose</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -68,8 +61,14 @@ const AgentProperties = () => {
                   $ {property.price}
                 </td>
                 <td className="border">
-                  <button className="text-base md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
-                    Sale
+                  <button className="text-base hidden btn bg-blue-100 text-green-400  md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                   Approved
+                  </button>
+                  <button className=" hidden btn text-red-600 bg-blue-100 md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    Pending
+                  </button>
+                  <button className=" btn text-orange-600 bg-green-100  md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    Sold
                   </button>
                 </td>
                 <td className="border">
@@ -93,7 +92,6 @@ const AgentProperties = () => {
   );
 };
 
-export default AgentProperties;
+export default DashboardTabil;
 
 
-// export default ;
