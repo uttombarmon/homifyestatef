@@ -56,7 +56,7 @@ const SignIn = () => {
     return (
         <div>
             <div className="hero min-h-screen pb-4">
-                <div className=" flex-col items-center md:w-[480px]">
+                <div className=" flex-col items-center mt-16 md:w-[480px]">
                     <div className=''>
                         <img className='w-[100px] mx-auto h-[100px]' src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png" alt="" />
                         <h1 className='text-center font-bold text-2xl my-4'>Sign in to your account</h1>

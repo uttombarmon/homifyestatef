@@ -11,7 +11,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../../public/userprofile.json");
+        const response = await fetch("/userprofile.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {

@@ -9,7 +9,7 @@ const AgentProperties = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../.././../../public/wishlist.json");
+        const response = await fetch("/wishlist.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {

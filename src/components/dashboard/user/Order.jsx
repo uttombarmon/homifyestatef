@@ -7,7 +7,7 @@ const Order = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../public/order.json");
+        const response = await fetch("/order.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {
@@ -19,7 +19,7 @@ const Order = () => {
   }, []);
 
   return (
-    <div className=" w-full xl:w-[1030px] mx-auto px-4 bg-slate-100  overflow-x-auto">
+    <div className=" w-full mx-auto px-4 bg-slate-100  overflow-x-auto">
       <div className="">
         <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
         <div className="overflow-x-auto px-3">

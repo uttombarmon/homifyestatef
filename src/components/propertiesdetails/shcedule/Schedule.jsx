@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const ScheduleForm = () => {
-  
+const ScheduleForm = ({ price }) => {
+
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -21,18 +21,30 @@ const ScheduleForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
-    formData.amount = 4000
+    function extractNumbersFromString(inputString) {
+      // Use a regular expression to match numeric characters
+      const numericPart = inputString.match(/\d+/g);
+      // Join the matched numeric characters into a single string
+      const result = numericPart ? numericPart.join('') : '';
+
+      return result;
+    }
+    const stringWithNumbers = price;
+    const numericPart = extractNumbersFromString(stringWithNumbers);
+    console.log(numericPart);
+
+    formData.amount = parseInt(numericPart)
     console.log(formData);
-    fetch('http://localhost:5000/order',{
-      method:"POST",
-      headers:{"content-type":"application/json"},
-      body:JSON.stringify(formData)
+    fetch('https://homifyestate.onrender.com/order', {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(formData)
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      window.location.replace(data.url)
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        window.location.replace(data.url)
+      })
   };
 
   return (

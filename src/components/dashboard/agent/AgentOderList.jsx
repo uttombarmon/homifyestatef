@@ -9,7 +9,7 @@ const AgentOderList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../../public/order.json");
+        const response = await fetch("/order.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {

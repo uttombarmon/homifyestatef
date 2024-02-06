@@ -16,7 +16,7 @@ const AgentDashboard = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("../../../../public/wishlist.json");
+          const response = await fetch("/wishlist.json");
           const data = await response.json();
           setProperties(data);
         } catch (error) {
@@ -34,7 +34,7 @@ const AgentDashboard = () => {
 useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../../public/order.json");
+        const response = await fetch("/order.json");
         const data = await response.json();
         setListing(data);
       } catch (error) {
@@ -135,7 +135,7 @@ useEffect(() => {
 
                         <div className="mt-4 flex text-center items-end justify-between">
                             <div className='flex gap-3 items-center'>
-                            <span className="text-[20px] font-medium">Pandign Proprty :</span>
+                            <span className="text-[20px] font-medium">Pending Proprty :</span>
                                 <h4 className="text-xl font-bold text-black dark:text-white">
                                     45
                                 </h4>
@@ -154,7 +154,7 @@ useEffect(() => {
 
                         <div className="mt-6 flex  items-end justify-center">
                             <div className='flex  gap-2'>
-                            <span className="text-xl  font-bold">Wishlist: </span>
+                            <span className="text-xl  font-medium">Wishlist: </span>
 
                                 <h4 className="text-xl ml-2 font-bold text-black dark:text-white">
                                     {properties.length}

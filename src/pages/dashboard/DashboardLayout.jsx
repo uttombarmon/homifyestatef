@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import logo from './logo2.png';
 import Agent from '../../components/dashboard/agent/Agent';
 
@@ -31,7 +31,7 @@ const DashboardLayout = () => {
             {/* small devices nab bar  */}
             <div className="navbar w-full lg:hidden z-20 bg-amber-200 ">
                 <div className="navbar-start">
-                    <a className="btn btn-ghost text-black text-xl">HomifyEstate</a>
+                    <Link to={"/"} className="btn btn-ghost text-black text-xl">HomifyEstate</Link>
                 </div>
                 <div className="navbar-end">
                     <div className="dropdown">
@@ -44,7 +44,18 @@ const DashboardLayout = () => {
                             <div className="drawer-side">
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                                 <ul className="menu w-52 min-h-full bg-stone-700 text-white">
-                                    <AdminNav></AdminNav>
+                                    {
+                                        users?.role == 'admin' &&
+                                        <AdminNav></AdminNav>
+                                    }
+                                    {
+                                        users?.role == 'agent' &&
+                                        <Agent></Agent>
+                                    }
+                                    {
+                                        users?.role == 'user' &&
+                                        <UserNav></UserNav>
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -55,9 +66,9 @@ const DashboardLayout = () => {
             <div className=" hidden lg:flex fixed min-h-screen md:w-[200px] lg:w-[300px]  bg-stone-700">
                 <div className='w-full flex-wrap '>
                     {/* drawer head */}
-                    <div className=" w-full mt-6 hidden lg:inline text-center">
+                    <div className=" w-full pt-4 hidden lg:inline text-center">
                         <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
-                        <h1 className="font-bold mb-6 text-xl">HomifyEstate</h1>
+                        <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
                         <hr />
                     </div>
                     {

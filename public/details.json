@@ -1,33 +1,200 @@
-{
-    "title": "Urban Loft Living",
-    "location": "222 Loft Street, Metropolitan City",
-    "property_status": "For Rent",
-    "description": "Chic loft with industrial vibes in the heart of the city.",
-    "property_image":"https://i.ibb.co/vQk7cL2/property-1.jpg",
-    "property_details": {
-        "id": "MNO222",
-        "rooms": 2,
-        "status": "Available Now",
-        "price": "$2,800/month",
-        "garages": 0,
-        "bed_rooms": 1,
-        "type": "Loft",
-        "baths": 1,
-        "originating_year": 2018,
-        "size": "5000 sq ft",
-        "date_listed": "2022-08-15"
+[
+    {
+        "title": "Urban Loft Living",
+        "location": "222 Loft Street, Metropolitan City",
+        "property_status": "For Rent",
+        "description": "Chic loft with industrial vibes in the heart of the city.",
+        "property_image": "https://i.ibb.co/vQk7cL2/property-1.jpg",
+        "property_details": {
+            "id": "MNO222",
+            "rooms": 2,
+            "status": "Available Now",
+            "price": "$2,800/month",
+            "garages": 0,
+            "bed_rooms": 1,
+            "type": "Loft",
+            "baths": 1,
+            "originating_year": 2018,
+            "size": "5000 sq ft",
+            "date_listed": "2022-08-15"
+        },
+        "facilities": [
+            "Exposed Brick Walls",
+            "City Views",
+            "Open Layout"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/4MmWC0r/06372cef20d89b57c58bdfc140710c70.png",
+            "description": "Industrial aesthetics with modern conveniences."
+        },
+        "author": {
+            "name": "City Living Properties",
+            "contact": "info@cityliving.com"
+        }
     },
-    "facilities": [
-        "Exposed Brick Walls",
-        "City Views",
-        "Open Layout"
-    ],
-    "floor_plan": {
-        "image": "https://i.ibb.co/4MmWC0r/06372cef20d89b57c58bdfc140710c70.png",
-        "description": "Industrial aesthetics with modern conveniences."
+    {
+        "title": "Downtown City Condo",
+        "location": "333 High Rise Avenue, Cityscape",
+        "property_status": "For Sale",
+        "description": "Contemporary condo in the heart of the bustling city.",
+        "property_image": "https://i.ibb.co/nC3D9qw/property-6.jpg",
+        "property_details": {
+            "id": "DEF333",
+            "rooms": 1,
+            "status": "Under Construction",
+            "price": "$400,000",
+            "garages": 1,
+            "bed_rooms": 1,
+            "type": "Condo",
+            "baths": 1,
+            "originating_year": 2024,
+            "size": "800 sq ft",
+            "date_listed": "2024-02-10"
+        },
+        "facilities": [
+            "City View Balcony",
+            "Fitness Center",
+            "Modern Design"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/stu456/floor-plan-condo.jpg",
+            "description": "Sleek design with urban sophistication."
+        },
+        "author": {
+            "name": "Cityscape Condos",
+            "contact": "info@cityscapecondos.com"
+        }
     },
-    "author": {
-        "name": "City Living Properties",
-        "contact": "info@cityliving.com"
+    {
+        "title": "Rustic Mountain Cabin",
+        "location": "789 Pine Trail, Mountain Retreat",
+        "property_status": "For Sale",
+        "description": "Charming cabin nestled in the mountains.",
+        "property_image": "https://i.ibb.co/W037mk1/property-2.jpg",
+        "property_details": {
+            "id": "LMN789",
+            "rooms": 2,
+            "status": "Available Now",
+            "price": "$250,000",
+            "garages": 0,
+            "bed_rooms": 2,
+            "type": "Cabin",
+            "baths": 1,
+            "originating_year": 2010,
+            "size": "1200 sq ft",
+            "date_listed": "2023-11-15"
+        },
+        "facilities": [
+            "Wood-burning Fireplace",
+            "Mountain View Deck",
+            "Hiking Trails"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/uvw456/floor-plan-cabin.jpg",
+            "description": "Cozy layout with rustic charm."
+        },
+        "author": {
+            "name": "Mountain Living Realty",
+            "contact": "info@mountainliving.com"
+        }
+    },
+    {
+        "title": "Seaside Villa Retreat",
+        "location": "123 Ocean Drive, Coastal Town",
+        "property_status": "For Rent",
+        "description": "Elegant villa with direct access to the beach.",
+        "property_image": "https://i.ibb.co/T8qfrvw/property-3.jpg",
+        "property_details": {
+            "id": "PQR123",
+            "rooms": 5,
+            "status": "Vacation Rental",
+            "price": "$1,200/night",
+            "garages": 2,
+            "bed_rooms": 4,
+            "type": "Villa",
+            "baths": 3,
+            "originating_year": 2019,
+            "size": "3500 sq ft",
+            "date_listed": "2023-09-05"
+        },
+        "facilities": [
+            "Private Beach Access",
+            "Infinity Pool",
+            "Oceanfront Terrace"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/mno789/floor-plan-villa.jpg",
+            "description": "Open design with panoramic views."
+        },
+        "author": {
+            "name": "Coastal Properties",
+            "contact": "info@coastalproperties.com"
+        }
+    },
+    {
+        "title": "Family-Friendly Suburban Home",
+        "location": "456 Green Lane, Suburbia",
+        "property_status": "For Sale",
+        "description": "Cozy home with a large backyard, perfect for families.",
+        "property_image": "https://i.ibb.co/D5WD2Ht/property-4.jpg",
+        "property_details": {
+            "id": "XYZ456",
+            "rooms": 4,
+            "status": "Available Now",
+            "price": "$400,000",
+            "garages": 1,
+            "bed_rooms": 3,
+            "type": "Single Family Home",
+            "baths": 2.5,
+            "originating_year": 2015,
+            "size": "2200 sq ft",
+            "date_listed": "2023-06-20"
+        },
+        "facilities": [
+            "Backyard Garden",
+            "Spacious Living Room",
+            "Fireplace"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/ghi123/floor-plan-suburban.jpg",
+            "description": "Traditional layout with modern amenities."
+        },
+        "author": {
+            "name": "Suburban Living Realty",
+            "contact": "info@suburbanliving.com"
+        }
+    },
+    {
+        "title": "Luxury Downtown Apartment",
+        "location": "789 Main Street, Urban City",
+        "property_status": "For Sale",
+        "description": "Modern apartment with stunning city views.",
+        "property_image": "https://i.ibb.co/km0vhYq/property-5.jpg",
+        "property_details": {
+            "id": "ABC789",
+            "rooms": 3,
+            "status": "Under Construction",
+            "price": "$600,000",
+            "garages": 2,
+            "bed_rooms": 2,
+            "type": "Apartment",
+            "baths": 2,
+            "originating_year": 2023,
+            "size": "1800 sq ft",
+            "date_listed": "2023-03-10"
+        },
+        "facilities": [
+            "Swimming Pool",
+            "Fitness Center",
+            "Balcony"
+        ],
+        "floor_plan": {
+            "image": "https://i.ibb.co/abc456/floor-plan.jpg",
+            "description": "Spacious layout with modern amenities."
+        },
+        "author": {
+            "name": "Urban Homes Realty",
+            "contact": "info@urbanhomes.com"
+        }
     }
-}
+]

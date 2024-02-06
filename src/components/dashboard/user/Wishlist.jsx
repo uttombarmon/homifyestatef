@@ -7,7 +7,7 @@ const Wishlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../public/wishlist.json");
+        const response = await fetch("/wishlist.json");
         const data = await response.json();
         setProperties(data);
       } catch (error) {
@@ -19,7 +19,7 @@ const Wishlist = () => {
   }, []);
 
   return (
-    <div className="w-full xl:w-[1150px] mx-auto overflow-x-auto bg-gray-100 px-2">
+    <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
       <h1 className="text-xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
       <div className="table-responsive">
         <table className="w-full table">
