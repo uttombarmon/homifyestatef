@@ -5,8 +5,38 @@ import {
   BsFillTelephoneFill,
 } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
+import { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
+
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  const sendMail = () => {
+    axios.post("http://localhost:5000/node", {
+      email,
+      subject,
+      message,
+    })
+    
+      .then(() => {
+        // success
+        console.log("Email sent successfully");
+      })
+      .catch((error) => {
+        console.log("Error sending email:", error);
+      });
+  };
+
+// console.log(sendMail);
+
+
+
+
+
+
     return (
         <>
       <section
@@ -79,10 +109,10 @@ const Contact = () => {
                 </div>
 
                 <button className="btn mt-6 bg-green-500 btn-outline btn-secondary">
-                  {" "}
+               
                   <span>
                     <BsFillChatSquareFill></BsFillChatSquareFill>
-                  </span>{" "}
+                  </span>
                   Start Live chart
                 </button>
               </div>
@@ -100,7 +130,7 @@ const Contact = () => {
                         name="name"
                         placeholder="Your Name"
                         className="input"
-                        required
+                       
                       />
                     </div>
                     <div className="form-control">
@@ -111,6 +141,7 @@ const Contact = () => {
                         placeholder="Your Email"
                         className="input"
                         required
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="form-control">
@@ -120,7 +151,6 @@ const Contact = () => {
                         name="phone"
                         placeholder="Your Namber"
                         className="input"
-                        required
                       />
                     </div>
                     <div className="form-control">
@@ -130,19 +160,22 @@ const Contact = () => {
                         name="subjcet"
                         placeholder="Subjcet"
                         className="input"
-                        required
+                        onChange={(e) => setSubject(e.target.value)}
+                        
+                 
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>                  
-                      <textarea className="textarea textarea-bordered" placeholder="Write Message"></textarea>
+                      <textarea className="textarea textarea-bordered" 
+                      onChange={(e) => setMessage(e.target.value)} 
+                      placeholder="Write Message"></textarea>
                     </div>
                     <div className="form-control mt-6"></div>
                   </div>
                   <button
-                    type="submit"
-                    className="btn btn-primary w-full btn-outline mt-7 "
-                  >
+                  onClick={sendMail}
+                    className="btn btn-primary w-full btn-outline mt-7 " >
                     Send Massagge
                   </button>
                 </form>

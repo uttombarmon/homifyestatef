@@ -2,7 +2,42 @@ import { useEffect, useState } from "react";
 
 const Order = () => {
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
+
+ // pagination
+
+ const [currentPage, setCurrentPage] = useState(1);
+ const itemsPerPage = 7;
+
+ // Calculate total pages based on the number of items and itemsPerPage
+ const totalPages = Math.ceil(properties.length / itemsPerPage);
+
+ const indexOfLastItem = currentPage * itemsPerPage;
+ const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+ const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
+
+ const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+ const renderPageNumbers = () => {
+   const pageNumbers = [];
+   for (let i = 1; i <= totalPages; i++) {
+     pageNumbers.push(
+       <button
+         key={i}
+         onClick={() => paginate(i)}
+         className={`btn btn-outline border-none bg-blue-100 text-black font-medium mx-2 ${
+           currentPage === i ? "bg-blue-300" : ""
+         }`}
+       >
+         {i}
+       </button>
+     );
+   }
+   return pageNumbers;
+ };
+
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +54,7 @@ const Order = () => {
   }, []);
 
   return (
+    <>
     <div className=" w-full mx-auto px-4 bg-slate-100  overflow-x-auto">
       <div className="">
         <h1 className="text-xl  font-bold  mb-6 ml-3 mt-3"> Dashboard Order</h1>
@@ -33,7 +69,7 @@ const Order = () => {
                 <th className="border   bg-red-400">Action</th>
               </tr>
             </thead>
-            {properties?.map((properties) => (
+            {currentItems?.map((properties) => (
               <tbody
                 key={properties.id}
                 className="text-black border cursor-pointer  xl:text-[17px] font-medium "
@@ -65,6 +101,26 @@ const Order = () => {
         </div>
       </div>
     </div>
+    <div className=" flex  text-center items-center mt-7 w-full mx-auto justify-center  gap-5">
+         <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="btn bg-orange-300 text-black font-medium w-20">
+                    Previous
+                  </button>
+                  <div className="flex space-x-2">
+                    {renderPageNumbers()}
+                  </div>
+                  <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={indexOfLastItem >= properties.length}
+                    className="btn bg-green-300 font-medium w-20"
+                  >
+                    Next
+                  </button>
+
+         </div>
+    </>
   );
 };
 
