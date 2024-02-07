@@ -5,36 +5,27 @@ import {
   BsFillTelephoneFill,
 } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
-import { useState } from "react";
-import axios from "axios";
 
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
 const Contact = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-
-  const sendMail = () => {
-    axios.post("http://localhost:5000/node", {
-      email,
-      subject,
-      message,
-    })
-    
-      .then(() => {
-        // success
-        console.log("Email sent successfully");
+    emailjs
+      .sendForm('service_zt3es0s', 'template_ih4zkgp', form.current, {
+        publicKey: '_M-Xno-tG5TitAcIS',
       })
-      .catch((error) => {
-        console.log("Error sending email:", error);
-      });
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
   };
-
-// console.log(sendMail);
-
-
-
-
 
 
     return (
@@ -121,13 +112,13 @@ const Contact = () => {
           <div data-aos="fade-left">
             <div className="w-full">
               <div className="card shrink-0  ">
-                <form>
+                <form ref={form} onSubmit={sendEmail} >
                   <div className=" grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="name"
+                        name="from_name"
                         placeholder="Your Name"
                         className="input"
                        
@@ -137,18 +128,18 @@ const Contact = () => {
                       <label className="label"></label>
                       <input
                         type="email"
-                        name="email"
+                        name="from_email"
                         placeholder="Your Email"
                         className="input"
                         required
-                        onChange={(e) => setEmail(e.target.value)}
+
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="phone"
+                        name="from_phone"
                         placeholder="Your Namber"
                         className="input"
                       />
@@ -157,24 +148,23 @@ const Contact = () => {
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="subjcet"
+                        name="from_subjcet"
                         placeholder="Subjcet"
                         className="input"
-                        onChange={(e) => setSubject(e.target.value)}
-                        
+
                  
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>                  
-                      <textarea className="textarea textarea-bordered" 
-                      onChange={(e) => setMessage(e.target.value)} 
+                      <textarea name="message" className="textarea textarea-bordered" 
+
                       placeholder="Write Message"></textarea>
                     </div>
                     <div className="form-control mt-6"></div>
                   </div>
                   <button
-                  onClick={sendMail}
+                  type="submit"
                     className="btn btn-primary w-full btn-outline mt-7 " >
                     Send Massagge
                   </button>
