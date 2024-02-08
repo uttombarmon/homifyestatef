@@ -8,23 +8,33 @@ import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import { useParams } from "react-router-dom";
 
 const Blog = () => {
   const [bloge, setBloge] = useState([]);
+  const {id}=useParams();
+  console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('../../.././../public/letest.json');
-        const result = await response.json();
-        setBloge(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+      if(id){
+        try {
+          const response = await fetch('/letest.json');
+          const result = await response.json();
+          const final = result.filter((abc)=> abc.id == id);
+          console.log(result);
+          console.log(id);
+          console.log(final);
+  
+          setBloge(final);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -102,7 +112,7 @@ const Blog = () => {
          }
 
           {/* left sitre populat bloge */}
-          {bloge.map((bloge)=> <div key={bloge.id} className="xl:w-[450px] lg:w-[520px] ">
+          {bloge?.map((bloge)=> <div key={bloge.id} className="xl:w-[450px] lg:w-[520px] ">
             <input
               type="text"
               placeholder="Secarch"

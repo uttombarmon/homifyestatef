@@ -25,7 +25,7 @@ const LetesNews = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('../../.././../public/letest.json');
+        const response = await fetch('/letest.json');
         const result = await response.json();
         setLatestNews(result);
       } catch (error) {
