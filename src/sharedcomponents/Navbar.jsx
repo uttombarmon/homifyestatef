@@ -40,7 +40,6 @@ const Navbar = () => {
     <li><NavLink to={''}>Home</NavLink></li>
     <li><NavLink to={'rent'}>Rent</NavLink></li>
     <li><NavLink to={'contact'}>contact</NavLink></li>
-    <li><NavLink to={'blog'}>Blog</NavLink></li>
     <li><NavLink to={'about'}>About</NavLink></li>
     {
       user &&

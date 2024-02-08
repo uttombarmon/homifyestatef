@@ -8,6 +8,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
+import toast from "react-hot-toast";
 const Contact = () => {
   const form = useRef();
   const sendEmail = (e) => {
@@ -20,6 +21,9 @@ const Contact = () => {
       .then(
         () => {
           console.log('SUCCESS!');
+          toast.success('Successfully Email send!')
+          
+
         },
         (error) => {
           console.log('FAILED...', error.text);
