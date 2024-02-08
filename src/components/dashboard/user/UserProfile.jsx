@@ -3,12 +3,15 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FaInstagramSquare } from "react-icons/fa";
-import { BsArrowUpCircle } from "react-icons/bs";
+import UserTabil from "./UserTabil";
+
 const UserProfile = () => {
   const [properties, setProperties] = useState([]);
   console.log(properties);
 
-  useEffect(() => {
+
+  useEffect(() => { 
+
     const fetchData = async () => {
       try {
         const response = await fetch("/userprofile.json");
@@ -23,7 +26,8 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
+    <div className="bg-gray-200">
+     <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
       <h1 className=" text-2xl mb-10  flex justify-center font-bold">
         Personalized Information
       </h1>
@@ -85,7 +89,7 @@ const UserProfile = () => {
 
       {/* frome start */}
 
-      <div className=" w-full xl:mt-14 xl:w-[1000px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
+      <div className=" w-full xl:mt-14 xl:w-[980px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
         {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
 
         <div className=" border px-4 py-3  bg-slate-300 ">
@@ -149,6 +153,28 @@ const UserProfile = () => {
             </div>
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Country</span>
+              </label>
+              <input
+                type="number"
+                placeholder="Address"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">City</span>
+              </label>
+              <input
+                type="number"
+                placeholder="Address"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
                 <span className="label-text">Photo</span>
               </label>
               <input
@@ -201,14 +227,22 @@ const UserProfile = () => {
           </div>
           <div className=" flex justify-between items-center">
             <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 "> Update password </button>
-            <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> <BsArrowUpCircle /> </p>
+            <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "> </p>
           </div>
 
         </div>
       </div>
     </div>
 
+     <div className=" w-full mx-auto justify-center bg-gray-200  ">
+      <UserTabil></UserTabil>
+     </div>
+    </div>
+
   );
 };
 
 export default UserProfile;
+
+
+
