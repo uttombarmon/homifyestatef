@@ -7,6 +7,7 @@ import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Blog = () => {
   const [bloge, setBloge] = useState([]);
@@ -25,13 +26,15 @@ const Blog = () => {
     fetchData();
   }, []);
 
-
-
-
-
-
   return (
     <>
+<div>
+  <MessengerCustomerChat
+    pageId="103365232464560"
+    appId="763941302317239" />
+
+      </div>
+
       <section
         className="bg-gray-100 mb-12  h-[320px] md:h-[350px]  relative border-4 grid items-end"
         style={{
