@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
 
+import { AuthContext } from "../../../utils/provider/AuthProvider";
+import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+
 const Wishlist = () => {
+
+  const axiosPublic =useAxiosPublic()
   const [properties, setProperties] = useState([]);
+  console.log(properties);
 
   // pagination
+  const {user}= useContext(AuthContext)
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -14,7 +21,7 @@ const Wishlist = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = properties?.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -36,19 +43,34 @@ const Wishlist = () => {
     return pageNumbers;
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("/wishlist.json");
+  //       const data = await response.json();
+  //       setProperties(data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+
+   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/wishlist.json");
-        const data = await response.json();
-        setProperties(data);
+        const res = await axiosPublic.get(`/wish-lists/${user?.email}`)
+        setProperties(res.data);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    fetchData();
-  }, []);
+  
+      fetchData();
+    }, [axiosPublic,user?.email]);
 
   return (
     <>

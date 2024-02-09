@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { LuTableProperties } from "react-icons/lu";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
 
-
+//agent sidebar
 const Agent = () => {
     return (
         <div className="ml-4 mt-3 flex flex-col gap-2 ">
