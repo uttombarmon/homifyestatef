@@ -116,7 +116,7 @@ const PropertyDetails = () => {
 
                     {/* schedule */}
                     <div className=' w-full lg:w-4/12 h-fit bg-white'>
-                        <ScheduleForm price={property?.property_details?.price}></ScheduleForm>
+                        <ScheduleForm price={property?.property_details?.price} id={property._id}></ScheduleForm>
                     </div>
                 </div> :
                 <p>Not found data</p>

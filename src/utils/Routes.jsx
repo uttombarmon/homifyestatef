@@ -21,10 +21,12 @@ import UserProfile from "../components/dashboard/user/UserProfile";
 import ManageUsers from "../components/dashboard/admin/manageusers/ManageUsers";
 import AllProperties from "../components/dashboard/admin/allproperties/AllProperties";
 import ManageReviews from "../components/dashboard/admin/managereviews/ManageReviews";
-import PaymentSuccess from "../pages/paymentStatus/paymentSuccess";
+import PaymentSuccess from "../pages/paymentStatus/PaymentSuccess";
 import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
 import AddProperty from "../components/dashboard/agent/AddProperty";
 import Order from "../components/dashboard/user/Order";
+import Dashboard from "../components/dashboard/Dashboard";
+import Transections from "../components/dashboard/admin/transection/Transections";
 
 
 
@@ -86,7 +88,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path:"",
-        element:<div> Contents</div>
+        element:<Dashboard></Dashboard>
       },
       {
         path:"agentDashboard",
@@ -126,7 +128,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"alltransiction",
-        element: <div>Transiction History</div>
+        element: <Transections></Transections>
       },
       {
           path:"order",

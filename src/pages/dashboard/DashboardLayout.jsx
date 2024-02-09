@@ -29,9 +29,9 @@ const DashboardLayout = () => {
     }, [axiosPublic, user]);
     return (
         <>
-         <div>
-         <Toaster/>
-         </div>
+            <div>
+                <Toaster />
+            </div>
             <div className=" text-red-50 flex overflow-x-hidden flex-wrap">
                 {/* small devices nab bar  */}
                 <div className="navbar w-full lg:hidden z-20 bg-amber-200 ">
@@ -67,37 +67,44 @@ const DashboardLayout = () => {
                         </div>
                     </div>
                 </div>
-                {/* dashboard nav section */}
-                <div className=" hidden lg:flex fixed min-h-screen md:w-[200px] lg:w-[300px]  bg-stone-700">
-                    <div className='w-full flex-wrap '>
-                        {/* drawer head */}
-                        <div className=" w-full pt-4 hidden lg:inline text-center">
-                            <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
-                            <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
-                            <hr />
-                        </div>
-                        {
-                            users?.role == 'admin' &&
-                            <AdminNav></AdminNav>
-                        }
-                        {
-                            users?.role == 'agent' &&
-                            <Agent></Agent>
-                        }
-                        {
-                            users?.role == 'user' &&
-                            <UserNav></UserNav>
-                        }
+            </div>
+            {/* dashboard nav section */}
+            <div className=" hidden lg:flex fixed min-h-screen md:w-[250px]  bg-stone-700">
+                <div className='w-full flex-wrap '>
+                    {/* drawer head */}
+                    <div className=" w-full pt-4 hidden lg:inline text-center">
+                        <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
+                        <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
+                        <hr />
+                    </div>
+                    <div>
+                        <ul className="menu w-full min-h-full bg-stone-700 text-white">
+                            {
+                                users?.role == 'admin' &&
+                                <AdminNav></AdminNav>
+                            }
+                            {
+                                users?.role == 'agent' &&
+                                <Agent></Agent>
+                            }
+                            {
+                                users?.role == 'user' &&
+                                <UserNav></UserNav>
+                            }
+                        </ul>
                     </div>
                 </div>
-                {/* dashboard content section  */}
+                {/* dashboard content section 
                 <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-300px)] text-black h-screen">
                     <Outlet></Outlet>
-                </div>
+                </div> */}
+            </div>
+            {/* dashboard content section  */}
+            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">
+                <Outlet></Outlet>
             </div>
         </>
-
-    );
+    )
 };
 
 export default DashboardLayout;
