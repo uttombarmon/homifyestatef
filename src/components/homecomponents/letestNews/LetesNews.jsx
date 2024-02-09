@@ -2,24 +2,39 @@ import { FaArrowRight } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
 import { FaCommentDots } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import { Link } from "react-router-dom";
+// import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 
 
 
 
 const LetesNews = () => {
   const [latestNews, setLatestNews] = useState([]);
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
  
 
 
-  useEffect(()=>{
-    axiosPublic.get('/home/latestNews')
-    .then(data=>{
-      setLatestNews(data.data)
-    })
-  },[axiosPublic])
+  // useEffect(()=>{
+  //   axiosPublic.get('/home/latestNews')
+  //   .then(data=>{
+  //     setLatestNews(data.data)
+  //   })
+  // },[axiosPublic])
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('../../.././../public/letest.json');
+        const result = await response.json();
+        setLatestNews(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
 
@@ -31,11 +46,11 @@ const LetesNews = () => {
       </h1>
       <div className=" w-full lg:w-[calc(100%-20px)] lg:p-7 mt-8 lg:px-0 mb-3 md:gap-2 md:px-1 gap-3 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-3 grid-cols-1 ">
         {
-          latestNews.map((latestNew, index) =>
-            <div key={index} className=" relative rounded w-full lg:w-full mx-auto h-[400px] justify-center ">
+          latestNews?.map((latestNew) =>
+            <div key={latestNew.id} className=" relative rounded w-full lg:w-full mx-auto h-[400px] justify-center ">
               <div className=" w-[calc(100%-20px)] mx-auto md:w-full top-0 h-[300px] bg-cover  shadow-xl relative">
                 <img
-                  src={latestNew?.img?.img1}
+                  src={latestNew?.img}
                   className=" h-full w-full rounded-t-md"
                   alt="Shoes"
                 />
@@ -54,10 +69,12 @@ const LetesNews = () => {
                    {latestNew?.title}
                   </h2>
                   <div className=" flex justify-between  mt-2 mb-3">
-                    <div className="flex justify-center items-center gap-2">
+                   <Link to={`blog/${latestNew.id}`}>
+                   <div className="flex justify-center border bg-gray-200  p-1 rounded px-2 hover:bg-orange-300 items-center gap-2">
                       <button className="font-semibold">Read more</button>
                       <FaArrowRight className="rounded-full bg-base-300"></FaArrowRight>
                     </div>
+                   </Link>
                   </div>
                 </div>
               </div>

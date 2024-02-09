@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../../sharedcomponents/Footer";
 import Navbar from "../../sharedcomponents/Navbar";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -13,6 +14,7 @@ const LayOut = () => {
             <Outlet></Outlet>
             </div>
             <Footer></Footer>
+           <Toaster/>
         </div>
     );
 };
