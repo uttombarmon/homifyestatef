@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../utils/provider/AuthProvider";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Navbar = () => {
 
@@ -49,15 +48,7 @@ const Navbar = () => {
   </>
   return (
     <>
-    {/* chart messanger  */}
-<div>
-  <MessengerCustomerChat
-    pageId="103365232464560"
-    appId="763941302317239" />
-
-      </div>
-
-    <div className="navbar bg-[#2119198d] text-amber-300 fixed z-10">
+    <div className="navbar w-full bg-[#2119198d] xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-10">
       <div className="navbar-start">
         <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
       </div>

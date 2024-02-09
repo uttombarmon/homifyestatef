@@ -31,7 +31,6 @@ const DashboardLayout = () => {
         <>
             <div>
                 <Toaster />
-                <div />
             </div>
             <div className=" text-red-50 flex overflow-x-hidden flex-wrap">
                 {/* small devices nab bar  */}
@@ -78,11 +77,27 @@ const DashboardLayout = () => {
                         <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
                         <hr />
                     </div>
+                    <div>
+                        <ul className="menu w-full min-h-full bg-stone-700 text-white">
+                            {
+                                users?.role == 'admin' &&
+                                <AdminNav></AdminNav>
+                            }
+                            {
+                                users?.role == 'agent' &&
+                                <Agent></Agent>
+                            }
+                            {
+                                users?.role == 'user' &&
+                                <UserNav></UserNav>
+                            }
+                        </ul>
+                    </div>
                 </div>
-                {/* dashboard content section  */}
+                {/* dashboard content section 
                 <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-300px)] text-black h-screen">
                     <Outlet></Outlet>
-                </div>
+                </div> */}
             </div>
             {/* dashboard content section  */}
             <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">

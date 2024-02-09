@@ -15,7 +15,7 @@ const Dashboard = () => {
             axiosPublic.get(`/users/${email}`)
                 .then(res => {
                     const userInfo = res.data
-                    console.log(userInfo);
+                    console.log("role:",userInfo.role);
                     setUser(userInfo);
                 })
         }
