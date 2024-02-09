@@ -1,4 +1,5 @@
 import { MdCall } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   return (
@@ -11,9 +12,9 @@ const Contact = () => {
           </p>
         </div>
         <div className="">
-          <button type="button" className="btn uppercase hover:bg-orange-400 btn-outline mb-2 mr-4">
+          <Link to={"/contact"} ><button type="button" className="btn uppercase hover:bg-orange-400 btn-outline mb-2 mr-4">
             Contact Us
-          </button>
+          </button> </Link>
           <button type="button" className="btn uppercase btn-outline text-white bg-black">
             <MdCall /> 920 850 5256
           </button>
