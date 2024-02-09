@@ -7,6 +7,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
+
 const Property = ({properties}) => {
     return (
         <div
@@ -117,7 +118,7 @@ const Property = ({properties}) => {
                 <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
                     <div className="text-white flex flex-col  gap-1 ">
                         <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
-                            Rent
+                            {properties?.property_status}
                         </p>
                         <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
                             Features
