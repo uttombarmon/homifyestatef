@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../utils/provider/AuthProvider';
+import useAxiosPublic from '../../../hooks/axiosPublic/useAxiosPublic';
 
-const ScheduleForm = () => {
+const ScheduleForm = ({ price, id }) => {
+  const { user } = useContext(AuthContext)
+  const useAxios = useAxiosPublic()
+  const currentDate = new Date();
+  const localTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+  console.log(localTime);
+  const localDate = currentDate.toISOString().split('T')[0]; // Getting the date in YYYY-MM-DD format
   const [formData, setFormData] = useState({
-    date: '',
-    time: '',
-    name: '',
+    date: localDate,
+    time: localTime,
+    name: user?.displayName || '',
     phone: '',
-    email: '',
+    email: user?.email || '',
     message: '',
+    property: id,
   });
 
   const handleChange = (e) => {
@@ -20,7 +29,31 @@ const ScheduleForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
+    function extractNumbersFromString(inputString) {
+      // Check if the input is already a number
+      if (typeof inputString === 'number') {
+        // If it's a number, return the same value
+        return inputString;
+      }
+      // Use a regular expression to match numeric characters
+      const numericPart = inputString.match(/\d+/g);
+      // Join the matched numeric characters into a single string
+      const result = numericPart ? numericPart.join('') : '';
+
+      return result;
+    }
+    const stringWithNumbers = price;
+    const numericPart = extractNumbersFromString(stringWithNumbers);
+    console.log(numericPart);
+
+    formData.amount = parseInt(numericPart)
     console.log(formData);
+    console.log(import.meta.env.VITE_SERVER);
+    useAxios.post(`${import.meta.env.VITE_SERVER}/order`, { formData })
+      .then(data => {
+        console.log(data)
+        window.location.href = data.data.url;
+      })
   };
 
   return (
@@ -43,7 +76,7 @@ const ScheduleForm = () => {
           Time:
         </label>
         <input
-          type="time"
+          type="text"
           id="time"
           name="time"
           value={formData.time}
@@ -72,7 +105,7 @@ const ScheduleForm = () => {
           type="tel"
           id="phone"
           name="phone"
-          pattern="[0-9]{10}"
+          // pattern="[0-9]{10}"
           value={formData.phone}
           onChange={handleChange}
           placeholder="e.g., 1234567890"
@@ -111,7 +144,7 @@ const ScheduleForm = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
-          Submit
+          Payment
         </button>
       </form>
     </div>

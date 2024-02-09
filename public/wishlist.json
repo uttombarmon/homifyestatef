@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "Leisure Beautiful Health",
+    "image": "https://i.ibb.co/hFk3C5L/pexels-binyamin-mellish-106399.jpg",
+    "date": "2024-01-30",
+    "price": 29.99,
+    "review": "Excellent"
+  },
+  {
+    "id": "2",
+    "name": "Product B",
+    "image": "https://i.ibb.co/hFk3C5L/pexels-binyamin-mellish-106399.jpg",
+    "date": "2024-01-29",
+    "price": 49.99,
+    "review": "Good"
+  },
+  {
+    "id": "3",
+    "name": "Product C",
+    "image": "https://i.ibb.co/VDwBJ4r/whatty-value.png",
+    "date": "2024-01-28",
+    "price": 39.99,
+    "review": "Highly recommended!"
+  }
+ 
+]

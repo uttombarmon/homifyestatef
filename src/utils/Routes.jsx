@@ -16,6 +16,17 @@ import AgentOderList from "../components/dashboard/agent/AgentOderList";
 import AgentProperties from "../components/dashboard/agent/AgentProperties";
 import About from "../pages/about/About";
 import AgentProfile from "../pages/agentProfile/AgentProfile";
+import Wishlist from "../components/dashboard/user/Wishlist";
+import UserProfile from "../components/dashboard/user/UserProfile";
+import ManageUsers from "../components/dashboard/admin/manageusers/ManageUsers";
+import AllProperties from "../components/dashboard/admin/allproperties/AllProperties";
+import ManageReviews from "../components/dashboard/admin/managereviews/ManageReviews";
+import PaymentSuccess from "../pages/paymentStatus/PaymentSuccess";
+import PaymentFailed from "../pages/paymentStatus/PaymentFailed";
+import AddProperty from "../components/dashboard/agent/AddProperty";
+import Order from "../components/dashboard/user/Order";
+import Dashboard from "../components/dashboard/Dashboard";
+import Transections from "../components/dashboard/admin/transection/Transections";
 
 
 
@@ -34,7 +45,7 @@ export const router = createBrowserRouter([
         element: <Properties></Properties>
       },
       {
-        path:"/blog",
+        path:"/blog/:id",
         element: <Blog></Blog>
       },
       {
@@ -57,6 +68,14 @@ export const router = createBrowserRouter([
         element:<About></About>
       },
       {
+        path:"/payment/success/:transId",
+        element:<PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path:"/payment/fail/:transId",
+        element:<PaymentFailed></PaymentFailed>
+      },
+      {
         path:"/agentProfile",
         element:<AgentProfile></AgentProfile>
       }
@@ -69,7 +88,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path:"",
-        element:<div> Contents</div>
+        element:<Dashboard></Dashboard>
       },
       {
         path:"agentDashboard",
@@ -86,8 +105,39 @@ export const router = createBrowserRouter([
       {
         path:"agentProperties",
         element:<AgentProperties></AgentProperties>
+      },
+      {
+        path:"profile",
+        element:<UserProfile></UserProfile>
+      },
+      {
+        path:"wishlist",
+        element:<Wishlist></Wishlist>
+      },
+      {
+        path:"allproperties",
+        element: <AllProperties></AllProperties>
+      },
+      {
+        path:"manageusers",
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path:"managereviews",
+        element: <ManageReviews></ManageReviews>
+      },
+      {
+        path:"alltransiction",
+        element: <Transections></Transections>
+      },
+      {
+          path:"order",
+          element:<Order></Order>
+      },
+      {
+          path:"addProperty",
+          element:<AddProperty/>
       }
-      
     ]
   }
 

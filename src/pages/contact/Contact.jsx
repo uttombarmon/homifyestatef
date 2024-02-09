@@ -6,7 +6,32 @@ import {
 } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
+import toast from "react-hot-toast";
 const Contact = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_zt3es0s', 'template_ih4zkgp', form.current, {
+        publicKey: '_M-Xno-tG5TitAcIS',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          toast.success('Successfully Email send!')
+          
+
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
+
     return (
         <>
       <section
@@ -79,10 +104,10 @@ const Contact = () => {
                 </div>
 
                 <button className="btn mt-6 bg-green-500 btn-outline btn-secondary">
-                  {" "}
+               
                   <span>
                     <BsFillChatSquareFill></BsFillChatSquareFill>
-                  </span>{" "}
+                  </span>
                   Start Live chart
                 </button>
               </div>
@@ -91,58 +116,60 @@ const Contact = () => {
           <div data-aos="fade-left">
             <div className="w-full">
               <div className="card shrink-0  ">
-                <form>
+                <form ref={form} onSubmit={sendEmail} >
                   <div className=" grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="name"
+                        name="from_name"
                         placeholder="Your Name"
                         className="input"
-                        required
+                       
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="email"
-                        name="email"
+                        name="from_email"
                         placeholder="Your Email"
                         className="input"
                         required
+
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="phone"
+                        name="from_phone"
                         placeholder="Your Namber"
                         className="input"
-                        required
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>
                       <input
                         type="text"
-                        name="subjcet"
+                        name="from_subjcet"
                         placeholder="Subjcet"
                         className="input"
-                        required
+
+                 
                       />
                     </div>
                     <div className="form-control">
                       <label className="label"></label>                  
-                      <textarea className="textarea textarea-bordered" placeholder="Write Message"></textarea>
+                      <textarea name="message" className="textarea textarea-bordered" 
+
+                      placeholder="Write Message"></textarea>
                     </div>
                     <div className="form-control mt-6"></div>
                   </div>
                   <button
-                    type="submit"
-                    className="btn btn-primary w-full btn-outline mt-7 "
-                  >
+                  type="submit"
+                    className="btn btn-primary w-full btn-outline mt-7 " >
                     Send Massagge
                   </button>
                 </form>

@@ -38,12 +38,12 @@ const PropertyDetails = () => {
                 <div className='flex justify-between flex-wrap'>
                     {/* details */}
                     <div className=' w-full mx-auto'>
-                        <img className=' w-full h-[500px]' src={property?.image} alt="" />
+                        <img className=' w-full h-[500px]' src={property?.property_image} alt="" />
                     </div>
                     <div className='w-full md:w-7/12 flex flex-wrap mx-4 my-4'>
                         {/* title, price, location section */}
                         <div className='flex bg-white flex-wrap w-full px-2 py-3'>
-                            <div className=' w-full md:w-4/6 bg-zinc-50'>
+                            <div className=' w-full md:w-4/6'>
                                 <p className=' text-lg font-bold'>{property.title}</p>
                                 <p className='flex justify-between flex-wrap'>
                                     <span className=' flex self-center'> <CiLocationOn className='self-center font-semibold' /> {property.location}</span>
@@ -116,7 +116,7 @@ const PropertyDetails = () => {
 
                     {/* schedule */}
                     <div className=' w-full lg:w-4/12 h-fit bg-white'>
-                        <ScheduleForm></ScheduleForm>
+                        <ScheduleForm price={property?.property_details?.price} id={property._id}></ScheduleForm>
                     </div>
                 </div> :
                 <p>Not found data</p>
