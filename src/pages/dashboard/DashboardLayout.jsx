@@ -63,7 +63,7 @@ const DashboardLayout = () => {
                 </div>
             </div>
             {/* dashboard nav section */}
-            <div className=" hidden lg:flex fixed min-h-screen md:w-[200px] lg:w-[300px]  bg-stone-700">
+            <div className=" hidden lg:flex fixed min-h-screen md:w-[250px]  bg-stone-700">
                 <div className='w-full flex-wrap '>
                     {/* drawer head */}
                     <div className=" w-full pt-4 hidden lg:inline text-center">
@@ -86,7 +86,7 @@ const DashboardLayout = () => {
                 </div>
             </div>
             {/* dashboard content section  */}
-            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-300px)] text-black h-screen">
+            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">
                 <Outlet></Outlet>
             </div>
         </div>

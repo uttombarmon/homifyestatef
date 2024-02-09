@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Property from "./Property";
 import useAxiosPublic from "../../../../hooks/axiosPublic/useAxiosPublic";
+import Transection from "./Transection";
 
-function Allproperties() {
+function Transections() {
     const [properties, setProperties] = useState(null)
     const axiosPublic = useAxiosPublic()
     useEffect(() => {
-        axiosPublic.get('/home/checkout')
+        axiosPublic.get('/admin/transections')
             .then(e => {
                 setProperties(e.data)
             })
@@ -23,16 +23,17 @@ function Allproperties() {
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>title</th>
-                                        <th>Location</th>
-                                        <th>Agent Email</th>
+                                        <th>Transection-Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Date</th>
                                         <th>Price</th>
-                                        <th>Reject</th>
+                                        <th>Payment</th>
                                     </tr>
                                 </thead>
                                 {/* row 1 */}
                                 <tbody>{
-                                    properties.map((d,index )=> <Property index={index} d={d} key={d._id}></Property>)
+                                    properties.map((d, index) => <Transection index={index} d={d} key={d._id}></Transection>)
                                 }
                                 </tbody>
                             </table>
@@ -45,4 +46,4 @@ function Allproperties() {
     );
 }
 
-export default Allproperties;
+export default Transections;

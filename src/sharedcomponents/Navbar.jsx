@@ -20,7 +20,7 @@ const Navbar = () => {
           const userInfo = res.data
           console.log(userInfo.role);
           if (userInfo.role == 'user' || userInfo.role == "admin") {
-            setDynamic("profile")
+            setDynamic("")
           } else {
             setDynamic("agentDashboard")
           }
@@ -44,12 +44,12 @@ const Navbar = () => {
     <li><NavLink to={'about'}>About</NavLink></li>
     {
       user &&
-      <li><Link to={dynamic}>Dashboard</Link></li>
+      <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
 
   return (
-    <div className="navbar bg-[#2119194f] text-amber-300 fixed z-10">
+    <div className="navbar bg-[#2119198d] text-amber-300 fixed z-10">
       <div className="navbar-start">
         <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
       </div>

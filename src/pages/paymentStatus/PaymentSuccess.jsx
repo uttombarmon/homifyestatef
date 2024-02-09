@@ -1,10 +1,21 @@
 import { useParams } from "react-router-dom";
 import success from "./checked.png"
+import { useEffect } from "react";
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 
 
 
 const PaymentSuccess = () => {
     const {transId} = useParams();
+    const useAxios = useAxiosPublic()
+    const searchParams = new URLSearchParams(window.location.search);
+    const id = searchParams.get('id')
+    useEffect(()=>{
+      useAxios.patch(`/order/payment/success/${transId}?id=${id}`)
+      .then(e=> console.log(e.da))
+      .catch(err=>console.log(err))
+    },[useAxios,id,transId])
+
     return (
         // <div>
         //    <h1>payment is successful and transection id: {transId}</h1> 
