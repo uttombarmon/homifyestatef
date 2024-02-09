@@ -102,7 +102,6 @@ const AddProperty = () => {
 
 
   };
-
   // facilities Section 
   const handleChange = (e) => {
     const data = e.target.value;
