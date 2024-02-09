@@ -46,7 +46,7 @@ const AgentProfile = () => {
   const npage = Math.ceil(properties.length / recordsPerpage);
 
   const numbers = [...Array(npage + 1).keys()].slice(1);
-  console.log(numbers);
+  // console.log(numbers);
 
   return (
     <>

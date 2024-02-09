@@ -11,7 +11,6 @@ import { useContext } from "react";
 import { AuthContext } from "../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-
 const Property = ({ properties }) => {
 
   const axiosPublic = useAxiosPublic();
@@ -92,7 +91,6 @@ const Property = ({ properties }) => {
               </NavLink>
               <FaArrowRight className="rounded-full bg-base-300"></FaArrowRight>
             </div>
-
             {/* reation  */}
             <div>
               <div className="rating rating-sm">
@@ -128,6 +126,16 @@ const Property = ({ properties }) => {
                   readOnly
                 />
               </div>
+                <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
+                    <div className="text-white flex flex-col  gap-1 ">
+                        <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
+                            {properties?.property_status}
+                        </p>
+                        <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
+                            Features
+                        </p>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
