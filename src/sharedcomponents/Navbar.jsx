@@ -43,7 +43,7 @@ const Navbar = () => {
     <li><NavLink to={'about'}>About</NavLink></li>
     {
       user &&
-      <li><Link to={dynamic}>Dashboard</Link></li>
+      <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
 
