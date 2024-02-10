@@ -28,12 +28,12 @@ const Features = () => {
   return (
     <>
       <div className=" w-full py-10 ">
-        <div className=" flex justify-between px-2 mb-4">
+        <div className=" md:flex md:justify-between px-2 mb-4">
 
           {/* section title and description */}
-          <div>
+          <div className="w-full">
             <h1 className=" font-bold text-xl lg:text-4xl py-4">Explore Our Newest Listings!</h1>
-            <p className=" text-sm font-semibold">Discover a collection of the finest properties recently added to our listings.</p>
+            <p className=" text-md font-semibold text-justify ">Discover a collection of the finest properties recently added to our listings.</p>
           </div>
 
           {/* explore button  */}
