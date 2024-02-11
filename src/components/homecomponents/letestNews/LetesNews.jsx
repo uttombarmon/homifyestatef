@@ -3,25 +3,13 @@ import { MdDateRange } from "react-icons/md";
 import { FaCommentDots } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+
 
 
 
 
 const LetesNews = () => {
   const [latestNews, setLatestNews] = useState([]);
-  // const axiosPublic = useAxiosPublic();
- 
-
-
-  // useEffect(()=>{
-  //   axiosPublic.get('/home/latestNews')
-  //   .then(data=>{
-  //     setLatestNews(data.data)
-  //   })
-  // },[axiosPublic])
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,10 +26,9 @@ const LetesNews = () => {
 
 
 
-  console.log(latestNews)
   return (
     <>
-      <h1 className=" items-center text-2xl font-bold mb-2 mt-10 text-center w-full ">
+      <h1 className=" items-center text-4xl font-bold mb-2 mt-10 text-center w-full ">
         Latest News & Articles
       </h1>
       <div className=" w-full lg:w-[calc(100%-20px)] lg:p-7 mt-8 lg:px-0 mb-3 md:gap-2 md:px-1 gap-3 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-3 grid-cols-1 ">

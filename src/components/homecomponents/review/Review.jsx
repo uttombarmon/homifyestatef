@@ -31,7 +31,7 @@ const Review = () => {
                                     <h2 className='font-bold'>{review.title}</h2>
                                     <img className='w-[25px] h-[25px]' src={review.icon} alt="" />
                                 </div>
-                                <p>{review.comment}</p>
+                                <p className='text-justify'>{review.comment}</p>
 
                             </div>
 

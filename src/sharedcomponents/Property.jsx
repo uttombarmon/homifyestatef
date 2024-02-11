@@ -6,12 +6,14 @@ import { TiArrowMoveOutline } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
 const Property = ({ properties }) => {
+ console.log(properties)
+
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
@@ -48,7 +50,7 @@ const Property = ({ properties }) => {
       </div>
       {/* description part */}
       <div className=" absolute bottom-[20px] w-full flex justify-center">
-        <div className="px-3 py-3 rounded-md shadow-lg bg-white lg:w-3/4  md:w-[280px] items-center   ">
+        <div className="px-3   py-3 rounded-md shadow-lg bg-white lg:w-3/4 mr-3 md:w-[280px] xl:mr-4 md:mr-0 lg:mr-4  items-center   ">
           <h2 className=" mt-2 lg:text-[18px] text-sm mb-2 font-semibold">
             {/* Hemosa Casa al Norte */} {properties.title}
           </h2>
@@ -123,16 +125,17 @@ const Property = ({ properties }) => {
                   readOnly
                 />
               </div>
-              {/* <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
+
+               {/* <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
                     <div className="text-white flex flex-col  gap-1 ">
-                        <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
-                            {properties?.property_status}
-                        </p>
+                      <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
+                            {properties?.property_status}                         </p>
                         <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
-                            Features
-                        </p>
+                           Features
+                         </p>
                     </div>
-                </div> */}
+               </div> */}
+
             </div>
           </div>
         </div>
@@ -142,15 +145,15 @@ const Property = ({ properties }) => {
 
       <div className="absolute px-3  rounded-full  left-[60%] lg:left-[60%] lg:bottom-[180px] xl:bottom-[160px] bottom-[160px] items-center ">
         <div className=" rounded-md text-white hover:bg-red-500 bg-orange-500 gap-3 px-2 py-1 ">
-          <p className=" font-semibold">{properties.price}</p>
+          <p className=" font-semibold">${properties.property_details.price}</p>
         </div>
       </div>
       {/* rent, Features and share section  */}
-      <div className=" absolute flex flex-row-reverse top-20 left-10">
-        <div className="px-3  rounded-full lg:ml-10  bottom-[340px]  w-[100px] items-center ">
+      <div className=" absolute flex   flex-row-reverse top-5 left-10 justify-between mx-auto ">
+        <div className="px-3  rounded-full xl:ml-40 lg:ml-10 ml-12 bottom-[340px]  w-[100px] items-center ">
           <div className="flex  text-white  gap-2 ">
             <p className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
-              <IoMdShare />
+              <Link to='https://www.facebook.com'><IoMdShare /></Link>
             </p>
             <p
               onClick={() => handelWhilist(properties)}
@@ -159,17 +162,21 @@ const Property = ({ properties }) => {
               <FaRegHeart />
             </p>
             <p className=" bg-gray-400 hover:bg-orange-500  rounded-full text-xl p-1 ">
-              <CgMathPlus />
+              <Link to=''><CgMathPlus /></Link>
             </p>
           </div>
         </div>
 
-        <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
+        <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
+
+            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded">
+              Rent
             <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
               {properties.property_status}
+
             </p>
-            <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
+            <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded font-bold">
               Features
             </p>
           </div>
