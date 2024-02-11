@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Signup from "../pages/signup/Signup";
-
 import SignIn from "../pages/signin/SignIn";
-
 import LayOut from "../components/mainLayout/LayOut";
 import Home from "../pages/Home/Home";
 import PropertyDetails from "../pages/properties-details/PropertyDetails";
@@ -27,7 +25,8 @@ import AddProperty from "../components/dashboard/agent/AddProperty";
 import Order from "../components/dashboard/user/Order";
 import Dashboard from "../components/dashboard/Dashboard";
 import Transections from "../components/dashboard/admin/transection/Transections";
-
+import Sell from "../pages/sell/Sell";
+import Rent from "../pages/rent/Rent";
 
 
 export const router = createBrowserRouter([
@@ -37,28 +36,32 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path:"",
-        element: <Home></Home>
+        path: "",
+        element: <Home></Home>,
       },
       {
-        path:"/properties",
-        element: <Properties></Properties>
+        path: "/properties",
+        element: <Properties></Properties>,
       },
       {
-        path:"/blog/:id",
-        element: <Blog></Blog>
+        path: "/blog/:id",
+        element: <Blog></Blog>,
       },
       {
-        path: '/signup',
-        element: <Signup></Signup>
+        path: "/signup",
+        element: <Signup></Signup>,
       },
       {
-        path: '/signin',
-        element: <SignIn></SignIn>
+        path: "/signin",
+        element: <SignIn></SignIn>,
       },
       {
-        path:"properties/:id",
-        element: <PropertyDetails></PropertyDetails>
+        path: "properties/:id",
+        element: <PropertyDetails></PropertyDetails>,
+      },
+      {
+         path:"sell",
+         element:<Sell></Sell>
       },
       {
         path:"/contact",
@@ -67,78 +70,88 @@ export const router = createBrowserRouter([
         path:"/about",
         element:<About></About>
       },
-      {
-        path:"/payment/success/:transId",
-        element:<PaymentSuccess></PaymentSuccess>
+        {
+        path: "/rent",
+        element: <Rent></Rent>,
       },
       {
-        path:"/payment/fail/:transId",
-        element:<PaymentFailed></PaymentFailed>
+        path: "/contact",
+        element: <Contact></Contact>,
       },
       {
-        path:"/agentProfile",
-        element:<AgentProfile></AgentProfile>
-      }
-    ]
-
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/payment/success/:transId",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/payment/fail/:transId",
+        element: <PaymentFailed></PaymentFailed>,
+      },
+      {
+        path: "/agentProfile",
+        element: <AgentProfile></AgentProfile>,
+      },
+    ],
   },
   {
-    path:"dashboard",
-    element:<DashboardLayout></DashboardLayout>,
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path:"",
-        element:<Dashboard></Dashboard>
+        path: "",
+        element: <Dashboard></Dashboard>,
       },
       {
-        path:"agentDashboard",
-        element:<AgentDashboard></AgentDashboard>
+        path: "agentDashboard",
+        element: <AgentDashboard></AgentDashboard>,
       },
       {
-        path:"agentProfile",
-        element:<AgentProfile></AgentProfile>
+        path: "agentProfile",
+        element: <AgentProfile></AgentProfile>,
       },
       {
-        path:"agentOrder",
-        element:<AgentOderList></AgentOderList>
+        path: "agentOrder",
+        element: <AgentOderList></AgentOderList>,
       },
       {
-        path:"agentProperties",
-        element:<AgentProperties></AgentProperties>
+        path: "agentProperties",
+        element: <AgentProperties></AgentProperties>,
       },
       {
-        path:"profile",
-        element:<UserProfile></UserProfile>
+        path: "profile",
+        element: <UserProfile></UserProfile>,
       },
       {
-        path:"wishlist",
-        element:<Wishlist></Wishlist>
+        path: "wishlist",
+        element: <Wishlist></Wishlist>,
       },
       {
-        path:"allproperties",
-        element: <AllProperties></AllProperties>
+        path: "allproperties",
+        element: <AllProperties></AllProperties>,
       },
       {
-        path:"manageusers",
-        element: <ManageUsers></ManageUsers>
+        path: "manageusers",
+        element: <ManageUsers></ManageUsers>,
       },
       {
-        path:"managereviews",
-        element: <ManageReviews></ManageReviews>
+        path: "managereviews",
+        element: <ManageReviews></ManageReviews>,
       },
       {
-        path:"alltransiction",
-        element: <Transections></Transections>
+        path: "alltransiction",
+        element: <Transections></Transections>,
       },
       {
-          path:"order",
-          element:<Order></Order>
+        path: "order",
+        element: <Order></Order>,
       },
       {
-          path:"addProperty",
-          element:<AddProperty/>
-      }
-    ]
-  }
-
+        path: "addProperty",
+        element: <AddProperty />,
+      },
+    ],
+  },
 ]);

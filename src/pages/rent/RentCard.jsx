@@ -6,14 +6,13 @@ import { TiArrowMoveOutline } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
-import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-const Property = ({ properties }) => {
- console.log(properties)
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
+import { AuthContext } from "../../utils/provider/AuthProvider";
 
+const RentCard = ({ properties }) => {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
@@ -49,8 +48,8 @@ const Property = ({ properties }) => {
         />
       </div>
       {/* description part */}
-      <div className=" absolute bottom-[20px] w-full flex justify-center">
-        <div className="px-3   py-3 rounded-md shadow-lg bg-white lg:w-3/4 mr-3 md:w-[280px] xl:mr-4 md:mr-0 lg:mr-4  items-center   ">
+      <div className=" absolute bottom-[15px]  w-full lg:-ml-2 md:ml-0 -ml-2 flex justify-center">
+        <div className="px-3 py-3 rounded-md shadow-lg bg-white lg:w-[85%]  md:w-[280px] items-center   ">
           <h2 className=" mt-2 lg:text-[18px] text-sm mb-2 font-semibold">
             {/* Hemosa Casa al Norte */} {properties.title}
           </h2>
@@ -125,17 +124,6 @@ const Property = ({ properties }) => {
                   readOnly
                 />
               </div>
-
-               {/* <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
-                    <div className="text-white flex flex-col  gap-1 ">
-                      <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
-                            {properties?.property_status}                         </p>
-                        <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
-                           Features
-                         </p>
-                    </div>
-               </div> */}
-
             </div>
           </div>
         </div>
@@ -143,17 +131,17 @@ const Property = ({ properties }) => {
 
       {/* icone setp photo  */}
 
-      <div className="absolute px-3  rounded-full  left-[60%] lg:left-[60%] lg:bottom-[180px] xl:bottom-[160px] bottom-[160px] items-center ">
+      <div className="absolute px-3  rounded-full  left-[44%] lg:left-[45%] xl:left-[57%] md:left-[45%] md:bottom-[180px] lg:bottom-[180px] xl:bottom-[157px] bottom-[160px] items-center ">
         <div className=" rounded-md text-white hover:bg-red-500 bg-orange-500 gap-3 px-2 py-1 ">
-          <p className=" font-semibold">${properties.property_details.price}</p>
+          <p className=" font-semibold">{properties.property_details.price}</p>
         </div>
       </div>
       {/* rent, Features and share section  */}
-      <div className=" absolute flex   flex-row-reverse top-5 left-10 justify-between mx-auto ">
-        <div className="px-3  rounded-full xl:ml-40 lg:ml-10 ml-12 bottom-[340px]  w-[100px] items-center ">
+      <div className=" absolute flex flex-row-reverse top-7 left-3 ">
+        <div className="px-3  rounded-full xl:ml-[170px] lg:ml-[70px] md:ml-16 ml-24  mt-2 items-center ">
           <div className="flex  text-white  gap-2 ">
             <p className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
-              <Link to='https://www.facebook.com'><IoMdShare /></Link>
+              <IoMdShare />
             </p>
             <p
               onClick={() => handelWhilist(properties)}
@@ -162,21 +150,17 @@ const Property = ({ properties }) => {
               <FaRegHeart />
             </p>
             <p className=" bg-gray-400 hover:bg-orange-500  rounded-full text-xl p-1 ">
-              <Link to=''><CgMathPlus /></Link>
+              <CgMathPlus />
             </p>
           </div>
         </div>
 
-        <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
+        <div className=" ml-2 rounded-full bottom-[300px]  w-[90px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
-
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded">
-              Rent
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
+            <p className="  bg-black hover:bg-orange-400 items-center text-center px-2 py-1 font-bold ">
               {properties.property_status}
-
             </p>
-            <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded font-bold">
+            <p className=" bg-red-400 hover:bg-orange-400 items-center text-center px-2 py-1  font-bold">
               Features
             </p>
           </div>
@@ -186,4 +170,4 @@ const Property = ({ properties }) => {
   );
 };
 
-export default Property;
+export default RentCard;
