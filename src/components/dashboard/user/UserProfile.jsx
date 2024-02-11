@@ -180,6 +180,7 @@ const UserProfile = () => {
                     type="text"
                     placeholder="Address"
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 <div className="form-control">
@@ -266,11 +267,9 @@ const UserProfile = () => {
             </div>
             <div className=" flex justify-between items-center">
               <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 ">
-                {" "}
-                Update password{" "}
+                Update password
               </button>
               <p className="  text-3xl px-7 hover:text-orange-400 rounded-full ">
-                {" "}
               </p>
             </div>
           </div>
