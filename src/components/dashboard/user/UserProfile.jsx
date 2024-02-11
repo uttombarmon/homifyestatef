@@ -6,6 +6,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import toast from "react-hot-toast";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const [properties, setProperties] = useState([]);
@@ -40,6 +41,7 @@ const UserProfile = () => {
     // console.log(allInfo);
    const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
    const data = res.data;
+   toast.success("success full update")
    console.log(data)
    
 
@@ -79,7 +81,7 @@ const UserProfile = () => {
               <img
                 src={properties.photoURL}
                 alt=""
-                className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
+                className=" xl:w-[295px] xl:rounded-full h-full lg:w-[300px] md:w-[330px] w-[360px]"
               />
             </div>
             <div className=" px-5">
@@ -178,6 +180,7 @@ const UserProfile = () => {
                     type="text"
                     placeholder="Address"
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 <div className="form-control">
@@ -264,11 +267,9 @@ const UserProfile = () => {
             </div>
             <div className=" flex justify-between items-center">
               <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 ">
-                {" "}
-                Update password{" "}
+                Update password
               </button>
               <p className="  text-3xl px-7 hover:text-orange-400 rounded-full ">
-                {" "}
               </p>
             </div>
           </div>
