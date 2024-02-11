@@ -6,6 +6,7 @@ import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { FaFacebook } from "react-icons/fa6";
 import { FaEyeSlash, FaEye, FaCopy } from "react-icons/fa";
 import { RiKeyLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
   const {
@@ -47,6 +48,7 @@ const SignIn = () => {
           navigate("/");
         }
         navigate("/");
+        toast.success("Success full Login")
       })
       .catch((err) => console.log(err));
   };

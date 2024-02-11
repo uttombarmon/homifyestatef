@@ -6,6 +6,7 @@ import { FaInstagramSquare } from "react-icons/fa";
 import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import toast from "react-hot-toast";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const [properties, setProperties] = useState([]);
@@ -40,6 +41,7 @@ const UserProfile = () => {
     // console.log(allInfo);
    const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
    const data = res.data;
+   toast.success("success full update")
    console.log(data)
    
 
@@ -79,7 +81,7 @@ const UserProfile = () => {
               <img
                 src={properties.photoURL}
                 alt=""
-                className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
+                className=" xl:w-[295px] xl:rounded-full h-full lg:w-[300px] md:w-[330px] w-[360px]"
               />
             </div>
             <div className=" px-5">
