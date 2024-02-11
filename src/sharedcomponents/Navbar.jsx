@@ -39,6 +39,7 @@ const Navbar = () => {
   const navlink = <>
     <li><NavLink to={''}>Home</NavLink></li>
     <li><NavLink to={'rent'}>Rent</NavLink></li>
+    <li><NavLink to={'sell'}>Sell</NavLink></li>
     <li><NavLink to={'contact'}>contact</NavLink></li>
     <li><NavLink to={'about'}>About</NavLink></li>
     {

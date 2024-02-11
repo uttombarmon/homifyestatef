@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Signup from "../pages/signup/Signup";
-
 import SignIn from "../pages/signin/SignIn";
-
 import LayOut from "../components/mainLayout/LayOut";
 import Home from "../pages/Home/Home";
 import PropertyDetails from "../pages/properties-details/PropertyDetails";
@@ -27,7 +25,9 @@ import AddProperty from "../components/dashboard/agent/AddProperty";
 import Order from "../components/dashboard/user/Order";
 import Dashboard from "../components/dashboard/Dashboard";
 import Transections from "../components/dashboard/admin/transection/Transections";
+import Sell from "../pages/sell/Sell";
 import Rent from "../pages/rent/Rent";
+
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +60,17 @@ export const router = createBrowserRouter([
         element: <PropertyDetails></PropertyDetails>,
       },
       {
+         path:"sell",
+         element:<Sell></Sell>
+      },
+      {
+        path:"/contact",
+        element:<Contact></Contact>
+      },{
+        path:"/about",
+        element:<About></About>
+      },
+        {
         path: "/rent",
         element: <Rent></Rent>,
       },
