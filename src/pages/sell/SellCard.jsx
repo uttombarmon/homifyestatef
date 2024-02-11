@@ -171,3 +171,4 @@ const SellCard = ({ properties }) => {
 };
 
 export default SellCard;
+// sove

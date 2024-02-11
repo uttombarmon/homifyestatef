@@ -126,16 +126,6 @@ const Property = ({ properties }) => {
                 />
               </div>
 
-               {/* <div className="px-3  rounded-full bottom-[300px]  w-[100px] items-center ">
-                    <div className="text-white flex flex-col  gap-1 ">
-                      <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
-                            {properties?.property_status}                         </p>
-                        <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded-full font-bold">
-                           Features
-                         </p>
-                    </div>
-               </div> */}
-
             </div>
           </div>
         </div>
@@ -170,7 +160,7 @@ const Property = ({ properties }) => {
         <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
 
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded">
+            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded"> </p>
               Rent
             <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
               {properties.property_status}
