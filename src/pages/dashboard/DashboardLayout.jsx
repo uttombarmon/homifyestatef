@@ -16,17 +16,18 @@ const DashboardLayout = () => {
     //get user data from server
     useEffect(() => {
         const email = user?.email;
-        console.log(email);
+        // console.log(email);
         if (email !== null && email !== undefined) {
             axiosPublic.get(`/users/${email}`)
                 .then(res => {
                     const userInfo = res.data
-                    console.log(userInfo);
+                    // console.log(...userInfo);
                     setUser(userInfo);
                 })
         }
 
     }, [axiosPublic, user]);
+    console.log(users?.role)
     return (
         <>
             <div>

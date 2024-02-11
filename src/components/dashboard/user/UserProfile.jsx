@@ -1,18 +1,21 @@
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
-import { useContext,   useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaInstagramSquare } from "react-icons/fa";
 import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
+import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 const UserProfile = () => {
+  const axiosPublic = useAxiosPublic();
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
 
 
-  const {user}= useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  // console.log(user?.email)
 
-  const handelsubmit = (e) => {
+  const handelsubmit = async (e) => {
     e.preventDefault();
     const from = e.target;
     const name = from.name.value;
@@ -27,29 +30,38 @@ const UserProfile = () => {
       name,
       phone,
       city,
-      email:user?.email,
+      email: user?.email,
       address,
       website,
-      photo,
+      photoURL:photo,
       country,
     };
-
-    console.log(allInfo);
+  
+    // console.log(allInfo);
+   const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
+   const data = res.data;
+   console.log(data)
+   
 
   };
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch("/userprofile.json");
-        const data = await response.json();
-        setProperties(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      if (user?.email) {
+        try {
+          const response = await axiosPublic.get(`/users/${user?.email}`);
+          const data =  [response.data];
+          setProperties(data);
+          console.log(data)
+        } catch (error) {
+          console.error(error);
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic,user?.email]);
+
+
 
   return (
     <div className="bg-gray-200">
@@ -60,12 +72,12 @@ const UserProfile = () => {
 
         {properties?.map((properties) => (
           <div
-            key={properties.id}
+            key={properties._id}
             className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
           >
             <div className=" ml-3">
               <img
-                src={properties.image}
+                src={properties.photoURL}
                 alt=""
                 className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
               />

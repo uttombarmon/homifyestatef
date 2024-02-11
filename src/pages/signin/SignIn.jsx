@@ -35,8 +35,9 @@ const SignIn = () => {
           method: "google",
         };
         const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
+        console.log(getUser);
         const userFromDB = getUser?.data?.email;
-        console.log(userFromDB);
+        // console.log(getUser?.data?.role)
         if (!userFromDB) {
           const result = await axiosPublic.post(`/users/user`, data);
           console.log(result);
