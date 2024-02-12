@@ -8,7 +8,7 @@ import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
-  const [properties, setProperties] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
   // console.log(properties);
 
 
@@ -49,8 +49,8 @@ const UserProfile = () => {
       if (user?.email) {
         try {
           const response = await axiosPublic.get(`/users/${user?.email}`);
-          const data =  [response.data];
-          setProperties(data);
+          const data =  response.data;
+          setUserInfo(data);
           console.log(data)
         } catch (error) {
           console.error(error);
@@ -70,43 +70,43 @@ const UserProfile = () => {
           Personalized Information
         </h1>
 
-        {properties?.map((properties) => (
+        
           <div
-            key={properties._id}
+            key={userInfo._id}
             className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
           >
             <div className=" ml-3">
               <img
-                src={properties.photoURL}
+                src={userInfo.photoURL}
                 alt=""
                 className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
               />
             </div>
             <div className=" px-5">
               <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
-                {properties.name}
+                {userInfo.name}
               </h1>
               <p className="text-[17px] flex gap-20  mt-4 ">
                 <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
-                {properties.email}
+                {userInfo.email}
               </p>
               <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
                 <span className="font-semibold tex-[22px] mr-2  ">Phone:</span>
-                {properties.phone}
+                {userInfo.phone}
               </p>
               <p className="text-[17px] flex gap-20  mt-4 justify-start ">
                 <span className="font-semibold tex-[22px] mr-7 "> City : </span>
-                {properties.city}
+                {userInfo.city}
               </p>
               <p className="text-[17px] flex gap-20  mt-4 justify-start ">
                 <span className="font-semibold tex-[22px] "> Country:</span>
-                {properties.country}
+                {userInfo.country}
               </p>
               <p className="text-[17px] flex gap-20  mt-4 justify-start ">
                 <span className="font-semibold tex-[22px] "> Address:</span>
-                {properties.address}
+                {userInfo.address}
               </p>
-              {/* Icone link */}
+              {/* Icon link */}
               <div className="flex gap-5 md:flex-row mt-4">
                 <button className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 px-2 ">
                   <FaFacebook></FaFacebook>
@@ -123,9 +123,10 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-        ))}
+        
+        
 
-        {/* frome start */}
+        {/* from start */}
 
         <div className=" w-full xl:mt-14 xl:w-[980px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
           {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
@@ -142,6 +143,7 @@ const UserProfile = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
+                    defaultValue={userInfo?.name}
                     className="input input-bordered"
                     required
                   />
@@ -154,6 +156,7 @@ const UserProfile = () => {
                     type="number"
                     name="phone"
                     placeholder="Phone"
+                    defaultValue={userInfo?.phone}
                     className="input input-bordered"
                   />
                 </div>
@@ -166,6 +169,7 @@ const UserProfile = () => {
                     name="website"
                     type="text"
                     placeholder="Website"
+                    defaultValue={userInfo?.website}
                     className="input input-bordered"
                   />
                 </div>
@@ -177,6 +181,7 @@ const UserProfile = () => {
                     name="address"
                     type="text"
                     placeholder="Address"
+                    defaultValue={userInfo?.address}
                     className="input input-bordered"
                   />
                 </div>
@@ -188,6 +193,7 @@ const UserProfile = () => {
                     type="text"
                     name="country"
                     placeholder="Address"
+                    defaultValue={userInfo?.country}
                     className="input input-bordered"
                   />
                 </div>
@@ -199,6 +205,7 @@ const UserProfile = () => {
                     name="city"
                     type="text"
                     placeholder="Address"
+                    defaultValue={userInfo?.city}
                     className="input input-bordered"
                   />
                 </div>
@@ -210,6 +217,7 @@ const UserProfile = () => {
                     name="photo"
                     type="text"
                     placeholder="Photo"
+                    defaultValue={userInfo?.photoURL}
                     className="input items-center py-2 input-bordered"
                   />
                 </div>
