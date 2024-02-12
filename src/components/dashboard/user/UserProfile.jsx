@@ -33,15 +33,15 @@ const UserProfile = () => {
       email: user?.email,
       address,
       website,
-      photoURL:photo,
+      photoURL: photo,
       country,
     };
-  
+
     // console.log(allInfo);
-   const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
-   const data = res.data;
-   console.log(data)
-   
+    const res = await axiosPublic.patch(`/users/user/${user?.email}`, allInfo)
+    const data = res.data;
+    console.log(data)
+
 
   };
   useEffect(() => {
@@ -49,7 +49,7 @@ const UserProfile = () => {
       if (user?.email) {
         try {
           const response = await axiosPublic.get(`/users/${user?.email}`);
-          const data =  response.data;
+          const data = response.data;
           setUserInfo(data);
           console.log(data)
         } catch (error) {
@@ -59,7 +59,7 @@ const UserProfile = () => {
     };
 
     fetchData();
-  }, [axiosPublic,user?.email]);
+  }, [axiosPublic, user?.email]);
 
 
 
@@ -70,61 +70,61 @@ const UserProfile = () => {
           Personalized Information
         </h1>
 
-        
-          <div
-            key={userInfo._id}
-            className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
-          >
-            <div className=" ml-3">
-              <img
-                src={userInfo.photoURL}
-                alt=""
-                className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
-              />
-            </div>
-            <div className=" px-5">
-              <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
-                {userInfo.name}
-              </h1>
-              <p className="text-[17px] flex gap-20  mt-4 ">
-                <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
-                {userInfo.email}
-              </p>
-              <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] mr-2  ">Phone:</span>
-                {userInfo.phone}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] mr-7 "> City : </span>
-                {userInfo.city}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] "> Country:</span>
-                {userInfo.country}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] "> Address:</span>
-                {userInfo.address}
-              </p>
-              {/* Icon link */}
-              <div className="flex gap-5 md:flex-row mt-4">
-                <button className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 px-2 ">
-                  <FaFacebook></FaFacebook>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaLinkedinIn></FaLinkedinIn>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaTwitter></FaTwitter>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaInstagramSquare></FaInstagramSquare>
-                </button>
-              </div>
+
+        <div
+          key={userInfo._id}
+          className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
+        >
+          <div className=" ml-3">
+            <img
+              src={userInfo.photoURL}
+              alt=""
+              className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
+            />
+          </div>
+          <div className=" px-5">
+            <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
+              {userInfo.name}
+            </h1>
+            <p className="text-[17px] flex gap-20  mt-4 ">
+              <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
+              {userInfo.email}
+            </p>
+            <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] mr-2  ">Phone:</span>
+              {userInfo.phone}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] mr-7 "> City : </span>
+              {userInfo.city}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] "> Country:</span>
+              {userInfo.country}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] "> Address:</span>
+              {userInfo.address}
+            </p>
+            {/* Icon link */}
+            <div className="flex gap-5 md:flex-row mt-4">
+              <button className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 px-2 ">
+                <FaFacebook></FaFacebook>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaLinkedinIn></FaLinkedinIn>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaTwitter></FaTwitter>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaInstagramSquare></FaInstagramSquare>
+              </button>
             </div>
           </div>
-        
-        
+        </div>
+
+
 
         {/* from start */}
 
@@ -185,18 +185,7 @@ const UserProfile = () => {
                     className="input input-bordered"
                   />
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Country</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder="Address"
-                    defaultValue={userInfo?.country}
-                    className="input input-bordered"
-                  />
-                </div>
+
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">City</span>
@@ -206,6 +195,20 @@ const UserProfile = () => {
                     type="text"
                     placeholder="Address"
                     defaultValue={userInfo?.city}
+                    className="input input-bordered"
+                  />
+                </div>
+
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Country</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="country"
+                    placeholder="Address"
+                    defaultValue={userInfo?.country}
                     className="input input-bordered"
                   />
                 </div>
