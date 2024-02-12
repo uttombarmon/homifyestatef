@@ -3,12 +3,12 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const Wishlist = () => {
 
   const axiosPublic =useAxiosPublic()
   const [properties, setProperties] = useState([]);
-  console.log(properties);
 
   // pagination
   const {user}= useContext(AuthContext)
@@ -43,21 +43,7 @@ const Wishlist = () => {
     return pageNumbers;
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("/wishlist.json");
-  //       const data = await response.json();
-  //       setProperties(data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-
+  // data fetching 
    useEffect(() => {
     const fetchData = async () => {
       try {
@@ -72,6 +58,24 @@ const Wishlist = () => {
       fetchData();
     }, [axiosPublic,user?.email]);
 
+//  delte api 
+
+
+
+const handelDelete = (id) => {
+  
+axiosPublic.delete(`/wish-lists/${id}`)
+.then(e =>{
+  if(e.data.deletedCount > 0){
+    toast.success("seccess full delete wishlist")
+    const filterData = properties.filter(d => d._id !== id)
+    setProperties(filterData)
+  }
+ })
+ .catch(error => console.log(error));
+};
+
+
   return (
     <>
       <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
@@ -79,13 +83,13 @@ const Wishlist = () => {
         <div className="table-responsive">
           <table className="w-full table">
             {/* head */}
-            <thead className="h-[5px] bg-slate-200 border ">
+            <thead className="h-[5px] bg-slate-200 border-2 ">
               <tr className="text-xl font-semibold text-black">
                 <th>
                   <h1>Images</h1>
                 </th>
                 <th>
-                  <h1>Details</h1>
+                  <h1>Name</h1>
                 </th>
                 <th>Price</th>
                 <th>Purpose</th>
@@ -95,7 +99,7 @@ const Wishlist = () => {
             <tbody className="px-6">
               {/* row 1 */}
               {currentItems?.map((property) => (
-                <tr key={property.id} className="border ">
+                <tr key={property._id} className="border-black-700  ">
                   <td className="w-full md:w-[150px] lg:w-[200px] xl:w-[200px] border">
                     <img
                       src={property.image}
@@ -107,26 +111,24 @@ const Wishlist = () => {
                     <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px] font-semibold font-serif">
                       {property.name}
                     </h3>
-                    <p className="text-[15px] font-medium">
-                      Posting date: {property.date}
-                    </p>
-                    <p className="font-medium">Review: {property.review}</p>
                   </td>
                   <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border text-xl font-medium font-serif">
-                    $ {property.price}
+                    $ {property?.price}
                   </td>
                   <td className="border">
-                    <button className="text-base md:text-xl font-medium font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    <button className="text-base  md:text-xl font-bold font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
                       Sale
                     </button>
                   </td>
                   <td className="border">
-                    <button className="text-base md:text-xl font-medium font-serif w-full md:w-[90px] lg:w-[90px] xl:w-[110px] flex items-center gap-2">
+                    <button  onClick={()=>handelDelete(property._id)} className=" bg-red-400 gap-1 hover:bg-red-600 h-[40px] w-[90px] px-1 text-[17px] font-serif  flex items-center">
                       <span>
                         <RiDeleteBin7Line />
                       </span>
                       Delete
                     </button>
+                    <br />
+                    <button className="  bg-orange-400 gap-1 hover:bg-orange-600 h-[40px] w-[90px]  text-[17px] text-center px-1  font-serif  flex items-center"> Make offer</button>
                   </td>
                 </tr>
               ))}
@@ -135,7 +137,7 @@ const Wishlist = () => {
         </div>
       </div>
 
-      <div className=" flex  text-center items-center mt-7 w-full mx-auto justify-center  gap-5">
+      <div className=" flex  text-center mt-[40vh] items-center mb-10  w-full mx-auto justify-center  gap-5">
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
