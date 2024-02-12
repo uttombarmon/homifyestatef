@@ -6,8 +6,10 @@ import { FaInstagramSquare } from "react-icons/fa";
 import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
+  const axiosPrivate = useAxiosPrivate();
   const [userInfo, setUserInfo] = useState([]);
   // console.log(properties);
 
@@ -47,19 +49,16 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (user?.email) {
-        try {
-          const response = await axiosPublic.get(`/users/${user?.email}`);
-          const data = response.data;
-          setUserInfo(data);
-          console.log(data)
-        } catch (error) {
-          console.error(error);
-        }
+          await axiosPrivate.get(`/users/${user?.email}`)
+          .then(res=>{
+            setUserInfo(res.data);
+            console.log(res.data)
+          })
       }
     };
 
     fetchData();
-  }, [axiosPublic, user?.email]);
+  }, [axiosPrivate, user?.email]);
 
 
 
