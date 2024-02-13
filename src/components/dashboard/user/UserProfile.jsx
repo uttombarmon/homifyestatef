@@ -7,6 +7,7 @@ import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
+import toast from "react-hot-toast";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const axiosPrivate = useAxiosPrivate();
@@ -38,13 +39,10 @@ const UserProfile = () => {
       photoURL: photo,
       country,
     };
-
-    // console.log(allInfo);
-    const res = await axiosPublic.patch(`/users/user/${user?.email}`, allInfo)
-    const data = res.data;
-    console.log(data)
-
-
+   const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
+   const data = res.data;
+   toast.success("success full update")
+   console.log(data)
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -68,8 +66,6 @@ const UserProfile = () => {
         <h1 className=" text-2xl mb-10  flex justify-center font-bold">
           Personalized Information
         </h1>
-
-
         <div
           key={userInfo._id}
           className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
@@ -182,6 +178,7 @@ const UserProfile = () => {
                     placeholder="Address"
                     defaultValue={userInfo?.address}
                     className="input input-bordered"
+                    required
                   />
                 </div>
 
@@ -274,11 +271,9 @@ const UserProfile = () => {
             </div>
             <div className=" flex justify-between items-center">
               <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 ">
-                {" "}
-                Update password{" "}
+                Update password
               </button>
               <p className="  text-3xl px-7 hover:text-orange-400 rounded-full ">
-                {" "}
               </p>
             </div>
           </div>

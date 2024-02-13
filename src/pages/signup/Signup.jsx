@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
-
-import { FaEyeSlash, FaEye } from "react-icons/fa";
-
+import { RiKeyLine } from "react-icons/ri";
+import { FaEyeSlash, FaEye, FaCopy } from "react-icons/fa";
+// ddd
 const Signup = () => {
   const axiosPublic = useAxiosPublic();
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -31,6 +32,31 @@ const Signup = () => {
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  //auto password generate function
+  const [generatedPassword, setGeneratedPassword] = useState("");
+  const generatorPassword = () => {
+    let pass = "";
+    let string =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+      "abcdefghijklmnopqrstuvwxyz0123456789@#$%&*";
+
+    for (let index = 1; index <= 12; index++) {
+      let char = Math.floor(Math.random() * string.length + 1);
+      // setState((pass += string.charAt(char)));
+      pass += string.charAt(char);
+    }
+    setGeneratedPassword(pass);
+    setValue("password", pass);
+  };
+
+  const changePassword = (e) => {
+    setGeneratedPassword(e);
+  };
+
+  const cpyFunc = () => {
+    navigator.clipboard.writeText(generatedPassword);
   };
 
   return (
@@ -111,10 +137,12 @@ const Signup = () => {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
+
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   placeholder="password"
                   className="input input-bordered"
+                  onChange={changePassword}
                 />
                 <span className="relative w-[30px] text-xl flex justify-end -top-8 left-[90%] ">
                   {showPassword ? (
@@ -129,6 +157,26 @@ const Signup = () => {
                     />
                   )}
                 </span>
+                <div className="flex gap-5">
+                  <button
+                    onClick={generatorPassword}
+                    className="flex border border-black rounded-lg p-3 bg-[#e0eaee] justify-center items-center gap-1 hover:bg-[white]"
+                  >
+                    <span>
+                      <RiKeyLine />
+                    </span>
+                    Autogenerate Password
+                  </button>
+                  <button
+                    onClick={cpyFunc}
+                    className="flex border border-black rounded-lg p-3 bg-[#e0eaee] justify-center items-center gap-1 hover:bg-[white]"
+                  >
+                    <span>
+                      <FaCopy />
+                    </span>
+                    Copy
+                  </button>
+                </div>
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
                 )}

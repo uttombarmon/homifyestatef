@@ -159,9 +159,6 @@ const Property = ({ properties }) => {
 
         <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
-
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded"> </p>
-              Rent
             <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
               {properties.property_status}
 
