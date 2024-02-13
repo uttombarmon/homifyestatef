@@ -6,6 +6,7 @@ import { ImFacebook } from "react-icons/im";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 // ff
 
@@ -46,11 +47,10 @@ const Footer = () => {
                         <button type="submit"> <FaArrowRight className=" right  "></FaArrowRight> </button>
                     </form>
                     <div className="socal-icone flex gap-4 text-2xl  ">
-
-
-                        <ImFacebook></ImFacebook>
-                        <FaInstagramSquare ></FaInstagramSquare>
-                        <FaGithub></FaGithub>
+                       <Link to={"https://www.facebook.com/hridayray.hriday.1/"}>  <ImFacebook className="  hover:bg-orange-500  "></ImFacebook> </Link>
+                       <Link to={"https://www.instagram.com/hridayrayhriday/"}>   <FaInstagramSquare className="  hover:bg-orange-500  " >
+                         </FaInstagramSquare>  </Link>
+                       <Link to={ "https://github.com/hridayroy19" }><FaGithub className="  hover:bg-orange-500  "> </FaGithub>   </Link>
                         <FaWhatsapp></FaWhatsapp>
 
                     </div>

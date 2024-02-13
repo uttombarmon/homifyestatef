@@ -27,6 +27,7 @@ import Dashboard from "../components/dashboard/Dashboard";
 import Transections from "../components/dashboard/admin/transection/Transections";
 import Sell from "../pages/sell/Sell";
 import Rent from "../pages/rent/Rent";
+import MakeOffer from "../components/dashboard/user/MakeOffer";
 
 
 export const router = createBrowserRouter([
@@ -127,6 +128,10 @@ export const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <Wishlist></Wishlist>,
+      },
+      {
+        path:"makeOffer/:id",
+        element:<MakeOffer></MakeOffer>
       },
       {
         path: "allproperties",
