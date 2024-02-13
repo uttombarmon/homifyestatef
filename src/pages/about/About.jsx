@@ -1,16 +1,14 @@
-import { ImHome } from "react-icons/im";
 import { IoHome } from "react-icons/io5";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { GiReceiveMoney } from "react-icons/gi";
-import { BsGraphUpArrow } from "react-icons/bs";
 import { FaSolarPanel } from "react-icons/fa";
 import { FaWalkieTalkie } from "react-icons/fa6";
 import { PiElevatorBold } from "react-icons/pi";
 import { FaTv } from "react-icons/fa";
 import { PiSwimmingPool } from "react-icons/pi";
 import { LuCamera } from "react-icons/lu";
-import Professionals from "../../components/homecomponents/professionals/Professionals";
 import LetesNews from "../../components/homecomponents/letestNews/LetesNews";
+// import { FaCircleCheck } from "react-icons/fa6";
+import { IoMdCheckmark } from "react-icons/io";
+import Contact from "../../components/homecomponents/contact/Contact";
 
 const About = () => {
   return (
@@ -35,58 +33,87 @@ const About = () => {
       {/* text and image section start */}
 
       <div className="mt-6">
-        <div className=" grid xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 xl:px-7 justify-between items-center gap-7 ">
-          {/* text left section  */}
-          <div className=" px-14 text-end ">
-            <h1 className=" xl:text-3xl lg:text-2xl font-bold  mb-4 text-end">
-              We help clients buy and <br />
-              sell houses since 2001
-            </h1>
-            <p className="text-end xl:text-xl lg:text-xl  mb-3 font-medium ">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br />
-              Fugit deleniti quasi autem doloremque modi soluta blanditiis
-              <br />
-              alias. Minus perspiciatis quod sed adipisci architecto deleniti?
-              <br />
-              Debitis architecto pariatur maiores eaque aspernatur laborum
-              consequuntur, explicabo est quo fugiat velit, in sint quas?
-            </p>
-            {/*  icone use  */}
-            <div className=" flex justify-end xl:gap-10 gap-5 font-bold text-xl mt-5 mb-3 text-end  ">
-              <h4 className="flex xl:text-2xl lg:text-xl text-sm gap-3 items-center ">
-                Buy a Home <BsGraphUpArrow></BsGraphUpArrow>
-              </h4>
-              <h4 className="flex xl:text-2xl lg:text-xl text-sm gap-3 items-center ">
-                Sell your home <GiReceiveMoney></GiReceiveMoney>
-              </h4>
-            </div>
-            <div className=" flex justify-end xl:gap-10 gap-6 font-bold xl:text-xl mb-3 text-end  ">
-              <h4 className="flex xl:text-2xl lg:text-xl text-sm gap-3 items-center ">
-                Free Photoshoot <ImHome></ImHome>
-              </h4>
-              <h4 className="flex xl:text-2xl lg:text-xl text-sm gap-3 items-center ">
-                Free appraisal <FaRegCalendarAlt></FaRegCalendarAlt>
-              </h4>
-            </div>
-            <button className=" btn btn-outline mt-5"> More Details </button>
+        <div className=" grid lg:grid-cols-2 grid-cols-1 gap-8 lg:px-20 px-6 ">
+          <div>
+            <img
+              src="https://i.ibb.co/NLq9Lth/modern-residential-district-with-green-roof-balcony-generated-by-ai.jpg"
+              alt="image"
+              className=" w-full"
+            />
           </div>
-          {/* image section use three images */}
-          <div className="flex justify-center px-3  items-center gap-6">
-            <div className=" flex flex-col gap-5">
-              <img
-                src="../../../public/about/pexels-binyamin-mellish-106399.jpg"
-                alt=""
-              />
-              <img
-                src="../../../public/about/download (9).jpg"
-                alt=""
-              />
+          <div className="  ">
+            <h2 className="text-2xl font-serif mb-4">
+              {" "}
+              <span className="font-bold">ABOUT</span>HOMIFY{" "}
+            </h2>
+            <hr className=" w-[80px] mb-3 " />
+            <p className=" mb-5 font-medium">
+              {" "}
+              Welcome to Homify Estate - Your Trusted Partner in Real Estate
+              Management!
+            </p>
+            <p className=" mb-4 text-gray-500 ">
+              At Homify Estate , we pride ourselves on being more than just a
+              real estate management platform; we are your dedicated partner in
+              navigating the dynamic world of real estate. Whether your a
+              property buyer, seller, investor, or tenant, our mission is to
+              simplify and elevate your real estate experience.,
+            </p>
+            <p className=" text-gray-500">
+              vis ei erroribus similique.Cum saepe disputationi in. Id mentitum
+              perpetua mnesarchum per. Ne vix odio dicit numquam, audiam inermis
+              eu nam.
+            </p>
+          </div>
+        </div>
+        {/* foure coards
+         */}
+
+        <div className=" grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-11 mb-8 lg:px-20 px-6 w-full gap-8 mx-auto lg:grid-cols-2 items-center">
+          {/*  fast card */}
+          <div className=" flex gap-6 border-2 py-2 px-4 ">
+            <p className="mt-2 text-4xl  ">
+              <IoMdCheckmark className=" bg-green-500 rounded-full p-1 text-white">
+                {" "}
+              </IoMdCheckmark>
+            </p>
+            <div className="font-thin">
+              <h3 className="text-xl font-medium"> LARGEST COMMUNITY</h3>
+              <p className=" mt-2 mb-2">
+                {" "}
+                Lorem ipsum dolor sit amet, et sectetu adipiscing elit, sed do
+                lilae eiusmod at tempor.
+              </p>
             </div>
-            <div className="px-3 w-[900px] md:px-4">
-              <img
-                src="../../../public/about/download (10).jpg"
-                alt="" className="w-full"
-              />
+          </div>
+          <div className=" flex gap-6 border-2 py-2 px-4 ">
+            <p className="mt-2 text-4xl  ">
+              <IoMdCheckmark className=" bg-green-500 rounded-full p-1 text-white">
+                {" "}
+              </IoMdCheckmark>
+            </p>
+            <div className="font-thin">
+              <h3 className="text-xl font-medium">24 HOURS SERVICE</h3>
+              <p className=" mt-2 mb-2">
+                {" "}
+                Lorem ipsum dolor sit amet, et sectetu adipiscing elit, sed do
+                lilae eiusmod at tempor.
+              </p>
+            </div>
+          </div>
+          <div className=" flex gap-6 border-2 py-2 px-4 ">
+            <p className="mt-2 text-4xl  ">
+              <IoMdCheckmark className=" bg-green-500 rounded-full p-1 text-white">
+                {" "}
+              </IoMdCheckmark>
+            </p>
+            <div className="font-thin">
+              <h3 className="text-xl font-medium">LIFETIME SUPPORT</h3>
+              <p className=" mt-2 mb-2">
+                {" "}
+                Lorem ipsum dolor sit amet, et sectetu adipiscing elit, sed do
+                lilae eiusmod at tempor.
+              </p>
             </div>
           </div>
         </div>
@@ -96,68 +123,57 @@ const About = () => {
           Discovery your ideal home based on amenities
         </h3>
         {/* prodcut button and icone  */}
-        <div className="  grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 grid-cols-2 lg:ml-[10%] lg:w-[800px]  xl:w-[1000px] md:ml-16 md:w-[650px] xl:ml-[14%] w-[350px] ml-16 mx-auto  justify-center md:px-2  items-center text-center mt-4 gap-4">
+        <div className=" grid lg:grid-cols-6 md:grid-cols-4 grid-cols-3 md:px-7 lg:px-20 px-4 lg:gap-7 gap-2 w-full mx-auto ">
           <p className=" py-2 hover:bg-orange-300 w-[125px]  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
             CC Camera <LuCamera></LuCamera>
           </p>
           <p className=" py-2 hover:bg-orange-300 w-[125px]  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
             Solar Panel <FaSolarPanel></FaSolarPanel>
           </p>
-          <p className=" py-2 hover:bg-orange-300 w-[160px]  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-            Walk in Closets <FaWalkieTalkie></FaWalkieTalkie>
+          <p className=" py-2 hover:bg-orange-300 w-[133px]  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
+            Walk Closets <FaWalkieTalkie></FaWalkieTalkie>
           </p>
-          <p className=" py-2 hover:bg-orange-300 w-[120px] ml-4  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
+          <p className=" py-2 hover:bg-orange-300 w-[106px] ml-4  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
             Elevator <PiElevatorBold></PiElevatorBold>
           </p>
-          <p className=" py-2 hover:bg-orange-300 w-[155px] gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-            Swimming Pool <PiSwimmingPool></PiSwimmingPool>
+          <p className=" py-2 hover:bg-orange-300 w-[140px] gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
+            Swimming Pol <PiSwimmingPool></PiSwimmingPool>
           </p>
           <p className=" py-2 hover:bg-orange-300 w-[115px] ml-2 gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
             Smart Tv <FaTv></FaTv>
           </p>
         </div>
 
-        <div className="  grid xl:grid-cols-5 xl:w-[600px] lg:grid-cols-5 md:grid-cols-5 grid-cols-3 w-[320px]   md:w-[700px]  mx-auto mb-7 mt-10 justify-center  items-center text-center  gap-4">
+        <div className="  flex flex-row justify-center mt-8 gap-10 mb-10 w-full mx-auto">
           <p className=" py-2 hover:bg-orange-300  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-          
             Jacuzzi <PiSwimmingPool></PiSwimmingPool>
           </p>
           <p className=" py-2 hover:bg-orange-300  gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-          
             Garden <PiSwimmingPool></PiSwimmingPool>
           </p>
           <p className=" py-2 hover:bg-orange-300   gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-          
             Fireplece <PiSwimmingPool></PiSwimmingPool>
           </p>
           <p className=" py-2 hover:bg-orange-300   gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-          
             Garage <PiSwimmingPool></PiSwimmingPool>
           </p>
           <p className=" py-2 hover:bg-orange-300   gap-2 items-center px-2 flex text-sm font-semibold bg-gray-300 rounded-full  ">
-          
             fireplace <PiSwimmingPool></PiSwimmingPool>
           </p>
         </div>
 
-        <h1 className="text-center border w-[150px] mb-16 items-center xl:ml-[45%] lg:ml-[40%] md:ml-[39%] ml-36 font-bold btn btn-outline justify-center flex ">
-        
+        <h1 className="text-center border w-[170px] mb-5 items-center xl:ml-[45%] lg:ml-[40%] md:ml-[39%] ml-36 font-bold btn btn-outline justify-center flex ">
           Prowse Property
         </h1>
       </div>
 
-      {/* profosonals section  */}
-      <div className="mb-6">
-        <Professionals></Professionals>
-      </div>
-
-      <div className="xl:grid-cols-2 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-36 mt-14 lg:px-20 xl:px-28 p-9 items-center justify-center ">
+      <div className="xl:grid-cols-2 bg-gray-300 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-36 mt-14 lg:px-20 xl:px-28 p-9 items-center justify-center ">
         {/* review section  */}
         <div className=" justify-end   ">
           <h3 className="underline mb-2 font-semibold "> Client Feedback </h3>
-          {/* reating */}
-          {/* <div className=" justify-end items-end text-end mb-2" >
-            <p className="rating checked:2" defaultChecked>
+
+          <div className="justify-end items-end text-end mb-2">
+            <p className="rating">
               <input
                 type="radio"
                 name="rating-2"
@@ -168,69 +184,25 @@ const About = () => {
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
-                checked
               />
               <input
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
-                checked
               />
               <input
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
-                checked
               />
               <input
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
-                checked
               />
             </p>
-          </div> */}
-
-<div className="justify-end items-end text-end mb-2">
-  <p className="rating">
-    <input
-      type="radio"
-      name="rating-2"
-      className="mask mask-star-2 bg-orange-400"
-      defaultChecked
-    />
-    <input
-      type="radio"
-      name="rating-2"
-      className="mask mask-star-2 bg-orange-400"
-    />
-    <input
-      type="radio"
-      name="rating-2"
-      className="mask mask-star-2 bg-orange-400"
-    />
-    <input
-      type="radio"
-      name="rating-2"
-      className="mask mask-star-2 bg-orange-400"
-    />
-    <input
-      type="radio"
-      name="rating-2"
-      className="mask mask-star-2 bg-orange-400"
-    />
-  </p>
-</div>
-
-
-
-
-
-
-
-
+          </div>
           <p className=" mb-2 border-r">
-          
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit <br />
             nobis maiores deleniti, magni pariatur quibusdam vero, quos sred
             hkek <br />
@@ -243,7 +215,6 @@ const About = () => {
 
         <div>
           <h1 className=" text-end xl:text-3xl lg:text-2xl text-xl font-bold justify-end flex">
-          
             Feedback From <br />
             .Satisfied Customers
           </h1>
@@ -273,9 +244,13 @@ const About = () => {
         </div>
       </div>
 
+      <div className=" mt-6">
+        <Contact></Contact>
+      </div>
       <LetesNews></LetesNews>
     </>
   );
 };
 
 export default About;
+// update
