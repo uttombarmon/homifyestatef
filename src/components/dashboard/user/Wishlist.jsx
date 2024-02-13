@@ -4,14 +4,14 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
-
-  const axiosPublic =useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [properties, setProperties] = useState([]);
 
   // pagination
-  const {user}= useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -43,47 +43,43 @@ const Wishlist = () => {
     return pageNumbers;
   };
 
-  // data fetching 
-   useEffect(() => {
+  // data fetching
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosPublic.get(`/wish-lists/${user?.email}`)
+        const res = await axiosPublic.get(`/wish-lists/${user?.email}`);
         setProperties(res.data);
-
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
-      fetchData();
-    }, [axiosPublic,user?.email]);
 
-//  delte api 
+    fetchData();
+  }, [axiosPublic, user?.email]);
 
+  //  delte api
 
-
-const handelDelete = (id) => {
-  
-axiosPublic.delete(`/wish-lists/${id}`)
-.then(e =>{
-  if(e.data.deletedCount > 0){
-    toast.success("seccess full delete wishlist")
-    const filterData = properties.filter(d => d._id !== id)
-    setProperties(filterData)
-  }
- })
- .catch(error => console.log(error));
-};
-
+  const handelDelete = (id) => {
+    axiosPublic
+      .delete(`/wish-lists/${id}`)
+      .then((e) => {
+        if (e.data.deletedCount > 0) {
+          toast.success("seccess full delete wishlist");
+          const filterData = properties.filter((d) => d._id !== id);
+          setProperties(filterData);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
-      <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
-        <h1 className="text-xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
+      <div className="w-full font-serif mx-auto overflow-x-auto bg-gray-100 px-2">
+        <h1 className="text-2xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
         <div className="table-responsive">
-          <table className="w-full table">
+          <table className="w-full border-4 table">
             {/* head */}
-            <thead className="h-[5px] bg-slate-200 border-2 ">
+            <thead className="h-[5px] bg-slate-200 border-4 ">
               <tr className="text-xl font-semibold text-black">
                 <th>
                   <h1>Images</h1>
@@ -99,36 +95,43 @@ axiosPublic.delete(`/wish-lists/${id}`)
             <tbody className="px-6">
               {/* row 1 */}
               {currentItems?.map((property) => (
-                <tr key={property._id} className="border-black-700  ">
-                  <td className="w-full md:w-[150px] lg:w-[200px] xl:w-[200px] border">
+                <tr key={property._id} className=" bg-[#bdc98e1c]  ">
+                  <td className="w-full md:w-[150px] lg:w-[200px] xl:w-[200px] border-4">
                     <img
                       src={property.image}
                       alt="logo"
                       className="w-[120px] xl:h-[90px] md:h-24 lg:h-[100px] object-cover"
                     />
                   </td>
-                  <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[500px] border">
+                  <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[500px] border-4">
                     <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px] font-semibold font-serif">
                       {property.name}
                     </h3>
                   </td>
-                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border text-xl font-medium font-serif">
+                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border-4 text-xl font-medium font-serif">
                     $ {property?.price}
                   </td>
-                  <td className="border">
+                  <td className="border-4">
                     <button className="text-base  md:text-xl font-bold font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
                       Sale
                     </button>
                   </td>
-                  <td className="border">
-                    <button  onClick={()=>handelDelete(property._id)} className=" bg-red-400 gap-1 hover:bg-red-600 h-[40px] w-[90px] px-1 text-[17px] font-serif  flex items-center">
+                  <td className="border-4">
+                    <button
+                      onClick={() => handelDelete(property._id)}
+                      className=" border-2 bg-red-400 gap-1 hover:bg-red-600 h-[40px] w-[90px] px-1 text-[17px] font-serif  flex items-center"
+                    >
                       <span>
                         <RiDeleteBin7Line />
                       </span>
                       Delete
                     </button>
                     <br />
-                    <button className="  bg-orange-400 gap-1 hover:bg-orange-600 h-[40px] w-[90px]  text-[17px] text-center px-1  font-serif  flex items-center"> Make offer</button>
+                    <Link to={`/dashboard/makeOffer/${property.propety}`}>
+                      <button className=" border-2 bg-[#87e2639b]  hover:bg-green-600 h-[40px] w-[95px]  text-[17px] text-center px-1">
+                        Make offer
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}

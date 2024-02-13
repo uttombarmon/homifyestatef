@@ -3,7 +3,6 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { FaInstagramSquare } from "react-icons/fa";
-import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
@@ -12,9 +11,6 @@ const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const axiosPrivate = useAxiosPrivate();
   const [userInfo, setUserInfo] = useState([]);
-  // console.log(properties);
-
-
   const { user } = useContext(AuthContext);
   // console.log(user?.email)
 
@@ -42,7 +38,6 @@ const UserProfile = () => {
    const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
    const data = res.data;
    toast.success("success full update")
-   console.log(data)
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -56,13 +51,10 @@ const UserProfile = () => {
     };
 
     fetchData();
-  }, [axiosPrivate, user?.email]);
-
-
-
+  }, [axiosPublic, user?.email]);
   return (
-    <div className="bg-gray-200">
-      <div className="w-full bg-gray-200 p-0 m-0  mx-auto px-8">
+    <div className="bg-[#f2f2ec7d] font-poppins ">
+      <div className="w-full p-0 m-0  mx-auto px-8">
         <h1 className=" text-2xl mb-10  flex justify-center font-bold">
           Personalized Information
         </h1>
@@ -119,14 +111,12 @@ const UserProfile = () => {
           </div>
         </div>
 
-
-
         {/* from start */}
 
-        <div className=" w-full xl:mt-14 xl:w-[980px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
+        <div className=" xl:mt-14   w-[calc(100%-20px)] mx-auto px-1 ">
           {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
 
-          <div className=" border px-4 py-3  bg-slate-300 ">
+          <div className=" border px-4 py-3 bg-[#eaebe5dd] ">
             <h1 className="text-2xl font-semibold"> Update Information </h1>
             <form onSubmit={handelsubmit}>
               <div className="mt-4 xl:grid-cols-3 lg:grid-cols-3 grid-cols-2  grid text-center items-center justify-center gap-10 ">
@@ -224,15 +214,14 @@ const UserProfile = () => {
 
               <button
                 type="submit"
-                className=" mt-4 font-semibold px-2 hover:bg-yellow-500 bg-yellow-400 w-[160px] h-12 mb-6 "
+                className=" mt-4 font-semibold px-2 hover:bg-yellow-500   rounded-sm bg-yellow-400 w-[180px] h-12 mb-6 "
               >
-                {" "}
                 Update Information{" "}
               </button>
             </form>
           </div>
 
-          <div className=" mt-9 border bg-slate-300 py-2 px-5 mb-7 ">
+          <div className=" mt-9 border bg-[#eaebe5dd]  py-2 px-5 mb-7 ">
             <h1 className="text-2xl font-semibold mb-3"> Update password</h1>
             <div className="grid lg:grid-cols-3 grid-cols-2  gap-2 ">
               <div className="form-control">
@@ -270,18 +259,13 @@ const UserProfile = () => {
               </div>
             </div>
             <div className=" flex justify-between items-center">
-              <button className=" mt-4 font-semibold hover:bg-yellow-500 bg-yellow-400 w-[150px] h-12 mb-6 ">
+              <button className="  rounded-sm mt-4 font-semibold px-2 hover:bg-yellow-500 bg-yellow-400 w-[170px] h-12 mb-6 ">
                 Update password
               </button>
-              <p className="  text-3xl px-7 hover:text-orange-400 rounded-full ">
-              </p>
+              <p className="  text-3xl px-7 hover:text-orange-400 rounded-full "></p>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className=" w-full mx-auto justify-center bg-gray-200  ">
-        <UserTabil></UserTabil>
       </div>
     </div>
   );

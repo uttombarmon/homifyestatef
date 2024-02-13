@@ -30,7 +30,8 @@ const DashboardLayout = () => {
     console.log(users?.role)
     return (
         <>
-            <div>
+           <div className=' overflow-x-hidden'>
+           <div>
                 <Toaster />
             </div>
             <div className=" text-red-50 flex overflow-x-hidden flex-wrap">
@@ -101,9 +102,10 @@ const DashboardLayout = () => {
                 </div> */}
             </div>
             {/* dashboard content section  */}
-            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">
+            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] overflow-x-hidden absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">
                 <Outlet></Outlet>
             </div>
+           </div>
         </>
     )
 };
