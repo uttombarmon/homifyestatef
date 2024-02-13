@@ -1,17 +1,24 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase-auth/firebaseauthentication";
 import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     //check user
     useEffect(() => {
         const unSubcribe = () => {
             onAuthStateChanged(auth, cuser => {
                 setUser(cuser);
-                console.log(cuser);
+                console.log(cuser?.email);
+                const email = cuser?.email;
+                if(email){
+                    axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    .then(res=>{console.log(res.data)})
+                }
+            
                 setLoading(false);
             })
         }

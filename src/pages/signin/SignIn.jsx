@@ -31,6 +31,7 @@ const SignIn = () => {
   const signInWithGoogle = () => {
     signupWihtGoogle()
       .then(async (res) => {
+        navigate("/");
         const data = {
           name: res?.user?.displayName,
           photoURL: res?.user?.photoURL,
@@ -45,12 +46,11 @@ const SignIn = () => {
         if (!userFromDB) {
           const result = await axiosPublic.post(`/users/user`, data);
           console.log(result);
-          navigate("/");
         }
         navigate("/");
         toast.success("Success full Login")
       })
-      .catch((err) => console.log(err));
+     .catch((err) => console.log(err));
   };
 
   const facebookSignin = () => {
