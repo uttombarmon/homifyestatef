@@ -6,10 +6,12 @@ import { FaInstagramSquare } from "react-icons/fa";
 import UserTabil from "./UserTabil";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
 import toast from "react-hot-toast";
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
-  const [properties, setProperties] = useState([]);
+  const axiosPrivate = useAxiosPrivate();
+  const [userInfo, setUserInfo] = useState([]);
   // console.log(properties);
 
 
@@ -34,34 +36,27 @@ const UserProfile = () => {
       email: user?.email,
       address,
       website,
-      photoURL:photo,
+      photoURL: photo,
       country,
     };
-  
-    // console.log(allInfo);
    const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
    const data = res.data;
    toast.success("success full update")
    console.log(data)
-   
-
   };
   useEffect(() => {
     const fetchData = async () => {
       if (user?.email) {
-        try {
-          const response = await axiosPublic.get(`/users/${user?.email}`);
-          const data =  [response.data];
-          setProperties(data);
-          console.log(data)
-        } catch (error) {
-          console.error(error);
-        }
+          await axiosPrivate.get(`/users/${user?.email}`)
+          .then(res=>{
+            setUserInfo(res.data);
+            console.log(res.data)
+          })
       }
     };
 
     fetchData();
-  }, [axiosPublic,user?.email]);
+  }, [axiosPrivate, user?.email]);
 
 
 
@@ -71,63 +66,62 @@ const UserProfile = () => {
         <h1 className=" text-2xl mb-10  flex justify-center font-bold">
           Personalized Information
         </h1>
-
-        {properties?.map((properties) => (
-          <div
-            key={properties._id}
-            className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
-          >
-            <div className=" ml-3">
-              <img
-                src={properties.photoURL}
-                alt=""
-                className=" xl:w-[295px] xl:rounded-full h-full lg:w-[300px] md:w-[330px] w-[360px]"
-              />
-            </div>
-            <div className=" px-5">
-              <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
-                {properties.name}
-              </h1>
-              <p className="text-[17px] flex gap-20  mt-4 ">
-                <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
-                {properties.email}
-              </p>
-              <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] mr-2  ">Phone:</span>
-                {properties.phone}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] mr-7 "> City : </span>
-                {properties.city}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] "> Country:</span>
-                {properties.country}
-              </p>
-              <p className="text-[17px] flex gap-20  mt-4 justify-start ">
-                <span className="font-semibold tex-[22px] "> Address:</span>
-                {properties.address}
-              </p>
-              {/* Icone link */}
-              <div className="flex gap-5 md:flex-row mt-4">
-                <button className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 px-2 ">
-                  <FaFacebook></FaFacebook>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaLinkedinIn></FaLinkedinIn>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaTwitter></FaTwitter>
-                </button>
-                <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
-                  <FaInstagramSquare></FaInstagramSquare>
-                </button>
-              </div>
+        <div
+          key={userInfo._id}
+          className="lg:flex mt-4  bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
+        >
+          <div className=" ml-3">
+            <img
+              src={userInfo.photoURL}
+              alt=""
+              className=" xl:w-[285px]  lg:w-[300px] md:w-[330px] w-[360px]"
+            />
+          </div>
+          <div className=" px-5">
+            <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
+              {userInfo.name}
+            </h1>
+            <p className="text-[17px] flex gap-20  mt-4 ">
+              <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
+              {userInfo.email}
+            </p>
+            <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] mr-2  ">Phone:</span>
+              {userInfo.phone}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] mr-7 "> City : </span>
+              {userInfo.city}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] "> Country:</span>
+              {userInfo.country}
+            </p>
+            <p className="text-[17px] flex gap-20  mt-4 justify-start ">
+              <span className="font-semibold tex-[22px] "> Address:</span>
+              {userInfo.address}
+            </p>
+            {/* Icon link */}
+            <div className="flex gap-5 md:flex-row mt-4">
+              <button className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 px-2 ">
+                <FaFacebook></FaFacebook>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaLinkedinIn></FaLinkedinIn>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaTwitter></FaTwitter>
+              </button>
+              <button className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 px-2 ">
+                <FaInstagramSquare></FaInstagramSquare>
+              </button>
             </div>
           </div>
-        ))}
+        </div>
 
-        {/* frome start */}
+
+
+        {/* from start */}
 
         <div className=" w-full xl:mt-14 xl:w-[980px]  lg:w-[670px] md:w-[690px] sm:w-[367px]   px-1 ">
           {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
@@ -144,6 +138,7 @@ const UserProfile = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
+                    defaultValue={userInfo?.name}
                     className="input input-bordered"
                     required
                   />
@@ -156,6 +151,7 @@ const UserProfile = () => {
                     type="number"
                     name="phone"
                     placeholder="Phone"
+                    defaultValue={userInfo?.phone}
                     className="input input-bordered"
                   />
                 </div>
@@ -168,6 +164,7 @@ const UserProfile = () => {
                     name="website"
                     type="text"
                     placeholder="Website"
+                    defaultValue={userInfo?.website}
                     className="input input-bordered"
                   />
                 </div>
@@ -179,21 +176,12 @@ const UserProfile = () => {
                     name="address"
                     type="text"
                     placeholder="Address"
+                    defaultValue={userInfo?.address}
                     className="input input-bordered"
                     required
                   />
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Country</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder="Address"
-                    className="input input-bordered"
-                  />
-                </div>
+
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">City</span>
@@ -202,6 +190,21 @@ const UserProfile = () => {
                     name="city"
                     type="text"
                     placeholder="Address"
+                    defaultValue={userInfo?.city}
+                    className="input input-bordered"
+                  />
+                </div>
+
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Country</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="country"
+                    placeholder="Address"
+                    defaultValue={userInfo?.country}
                     className="input input-bordered"
                   />
                 </div>
@@ -213,6 +216,7 @@ const UserProfile = () => {
                     name="photo"
                     type="text"
                     placeholder="Photo"
+                    defaultValue={userInfo?.photoURL}
                     className="input items-center py-2 input-bordered"
                   />
                 </div>

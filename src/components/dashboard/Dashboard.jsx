@@ -10,7 +10,7 @@ const Dashboard = () => {
     //get user data from server
     useEffect(() => {
         const email = user?.email;
-        console.log(email);
+        // console.log(email);
         if (email !== null && email !== undefined) {
             axiosPublic.get(`/users/${email}`)
                 .then(res => {
