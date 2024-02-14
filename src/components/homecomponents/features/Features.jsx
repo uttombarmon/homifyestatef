@@ -1,30 +1,39 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 import Property from "../../../sharedcomponents/Property";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../utils/provider/AuthProvider";
 
 
 
 const Features = () => {
+  const { searchInfo } = useContext(AuthContext);
   const [properties, setProperties] = useState([]);
   const axiosPublic = useAxiosPublic();
   // this data is load from the db ;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get("/home/checkout");
-        const data = response.data;
-        setProperties(data);
+        if (searchInfo) {
+          const response = await axiosPublic.get(`/home/checkout?want=${searchInfo?.want}&type=${searchInfo?.type}&location=${searchInfo?.location}`);
+          const data = response.data;
+          setProperties(data);
+        }
+        else {
+          const response = await axiosPublic.get(`/home/checkout`);
+          const data = response.data;
+          setProperties(data);
+        }
+
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error(error);
       }
     };
 
     fetchData();
-  }, [axiosPublic]);
-
-
+  }, [axiosPublic,searchInfo]);
+  console.log(properties)
   return (
     <>
       <div className=" w-full py-10 ">

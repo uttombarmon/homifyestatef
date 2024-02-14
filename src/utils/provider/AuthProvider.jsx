@@ -5,7 +5,8 @@ import axios from "axios";
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [searchInfo ,setSearchInfo] = useState(null);
     const [loading, setLoading] = useState(true);
     //check user
     useEffect(() => {
@@ -51,7 +52,7 @@ const AuthProvider = ({ children }) => {
     const globaldata = {
         user,
          loading, creatuserwithemail, signupWihtGoogle, signinWithEmailAndPassword,
-        signout,signupWithFacebook
+        signout,signupWithFacebook,searchInfo,setSearchInfo
     }
     return <AuthContext.Provider value={globaldata}> {children}</AuthContext.Provider>
 };

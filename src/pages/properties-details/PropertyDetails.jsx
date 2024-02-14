@@ -81,7 +81,7 @@ const PropertyDetails = () => {
                                     <p className='my-2'><span className='font-semibold'>Status:</span> {property?.property_details?.status}</p>
                                     <p className='my-2'><span className='font-semibold'>Garages:</span> {property?.property_details?.garages}</p>
                                     <p className='my-2'><span className='font-semibold'>Bed Rooms:</span> {property?.property_details?.bed_rooms}</p>
-                                    <p className='my-2'><span className='font-semibold'>Type:</span> {property?.property_details?.type}</p>
+                                    <p className='my-2'><span className='font-semibold'>Type:</span> {property?.type}</p>
                                     <p className='my-2'><span className='font-semibold'>Baths:</span> {property?.property_details?.baths}</p>
                                     <p className='my-2'><span className='font-semibold'>Originting Year:</span> {property?.property_details?.date_listed}</p>
                                     <p className='my-2'><span className='font-semibold'>Price:</span> {property?.property_details?.price}</p>
