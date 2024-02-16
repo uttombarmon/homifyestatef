@@ -12,7 +12,7 @@ const Dashboard = () => {
         const email = user?.email;
         // console.log(email);
         if (email !== null && email !== undefined) {
-            axiosPublic.get(`/users/${email}`)
+            axiosPublic.get(`/users/${email}`,{withCredentials:true})
                 .then(res => {
                     const userInfo = res.data
                     console.log("role:",userInfo.role);

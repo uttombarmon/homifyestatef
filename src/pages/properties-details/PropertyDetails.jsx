@@ -172,6 +172,8 @@ const PropertyDetails = () => {
                             <TelegramIcon className="rounded-full w-[60px] h-[60px]"></TelegramIcon>
                           </TelegramShareButton>
                         </div>
+                        <div className='bg-white rounded-sm my-3 p-4 w-full '>
+                            <Reviews id={params.id}></Reviews>
                         <div className="modal-action">
                           <form method="dialog">
                             <button className="btn  btn-error text-white">

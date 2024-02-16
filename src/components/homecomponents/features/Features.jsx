@@ -21,11 +21,10 @@ const Features = () => {
           setProperties(data);
         }
         else {
-          const response = await axiosPublic.get(`/home/checkout`);
+          const response = await axiosPublic.get("/home/features");
           const data = response.data;
           setProperties(data);
         }
-
       } catch (error) {
         console.error(error);
       }

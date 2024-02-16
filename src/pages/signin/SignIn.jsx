@@ -3,16 +3,13 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
-import { FaFacebook } from "react-icons/fa6";
-import { FaEyeSlash, FaEye, FaCopy } from "react-icons/fa";
-import { RiKeyLine } from "react-icons/ri";
+import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm();
   const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } =
@@ -25,6 +22,7 @@ const SignIn = () => {
     signinWithEmailAndPassword(data.email, data.password)
       .then(() => {
         navigate("/");
+        toast.success("Success full Login")
       })
       .catch((err) => console.log(err.message));
   };
@@ -40,12 +38,11 @@ const SignIn = () => {
           method: "google",
         };
         const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
-        console.log(getUser);
         const userFromDB = getUser?.data?.email;
         // console.log(getUser?.data?.role)
         if (!userFromDB) {
-          const result = await axiosPublic.post(`/users/user`, data);
-          console.log(result);
+          await axiosPublic.post(`/users/user`, data);
+          toast.success("Success full Login")
         }
         navigate("/");
         toast.success("Success full Login");
@@ -57,9 +54,11 @@ const SignIn = () => {
     signupWithFacebook()
       .then((result) => {
         console.log(result);
+        toast.success("Successfully, logged")
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error("Logged failed")
       });
   };
 
@@ -68,31 +67,6 @@ const SignIn = () => {
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
-  };
-
-  //auto password generate function
-  const [generatedPassword, setGeneratedPassword] = useState("");
-  const generatorPassword = () => {
-    let pass = "";
-    let string =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-      "abcdefghijklmnopqrstuvwxyz0123456789@#$%&*";
-
-    for (let index = 1; index <= 12; index++) {
-      let char = Math.floor(Math.random() * string.length + 1);
-      // setState((pass += string.charAt(char)));
-      pass += string.charAt(char);
-    }
-    setGeneratedPassword(pass);
-    setValue("password", pass);
-  };
-
-  const changePassword = (e) => {
-    setGeneratedPassword(e);
-  };
-
-  const cpyFunc = () => {
-    navigator.clipboard.writeText(generatedPassword);
   };
   return (
     <div>
@@ -139,7 +113,6 @@ const SignIn = () => {
                   {...register("password", { required: true })}
                   placeholder="password"
                   className="input input-bordered"
-                  onChange={changePassword}
                   // value={generatedPassword}
                 />
 
@@ -156,27 +129,6 @@ const SignIn = () => {
                     />
                   )}
                 </span>
-                <div className="flex gap-5">
-                  <button
-                    onClick={generatorPassword}
-                    className="flex border border-black rounded-lg p-3 bg-[#e0eaee] justify-center items-center gap-1 hover:bg-[white]"
-                  >
-                    <span>
-                      <RiKeyLine />
-                    </span>
-                    Autogenerate Password
-                  </button>
-                  <button
-                    onClick={cpyFunc}
-                    className="flex border border-black rounded-lg p-3 bg-[#e0eaee] justify-center items-center gap-1 hover:bg-[white]"
-                  >
-                    <span>
-                      <FaCopy />
-                    </span>
-                    Copy
-                  </button>
-                </div>
-
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
                 )}

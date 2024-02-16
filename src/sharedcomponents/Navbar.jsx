@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../utils/provider/AuthProvider";
-import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
+// import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
 import useAxiosPrivate from "../hooks/axiosPrivate/useAxiosPrivate";
 
 const Navbar = () => {
@@ -10,16 +10,17 @@ const Navbar = () => {
   const { user, signout } = useContext(AuthContext)
   const navigate = useNavigate();
   const [dynamic, setDynamic] = useState('')
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const axiosPrivate = useAxiosPrivate();
   //get user data from server
   useEffect(() => {
     const email = user?.email;
     console.log(email);
     if (email !== null && email !== undefined) {
-      axiosPublic.get(`/users/${email}`)
+      axiosPrivate.get(`/users/${email}`)
         .then(res => {
           const userInfo = res.data
+          console.log(userInfo);
           console.log(userInfo.role);
           if (userInfo.role == 'user' || userInfo.role == "admin") {
             setDynamic("")
@@ -29,7 +30,7 @@ const Navbar = () => {
         })
     }
 
-  }, [axiosPublic, user]);
+  }, [axiosPrivate, user]);
 
   const onSignout = () => {
     signout()
