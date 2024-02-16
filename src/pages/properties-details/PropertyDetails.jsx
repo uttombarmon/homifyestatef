@@ -94,15 +94,16 @@ const PropertyDetails = () => {
                   </span>
                 </p>
               </div>
+              {/* share on social */}
               <div className=" w-full md:w-2/6 flex flex-wrap md:justify-end">
-                <p className=" w-full flex justify-start md:justify-end">
+                <div className=" w-full flex justify-start md:justify-end">
                   <span className="p-2 rounded-full border-[1px] border-black h-fit mr-2">
                     <FaRegHeart className="" />
                   </span>
                   <span className="p-2 rounded-full border-[1px] border-black h-fit mr-2">
                     <MdAdd className="" />
                   </span>
-                  <span className="p-2 rounded-full border-[1px] border-black h-fit mr-2 hover:bg-orange-500 hover:text-white hover:border-none">
+                  <div className="p-2 rounded-full border-[1px] border-black h-fit mr-2 hover:bg-orange-500 hover:text-white hover:border-none">
                     <button
                       onClick={() =>
                         document.getElementById("my_modal_5").showModal()
@@ -116,9 +117,7 @@ const PropertyDetails = () => {
                       className="modal modal-bottom sm:modal-middle"
                     >
                       <div className="modal-box">
-                        <h3 className="font-bold text-lg text-black text-center">
-                          Share in a post
-                        </h3>
+                        <h3 className="font-bold text-lg text-black text-center">hare in a post</h3>
                         <div className="">
                           <img
                             src="https://i.ibb.co/GspjGPV/divider.png"
@@ -173,21 +172,22 @@ const PropertyDetails = () => {
                           </TelegramShareButton>
                         </div>
                         <div className='bg-white rounded-sm my-3 p-4 w-full '>
-                            <Reviews id={params.id}></Reviews>
-                        <div className="modal-action">
-                          <form method="dialog">
-                            <button className="btn  btn-error text-white">
-                              Close
-                            </button>
-                          </form>
+                          <Reviews id={params.id}></Reviews>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              <button className="btn  btn-error text-white">
+                                Close
+                              </button>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </dialog>
-                  </span>
+                  </div>
                   <span className="p-2 rounded-full border-[1px] border-black h-fit">
                     <LuClipboardCopy />
                   </span>
-                </p>{" "}
+                </div>
                 <br />
                 <p>{property?.property_details?.price}</p>
               </div>

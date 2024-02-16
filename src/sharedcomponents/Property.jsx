@@ -31,12 +31,12 @@ const Property = ({ properties }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
-  const title =properties.title
+  const title = properties.title
   let titles;
-  if(title?.length > 20){
-    titles = title.slice(0,20)+ '...'
-  }else{
-    titles= title
+  if (title?.length > 20) {
+    titles = title.slice(0, 20) + '...'
+  } else {
+    titles = title
   }
 
   // add whilist
@@ -164,7 +164,7 @@ const Property = ({ properties }) => {
         <div className="px-3  rounded-full xl:ml-40 lg:ml-10 ml-12 bottom-[340px]  w-[100px] items-center ">
           <div className="flex  text-white  gap-2 ">
             {/* share button  */}
-            <p className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
+            <div className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
               <button
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
@@ -243,7 +243,7 @@ const Property = ({ properties }) => {
                   </div>
                 </div>
               </dialog>
-            </p>
+            </div>
 
             <p
               onClick={() => handelWhilist(properties)}
