@@ -51,6 +51,7 @@ const Navbar = () => {
     <li><NavLink to={'sell'}>Sell</NavLink></li>
     <li><NavLink to={'contact'}>contact</NavLink></li>
     <li><NavLink to={'about'}>About</NavLink></li>
+    <li><NavLink to={'Privacy'}>Privacy Policy</NavLink></li>
     {
       user &&
       <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
