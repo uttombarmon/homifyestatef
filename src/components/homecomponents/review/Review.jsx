@@ -24,28 +24,27 @@ const Review = () => {
 
             <div className=' max-w-7xl mx-auto px-1 grid md:grid-cols-2 lg:grid-cols-4'>
                 {reviews.map(review =>
-                    <div key={review.id} className=' my-7 p-4 lg:p-1'>
-                        <div className='min-h-[400px] h-full flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl'>
+                    <div key={review?._id} className=' my-7 p-4 lg:p-1'>
+                        <div className=' h-full flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl'>
                             <div>
                                 <div className='flex pb-3 justify-between'>
-                                    <h2 className='font-bold'>{review.title}</h2>
-                                    <img className='w-[25px] h-[25px]' src={review.icon} alt="" />
+                                    <img className='w-[25px] h-[25px]' src={'https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png'} alt="" />
                                 </div>
-                                <p className='text-justify'>{review.comment}</p>
+                                <p className='text-justify'>{review?.comment}</p>
 
                             </div>
 
                             {/* star and data  */}
                             <div className=' h-[130px]'>
                                 <div className="py-2 ">
-                                    <Star stars={review.rating}></Star>
+                                    <Star stars={review?.rating}></Star>
                                 </div>
                                 <div className='border-b-2 mb-4'></div>
                                 <div className='flex items-center'>
-                                    <div><img className='w-[60px] h-[60px] rounded-full' src="https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png" alt="" /></div>
+                                    <div><img className='w-[60px] h-[60px] rounded-full' src={review?.image} alt="" /></div>
                                     <div className='pl-3'>
-                                        <h2 className='font-bold'>{review.name}</h2>
-                                        <p>{review.address}</p>
+                                        <h2 className='font-bold'>{review?.name}</h2>
+                                        <p>{review?.date}</p>
                                     </div>
                                 </div>
                             </div>

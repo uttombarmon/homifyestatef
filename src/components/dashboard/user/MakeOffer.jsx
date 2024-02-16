@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
 
 function MakeOffer() {
     const { id } = useParams()
@@ -10,6 +11,7 @@ function MakeOffer() {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
+    const axiosPrivate = useAxiosPrivate()
     useEffect(() => {
         axiosPublic.get(`/wish-lists/make/offer?id=${id}`)
             .then(e => {
@@ -42,9 +44,9 @@ function MakeOffer() {
             "img": data.img,
             "amount":price
         }
-        axiosPublic.post('/makeoffer', {offerdata})
+        axiosPrivate.post('/makeoffer', {offerdata})
         .then(()=>{
-            axiosPublic.delete(`/removeitem?id=${id}`)
+            axiosPrivate.delete(`/removeitem?id=${id}`)
             .then(e=>{
                 console.log(e.data);
                 if(e.data.deletedCount>0){

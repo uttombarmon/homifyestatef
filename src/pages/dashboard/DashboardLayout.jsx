@@ -4,24 +4,26 @@ import Agent from '../../components/dashboard/agent/Agent';
 
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../utils/provider/AuthProvider';
-import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
 import AdminNav from '../../components/dashboard/admin/AdminNav';
 import UserNav from '../../components/dashboard/user/UserNav';
 import { Toaster } from 'react-hot-toast';
+import useAxiosPublic from '../../hooks/axiosPublic/useAxiosPublic';
+// import useAxiosPrivate from '../../hooks/axiosPrivate/useAxiosPrivate';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
     const [users, setUser] = useState(null)
-    const axiosPublic = useAxiosPublic()
+    // const axiosPrivate = useAxiosPrivate()
+    const axiosPublic =useAxiosPublic()
     //get user data from server
     useEffect(() => {
         const email = user?.email;
         // console.log(email);
         if (email !== null && email !== undefined) {
-            axiosPublic.get(`/users/${email}`)
+            axiosPublic.get(`/users/${email}`, {withCredentials:true})
                 .then(res => {
                     const userInfo = res.data
-                    // console.log(...userInfo);
+                    console.log(userInfo);
                     setUser(userInfo);
                 })
         }

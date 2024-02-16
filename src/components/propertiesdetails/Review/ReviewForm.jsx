@@ -1,27 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
+import { AuthContext } from "../../../utils/provider/AuthProvider";
 
-const ReviewForm = ({ onAddReview }) => {
+const ReviewForm = ({id}) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
-
-  const handleSubmit = (e) => {
+  const { userInfo } = useContext(AuthContext);
+  const axiosPrivate = useAxiosPrivate()
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate form fields
     if (rating < 1 || rating > 5 || comment.trim() === '') {
-      alert('Please provide a valid rating and comment.');
+      toast.error('Please provide a valid rating(1-5) and comment.');
       return;
     }
+    const currentDate = new Date();
+    const localDate = currentDate.toISOString().split('T')[0];
+    toast.success('Successfully, Reviewed')
+    const datas = {
+      'id':id,
+      'date':localDate,
+      'comment': e.target.comment.value,
+      'rating': e.target.rating.value,
+      'name': userInfo?.name,
+      'image': userInfo?.photoURL
+    }
 
-    // Create a new review object
-    const newReview = {
-      rating: Number(rating),
-      comment: comment.trim(),
-    };
-
-    // Pass the new review to the parent component
-    onAddReview(newReview);
-
+    axiosPrivate.post('/home/reviews', { datas })
+      .then(e => console.log(e))
+      .catch(err => console.log(err.message))
     // Clear form fields after submission
     setRating(0);
     setComment('');
@@ -36,11 +45,12 @@ const ReviewForm = ({ onAddReview }) => {
             Rating:
           </label>
           <input
-            type="number"
+            type="text"
             id="rating"
             min="1"
             max="5"
             value={rating}
+            name="rating"
             onChange={(e) => setRating(e.target.value)}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
@@ -53,6 +63,7 @@ const ReviewForm = ({ onAddReview }) => {
             id="comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            name="comment"
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
         </div>

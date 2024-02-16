@@ -13,7 +13,7 @@ const Features = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get("/home/checkout");
+        const response = await axiosPublic.get("/home/features");
         const data = response.data;
         setProperties(data);
       } catch (error) {

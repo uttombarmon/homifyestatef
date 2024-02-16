@@ -5,6 +5,7 @@ import { AuthContext } from "../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { RiKeyLine } from "react-icons/ri";
 import { FaEyeSlash, FaEye, FaCopy } from "react-icons/fa";
+import toast from "react-hot-toast";
 // ddd
 const Signup = () => {
   const axiosPublic = useAxiosPublic();
@@ -25,6 +26,7 @@ const Signup = () => {
           console.log(res);
         }
         navigate("/");
+        toast.success("Successfully, account created")
       })
       .catch((err) => console.log(err));
   };
