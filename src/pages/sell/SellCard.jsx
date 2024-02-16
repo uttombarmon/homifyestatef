@@ -8,6 +8,20 @@ import { IoMdShare } from "react-icons/io";
 import { CgMathPlus } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  EmailShareButton,
+  EmailIcon,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { AuthContext } from "../../utils/provider/AuthProvider";
@@ -141,7 +155,84 @@ const SellCard = ({ properties }) => {
         <div className="px-3  rounded-full xl:ml-[170px] lg:ml-[70px] md:ml-16 ml-24  mt-2 items-center ">
           <div className="flex  text-white  gap-2 ">
             <p className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
-              <IoMdShare />
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+              >
+                <IoMdShare />
+              </button>
+
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle"
+              >
+                <div className="modal-box">
+                  <h3 className="font-bold text-lg text-black text-center">
+                    Share in a post
+                  </h3>
+                  <div className="">
+                    <img
+                      src="https://i.ibb.co/GspjGPV/divider.png"
+                      alt=""
+                      className="w-full h-8"
+                    />
+                  </div>
+                  <p className="py-4 text-black">Share</p>
+                  <div className="flex gap-3">
+                    <FacebookShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <h1 className="text-black">
+                        <FacebookIcon className="rounded-full w-[60px] h-[60px]"></FacebookIcon>
+                      </h1>
+                    </FacebookShareButton>
+
+                    <TwitterShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <TwitterIcon className="rounded-full w-[60px] h-[60px]"></TwitterIcon>
+                    </TwitterShareButton>
+
+                    <LinkedinShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <LinkedinIcon className="rounded-full w-[60px] h-[60px]"></LinkedinIcon>
+                    </LinkedinShareButton>
+
+                    <WhatsappShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <WhatsappIcon className="rounded-full w-[60px] h-[60px]"></WhatsappIcon>
+                    </WhatsappShareButton>
+
+                    <EmailShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <EmailIcon className="rounded-full w-[60px] h-[60px]"></EmailIcon>
+                    </EmailShareButton>
+
+                    <TelegramShareButton
+                      url="https://homifyestate-8556d.web.app/"
+                      hashtag="#HomifyEstate"
+                    >
+                      <TelegramIcon className="rounded-full w-[60px] h-[60px]"></TelegramIcon>
+                    </TelegramShareButton>
+                  </div>
+                  <div className="modal-action">
+                    <form method="dialog">
+                      <button className="btn  btn-error text-white">
+                        Close
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </p>
             <p
               onClick={() => handelWhilist(properties)}
@@ -158,7 +249,7 @@ const SellCard = ({ properties }) => {
         <div className=" ml-2 rounded-full bottom-[300px]  w-[90px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
             <p className="  bg-black hover:bg-orange-400 items-center text-center px-2 py-1 font-bold ">
-             {properties.property_status}
+              {properties.property_status}
             </p>
             <p className=" bg-red-400 hover:bg-orange-400 items-center text-center px-2 py-1  font-bold">
               Features

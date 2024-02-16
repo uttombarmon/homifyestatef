@@ -28,6 +28,7 @@ import Transections from "../components/dashboard/admin/transection/Transections
 import Sell from "../pages/sell/Sell";
 import Rent from "../pages/rent/Rent";
 import MakeOffer from "../components/dashboard/user/MakeOffer";
+import Privacy from "../pages/privacy-Policy/Privacy";
 
 
 export const router = createBrowserRouter([
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/Privacy",
+        element: <Privacy></Privacy>,
       },
       {
         path: "/payment/success/:transId",

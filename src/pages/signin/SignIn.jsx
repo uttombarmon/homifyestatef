@@ -45,9 +45,9 @@ const SignIn = () => {
           toast.success("Success full Login")
         }
         navigate("/");
-        toast.success("Success full Login")
+        toast.success("Success full Login");
       })
-     .catch((err) => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const facebookSignin = () => {
