@@ -25,8 +25,7 @@ import { useContext } from "react";
 import { AuthContext } from "../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-const Property = ({ properties }) => {
-  console.log(properties);
+const Property = ({ properties }) => {  
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
@@ -253,7 +252,7 @@ const Property = ({ properties }) => {
 
         <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
+            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded">
               {properties?.property_status}
             </p>
             <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded font-bold">

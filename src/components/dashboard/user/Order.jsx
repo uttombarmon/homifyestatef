@@ -101,8 +101,13 @@ const Order = () => {
                             :
                             <td>N/A</td>
                           }
-                          <td>
-                            <button>Cancel</button>
+                          <td className="text-center">
+                            {
+                              properties?.paymentStatus?
+                              <button className="btn btn-success btn-disabled w-[90px]">Paid</button>
+                              :
+                              <Link className="btn btn-warning w-[90px]">Delete</Link>
+                            }
                           </td>
                         </tr>
                       ))}

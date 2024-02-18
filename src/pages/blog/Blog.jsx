@@ -8,24 +8,20 @@ import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 
 const Blog = () => {
-  const [bloge, setBloge] = useState([]);
+  const [bloge, setBloge] = useState(null);
   const { id } = useParams();
   console.log(id);
-
+  const axiosPublic = useAxiosPublic()
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
         try {
-          const response = await fetch('/letest.json');
-          const result = await response.json();
-          const final = result.filter((abc) => abc.id == id);
-          console.log(result);
-          console.log(id);
-          console.log(final);
-
-          setBloge(final);
+          const response = await axiosPublic.get(`/home/latestNews/id/${id}`);
+          console.log(response.data);
+          setBloge(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -33,7 +29,8 @@ const Blog = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, axiosPublic]);
+
 
   return (
     <>
@@ -60,51 +57,46 @@ const Blog = () => {
       <div className="  mt-5   ">
         {/* right site picethure */}
         <div className="px-8 w-full mx-auto flex flex-col md:flex-row lg:flex-row gap-6  justify-between  ">
-          {
-            bloge?.map((bloge) => <div key={bloge.id} className=" xl:w-[840px] lg:w-[500px]  md:w-[590px] xl:h-[500px]  h-full ">
-              <img
-                src={bloge.img}
-                alt=""
-                className=" w-full h-full "
-              />
-              {/* comment and date imge */}
-              <div className="flex text-sm gap-3 mt-2 ml-2 font-semibold">
-                <p className="flex items-center gap-1">
+          <div className=" xl:w-[840px] lg:w-[500px]  md:w-[590px] xl:h-[500px]  h-full ">
+            <img
+              src={bloge?.img?.img1}
+              alt=""
+              className=" w-full h-full "
+            />
+            {/* comment and date imge */}
+            <div className="flex text-sm gap-3 mt-2 ml-2 font-semibold">
+              <p className="flex items-center gap-1">
 
-                  <BsCalendarDate></BsCalendarDate> {bloge.date}
-                </p>
-                <p className=" flex items-center gap-1 ">
+                <BsCalendarDate></BsCalendarDate> {bloge?.date}
+              </p>
+              <p className=" flex items-center gap-1 ">
+                <FaUser></FaUser> {bloge?.location}
+              </p>
+              <p className="flex items-center gap-1">
+                <FaRegCommentDots></FaRegCommentDots> {bloge?.comment} Comment
+              </p>
+            </div>
+            {/* discription image text */}
+            <div className=" mt-5">
+              <h1 className=" xl:text-3xl lg:text-2xl text-xl  font-bold ">
 
-                  <FaUser></FaUser> {bloge.location}
-                </p>
-                <p className="flex items-center gap-1">
-
-                  <FaRegCommentDots></FaRegCommentDots> {bloge.comment} Comment
-                </p>
-              </div>
-              {/* discription image text */}
-              <div className=" mt-5">
-                <h1 className=" xl:text-3xl lg:text-2xl text-xl  font-bold ">
-
-                  {bloge?.desTitle}
-                </h1>
-                <p className=" mt-3   ">
-                  {bloge.overview}
-                </p>
-              </div>
-              {/*  "" cotetion text imag disc... */}
-              <div className=" xl:mt-10 mt-7 xl:px-20">
-                <p className="  py-1">
-                  {bloge.shortover}
-                </p>
+                {bloge?.desTitle}
+              </h1>
+              <p className=" mt-3   ">
+                {bloge?.description}
+              </p>
+            </div>
+            {/*  "" cotetion text imag disc... */}
+            <div className=" xl:mt-10 mt-7 xl:px-20">
+              <p className="  py-1">
+                {bloge?.shortover}
+              </p>
 
 
-              </div>
-            </div>)
-          }
-
+            </div>
+          </div>
           {/* left sitre populat bloge */}
-          {bloge?.map((bloge) => <div key={bloge.id} className="xl:w-[450px] lg:w-[520px] ">
+          <div key={bloge?.id} className="xl:w-[450px] lg:w-[520px] ">
             <input
               type="text"
               placeholder="Secarch"
@@ -166,19 +158,19 @@ const Blog = () => {
 
               <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px] font-semibold mt-5 flex justify-between ">
 
-                Real Estate <span> ({bloge.realestate} properties) </span>
+                Real Estate <span> ({bloge?.realestate} properties) </span>
               </h1>
               <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px]  font-semibold mt-5 flex justify-between ">
 
-                House <span> ( {bloge.House} properties) </span>
+                House <span> ( {bloge?.House} properties) </span>
               </h1>
               <h1 className=" border p-2 px-7  xl:text-xl lg:text-[20px] text-sm font-semibold mt-5 flex justify-between ">
 
-                Home Land <span> ({bloge.HomeLand} properties) </span>
+                Home Land <span> ({bloge?.HomeLand} properties) </span>
               </h1>
               <h1 className=" border p-2 px-7 xl:text-xl lg:text-[20px] font-semibold mt-5 flex justify-between ">
 
-                Bath Beds <span> ({bloge.Bath} properties) </span>
+                Bath Beds <span> ({bloge?.Bath} properties) </span>
               </h1>
             </div>
             {/* popular Tags */}
@@ -231,239 +223,237 @@ const Blog = () => {
                 </p>
               </div>
             </div>
-          </div>)}
+          </div>
         </div>
 
 
       </div>
       {/* secound image state section  */}
-      {
-        bloge?.map((bloge) => <div key={bloge.id} className="  mb-6 mt-2  xl:w-[800px] px-4 lg:w-[500px]  md:w-[590px] h-full">
-          <img
-            src={bloge.img}
-            className=" w-full h-full"
-            alt=""
-          />
+      <div key={bloge?.id} className="  mb-6 mt-2  xl:w-[800px] px-4 lg:w-[500px]  md:w-[590px] h-full">
+        <img
+          src={bloge?.img?.img2}
+          className=" w-full h-full"
+          alt=""
+        />
 
-          <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
+        <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
 
-            {bloge.maintitle}
+          {bloge?.maintitle}
+        </h1>
+        <p className=" ">
+          {bloge?.mainoverview}
+        </p>
+
+        {/* start section  */}
+
+        <div className=" mt-20">
+          <p className="flex items-center gap-3 xl:text-xl font-serif">
+
+            <MdOutlineStarPurple500></MdOutlineStarPurple500>
+            <span>
+
+              {bloge?.mainpoint}
+            </span>
+          </p>
+          <p className="flex items-center gap-3 mt-2 mb-2  xl:text-xl font-serif ">
+
+            <MdOutlineStarPurple500></MdOutlineStarPurple500>
+            <span>
+              {bloge?.mainpointtow}
+            </span>
+          </p>
+          <p className="flex items-center gap-3  xl:text-xl font-serif">
+
+            <MdOutlineStarPurple500></MdOutlineStarPurple500>
+            <span>
+              {bloge?.pointhree}
+            </span>
+          </p>
+        </div>
+
+        {/* post tages */}
+        <div className="mt-11 cursor-pointer  xl:flex justify-between items-center ">
+          <div className="flex gap-3 items-center font-semibold text-xl  ">
+            <h1 className="xl:text-xl font-bold"> Post Tags : </h1>
+            <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
+
+              House Build
+            </p>
+            <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
+
+              Estate
+            </p>
+            <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
+
+              Aparment
+            </p>
+          </div>
+          <div className=" flex gap-6 cursor-pointer xl:mt-0 lg:mt-5 md:mt-6 mt-6  text-xl items-center">
+            <h1 className="xl:text-xl  font-bold"> Share: </h1>
+            <FaFacebookF className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaFacebookF>
+            <FaGoogle className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaGoogle>
+            <FaLinkedin className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaLinkedin>
+            <FaTwitter className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaTwitter>
+          </div>
+        </div>
+        {/* comment section */}
+
+        <div className="mt-10  px-4">
+          <h1 className="xl:text-2xl lg:text-2xl text-sm font-bold">
+
+            2 Commnets
           </h1>
-          <p className=" ">
-            {bloge.mainoverview}
+
+          <div className=" flex mt-5 items-center gap-4 px-4">
+            <div className="xl:w-20 lg:w-20 w-16 ">
+              <img
+                src="../../../public/Screenshot 2024-01-23 232016.png"
+                className="rounded-full"
+              />
+            </div>
+            <h1 className="xl:text-2xl lg:text-xl font-bold">
+
+              Douglas Lyphe <br />
+              <span className="uppercase font-semibold  text-sm">
+
+                march 26,2024 At 10.25pm
+              </span>
+            </h1>
+          </div>
+          <p className="px-8 ml-24 mt-2  xl:text-xl font-serif">
+
+            Exceptional real estate professionals! Sold our property swiftly with top-notch marketing strategies. Their market knowledge, professionalism, and integrity set them apart. Trustworthy and reliable—our go-to team for any future real estate needs!
           </p>
 
-          {/* start section  */}
-
-          <div className=" mt-20">
-            <p className="flex items-center gap-3 xl:text-xl font-serif">
-
-              <MdOutlineStarPurple500></MdOutlineStarPurple500>
-              <span>
-
-                {bloge?.mainpoint}
-              </span>
-            </p>
-            <p className="flex items-center gap-3 mt-2 mb-2  xl:text-xl font-serif ">
-
-              <MdOutlineStarPurple500></MdOutlineStarPurple500>
-              <span>
-                {bloge.mainpointtow}
-              </span>
-            </p>
-            <p className="flex items-center gap-3  xl:text-xl font-serif">
-
-              <MdOutlineStarPurple500></MdOutlineStarPurple500>
-              <span>
-                {bloge.pointhree}
-              </span>
-            </p>
-          </div>
-
-          {/* post tages */}
-          <div className="mt-11 cursor-pointer  xl:flex justify-between items-center ">
-            <div className="flex gap-3 items-center font-semibold text-xl  ">
-              <h1 className="xl:text-xl font-bold"> Post Tags : </h1>
-              <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
-
-                House Build
-              </p>
-              <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
-
-                Estate
-              </p>
-              <p className=" text-sm  border px-1 font-bold py-2  hover:bg-orange-300  ">
-
-                Aparment
-              </p>
-            </div>
-            <div className=" flex gap-6 cursor-pointer xl:mt-0 lg:mt-5 md:mt-6 mt-6  text-xl items-center">
-              <h1 className="xl:text-xl  font-bold"> Share: </h1>
-              <FaFacebookF className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaFacebookF>
-              <FaGoogle className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaGoogle>
-              <FaLinkedin className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaLinkedin>
-              <FaTwitter className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 "></FaTwitter>
-            </div>
-          </div>
-          {/* comment section */}
-
-          <div className="mt-10  px-4">
-            <h1 className="xl:text-2xl lg:text-2xl text-sm font-bold">
-
-              2 Commnets
-            </h1>
-
-            <div className=" flex mt-5 items-center gap-4 px-4">
-              <div className="xl:w-20 lg:w-20 w-16 ">
-                <img
-                  src="../../../public/Screenshot 2024-01-23 232016.png"
-                  className="rounded-full"
-                />
-              </div>
-              <h1 className="xl:text-2xl lg:text-xl font-bold">
-
-                Douglas Lyphe <br />
-                <span className="uppercase font-semibold  text-sm">
-
-                  march 26,2024 At 10.25pm
-                </span>
-              </h1>
-            </div>
-            <p className="px-8 ml-24 mt-2  xl:text-xl font-serif">
-
-              Exceptional real estate professionals! Sold our property swiftly with top-notch marketing strategies. Their market knowledge, professionalism, and integrity set them apart. Trustworthy and reliable—our go-to team for any future real estate needs!
-            </p>
-
-            <h1
-              className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4  ml-[130px] hover:bg-amber-300
+          <h1
+            className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4  ml-[130px] hover:bg-amber-300
 "
-            >
+          >
 
-              replay
-            </h1>
-          </div>
+            replay
+          </h1>
+        </div>
 
-          {/* secound comment */}
-          <div className="mt-10   xl:ml-32 lg:ml-20 md:ml-14 ">
-            {/* <h1 className="text-3xl font-bold"> 2 Commnets  </h1> */}
+        {/* secound comment */}
+        <div className="mt-10   xl:ml-32 lg:ml-20 md:ml-14 ">
+          {/* <h1 className="text-3xl font-bold"> 2 Commnets  </h1> */}
 
-            <div className=" flex mt-5 items-center gap-4 px-4">
-              <div className="xl:w-20 lg:w-20 w-16  ">
-                <img
-                  src="../../../public/416134857_361762533286846_594773232925n.jpg"
-                  alt="logo"
-                  className="rounded-full  "
-                />
-              </div>
-              <h1 className="xl:text-2xl lg:text-xl font-bold">
-
-                Diye roy <br />
-                <span className="uppercase font-semibold  text-sm">
-
-                  march 26,2024 At 10.25pm
-                </span>
-              </h1>
+          <div className=" flex mt-5 items-center gap-4 px-4">
+            <div className="xl:w-20 lg:w-20 w-16  ">
+              <img
+                src="../../../public/416134857_361762533286846_594773232925n.jpg"
+                alt="logo"
+                className="rounded-full  "
+              />
             </div>
-            <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
+            <h1 className="xl:text-2xl lg:text-xl font-bold">
 
-              Outstanding real estate experience! The teams expertise and dedication made our home buying process smooth and enjoyable. Transparent communication, reliable service, and a genuine commitment to client satisfaction. Highly recommended
-            </p>
+              Diye roy <br />
+              <span className="uppercase font-semibold  text-sm">
 
-            <h1
-              className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4 ml-[130px] hover:bg-amber-300
-"
-            >
-
-              replay
+                march 26,2024 At 10.25pm
+              </span>
             </h1>
           </div>
+          <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
 
-          {/* thard comment */}
-          <div className="mt-10  px-4">
-            <div className=" flex mt-5 items-center gap-4 px-4">
-              <div className="xl:w-20 lg:w-20 w-16 ">
-                <img src="https://i.ibb.co/C6PG1MB/421249981-295989319767833-8050773694835611518-n.jpg" className=" rounded-full " />
-              </div>
-              <h1 className="xl:text-2xl lg:text-xl font-bold">
+            Outstanding real estate experience! The teams expertise and dedication made our home buying process smooth and enjoyable. Transparent communication, reliable service, and a genuine commitment to client satisfaction. Highly recommended
+          </p>
 
-                Ripon Chandra <br />
-                <span className="uppercase font-semibold  text-sm">
+          <h1
+            className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4 ml-[130px] hover:bg-amber-300
+"
+          >
 
-                  march 26,2024 At 10.25pm
-                </span>
-              </h1>
+            replay
+          </h1>
+        </div>
+
+        {/* thard comment */}
+        <div className="mt-10  px-4">
+          <div className=" flex mt-5 items-center gap-4 px-4">
+            <div className="xl:w-20 lg:w-20 w-16 ">
+              <img src="https://i.ibb.co/C6PG1MB/421249981-295989319767833-8050773694835611518-n.jpg" className=" rounded-full " />
             </div>
-            <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
+            <h1 className="xl:text-2xl lg:text-xl font-bold">
 
-              Exceptional real estate service! Professional, responsive, and knowledgeable team. Seamless transactions and attention to detail. Highly recommend for buying or selling property. A trustworthy partner in real estate endeavors
-            </p>
+              Ripon Chandra <br />
+              <span className="uppercase font-semibold  text-sm">
 
-            <h1
-              className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4 ml-[130px] hover:bg-amber-300
-"
-            >
-
-              replay
+                march 26,2024 At 10.25pm
+              </span>
             </h1>
           </div>
+          <p className="px-8 mt-2  ml-24  xl:text-xl font-serif">
 
-          <hr className="mb-10 mt-8 px-8" />
-          {/* leave comment section  */}
+            Exceptional real estate service! Professional, responsive, and knowledgeable team. Seamless transactions and attention to detail. Highly recommend for buying or selling property. A trustworthy partner in real estate endeavors
+          </p>
+
+          <h1
+            className=" border w-[70px] px-2 mb-4 py-1 border-b-green-500 font-bold  mt-4 ml-[130px] hover:bg-amber-300
+"
+          >
+
+            replay
+          </h1>
+        </div>
+
+        <hr className="mb-10 mt-8 px-8" />
+        {/* leave comment section  */}
+        <div className="">
+          <h1 className="xl:text-3xl lg:text-2xl text-xl xl:ml-0 lg:ml-0 md:ml-3 ml-24 font-bold">
+
+            Leave a Comment
+          </h1>
+
           <div className="">
-            <h1 className="xl:text-3xl lg:text-2xl text-xl xl:ml-0 lg:ml-0 md:ml-3 ml-24 font-bold">
-
-              Leave a Comment
-            </h1>
-
-            <div className="">
-              <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
-                <input
-                  type="text"
-                  placeholder="Name*"
-                  className=" border w-[50%] border-black py-2 px-2  "
-                />
-                <input
-                  type="email"
-                  placeholder="Email*"
-                  className=" w-[50%] border border-black py-2 px-2  "
-                />
-              </div>
-              <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
-                <input
-                  type="text"
-                  placeholder="Phone*"
-                  className=" border w-[50%] border-black py-2 px-2  "
-                />
-                <input
-                  type="text"
-                  placeholder="subjcet*"
-                  className=" w-[50%] border border-black py-2 px-2  "
-                />
-              </div>
-              <div className=" mt-5 ml-6 flex gap-9 justify-between ">
-                <textarea
-                  placeholder="comment"
-                  className="textarea textarea-bordered textarea-lg w-full max-w-xs"
-                ></textarea>
-              </div>
-              <div className="flex gap-3 items-center mt-2 ml-7">
-                <label className="label cursor-pointer">
-                  <input type="checkbox" defaultChecked className="checkbox" />
-                </label>
-                <p className=" font-semibold">
-
-                  save my name ,email and website inthis browser for the next time
-                  i comment
-                </p>
-              </div>
-              <button className=" btn-primary btn  mt-4 ml-10  ">
-
-                submit comment
-              </button>
+            <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
+              <input
+                type="text"
+                placeholder="Name*"
+                className=" border w-[50%] border-black py-2 px-2  "
+              />
+              <input
+                type="email"
+                placeholder="Email*"
+                className=" w-[50%] border border-black py-2 px-2  "
+              />
             </div>
+            <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
+              <input
+                type="text"
+                placeholder="Phone*"
+                className=" border w-[50%] border-black py-2 px-2  "
+              />
+              <input
+                type="text"
+                placeholder="subjcet*"
+                className=" w-[50%] border border-black py-2 px-2  "
+              />
+            </div>
+            <div className=" mt-5 ml-6 flex gap-9 justify-between ">
+              <textarea
+                placeholder="comment"
+                className="textarea textarea-bordered textarea-lg w-full max-w-xs"
+              ></textarea>
+            </div>
+            <div className="flex gap-3 items-center mt-2 ml-7">
+              <label className="label cursor-pointer">
+                <input type="checkbox" defaultChecked className="checkbox" />
+              </label>
+              <p className=" font-semibold">
+
+                save my name ,email and website inthis browser for the next time
+                i comment
+              </p>
+            </div>
+            <button className=" btn-primary btn  mt-4 ml-10  ">
+
+              submit comment
+            </button>
           </div>
-        </div>)
-      }
+        </div>
+      </div>
     </>
   );
 };

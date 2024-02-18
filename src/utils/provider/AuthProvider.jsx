@@ -17,7 +17,8 @@ const AuthProvider = ({ children }) => {
                 console.log(cuser?.email);
                 const email = cuser?.email;
                 if(email){
-                    await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    // await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    await axios.post('https://homifyestates.vercel.app/jwt/signIn',{email},{withCredentials:true})
                     // .then(async res=>{
                     //     console.log(res.data);
                     //     .then(res=>{
@@ -27,7 +28,8 @@ const AuthProvider = ({ children }) => {
                     //     .catch(err=>console.log(err.message))
                     // })
                     // .catch(err=> console.log(err.message))
-                    const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
+                    // const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
+                    const result =await axios.get(`https://homifyestates.vercel.app/users/${email}`, {withCredentials:true})
                     setInfo(result.data)
                 }
             

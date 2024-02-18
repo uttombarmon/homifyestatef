@@ -1,4 +1,5 @@
 import useAxiosPublic from "../../../../hooks/axiosPublic/useAxiosPublic"
+import toast from "react-hot-toast";
 
 function User({d,index}) {
     const {name,email,role} = d
@@ -7,28 +8,28 @@ function User({d,index}) {
     const makeAdmin=()=>{
         axiosPublic.patch(`/users/all/makeadmin?id=${d._id}`)
         .then(()=>{
-            // toast.success("Make Admin Successfull!")
+            toast.success("Make Admin Successfull!")
         })
         .catch(e=> console.log(e.message))
     }
     const makeAgent=()=>{
         axiosPublic.patch(`/users/all/makeagent?id=${d._id}`)
         .then(()=>{
-            // toast.success("Make Agent Successfull!")
+            toast.success("Make Agent Successfull!")
         })
         .catch(e=> console.log(e.message))
     }
     const markFraud=()=>{
         axiosPublic.patch(`/users/all/makefraud?id=${d._id}`)
         .then(()=>{
-            // toast.success("Marked Fraud Successfull!")
+            toast.success("Marked Fraud Successfull!")
         })
         .catch(e=> console.log(e.message))
     }
     const deleteUser=()=>{
         axiosPublic.delete(`/users/all/deleteuser?id=${d._id}`)
         .then(()=>{
-            // toast.success("Deleted User!")
+            toast.success("Deleted User!")
         })
         .catch(e=> console.log(e.message))
     }

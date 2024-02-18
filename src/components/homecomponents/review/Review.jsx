@@ -24,13 +24,13 @@ const Review = () => {
 
             <div className=' max-w-7xl mx-auto px-1 grid md:grid-cols-2 lg:grid-cols-4'>
                 {reviews.map(review =>
-                    <div key={review?._id} className=' my-7 p-4 lg:p-1'>
+                    <div key={review?._id} className=' my-7 h-96 p-4 lg:p-1'>
                         <div className=' h-full flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl'>
                             <div>
                                 <div className='flex pb-3 justify-between'>
                                     <img className='w-[25px] h-[25px]' src={'https://i.ibb.co/zSsX6yR/cotation-icon-removebg-preview.png'} alt="" />
                                 </div>
-                                <p className='text-justify'>{review?.comment}</p>
+                                <p className=' text-md text-justify'>{review?.comment}</p>
 
                             </div>
 
