@@ -74,7 +74,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="w-full font-serif mx-auto overflow-x-auto bg-gray-100 px-2">
+      <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
         <h1 className="text-2xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
         <div className="table-responsive">
           <table className="w-full border-4 table">
@@ -96,30 +96,30 @@ const Wishlist = () => {
               {/* row 1 */}
               {currentItems?.map((property) => (
                 <tr key={property._id} className=" bg-[#bdc98e1c]  ">
-                  <td className="w-full md:w-[150px] lg:w-[200px] xl:w-[200px] border-4">
+                  <td className="w-full md:w-[100px] lg:w-[100px] xl:w-[100px] border-4">
                     <img
                       src={property.image}
                       alt="logo"
-                      className="w-[120px] xl:h-[90px] md:h-24 lg:h-[100px] object-cover"
+                      className="w-[120px] h-10 object-cover"
                     />
                   </td>
                   <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[500px] border-4">
-                    <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px] font-semibold font-serif">
+                    <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px]">
                       {property.name}
                     </h3>
                   </td>
-                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border-4 text-xl font-medium font-serif">
+                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border-4 text-xl">
                     $ {property?.price}
                   </td>
                   <td className="border-4">
-                    <button className="text-base  md:text-xl font-bold font-serif w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    <button className="text-base  md:text-xl w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
                       Sale
                     </button>
                   </td>
                   <td className="border-4">
                     <button
                       onClick={() => handelDelete(property._id)}
-                      className=" border-2 bg-red-400 gap-1 hover:bg-red-600 h-[40px] w-[90px] px-1 text-[17px] font-serif  flex items-center"
+                      className=" border-2 bg-red-400 gap-1 hover:bg-red-600 btn my-0 w-[90px] px-1 text-[17px]  flex items-center"
                     >
                       <span>
                         <RiDeleteBin7Line />
@@ -128,7 +128,7 @@ const Wishlist = () => {
                     </button>
                     <br />
                     <Link to={`/dashboard/makeOffer/${property.propety}`}>
-                      <button className=" border-2 bg-[#87e2639b]  hover:bg-green-600 h-[40px] w-[95px]  text-[17px] text-center px-1">
+                      <button className=" border-2 bg-[#87e2639b]  hover:bg-green-600 my-0 btn-md btn  text-[17px] text-center px-1">
                         Make offer
                       </button>
                     </Link>

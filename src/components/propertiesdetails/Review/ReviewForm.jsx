@@ -16,6 +16,10 @@ const ReviewForm = ({id}) => {
       toast.error('Please provide a valid rating(1-5) and comment.');
       return;
     }
+    if(comment.length>170){
+      toast.error('Please Write Review in 30 words!')
+      return;
+    }
     const currentDate = new Date();
     const localDate = currentDate.toISOString().split('T')[0];
     toast.success('Successfully, Reviewed')

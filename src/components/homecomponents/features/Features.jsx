@@ -16,6 +16,7 @@ const Features = () => {
     const fetchData = async () => {
       try {
         if (searchInfo) {
+          console.log(searchInfo);
           const response = await axiosPublic.get(`/home/checkout?want=${searchInfo?.want}&type=${searchInfo?.type}&location=${searchInfo?.location}`);
           const data = response.data;
           setProperties(data);
