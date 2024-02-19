@@ -30,16 +30,16 @@ const Footer = () => {
                     </div>
                     <div className=" col">
                         <h3 className=" text-xl font-bold"> Office <div className="underline"> <span></span> </div> </h3>
-                        <p> Dhanka Mirpure 10rod </p>
+                        <p> Dhaka Mirpure 10rod </p>
                         <p> Dhaka , PIN 503319 , Bangladesh </p>
                         <p className=" email"> hrhridoyroy503@gmail.com </p>
                     </div>
                     <div className=" col">
                         <h3 className=" text-xl  font-bold"> Links  <div className="underline"> <span></span> </div></h3>
-                        <li> <a href=""  > Home</a></li>
-                        <li> <a href=""> Services</a></li>
-                        <li> <a href=""> About Us</a></li>
-                        <li> <a href=""> Contacts</a></li>
+                        <li> <a href="/"  > Home</a></li>
+                        <li> <a href="about"> About Us</a></li>                        
+                        <li> <a href="contact"> Contact</a></li>
+                        <li> <a href="Privacy"> Privacy Policy </a></li>
                     </div>
                     <div className="col">
                         <h3 className=" text-xl font-bold"> NewsLetter  <div className="underline"> <span></span> </div> </h3>
@@ -49,12 +49,14 @@ const Footer = () => {
                             <button type="submit"> <FaArrowRight className=" right  "></FaArrowRight> </button>
                         </form>
                         <div className="socal-icone flex gap-4 text-2xl  ">
-                            <Link to={"https://www.facebook.com/hridayray.hriday.1/"}>  <ImFacebook className="  hover:bg-orange-500  "></ImFacebook> </Link>
-                            <Link to={"https://www.instagram.com/hridayrayhriday/"}>   <FaInstagramSquare className="  hover:bg-orange-500  " >
+                            <Link to={"https://www.facebook.com/hridayray.hriday.1/"}>  <ImFacebook className="  hover:text-orange-500  "></ImFacebook> </Link>
+                            <Link to={"https://www.instagram.com/hridayrayhriday/"}>   <FaInstagramSquare className="  hover:text-orange-500  " >
                             </FaInstagramSquare>  </Link>
-                            <Link to={"https://github.com/hridayroy19"}><FaGithub className="  hover:bg-orange-500  "> </FaGithub>   </Link>
-                            <FaWhatsapp></FaWhatsapp>
-
+                            <Link to={"https://github.com/hridayroy19"}><FaGithub className="  hover:text-orange-500  "> </FaGithub>   </Link>
+                            
+                                   <Link to={"https://chat.whatsapp.com/Ei1rtf6Y9sAHZo3h8zvlXV"}>
+                                   <FaWhatsapp className=" hover:text-orange-500 "></FaWhatsapp>
+                                   </Link>
                         </div>
 
                     </div>

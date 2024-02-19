@@ -32,7 +32,7 @@
     "react-spinners": "^0.13.8",
     "recharts": "^2.11.0",
     "sort-by": "^1.2.0",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.6"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.20.1",

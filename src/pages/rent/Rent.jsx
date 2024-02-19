@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
-import RentCard from "./RentCard";
+import Property from "../../sharedcomponents/Property";
 
 const Rent = () => {
   const [properties, setProperties] = useState([]);
@@ -80,28 +80,31 @@ const Rent = () => {
         </div>
         <div className="grid relative  w-[98%] grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mx-auto bg-slate-100 gap-5">
           {currentItems?.map((properties) => (
-            <RentCard key={properties._id} properties={properties}></RentCard>
+            <Property key={properties._id} properties={properties}></Property>
           ))}
         </div>
       </div>
 
-      <div className=" flex  text-center items-center mt-7 w-full mx-auto justify-center  gap-5">
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="btn bg-orange-300 text-black font-medium w-20"
-        >
-          Previous
-        </button>
-        <div className="flex space-x-2">{renderPageNumbers()}</div>
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={indexOfLastItem >= properties.length}
-          className="btn bg-green-300 font-medium w-20"
-        >
-          Next
-        </button>
-      </div>
+     {
+       properties.length > 10 && 
+       <div className=" flex  text-center items-center mb-4 mt-7 w-full mx-auto justify-center  gap-5">
+       <button
+         onClick={() => paginate(currentPage - 1)}
+         disabled={currentPage === 1}
+         className="btn bg-orange-300 text-black font-medium w-20"
+       >
+         Previous
+       </button>
+       <div className="flex space-x-2">{renderPageNumbers()}</div>
+       <button
+         onClick={() => paginate(currentPage + 1)}
+         disabled={indexOfLastItem >= properties.length}
+         className="btn bg-green-300 font-medium w-20"
+       >
+         Next
+       </button>
+     </div>
+     }
     </>
   );
 };
