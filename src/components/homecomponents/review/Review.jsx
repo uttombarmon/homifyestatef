@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 const Review = () => {
+
   const [reviews, setReviews] = useState([]);
   const axiospublic = useAxiosPublic();
 
@@ -80,6 +81,7 @@ const Review = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </SwiperSlide>
         ))}

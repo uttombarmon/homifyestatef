@@ -20,14 +20,12 @@ import { TiArrowMoveOutline } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 // import Modal from "react-modal";
-import { CgMathPlus } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-const Property = ({ properties }) => {
-  console.log(properties);
+const Property = ({ properties }) => {  
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
@@ -161,16 +159,16 @@ const Property = ({ properties }) => {
       </div>
       {/* rent, Features and share section  */}
       <div className=" absolute flex   flex-row-reverse top-5 left-10 justify-between mx-auto ">
-        <div className="px-3  rounded-full xl:ml-40 lg:ml-10 ml-12 bottom-[340px]  w-[100px] items-center ">
+        <div className="px-3  rounded-full xl:ml-44 lg:ml-14 md:ml-12  ml-24 bottom-[340px]  w-[100px] items-center ">
           <div className="flex  text-white  gap-2 ">
             {/* share button  */}
-            <div className=" bg-gray-400 hover:bg-orange-500 rounded-full text-xl p-1 ">
+            <div >
               <button
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
                 }
               >
-                <IoMdShare />
+                <IoMdShare  className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 " />
               </button>
 
               <dialog
@@ -246,22 +244,15 @@ const Property = ({ properties }) => {
             </div>
 
             <p
-              onClick={() => handelWhilist(properties)}
-              className=" bg-gray-400 hover:bg-orange-500  rounded-full text-xl p-1 "
-            >
-              <FaRegHeart />
-            </p>
-            <p className=" bg-gray-400 hover:bg-orange-500  rounded-full text-xl p-1 ">
-              <Link to="">
-                <CgMathPlus />
-              </Link>
-            </p>
+              onClick={() => handelWhilist(properties)}>
+              <FaRegHeart className=" bg-gray-400 hover:bg-orange-500  rounded-full text-3xl p-1 " />
+            </p>          
           </div>
         </div>
 
         <div className="px-3  rounded-full bottom-[300px]  w-[110px] items-center ">
           <div className="text-white flex flex-col  gap-1 ">
-            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded-full">
+            <p className=" bg-black hover:bg-orange-400 items-center text-center p-1 font-bold rounded">
               {properties?.property_status}
             </p>
             <p className=" bg-red-400 hover:bg-orange-400 items-center text-center p-1 rounded font-bold">
