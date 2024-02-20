@@ -13,20 +13,31 @@ const AgentDashboard = () => {
 //    console.log(email);
 
     const [wishLists, setwishLists] = useState([]);
+    console.log(wishLists);
     const axiosPrivate = useAxiosPrivate();
+    
     // console.log(properties);
     const [listing, setListing] = useState([]);
     // console.log(listing);
 
-    //wishlist fetching 
+ 
     useEffect(() => {
-       if(email){
-        axiosPrivate.get(`/wish-lists/${email}`)
-        .then(data =>{
-            setwishLists(data.data.length);
-        })
-       }
-    }, [axiosPrivate,email]);
+      const fetchData = async () => {
+        try {
+          const response = await axiosPrivate.get(`/wish-lists/wish/property`);
+          const data = response.data;
+         
+          const filteredProperties = data.filter(
+            (property) => property.author === email
+          );
+          setwishLists(filteredProperties);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
+      fetchData();
+    }, [axiosPrivate, email]);
 
     // total listiong
     useEffect(() => {
@@ -121,7 +132,7 @@ const AgentDashboard = () => {
                                 <span className="text-xl  font-medium">Wishlist: </span>
 
                                 <h4 className="text-xl ml-2 font-bold text-black dark:text-white">
-                                    {wishLists}
+                                    {wishLists.length}
                                 </h4>
                             </div>
                         </div>
