@@ -48,8 +48,8 @@ const ScheduleForm = ({ price, id }) => {
 
     formData.amount = parseInt(numericPart)
     console.log(formData);
-    console.log(import.meta.env.VITE_SERVER);
-    useAxios.post(`${import.meta.env.VITE_SERVER}/order`, { formData })
+    // console.log(import.meta.env.VITE_SERVER);
+    useAxios.post(`/order`, { formData })
       .then(data => {
         console.log(data)
         window.location.href = data.data.url;
