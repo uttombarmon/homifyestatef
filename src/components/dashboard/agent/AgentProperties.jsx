@@ -19,14 +19,12 @@ const AgentProperties = () => {
     if (email) {
       AxiosPublic.get('/home/checkout/')
         .then(data => {
-          console.log(data);
+          // console.log(data);
           setProperties(data.data)
-        
+
         })
     }
   }, [AxiosPublic, email])
-
-
 
   return (
     <div className="w-full xl:w-[1000px] mx-auto overflow-x-auto bg-gray-100 px-2">
@@ -82,14 +80,15 @@ const AgentProperties = () => {
                 </td>
                 <td className="border">
                   <button className="text-base md:text-xl font-medium font-serif w-full md:w-[90px] lg:w-[90px] xl:w-[110px]  items-center gap-2">
-                    <span className="flex hover:text-orange-400 items-center gap-2">
-                      <FaEdit /> Edit
-                    </span>
+                    <Link to={`/dashboard/updateOrder/${property._id}`}>
+                      <span className="flex hover:text-orange-400 items-center gap-2">
+                        <FaEdit /> Edit
+                      </span>
+                    </Link>
 
                     <span className="flex  hover:text-red-600 mt-2 items-center gap-2">
                       <RiDeleteBin7Line />  Delete
                     </span>
-
                   </button>
                 </td>
               </tr>
