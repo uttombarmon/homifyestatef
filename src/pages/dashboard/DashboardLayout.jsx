@@ -73,16 +73,16 @@ const DashboardLayout = () => {
                 </div>
             </div>
             {/* dashboard nav section */}
-            <div className=" hidden lg:flex fixed min-h-screen md:w-[250px]  bg-stone-700">
+            <div className=" hidden lg:flex fixed min-h-screen md:w-[250px] bg-[#c9c481] ">
                 <div className='w-full flex-wrap '>
                     {/* drawer head */}
                     <div className=" w-full pt-4 hidden lg:inline text-center">
-                        <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
+                        <img className=' w-24 h-14 mx-auto mt-4' src={logo} alt="" />
                         <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
                         <hr />
                     </div>
                     <div>
-                        <ul className="menu w-full min-h-full bg-stone-700 text-white">
+                        <ul className="menu w-full min-h-full  text-black">
                             {
                                 users?.role == 'admin' &&
                                 <AdminNav></AdminNav>
@@ -104,7 +104,7 @@ const DashboardLayout = () => {
                 </div> */}
             </div>
             {/* dashboard content section  */}
-            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] overflow-x-hidden absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black">
+            <div className=" top-16 lg:top-0 w-full md:w-[calc(100%-20px)] overflow-x-hidden absolute right-0 mx-auto lg:w-[calc(100%-250px)] text-black ">
                 <Outlet></Outlet>
             </div>
            </div>

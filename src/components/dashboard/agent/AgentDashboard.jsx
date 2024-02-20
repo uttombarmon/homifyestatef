@@ -1,48 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import { IoEyeSharp } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 import { GoCodeReview } from "react-icons/go";
-import DashboardTabil from './DashboardTabil';
+import { AuthContext } from './../../../utils/provider/AuthProvider';
+import useAxiosPrivate from './../../../hooks/axiosPrivate/useAxiosPrivate';
+
 
 const AgentDashboard = () => {
+   const {user}=useContext(AuthContext);
+   const email = user?.email;
+//    console.log(email);
 
-
-    const [properties, setProperties] = useState([]);
+    const [wishLists, setwishLists] = useState([]);
+    const axiosPrivate = useAxiosPrivate();
     // console.log(properties);
     const [listing, setListing] = useState([]);
-    console.log(listing);
+    // console.log(listing);
 
     //wishlist fetching 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("/wishlist.json");
-                const data = await response.json();
-                setProperties(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+       if(email){
+        axiosPrivate.get(`/wish-lists/${email}`)
+        .then(data =>{
+            setwishLists(data.data.length);
+        })
+       }
+    }, [axiosPrivate,email]);
 
     // total listiong
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("/order.json");
-                const data = await response.json();
-                setListing(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        fetchData();
-    }, []);
+        if(email){
+            axiosPrivate.get(`/home/checkout/${email}`)
+            .then(data =>{
+                setListing(data.data);
+                // console.log(data.data);
+            })
+           }
+    }, [axiosPrivate,email]);
 
 
     const data = [
@@ -91,19 +86,19 @@ const AgentDashboard = () => {
     ];
 
     return (
-        <div>
-            <h2 className="text-center my-4 font-bold ">Agent Deshboard</h2>
+        <div >
+            <h2 className="text-center  font-bold text-3xl uppercase  p-3">Agent Deshboard</h2>
             <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
                     {/* <!-- Card Item Start --> */}
                     <div
-                        className="rounded-lg  border border-stroke bg-gray-400 py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark ">
+                        className="rounded-lg  border border-stroke bg-[#22c1c3] py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark ">
                         <div className="flex justify-center rounded-full  ">
                             <p className='text-3xl text-blue-500 '>
                                 <IoEyeSharp ></IoEyeSharp>
                             </p>
                         </div>
-                        <div className="mt-4 flex items-end justify-center">
+                        <div className="mt-4 flex items-end justify-center ">
                             <div className=" flex items-center gap-3">
                                 <span className="text-xl font-medium">Total Listing :</span>
                                 <h4 className="text-xl font-bold text-black dark:text-white">
@@ -112,30 +107,11 @@ const AgentDashboard = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <!-- Card Item End -->
+    
         
-            <!--Pending Proprty  Card Item Start --> */}
-                    {/* <div
-                        className="rounded-lg border border-stroke bg-gray-400 py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-                        <div className="flex  items-center justify-center rounded-full ">
-                            <p className='text-3xl text-blue-500'> <MdOutlineShoppingCart/> </p>
-                        </div>
-
-                        <div className="mt-4 flex text-center items-end justify-between">
-                            <div className='flex gap-3 items-center'>
-                            <span className="text-[20px] font-medium">Pending Proprty :</span>
-                                <h4 className="text-xl font-bold text-black dark:text-white">
-                                    45
-                                </h4>
-                              
-                            </div>
-                        </div>
-                    </div> */}
-                    {/* <!-- Card Item End -->
-        
-            <!-- Card Item Start --> */}
+            {/* <!-- Card Item Start -->  */}
                     <div
-                        className="rounded-lg border border-stroke bg-gray-400 py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+                        className="rounded-lg border border-stroke bg-[#4bd6a8] py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark">
                         <div className="flex  items-center justify-center rounded-full ">
                             <p className='text-2xl text-blue-500'> <FiShoppingBag /> </p>
                         </div>
@@ -145,7 +121,7 @@ const AgentDashboard = () => {
                                 <span className="text-xl  font-medium">Wishlist: </span>
 
                                 <h4 className="text-xl ml-2 font-bold text-black dark:text-white">
-                                    {properties.length}
+                                    {wishLists}
                                 </h4>
                             </div>
                         </div>
@@ -155,7 +131,7 @@ const AgentDashboard = () => {
         
             <!-- Card Item Start --> */}
                     <div
-                        className="rounded-lg border border-stroke bg-gray-400 py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark">
+                        className="rounded-lg border border-stroke bg-[#b471eb] py-6 px-6 shadow-default dark:border-strokedark dark:bg-boxdark">
                         <div className="flex  items-center justify-center rounded-full ">
                             <p className='text-3xl text-blue-500'> <GoCodeReview /> </p>
                         </div>
@@ -171,12 +147,8 @@ const AgentDashboard = () => {
                         </div>
                     </div>
 
-
                     {/* <!-- Card Item End --> */}
                 </div>
-
-
-
 
                 <div className=' xl:flex flex-row xl:space-y-0 space-y-9 gap-9  items-center mt-9 mb-6 '>
 
@@ -239,13 +211,6 @@ const AgentDashboard = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-
-                {/* dashbord tabile start */}
-                <div>
-                    <DashboardTabil></DashboardTabil>
                 </div>
 
             </div>

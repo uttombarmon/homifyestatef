@@ -50,7 +50,7 @@ const AddProperty = () => {
 
     const allProperties = {
       "title": `${title}`,
-      "enail":`${email}`,
+      "email":`${email}`,
       "location": `${address},${city},${country}`,
       "property_status": `${purpose}`,
       "description": `${description}`,

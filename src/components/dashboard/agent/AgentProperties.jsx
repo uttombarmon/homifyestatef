@@ -12,7 +12,7 @@ const AgentProperties = () => {
 
   const { user } = useContext(AuthContext);
   const AxiosPublic = useAxiosPublic();
-  const email = user?.email
+  const email = user?.email;
 
   //checkoutcollections map 
   useEffect(() => {
