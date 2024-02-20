@@ -1,6 +1,5 @@
 .carousel {
   width: 100vw;
-  height: 100vh;
   overflow: hidden;
   position: relative;
 }
@@ -114,8 +113,8 @@
 }
 
 .arrows button {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #eee4;
   border: none;
@@ -126,6 +125,8 @@
   transition: 0.5s;
   /* text-align: center; */
   z-index: 100;
+  padding-left: 10px;
+  font-size: 30px
 }
 
 .arrows button:hover {
@@ -160,12 +161,15 @@
 .carousel .list .item:nth-child(1) .title {
   animation-delay: 1s;
 }
+
 .carousel .list .item:nth-child(1) .topic {
   animation-delay: 1.2s;
 }
+
 .carousel .list .item:nth-child(1) .des {
   animation-delay: 1.4s;
 }
+
 .carousel .list .item:nth-child(1) .buttons {
   animation-delay: 1.6s;
 }
@@ -290,6 +294,7 @@
   .carousel .list .item .content {
     padding-right: 0;
   }
+
   .carousel .list .item .content .title {
     font-size: 30px;
   }
