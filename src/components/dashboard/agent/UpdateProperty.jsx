@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 // import toast from "react-hot-toast";
@@ -10,19 +10,52 @@ const UpdateProperty = () => {
 
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
+
+    const [propertyType, setPropertyType] = useState(null);
+    const [countryType, setCountryType] = useState(null);
+    const [purposeType, setPurposeType] = useState(null);
+    const [featuredType, setFeaturedType] = useState(null);
+    console.log(featuredType);
+
+    const [updateProperty, setUpdateProperty] = useState(null);
+
+    if (updateProperty) {
+        
+        console.log(updateProperty);
+    }
+    
+
+    useEffect(()=>{
+        axiosPublic.get(`/home/checkoutt/${id}`)
+        .then(res => {setUpdateProperty(res.data)
+            const resData = res.data;
+            setPropertyType(resData.type);
+            setCountryType(resData.location);
+            setPurposeType(resData.property_status);
+            setFeaturedType(resData.featured);
+        })
+
+        .catch(error => console.log(error.message));
+    },[axiosPublic,id]);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         //base information
         const title = form.title.value;
-
+        const PropertyTypes = form.PropertyTypes.value;
+        const description = form.description.value;
+        const bannerImage = form.bannerImage.value;
+        const purpose = form.purpose.value;
+        const mapCode = form.mapCode.value;
         const allinfo = {
             title,
             email: user?.email,
-            // author:{contact:user?.email,name:user?.name,phone, },
-            // facilities:["Air Condition","Cable Tv,","Elevator In Building","Balcony"],
-            // property_details:{ balcony,baths, bed_rooms,date_listed, featured,floor, garages,
-            //    kitchen, originating_year, price, rooms, size,unit },
+            PropertyTypes,
+            description,
+            bannerImage,
+            purpose,
+            mapCode  
         };
 
         // console.log(allinfo);
@@ -47,7 +80,7 @@ const UpdateProperty = () => {
                             <input
                                 type="text"
                                 name="title"
-                                // defaultValue={properties.title}
+                                defaultValue={updateProperty?.title}
                                 placeholder="Title"
                                 className="input input-bordered"
                             />
@@ -57,13 +90,15 @@ const UpdateProperty = () => {
                             <label className="label">
                                 <span className="label-text">Property types</span>
                             </label>
+                          
                             <select
                                 name="PropertyTypes"
-                                defaultValue="Select Propety"
+                                value={propertyType} 
+                                onChange={(e) => setPropertyType(e.target.value)}
                                 className="select"
                             >
                                 <option selected>Select property</option>
-                                <option value="Appartment"> Appartment </option>
+                                <option value="Apartment"> Apartment </option>
                                 <option value="House"> House </option>
                                 <option value="Villa"> Villa </option>
                                 <option value="Office"> Office</option>
@@ -76,7 +111,9 @@ const UpdateProperty = () => {
                             </label>
                             <select
                                 name="country"
-                                defaultValue="Select country"
+                                value={countryType} 
+                                onChange={(e) =>  setCountryType(e.target.value)}
+                                
                                 className="select"
                             >
                                 <option selected>Select Country</option>
@@ -95,6 +132,7 @@ const UpdateProperty = () => {
                             <input
                                 type="text"
                                 name="city"
+                                defaultValue={updateProperty?.location}
                                 placeholder="city name"
                                 className="input input-bordered"
                             />
@@ -117,6 +155,7 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
+                                defaultValue={updateProperty?.author.phone}
                                 name="phone"
                                 placeholder="Phone "
                                 className="input input-bordered"
@@ -128,6 +167,7 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
+                                defaultValue={updateProperty?.author.contact}
                                 name="email"
                                 placeholder="Email"
                                 className="input input-bordered"
@@ -139,7 +179,10 @@ const UpdateProperty = () => {
                             <label className="label">
                                 <span className="label-text">Purpose</span>
                             </label>
-                            <select name="purpose" className="select">
+                            <select name="purpose" className="select" 
+                                value={purposeType} 
+                                onChange={(e) =>  setPurposeType(e.target.value)}>
+
                                 <option selected>Select Purpose</option>
                                 <option value="Rent"> Rent</option>
                                 <option value="Sell"> Sell </option>
@@ -152,9 +195,11 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
+                                defaultValue={updateProperty?.property_details.price} 
                                 name="price"
-                                placeholder="Price"
+                                placeholder="Price "
                                 className="input input-bordered"
+                                
                             />
                         </div>
                     </div>
@@ -168,6 +213,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.size}
                                     name="totalArea"
                                     placeholder="Total Area(Square Feet)"
                                     className="input input-bordered"
@@ -179,6 +225,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.unit}
                                     name="unit"
                                     placeholder="Total Unit"
                                     className="input input-bordered"
@@ -190,6 +237,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.rooms}
                                     name="room"
                                     placeholder="Total Room "
                                     className="input input-bordered"
@@ -201,6 +249,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.bed_rooms}
                                     name="bedroom"
                                     placeholder="Bedroom"
                                     className="input input-bordered"
@@ -212,6 +261,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.baths}
                                     name="bathroom"
                                     placeholder="Bathroom"
                                     className="input input-bordered"
@@ -223,6 +273,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.floor}
                                     name="floor"
                                     placeholder="Total Floor "
                                     className="input input-bordered"
@@ -234,6 +285,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.kitchen}
                                     name="kitchen"
                                     placeholder="Kitchen"
                                     className="input input-bordered"
@@ -245,6 +297,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.balcony}
                                     name="balcony"
                                     placeholder="Balcony"
                                     className="input input-bordered"
@@ -257,6 +310,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.garages}
                                     name="place"
                                     placeholder="Parking Place"
                                     className="input input-bordered"
@@ -266,6 +320,7 @@ const UpdateProperty = () => {
                         {/* description */}
                         <textarea
                             name="description"
+                            defaultValue={updateProperty?.description}
                             className="textarea textarea-bordered w-[45%] mt-5"
                             placeholder="Deiscription"
                         ></textarea>
@@ -280,6 +335,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_details.thumImage}
                                     name="thumImage"
                                     placeholder="Enter Thumbnail Image"
                                     className="input input-bordered w-full"
@@ -291,6 +347,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.property_image}
                                     name="bannerImage"
                                     placeholder="Enter Bannner Image"
                                     className="input input-bordered w-full"
@@ -302,7 +359,9 @@ const UpdateProperty = () => {
                                 <label className="label">
                                     <span className="label-text">Featured</span>
                                 </label>
-                                <select name="featured" className="select">
+                                <select name="featured" className="select"
+                                     value={featuredType} 
+                                    onChange={(e) =>  setFeaturedType(e.target.value)}>
                                     <option selected>Select Featured</option>
                                     <option value="yes"> Yes</option>
                                     <option value="no"> No </option>
@@ -315,6 +374,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.floor_plan.image}
                                     name="facilImage"
                                     placeholder="Enter Facilities image"
                                     className="input input-bordered w-full"
@@ -327,6 +387,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    defaultValue={updateProperty?.map}
                                     name="mapCode"
                                     placeholder="Google Map Code"
                                     className="input  input-bordered"
@@ -475,7 +536,7 @@ const UpdateProperty = () => {
                     </div>
 
                     <button className=" mt-9 font-bold text-xl px-2 hover:bg-yellow-500 rounded bg-yellow-400 w-[110px] h-12 mb-6 ">
-                        Save
+                        Update
                     </button>
                 </div>
             </form>

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import { IoEyeSharp } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 import { GoCodeReview } from "react-icons/go";
@@ -13,88 +12,76 @@ const AgentDashboard = () => {
 //    console.log(email);
 
     const [wishLists, setwishLists] = useState([]);
-    console.log(wishLists);
+    // console.log(wishLists);
     const axiosPrivate = useAxiosPrivate();
     
-    // console.log(properties);
+  
     const [listing, setListing] = useState([]);
-    // console.log(listing);
+    const [reviewListing, setreviewListing] = useState(null);
+    // console.log(reviewListing);
 
- 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axiosPrivate.get(`/wish-lists/wish/property`);
-          const data = response.data;
-         
-          const filteredProperties = data.filter(
-            (property) => property.author === email
-          );
-          setwishLists(filteredProperties);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    
-      fetchData();
-    }, [axiosPrivate, email]);
-
-    // total listiong
+    // total listing
     useEffect(() => {
         if(email){
             axiosPrivate.get(`/home/checkout/${email}`)
-            .then(data =>{
+            .then( async data =>{
                 setListing(data.data);
                 // console.log(data.data);
+                try {
+                    const response = await axiosPrivate.get(`/wish-lists/wish/property`);
+                    const data = response.data;
+                   
+                    const filteredProperties = data.filter(
+                      (property) => property.author === email
+                    );
+                    setwishLists(filteredProperties);
+                    const reviews = await axiosPrivate.get(`/agent/reviews?id=${email}`)
+                    setreviewListing(reviews.data.dataLength);
+
+                  } catch (error) {
+                    console.error(error);
+                  }
             })
+            .catch(error => console.log(error));
            }
     }, [axiosPrivate,email]);
 
+//    //wish-lists
 
-    const data = [
-        {
-            name: 'Page A',
-            uv: 4000,
-            // pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'Page B',
-            uv: 3000,
-            // pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'Page C',
-            uv: 2000,
-            // pv: 9800,
-            amt: 2290,
-        },
-        {
-            name: 'Page D',
-            uv: 2780,
-            // pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: 'Page E',
-            uv: 1890,
-            // pv: 4800,
-            amt: 2181,
-        },
-        {
-            name: 'Page F',
-            uv: 2390,
-            // pv: 3800,
-            amt: 2500,
-        },
-        {
-            name: 'Page G',
-            uv: 3490,
-            // pv: 4300,
-            amt: 2100,
-        },
-    ];
+//     useEffect(() => {
+//       const fetchData = async () => {
+//         try {
+//           const response = await axiosPrivate.get(`/wish-lists/wish/property`);
+//           const data = response.data;
+         
+//           const filteredProperties = data.filter(
+//             (property) => property.author === email
+//           );
+//           setwishLists(filteredProperties);
+//         } catch (error) {
+//           console.error(error);
+//         }
+//       };
+    
+//       fetchData();
+//     }, [axiosPrivate, email]);
+
+
+
+//     // Review listing
+//     useEffect(() => {
+        
+//             axiosPrivate.get(`/agent/reviews/${email}`)
+           
+//             .then(data =>{
+//                 setreviewListing(data.data);
+//                 console.log(data.data);
+//             })
+           
+//     }, [axiosPrivate,email]);
+
+
+    
 
     return (
         <div >
@@ -151,7 +138,7 @@ const AgentDashboard = () => {
                             <div className='flex gap-3 items-center'>
                                 <span className="text-xl font-medium">Review :</span>
                                 <h4 className="text-xl font-bold text-black dark:text-white">
-                                    56
+                                   {reviewListing}
                                 </h4>
 
                             </div>
@@ -161,68 +148,7 @@ const AgentDashboard = () => {
                     {/* <!-- Card Item End --> */}
                 </div>
 
-                <div className=' xl:flex flex-row xl:space-y-0 space-y-9 gap-9  items-center mt-9 mb-6 '>
-
-                    <div className="gap-4  md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-
-                        <BarChart
-                            width={500}
-                            height={300}
-                            data={data}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                            <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
-                        </BarChart>
-
-                        {/* <!-- ====== Chat Card End --> */}
-                    </div>
-
-
-                    {/* summery sectiton  */}
-
-                    <div className=" rounded-xl xl:w-[500px] border bg-white p-6   text-gray-900">
-                        <p className="text-lg font-medium">Summary</p>
-                        <div className="mt-4">
-                            <p className="float-left mb-2">Income</p>
-                            <span className="float-right mb-2">20,00</span>
-                            <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                                <div className="h-full w-10/12 overflow-hidden rounded-full bg-indigo-600"></div>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <p className="float-left mb-2">Profit</p>
-                            <span className="float-right mb-2">2,000</span>
-                            <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                                <div className="h-full w-4/12 overflow-hidden rounded-full bg-indigo-600"></div>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <p className="float-left mb-2">Expenses</p>
-                            <span className="float-right mb-2">1,500</span>
-                            <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                                <div className="h-full w-3/12 overflow-hidden rounded-full bg-indigo-600"></div>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <p className="float-left mb-2"></p>
-                            <span className="float-right mb-2">260</span>
-                            <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                                <div className="h-full w-1/12 overflow-hidden rounded-full bg-indigo-600"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
         </div>
