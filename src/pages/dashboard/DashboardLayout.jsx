@@ -53,16 +53,16 @@ const DashboardLayout = () => {
                     </div>
                 </div>
                 {/* dashboard nav section */}
-                <div className=" hidden lg:flex fixed min-h-screen md:w-[250px]  bg-stone-700">
-                    <div className='w-full flex-wrap '>
+                <div className=" hidden lg:flex fixed min-h-screen md:w-[250px]  bg-slate-200 text-black">
+                    <div className='w-full flex-wrap mt-4 '>
                         {/* drawer head */}
-                        <div className=" w-full pt-4 hidden lg:inline text-center">
-                            <img className=' w-24 h-14 mx-auto' src={logo} alt="" />
-                            <h1 className=' w-full text-center'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
-                            <hr />
+                        <div className=" w-full hidden lg:inline bg-slate-400 text-center">
+                            <img className=' w-20 h-10 mx-auto' src={logo} alt="" />
+                            <h1 className=' w-full text-center mb-2'> <Link to={'/'} className="font-bold mb-6 mx-auto text-center text-xl">HomifyEstate</Link></h1>
                         </div>
+                        <hr className=' bg-black border-b-[1px] border-zinc-950' />
                         <div>
-                            <ul className="menu w-full min-h-full bg-stone-700 text-white">
+                            <ul className="menu w-full min-h-full text-black">
                                 {
                                     userInfo?.role == 'admin' &&
                                     <AdminNav></AdminNav>

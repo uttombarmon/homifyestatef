@@ -20,7 +20,6 @@ const Order = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const renderPageNumbers = () => {
@@ -113,6 +112,36 @@ const Order = () => {
                             <Link className="btn btn-warning w-[90px]">
                               Delete
                             </Link>
+                          )}
+                        </td>
+                      </tr>
+                    ))} */}
+                    {currentItems?.map((properties, index) => (
+                      <tr className="border" key={properties?._id}>
+                        <td>{index + 1}</td>
+                        {console.log(properties?.property)}
+                        <th className="text-[16px] hover:link-hover">
+                          <Link to={`/properties/${properties?.property?._id}`}>
+                            {properties?.property?.title?.length > 20
+                              ? `${properties?.property?.title?.slice(0, 20)}..`
+                              : properties?.property?.title}
+                          </Link>
+                        </th>
+                        <td>{properties?.property?.author?.contact}</td>
+                        <td>{properties?.date}</td>
+                        <td>{properties?.amount} BDT</td>
+                        {properties?.paymentStatus ? (
+                          <td>{properties?.transectionId}</td>
+                        ) : (
+                          <td>N/A</td>
+                        )}
+                        <td className="text-center">
+                          {properties?.paymentStatus ? (
+                            <button className="btn btn-success btn-disabled w-[90px]">
+                              Paid
+                            </button>
+                          ) : (
+                            <Link className="btn btn-warning w-[90px]">Delete</Link>
                           )}
                         </td>
                       </tr>
