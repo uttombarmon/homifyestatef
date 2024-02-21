@@ -37,7 +37,7 @@ const PropertyDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get(`/home/checkout/${params.id}`);
+        const response = await axiosPublic.get(`/home/checkoutt/${params.id}`);
         const data = response.data;
         setProperty(data);
       } catch (error) {

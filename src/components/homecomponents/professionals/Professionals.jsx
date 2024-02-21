@@ -57,10 +57,10 @@ const Professionals = () => {
                   </div>
                 </div>
                 <div className=" mt-4 px-6 ">
-                  <h2 className=" font-bold text-xl ">
+                  <Link to="/dashboard/agentProfile"><h2 className=" font-bold text-xl ">
                     {personInfo?.name}
                     <div className="badge badge-secondary ml-3 ">{personInfo?.personalInfo?.listing} listing</div>
-                  </h2>
+                  </h2></Link>
                   <p className="font-medium">{personInfo?.position}</p>
                   <hr className=" bg-black mt-3 " />
                   <div className=" justify-start mt-3 mb-3">

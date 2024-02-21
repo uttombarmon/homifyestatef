@@ -47,7 +47,7 @@ const Wishlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosPublic.get(`/wish-lists/${user?.email}`);
+        const res = await axiosPublic.get(`/wish-lists/user/${user?.email}`);
         setProperties(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);

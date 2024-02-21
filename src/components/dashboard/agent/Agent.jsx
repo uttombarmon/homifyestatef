@@ -8,7 +8,7 @@ import { HiOutlineClipboardCheck } from "react-icons/hi";
 //agent sidebar
 const Agent = () => {
     return (
-        <div className="ml-4 mt-3 flex flex-col gap-2 ">
+        <div className="ml-4 mt-10 flex flex-col gap-6 text-lg  ">
             <NavLink  to="/dashboard/agentDashboard" className='flex gap-2 items-center'> <FaHome/>Dashboard</NavLink> 
             <NavLink  to="/dashboard/agentProfile" className='flex gap-2 items-center'> <CgProfile />Profile</NavLink>
             <NavLink to="/dashboard/agentProperties" className='flex gap-2 items-center'> <LuTableProperties /> Properties</NavLink>
