@@ -33,7 +33,7 @@ const Features = () => {
 
     fetchData();
   }, [axiosPublic,searchInfo]);
-  console.log(properties)
+  // console.log(properties)
   return (
     <>
       <div className=" w-full py-10 ">

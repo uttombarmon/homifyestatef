@@ -16,7 +16,7 @@ const LetesNews = () => {
     const fetchData = async () => {
         try {
           const response = await axiosPublic.get(`/home/latestNews`);
-          console.log(response.data);
+          // console.log(response.data);
           setLatestNews(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);

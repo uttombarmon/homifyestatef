@@ -29,8 +29,9 @@ const Order = () => {
         <button
           key={i}
           onClick={() => paginate(i)}
-          className={`btn btn-outline border-none bg-blue-100 text-black font-medium mx-2 ${currentPage === i ? "bg-blue-300" : ""
-            }`}
+          className={`btn btn-outline border-none bg-blue-100 text-black font-medium mx-2 ${
+            currentPage === i ? "bg-blue-300" : ""
+          }`}
         >
           {i}
         </button>
@@ -80,7 +81,7 @@ const Order = () => {
                   </thead>
                   {/* row 1 */}
                   <tbody className=" border-2 bg-white">
-                    {/* {currentItems?.map((properties, index) => (
+                    {currentItems?.map((properties, index) => (
                       <tr
                         className="border
                         "
@@ -145,7 +146,6 @@ const Order = () => {
                         </td>
                       </tr>
                     ))}
-
                   </tbody>
                 </table>
               </div>

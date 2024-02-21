@@ -47,7 +47,7 @@ const Wishlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosPublic.get(`/wish-lists/${user?.email}`);
+        const res = await axiosPublic.get(`/wish-lists/user/${user?.email}`);
         setProperties(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -74,7 +74,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
+      <div className="w-full h-[100vh] mx-auto overflow-x-auto bg-[#f2f8b85b] px-2">
         <h1 className="text-2xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
         <div className="table-responsive">
           <table className="w-full border-4 table">
@@ -96,27 +96,27 @@ const Wishlist = () => {
               {/* row 1 */}
               {currentItems?.map((property) => (
                 <tr key={property._id} className=" bg-[#bdc98e1c]  ">
-                  <td className="w-full md:w-[100px] lg:w-[100px] xl:w-[100px] border-4">
+                  <td className="w-full md:w-[100px] lg:w-[100px] xl:w-[150px] border-4">
                     <img
                       src={property.image}
                       alt="logo"
-                      className="w-[120px] h-10 object-cover"
+                      className="w-[150px] h-14 object-cover"
                     />
                   </td>
-                  <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[500px] border-4">
+                  <td className="w-full md:w-[250px] lg:w-[350px] xl:w-[300px] border-4">
                     <h3 className="text-xl mb-1 lg:w-[180px] md:w-[180px] xl:w-[300px] w-[270px]">
                       {property.name}
                     </h3>
                   </td>
-                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[200px] border-4 text-xl">
+                  <td className="w-full md:w-[100px] lg:w-[150px] xl:w-[170px] border-4 text-xl">
                     $ {property?.price}
                   </td>
                   <td className="border-4">
-                    <button className="text-base  md:text-xl w-full md:w-[70px] lg:w-[100px] xl:w-[120px]">
+                    <button className="text-base  md:text-xl w-full md:w-[70px] lg:w-[100px] xl:w-[150px]">
                       Sale
                     </button>
                   </td>
-                  <td className="border-4">
+                  <td className="border-4 flex gap-2">
                     <button
                       onClick={() => handelDelete(property._id)}
                       className=" border-2 bg-red-400 gap-1 hover:bg-red-600 btn my-0 w-[90px] px-1 text-[17px]  flex items-center"
