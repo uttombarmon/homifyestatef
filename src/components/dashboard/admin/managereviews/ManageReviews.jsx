@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../hooks/axiosPublic/useAxiosPublic";
 import ManageReview from "./Review";
+import toast from "react-hot-toast";
 
 function ManageReviews() {
     const [reviews, setReviews] = useState(null)
@@ -14,11 +15,13 @@ function ManageReviews() {
             .catch(e => console.log(e.message))
     }, [axiosPublic])
     const deleteReview = (id) => {
-        axiosPublic.delete(`/removereview?id=${id}`)
-            .then(() => {
-                // toast.success("Review Deleted Successfull!")
-                const result = reviews.filter(a=> a._id !== id)
-                setReviews(result)
+        axiosPublic.delete(`/admin/review/delete?id=${id}`)
+            .then((e) => {
+                if (e.data.deletedCount) {
+                    toast.success("Review Deleted Successfull!")
+                    const result = reviews.filter(a => a._id !== id)
+                    setReviews(result)
+                }
             })
             .catch(e => console.log(e.message))
     }
@@ -29,20 +32,6 @@ function ManageReviews() {
                     reviews ?
                         <div className="overflow-x-auto">
                             <table className="table table-zebra">
-                                {/* head */}
-                                {/* <thead>
-                                    <tr>
-                                        <th>List</th>
-                                        <th></th>
-                                        <th>Location</th>
-                                        <th>Email</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Accept</th>
-                                        <th>Reject</th>
-                                    </tr>
-                                </thead> */}
-                                {/* row 1 */}
                                 <tbody>{
                                     reviews.map((d, index) => <ManageReview deleteReview={deleteReview} index={index} d={d} key={d._id}></ManageReview>)
                                 }

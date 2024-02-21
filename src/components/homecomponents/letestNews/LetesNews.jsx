@@ -39,7 +39,7 @@ const LetesNews = () => {
             <div key={latestNew.id} className=" relative rounded w-full lg:w-full mx-auto h-[400px] justify-center ">
               <div className=" w-[calc(100%-20px)] mx-auto md:w-full top-0 h-[300px] bg-cover  shadow-xl relative">
                 <img
-                  src={latestNew?.img?.img1}
+                  src={latestNew?.img1}
                   className=" h-full w-full rounded-t-md"
                   alt="Shoes"
                 />

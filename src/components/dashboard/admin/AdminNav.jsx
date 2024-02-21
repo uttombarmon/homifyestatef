@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { CiViewList } from "react-icons/ci";
 import { GrTransaction } from "react-icons/gr";
 import { MdOutlineRateReview } from "react-icons/md";
@@ -10,34 +10,34 @@ const AdminNav = () => {
         <div className=' w-full h-fit'>
             <ul className=" menu mt-0 top-0 p-0 font-semibold text-lg w-full">
                 <li className='w-full pt-2'>
-                    <Link to={"/dashboard/profile"}>
+                    <NavLink className=" px-0" to={"/dashboard/profile"}>
                         <CgProfile></CgProfile>
                         Profile
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className='w-full pt-2'>
-                    <Link to={"/dashboard/allproperties"}>
+                    <NavLink className=" px-0" to={"/dashboard/allproperties"}>
                         <CiViewList></CiViewList>
                         Manage Properties
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className='w-full pt-2'>
-                    <Link to={"/dashboard/manageusers"}>
+                    <NavLink className=" px-0" to={"/dashboard/manageusers"}>
                         <FaUsersCog></FaUsersCog>
                         Manage Users
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className='w-full pt-2'>
-                    <Link to={"/dashboard/managereviews"}>
+                    <NavLink className=" px-0" to={"/dashboard/managereviews"}>
                         <MdOutlineRateReview></MdOutlineRateReview>
                         Manage Reviews
-                    </Link>
+                    </NavLink>
                 </li>
-                <li className='w-full pt-2'>
-                    <Link to={"/dashboard/alltransiction"}>
+                <li className='w-full border-[1px] border- pt-2'>
+                    <NavLink className=" px-0" to={"/dashboard/alltransiction"}>
                         <GrTransaction></GrTransaction>
                         Transaction History
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </div>
