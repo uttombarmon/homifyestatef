@@ -13,7 +13,6 @@ import useAxiosPublic from './../../hooks/axiosPublic/useAxiosPublic';
 
 
 
-
 const AgentProfile = () => {
   const [properties, setProperties] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -64,12 +63,16 @@ const AgentProfile = () => {
   return (
     <>
       {/* stactic card section  */}
-      <h1 className=" text-3xl my-5 ml-12 font-semibold"> Personal Information: </h1>
+      
+      <div className="flex justify-between items-center">
+      <h1 className=" lg:text-3xl text-xl my-5 lg:ml-8 ml-4 md:ml-7 font-semibold"> Personal Information: </h1>
+              <button className="btn bg-[#f3f03fdc] border-none  md:[12rem] lg:mr-8 mr-[2rem]  ml-[6rem] " onClick={() => document.getElementById('my_modal_5').showModal()}><span><FaEdit className="text-xl" /></span>Info</button>
+            </div>
       {/* start */}
-      <div className="lg:flex xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center">
+      <div className="lg:flex xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center ">
 
-        <div className=" w-[350px]  lg:W-[300px] md:w-[480px] xl:w-[500px] relative border-4">
-          <img src={properties?.photoURL} alt="" className="w-full lg:w-[500px] h-full " />
+        <div className=" w-[350px]  lg:W-[300px] md:w-[480px] xl:w-[500px] relative border-4 ">
+          <img src={properties?.photoURL} alt="" className="w-full lg:w-[500px] h-full  " />
 
           <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl ">
           <p className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 "> <FaFacebook></FaFacebook> </p>
@@ -81,12 +84,9 @@ const AgentProfile = () => {
         </div>
      
 
-        <div className=" w-full lg:w-[400px] xl:w-full px-6">
+        <div className=" w-full lg:w-[400px] xl:w-full px-6 bg-gray-200 lg:mt-0 md:mt-0 mt-5">
           <div className="">
-            <div className="flex  items-center">
-              <h1 className="text-2xl font-bold "> {properties?.name} </h1>
-              <button className="btn btn-primary lg:ml-[23rem] md:[12rem] mt-2 ml-[6rem] " onClick={() => document.getElementById('my_modal_5').showModal()}><span><FaEdit className="text-xl" /></span>Info</button>
-            </div>
+          <h1 className="text-2xl font-bold "> {properties?.name} </h1>
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
               <div className="modal-box">
                 <div className=" px-4 py-3 rounded-md ">
