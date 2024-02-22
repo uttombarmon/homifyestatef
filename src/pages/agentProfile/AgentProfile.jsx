@@ -71,15 +71,15 @@ const AgentProfile = () => {
       {/* start */}
       <div className="lg:flex xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center ">
 
-        <div className=" w-[350px]  lg:W-[300px] md:w-[480px] xl:w-[500px] relative border-4 ">
+        <div className=" w-[350px]  lg:W-[300px] md:w-[480px] xl:w-[500px] relative ">
           <img src={properties?.photoURL} alt="" className="w-full lg:w-[500px] h-full  " />
 
-          <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl ">
-          <p className="mt-4 mb-3 bg-yellow-300  hover:bg-yellow-500 p-1 py-2 "> <FaFacebook></FaFacebook> </p>
-          <p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 "><FaLinkedinIn></FaLinkedinIn></p>
-          <p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-500  p-1 py-2 ">
+          <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl  ">
+          <a href="https://www.facebook.com"><p className="mt-4 mb-3  bg-yellow-300 hover:bg-yellow-600 p-1 py-2 "> <FaFacebook className="rounded-full  "></FaFacebook> </p></a>
+          <a href="https://www.linkedin.com/"><p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-600  p-1 py-2 "><FaLinkedinIn></FaLinkedinIn></p></a>
+          <a href="https://twitter.com/"><p className="mt-4 mb-3 bg-yellow-300 hover:bg-yellow-600  p-1 py-2 ">
             <FaTwitter></FaTwitter>
-          </p>
+          </p></a>
         </div>
         </div>
      
