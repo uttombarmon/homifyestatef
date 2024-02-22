@@ -46,7 +46,7 @@ const Searching = () => {
                     <label htmlFor="want" className=' w-full font-bold'>Location</label>
                     <input type="text" {...register("location", { required: true })} placeholder='Street, City, Country..' className=' bg-slate-800 rounded-md p-2 mt-4' />
                 </div>
-                <button className=' btn bg-amber-300 font-bold self-end'>Search</button>
+                <button className=' btn bg-amber-300 font-bold border-none self-end'>Search</button>
             </form>
         </div>
     );
