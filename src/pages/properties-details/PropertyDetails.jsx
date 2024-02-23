@@ -48,10 +48,13 @@ const PropertyDetails = () => {
     fetchData();
   }, [axiosPublic, params]);
 
+ 
+
+
   return (
     <>
       <Helmet>
-        <title>{}</title>
+        <title>{ }</title>
         <meta property="og:title" content={property?.title} />
         <meta property="og:description" content={property?.description} />
         <meta property="og:image" content={property?.property_image} />
