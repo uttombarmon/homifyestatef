@@ -83,7 +83,7 @@ const Order = () => {
     <>
       <div className=" w-full mx-auto relative  h-full overflow-x-auto">
         <div className=" bg-gray-300 h-[100vh]">
-          <h1 className="text-2xl text-center font-bold  py-3">
+          <h1 className="text-2xl mb-5 mt-5 text-center font-bold  py-3">
           
             Dashboard Order
           </h1>
