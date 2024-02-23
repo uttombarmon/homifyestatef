@@ -20,7 +20,7 @@ export default function BannerSection() {
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
         progressCircle.current.style.setProperty('--progress', 1 - progress);
-        progressContent.current.textContent = `${Math.ceil(time / 10000)}s`;
+        progressContent.current.textContent = `${Math.ceil(time / 20000)}s`;
     };
 
     const [images, setImages] = useState([])
@@ -34,7 +34,7 @@ export default function BannerSection() {
     }, [])
     return (
         <>
-            <Swiper  style={{ height: '500px'}}
+            <Swiper  style={{ height: '500px',transition:'width  1s'}}
                 spaceBetween={30}
                 centeredSlides={true}
                 ref={progressCircle}
