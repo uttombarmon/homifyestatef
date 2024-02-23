@@ -1,4 +1,3 @@
-// import ThumbsBanner from "../../components/propertiesdetails/thumbs-banner/Thumbs-banner";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -25,18 +24,20 @@ import Reviews from "../../components/propertiesdetails/Review/Reviews";
 import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { useLocation, useParams } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
+import BannerSection from "../../components/propertiesdetails/bannerSection/bannerSection";
+import PropertyVideo from "../../components/propertiesdetails/propertyVideo/propertyVideo";
 const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
   const axiosPublic = useAxiosPublic();
   const params = useParams();
-  const location = useLocation()
-  console.log(location);
+  const location = useLocation();
+  // console.log(location);
   // this data is load from the db ;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get(`/home/checkout/${params.id}`);
+        const response = await axiosPublic.get(`/home/checkoutt/${params.id}`);
         const data = response.data;
         setProperty(data);
       } catch (error) {
@@ -46,30 +47,33 @@ const PropertyDetails = () => {
 
     fetchData();
   }, [axiosPublic, params]);
+
+ 
+
+
   return (
-    <><Helmet>
-      <title>{ }</title>
-      <meta property="og:title" content={property?.title} />
-      <meta property="og:description"
-        content={property?.description} />
-      <meta property="og:image" content={property?.property_image} />
-      <meta property="og:url" content={`https://homifyestate-8556d.web.app${location.pathname}`} />
-      <meta property="og:type" content="website" />
-    </Helmet>
+    <>
+      <Helmet>
+        <title>{ }</title>
+        <meta property="og:title" content={property?.title} />
+        <meta property="og:description" content={property?.description} />
+        <meta property="og:image" content={property?.property_image} />
+        <meta
+          property="og:url"
+          content={`https://homifyestate-8556d.web.app${location.pathname}`}
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <div className=" bg-slate-100">
         {property ? (
           //    <div>
           //     {/* <ThumbsBanner></ThumbsBanner> */}
           //    </div>
           <div className="flex justify-between flex-wrap">
-            {/* details */}
-            <div className=" w-full mx-auto">
-              <img
-                className=" w-full h-[500px]"
-                src={property?.property_image}
-                alt=""
-              />
-            </div>
+            {/* banner */}
+            <BannerSection property={property} ></BannerSection>
+
             <div className="w-full md:w-7/12 flex flex-wrap mx-4 my-4">
               {/* title, price, location section */}
               <div className="flex bg-white flex-wrap w-full px-2 py-3">
@@ -129,7 +133,9 @@ const PropertyDetails = () => {
                         className="modal modal-bottom sm:modal-middle"
                       >
                         <div className="modal-box">
-                          <h3 className="font-bold text-lg text-black text-center">Share on Social Media</h3>
+                          <h3 className="font-bold text-lg text-black text-center">
+                            Share on Social Media
+                          </h3>
                           <div className="">
                             <img
                               src="https://i.ibb.co/GspjGPV/divider.png"
@@ -183,7 +189,7 @@ const PropertyDetails = () => {
                               <TelegramIcon className="rounded-full w-[60px] h-[60px]"></TelegramIcon>
                             </TelegramShareButton>
                           </div>
-                          <div className='bg-white rounded-sm my-3 p-4 w-full '>
+                          <div className="bg-white rounded-sm my-3 p-4 w-full ">
                             <div className="modal-action">
                               <form method="dialog">
                                 <button className="btn  btn-error text-white">
@@ -235,7 +241,7 @@ const PropertyDetails = () => {
                     </p>
                     <p className="my-2">
                       <span className="font-semibold">Type:</span>{" "}
-                      {property?.type}
+                      {property?.property_details?.type}
                     </p>
                     <p className="my-2">
                       <span className="font-semibold">Baths:</span>{" "}
@@ -263,6 +269,7 @@ const PropertyDetails = () => {
                   </div>
                 </div>
               </div>
+
               {/* floor design image  */}
               <div className=" bg-white rounded-sm my-3 p-4 w-full">
                 <h1 className=" text-xl font-bold">Floor Plan</h1>
@@ -270,14 +277,23 @@ const PropertyDetails = () => {
                   <img src={property?.floor_plan?.image} alt="" />
                 </div>
               </div>
+
+              {/* property video  */}
+              <div>
+                <PropertyVideo embedId="AMYU_zfzRbc"></PropertyVideo>
+              </div>
+
+              {/* map location  */}
               <div className=" bg-white rounded-sm my-3 p-4 w-full">
                 <h1 className=" text-xl font-bold">Map Location</h1>
                 <div className=" w-full">
                   <GoogleMapComponent></GoogleMapComponent>
                 </div>
               </div>
+
+              {/* review section  */}
               <div className="bg-white rounded-sm my-3 p-4 w-full ">
-              <Reviews id={params.id}></Reviews>
+                <Reviews id={params.id}></Reviews>
               </div>
             </div>
 

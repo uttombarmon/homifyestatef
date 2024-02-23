@@ -8,7 +8,7 @@ function Transection({ d, index }) {
                 <td>{name}</td>
                 <td>{email}</td>
                 <td>{date}</td>
-                <td>{amount}</td>
+                <td>{amount} BDT</td>
                 <td>{paymentStatus?'paid':'canceled'}</td>
             </tr>
         </>

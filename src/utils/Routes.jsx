@@ -29,6 +29,7 @@ import Sell from "../pages/sell/Sell";
 import Rent from "../pages/rent/Rent";
 import MakeOffer from "../components/dashboard/user/MakeOffer";
 import Privacy from "../pages/privacy-Policy/Privacy";
+import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
 
 
 export const router = createBrowserRouter([
@@ -62,17 +63,17 @@ export const router = createBrowserRouter([
         element: <PropertyDetails></PropertyDetails>,
       },
       {
-         path:"sell",
-         element:<Sell></Sell>
+        path: "sell",
+        element: <Sell></Sell>
       },
       {
-        path:"/contact",
-        element:<Contact></Contact>
-      },{
-        path:"/about",
-        element:<About></About>
+        path: "/contact",
+        element: <Contact></Contact>
+      }, {
+        path: "/about",
+        element: <About></About>
       },
-        {
+      {
         path: "/rent",
         element: <Rent></Rent>,
       },
@@ -117,6 +118,9 @@ export const router = createBrowserRouter([
       {
         path: "agentProfile",
         element: <AgentProfile></AgentProfile>,
+      }, {
+        path: "updateOrder/:id",
+        element: <UpdateProperty></UpdateProperty>
       },
       {
         path: "agentOrder",
@@ -135,8 +139,8 @@ export const router = createBrowserRouter([
         element: <Wishlist></Wishlist>,
       },
       {
-        path:"makeOffer/:id",
-        element:<MakeOffer></MakeOffer>
+        path: "makeOffer/:id",
+        element: <MakeOffer></MakeOffer>
       },
       {
         path: "allproperties",

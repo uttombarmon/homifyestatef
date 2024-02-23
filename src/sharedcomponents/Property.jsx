@@ -39,17 +39,21 @@ const Property = ({ properties }) => {
 
   // add whilist
   const handelWhilist = (properties) => {
+    const { author} = properties ;
+    // console.log( author);
+
     const addWhilist = {
       email: user?.email,
       image: properties.property_image,
       name: properties.title,
       price: properties.property_details?.price,
       propety: properties._id,
+      author: author?.contact,
     };
-    console.log(addWhilist);
+    // console.log(addWhilist);
 
     axiosPublic.post("/wish-lists", addWhilist).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data) {
         toast.success("Successfully added whilist !");
       }

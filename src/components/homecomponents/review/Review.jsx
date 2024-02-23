@@ -24,7 +24,7 @@ const Review = () => {
       <h2 className="text-center font-semibold text-3xl">Latest User Review</h2>
 
       <Swiper
-        className="lg:max-w-7xl lg:mx-auto mt-8 "
+        className="lg:max-w-7xl lg:mx-auto mt-8"
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         navigation
@@ -46,9 +46,9 @@ const Review = () => {
       >
         {reviews.map((review) => (
           <SwiperSlide key={review?._id}>
-            <div className=" h-full md:w-[360px] flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl">
+            <div className="w-[375px] mx-auto rounded-md md:w-[360px] h-[300px] lg:h-[350px] flex flex-col justify-between bg-[#FFFFFF] px-5 py-4 shadow-xl">
               {/* icon and text  */}
-              <div className="flex pb-3 justify-between">
+              <div className="pb-3">
                 <img
                   className="w-[25px] h-[25px]"
                   src={
@@ -56,6 +56,7 @@ const Review = () => {
                   }
                   alt=""
                 />
+                <br />
                 <p className="text-justify">{review?.comment}</p>
               </div>
 

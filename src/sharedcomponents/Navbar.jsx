@@ -50,7 +50,7 @@ const Navbar = () => {
   </>
   return (
     <>
-      <div className="navbar w-full bg-[#2119198d] xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-10">
+      <div className="navbar w-full bg-[#2119198d]  xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-[200]">
         <div className="navbar-start">
           <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
         </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
                 user ?
                   <button className="btn" onClick={onSignout}>SignOut</button>
                   :
-                  <a className="btn hidden lg:flex bg-amber-300  font-bold">Sign In</a>
+                  <a className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</a>
               }</li>
             </ul>
           </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
             user ?
               <button className="btn" onClick={onSignout}>SignOut</button>
               :
-              <Link to={'/signin'} className="btn hidden lg:flex bg-amber-300  font-bold">Sign In</Link>
+              <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
           }
         </div>
       </div>
