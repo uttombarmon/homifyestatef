@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         element: <SignIn></SignIn>,
       },
       {
-        path: "properties/:id",
+        path: "/properties/:id",
         element: <PropertyDetails></PropertyDetails>,
       },
       {

@@ -47,7 +47,8 @@ const Wishlist = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axiosPublic.get(`/wish-lists/user/${user?.email}`);
+        const res = await axiosPublic.get(`/wish-lists/${user?.email}`);
+        console.log(res.data);
         setProperties(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -127,7 +128,7 @@ const Wishlist = () => {
                       Delete
                     </button>
                     <br />
-                    <Link to={`/dashboard/makeOffer/${property.propety}`}>
+                    <Link to={`/properties/${property.propety}`}>
                       <button className=" border-2 bg-[#87e2639b]  hover:bg-green-600 my-0 btn-md btn  text-[17px] text-center px-1">
                         Make offer
                       </button>
