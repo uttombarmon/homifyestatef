@@ -74,7 +74,7 @@ const Navbar = () => {
                 user ?
                   <button className="btn" onClick={onSignout}>SignOut</button>
                   :
-                  <a className="btn hidden lg:flex bg-amber-300  font-bold">Sign In</a>
+                  <a className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</a>
               }</li>
             </ul>
           </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
             user ?
               <button className="btn" onClick={onSignout}>SignOut</button>
               :
-              <Link to={'/signin'} className="btn hidden lg:flex bg-amber-300  font-bold">Sign In</Link>
+              <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
           }
         </div>
       </div>
