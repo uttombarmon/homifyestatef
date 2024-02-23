@@ -11,6 +11,7 @@ const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const axiosPrivate = useAxiosPrivate();
   const [userInfo, setUserInfo] = useState([]);
+  console.log(userInfo);
   const { user } = useContext(AuthContext);
   // console.log(user?.email)
 

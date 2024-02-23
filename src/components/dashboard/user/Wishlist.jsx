@@ -141,11 +141,11 @@ const Wishlist = () => {
         </div>
       </div>
 
-      <div className=" flex  text-center mt-[40vh] items-center mb-10  w-full mx-auto justify-center  gap-5">
+      <div className=" flex  text-center  items-center mb-10  w-full mx-auto justify-center  gap-5">
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
-          className="btn bg-orange-300 text-black font-medium w-20"
+          className="btn bg-orange-600 text-black font-medium w-20"
         >
           Previous
         </button>
