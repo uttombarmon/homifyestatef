@@ -26,12 +26,12 @@ const AdminDashboard = () => {
                 {/* available property   */}
                 <div className=" py-10 rounded-lg bg-green-300 text-center">
                     <h1 className=" font-bold text-xl my-4"> Total Available</h1>
-                    <p className=" font-semibold text-lg">{availables?.length}</p>
+                    <p className=" font-semibold text-lg">{availables?.length ? availables?.length:0}</p>
                 </div>
                 {/* sold properties */}
                 <div className=" py-10 rounded-lg bg-sky-300 text-center">
                     <h1 className=" font-bold text-xl my-4"> Total Sold</h1>
-                    <p className=" font-semibold text-lg">{totals?.length-availables?.length}</p>
+                    <p className=" font-semibold text-lg">{availables?.length ? totals?.length-availables?.length : 0}</p>
                 </div>
             </div>
             {/* annual Report by month chart */}

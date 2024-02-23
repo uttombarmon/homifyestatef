@@ -15,8 +15,9 @@ const Properties = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get("/home/checkout");
+        const response = await axiosPublic.get("/home/allcheckout");
         const data = response.data;
+        console.log(data);
         setProperties(data);
       } catch (error) {
         console.error("Error fetching data:", error);

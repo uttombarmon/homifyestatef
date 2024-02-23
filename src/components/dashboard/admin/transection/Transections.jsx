@@ -21,7 +21,7 @@ function Transections() {
                             <table className="table table-zebra">
                                 {/* head */}
                                 <thead>
-                                    <tr>
+                                    <tr className=" text-black font-bold text-lg">
                                         <th>No.</th>
                                         <th>Transection-Id</th>
                                         <th>Name</th>
