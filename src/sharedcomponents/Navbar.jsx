@@ -50,7 +50,7 @@ const Navbar = () => {
   </>
   return (
     <>
-      <div className="navbar w-full bg-[#2119198d] xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-10">
+      <div className="navbar w-full bg-[#2119198d]  xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-[200]">
         <div className="navbar-start">
           <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
         </div>

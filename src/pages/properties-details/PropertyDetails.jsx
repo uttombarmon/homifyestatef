@@ -32,7 +32,7 @@ const PropertyDetails = () => {
   const axiosPublic = useAxiosPublic();
   const params = useParams();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   // this data is load from the db ;
   useEffect(() => {
     const fetchData = async () => {
@@ -48,10 +48,13 @@ const PropertyDetails = () => {
     fetchData();
   }, [axiosPublic, params]);
 
+ 
+
+
   return (
     <>
       <Helmet>
-        <title>{}</title>
+        <title>{ }</title>
         <meta property="og:title" content={property?.title} />
         <meta property="og:description" content={property?.description} />
         <meta property="og:image" content={property?.property_image} />
@@ -69,7 +72,7 @@ const PropertyDetails = () => {
           //    </div>
           <div className="flex justify-between flex-wrap">
             {/* banner */}
-            <BannerSection></BannerSection>
+            <BannerSection property={property} ></BannerSection>
 
             <div className="w-full md:w-7/12 flex flex-wrap mx-4 my-4">
               {/* title, price, location section */}
@@ -238,7 +241,7 @@ const PropertyDetails = () => {
                     </p>
                     <p className="my-2">
                       <span className="font-semibold">Type:</span>{" "}
-                      {property?.type}
+                      {property?.property_details?.type}
                     </p>
                     <p className="my-2">
                       <span className="font-semibold">Baths:</span>{" "}
