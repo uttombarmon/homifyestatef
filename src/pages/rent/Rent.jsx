@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import Property from "../../sharedcomponents/Property";
-import { MdOutlineKeyboardArrowLeft ,MdOutlineKeyboardArrowRight} from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 const Rent = () => {
   const [properties, setProperties] = useState([]);
   const axiosPublic = useAxiosPublic();
@@ -85,27 +88,25 @@ const Rent = () => {
         </div>
       </div>
 
-     {
-       properties.length > 10 && 
-       <div className=" flex  text-center items-center mb-4 mt-7 w-full mx-auto justify-center  gap-5">
-       <button
-         onClick={() => paginate(currentPage - 1)}
-         disabled={currentPage === 1}
-         className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
-         >
-                  < MdOutlineKeyboardArrowLeft/>
-
-       </button>
-       <div className="flex space-x-2">{renderPageNumbers()}</div>
-       <button
-         onClick={() => paginate(currentPage + 1)}
-         disabled={indexOfLastItem >= properties.length}
-         className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
-         >
-          <MdOutlineKeyboardArrowRight/>
-       </button>
-     </div>
-     }
+      {properties.length > 10 && (
+        <div className=" flex  text-center items-center mb-4 mt-7 w-full mx-auto justify-center  gap-5">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
+          >
+            <MdOutlineKeyboardArrowLeft />
+          </button>
+          <div className="flex space-x-2">{renderPageNumbers()}</div>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={indexOfLastItem >= properties.length}
+            className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
+          >
+            <MdOutlineKeyboardArrowRight />
+          </button>
+        </div>
+      )}
     </>
   );
 };
