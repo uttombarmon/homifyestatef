@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
+import { UsePhoto } from "../../../hooks/imageHosting/ImageHosting";
+import toast from "react-hot-toast";
 // import toast from "react-hot-toast";
 
 const UpdateProperty = () => {
@@ -38,14 +40,16 @@ const UpdateProperty = () => {
         .catch(error => console.log(error.message));
     },[axiosPublic,id]);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
+        const img = form.bannerImage.files[0];
+        const bannerImage = await UsePhoto(img);
         //base information
         const title = form.title.value;
         const PropertyTypes = form.PropertyTypes.value;
         const description = form.description.value;
-        const bannerImage = form.bannerImage.value;
+        // const bannerImage = form.bannerImage.value;
         const purpose = form.purpose.value;
         const mapCode = form.mapCode.value;
         const allinfo = {
@@ -55,13 +59,15 @@ const UpdateProperty = () => {
             description,
             bannerImage,
             purpose,
-            mapCode  
+            mapCode  ,
+           
         };
 
         // console.log(allinfo);
 
         axiosPublic.patch(`agent/propetices/update/${id}`, allinfo).then((res) => {
             console.log(res.data);
+            toast.success("success full update")
         });
     };
     return (
@@ -334,11 +340,12 @@ const UpdateProperty = () => {
                                     <span className="label-text"> Thumbnail Image </span>
                                 </label>
                                 <input
-                                    type="text"
+                                
+                                    type="file"
                                     defaultValue={updateProperty?.property_details.thumImage}
                                     name="thumImage"
                                     placeholder="Enter Thumbnail Image"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered py-2 w-full"
                                 />
                             </div>
                             <div className="form-control">
@@ -346,11 +353,11 @@ const UpdateProperty = () => {
                                     <span className="label-text">Bannner Image</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="file"
                                     defaultValue={updateProperty?.property_image}
                                     name="bannerImage"
                                     placeholder="Enter Bannner Image"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered py-2 w-full"
                                 />
                             </div>
 
