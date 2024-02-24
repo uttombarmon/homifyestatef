@@ -7,6 +7,8 @@ import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
 import toast from "react-hot-toast";
+import { UsePhoto } from "../../../hooks/imageHosting/ImageHosting";
+
 const UserProfile = () => {
   const axiosPublic = useAxiosPublic();
   const axiosPrivate = useAxiosPrivate();
@@ -17,12 +19,15 @@ const UserProfile = () => {
   const handelsubmit = async (e) => {
     e.preventDefault();
     const from = e.target;
+    const imgloc = from.photo.files[0];
+    console.log(imgloc);
+    const img = await UsePhoto(imgloc);
+    console.log(img);
     const name = from.name.value;
     const phone = from.phone.value;
     const city = from.city.value;
     const country = from.country.value;
     const website = from.website.value;
-    const photo = from.photo.value;
     const address = from.address.value;
 
     const allInfo = {
@@ -32,22 +37,21 @@ const UserProfile = () => {
       email: user?.email,
       address,
       website,
-      photoURL: photo,
+      photoURL: img,
       country,
     };
-   const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
-   const data = res.data;
-   console.log(data);
-   toast.success("success full update")
+     const res = await axiosPublic.patch(`/users/user/${user?.email}`,allInfo)
+     const data = res.data;
+     console.log(data);
+     toast.success("success full update")
   };
   useEffect(() => {
     const fetchData = async () => {
       if (user?.email) {
-          await axiosPrivate.get(`/users/${user?.email}`)
-          .then(res=>{
-            setUserInfo(res.data);
-            console.log(res.data)
-          })
+        await axiosPrivate.get(`/users/${user?.email}`).then((res) => {
+          setUserInfo(res.data);
+          console.log(res.data);
+        });
       }
     };
 
@@ -60,9 +64,7 @@ const UserProfile = () => {
           Personalized Information
         </h1>
         {/* profile card  */}
-        <div
-          className="lg:flex mt-4 rounded-md w-[calc(100%-2px)] mx-auto bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
-        >
+        <div className="lg:flex mt-4 rounded-md w-[calc(100%-2px)] mx-auto bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start">
           <div className=" ml-3 xl:h-[320px] lg:h-[300px]  ">
             <img
               src={userInfo.photoURL}
@@ -186,7 +188,6 @@ const UserProfile = () => {
                   />
                 </div>
 
-
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Country</span>
@@ -204,8 +205,9 @@ const UserProfile = () => {
                     <span className="label-text">Photo</span>
                   </label>
                   <input
+                    accept="image/*"
                     name="photo"
-                    type="text"
+                    type="file"
                     placeholder="Photo"
                     defaultValue={userInfo?.photoURL}
                     className="input items-center py-2 input-bordered"
