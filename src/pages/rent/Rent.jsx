@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import Property from "../../sharedcomponents/Property";
-
+import { MdOutlineKeyboardArrowLeft ,MdOutlineKeyboardArrowRight} from "react-icons/md";
 const Rent = () => {
   const [properties, setProperties] = useState([]);
   const axiosPublic = useAxiosPublic();
@@ -43,8 +43,8 @@ const Rent = () => {
         <button
           key={i}
           onClick={() => paginate(i)}
-          className={`btn btn-outline border-none bg-blue-100 text-black font-medium mx-2 ${
-            currentPage === i ? "bg-blue-300" : ""
+          className={` border-none rounded-full w-[38px]   font-medium mx-2 ${
+            currentPage === i ? " bg-gray-100 py-2 " : ""
           }`}
         >
           {i}
@@ -91,17 +91,18 @@ const Rent = () => {
        <button
          onClick={() => paginate(currentPage - 1)}
          disabled={currentPage === 1}
-         className="btn bg-orange-300 text-black font-medium w-20"
-       >
-         Previous
+         className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
+         >
+                  < MdOutlineKeyboardArrowLeft/>
+
        </button>
        <div className="flex space-x-2">{renderPageNumbers()}</div>
        <button
          onClick={() => paginate(currentPage + 1)}
          disabled={indexOfLastItem >= properties.length}
-         className="btn bg-green-300 font-medium w-20"
-       >
-         Next
+         className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
+         >
+          <MdOutlineKeyboardArrowRight/>
        </button>
      </div>
      }
