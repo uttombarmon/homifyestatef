@@ -5,28 +5,40 @@ import { Link } from "react-router-dom";
 import "./btn.css"
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from './../../../hooks/axiosPublic/useAxiosPublic';
+import toast from "react-hot-toast";
 
 const AgentProperties = () => {
 
   const [properties, setProperties] = useState([]);
 
   const { user } = useContext(AuthContext);
-  const AxiosPublic = useAxiosPublic();
-  const email = user?.email
+  const axiosPublic = useAxiosPublic();
+  const email = user?.email;
 
   //checkoutcollections map 
   useEffect(() => {
     if (email) {
-      AxiosPublic.get('/home/checkout/')
+      axiosPublic.get('/home/checkout/')
         .then(data => {
-          console.log(data);
+          // console.log(data);
           setProperties(data.data)
-        
+
         })
     }
-  }, [AxiosPublic, email])
+  }, [axiosPublic, email]);
 
-
+  const handelDelete = (id) => {
+    // console.log("hedete api");
+    axiosPublic.delete(`/agent/delete/${id}`)
+      .then((e) => {
+        if (e.data.deletedCount > 0) {
+          toast.success("success full deleted")
+          const filterData = properties.filter((d) => d._id !== id)
+          setProperties(filterData);
+        }
+      })
+      .catch((error) => console.log(error));
+  }
 
   return (
     <div className="w-full xl:w-[1000px] mx-auto overflow-x-auto bg-gray-100 px-2">
@@ -82,14 +94,15 @@ const AgentProperties = () => {
                 </td>
                 <td className="border">
                   <button className="text-base md:text-xl font-medium font-serif w-full md:w-[90px] lg:w-[90px] xl:w-[110px]  items-center gap-2">
-                    <span className="flex hover:text-orange-400 items-center gap-2">
-                      <FaEdit /> Edit
-                    </span>
+                    <Link to={`/dashboard/updateOrder/${property._id}`}>
+                      <span className="flex hover:text-orange-400 items-center gap-2">
+                        <FaEdit /> Edit
+                      </span>
+                    </Link>
 
-                    <span className="flex  hover:text-red-600 mt-2 items-center gap-2">
-                      <RiDeleteBin7Line />  Delete
+                    <span onClick={() => handelDelete(property._id)} className="flex  hover:text-red-600 mt-2 items-center gap-2">
+                      <RiDeleteBin7Line /> Delete
                     </span>
-
                   </button>
                 </td>
               </tr>

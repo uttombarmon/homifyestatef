@@ -3,68 +3,6 @@ import { Area, AreaChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "r
 import useAxiosPublic from "../../../../hooks/axiosPublic/useAxiosPublic";
 
 const Annualreport = () => {
-    // const data = [
-    //     {
-    //         "name": "Jan",
-    //         "Sale": 4000,
-    //         "Rent": 2400,
-    //     },
-    //     {
-    //         "name": "Feb",
-    //         "Sale": 3000,
-    //         "Rent": 1398,
-    //     },
-    //     {
-    //         "name": "Mar",
-    //         "Sale": 2000,
-    //         "Rent": 1800,
-    //     },
-    //     {
-    //         "name": "Apr",
-    //         "Sale": 2780,
-    //         "Rent": 3908,
-    //     },
-    //     {
-    //         "name": "May",
-    //         "Sale": 1890,
-    //         "Rent": 4800,
-    //     },
-    //     {
-    //         "name": "Jun",
-    //         "Sale": 2390,
-    //         "Rent": 3800,
-    //     },
-    //     {
-    //         "name": "Jul",
-    //         "Sale": 3490,
-    //         "Rent": 4300,
-    //     },
-    //     {
-    //         "name": "Aug",
-    //         "Sale": 3490,
-    //         "Rent": 4300,
-    //     },
-    //     {
-    //         "name": "Sep",
-    //         "Sale": 3490,
-    //         "Rent": 4300,
-    //     },
-    //     {
-    //         "name": "Oct",
-    //         "Sale": 4490,
-    //         "Rent": 4300,
-    //     },
-    //     {
-    //         "name": "Nov",
-    //         "Sale": 3490,
-    //         "Rent": 2200,
-    //     },
-    //     {
-    //         "name": "Dec",
-    //         "Sale": 3590,
-    //         "Rent": 3400,
-    //     },
-    // ]
     const [propertydata, setPropertydata] = useState([])
     const useAxios = useAxiosPublic()
     useEffect(() => {

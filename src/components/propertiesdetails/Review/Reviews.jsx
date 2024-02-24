@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import Star from "../../Star/Star";
 import ReviewForm from "./ReviewForm";
-
-const Reviews = () => {
+import useAxiosPrivate from "../../../hooks/axiosPrivate/useAxiosPrivate";
+const Reviews = ({id}) => {
     const [reviews, setReviews] = useState([]);
     const [starCategories, setStarCategories] = useState({});
     const [highestCategory, setHighestCategory] = useState('');
+    const axiosPrivate = useAxiosPrivate()
     const [rating, setRating] = useState(0)
 
     useEffect(() => {
-        fetch('/public/reviews.json')
-            .then(res => res.json())
+        axiosPrivate.get(`/home/reviews/id/${id}`)
             .then(data => {
-                setReviews(data)
-
+                setReviews(data.data)
+                console.log(data.data);
                 const categories = {};
 
                 // Categorize reviews based on ratings
@@ -25,8 +25,9 @@ const Reviews = () => {
                 setHighestCategory(highest);
                 const ratings = parseInt(highest.slice(0, 1))
                 setRating(ratings)
-            });
-    }, []);
+            })
+            .catch(err=> console.log(err.message))
+    }, [axiosPrivate,id]);
     // Calculate percentage of reviews for each rating category
     const calculatePercentages = () => {
         const totalReviews = reviews.length;
@@ -80,28 +81,20 @@ const Reviews = () => {
 
                         <div className=' max-w-7xl mx-auto px-1'>
                             {reviews.map(review =>
-                                <div key={review.id} className=' p-4 lg:p-1'>
+                                <div key={review._id} className=' p-4 lg:p-1'>
                                     <div className=' h-full flex flex-wrap-reverse justify-between bg-[#FFFFFF] px-5 py-4'>
-                                        <div className=" w-full">
-                                            <div className='flex justify-between'>
-                                                <h2 className='font-bold'>{review.title}</h2>
-                                                <img className='w-[25px] h-[25px]' src={review.icon} alt="" />
-                                            </div>
                                             <p>{review.comment}</p>
-
-                                        </div>
-
                                         {/* star and data  */}
                                         <div className=' h-[130px] flex flex-wrap justify-between w-full'>
                                             <div className='flex items-center'>
-                                                <div><img className='w-[60px] h-[60px] rounded-full' src="https://i.ibb.co/26WSnFR/irfan-with-coding-bg.png" alt="" /></div>
+                                                <div><img className='w-[60px] h-[60px] rounded-full' src={review?.image} alt="" /></div>
                                                 <div className='pl-3'>
-                                                    <h2 className='font-bold'>{review.name}</h2>
-                                                    <p>{review.address}</p>
+                                                    <h2 className='font-bold'>{review?.name}</h2>
+                                                    <p>{review?.date}</p>
                                                 </div>
                                             </div>
                                             <div className="py-2 self-center">
-                                                <Star stars={review.rating}></Star>
+                                                <Star stars={review?.rating}></Star>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +103,7 @@ const Reviews = () => {
                         </div>
                     </div>
                     <div>
-                        <ReviewForm></ReviewForm>
+                        <ReviewForm id={id}></ReviewForm>
                     </div>
                 </div>
             </div>
