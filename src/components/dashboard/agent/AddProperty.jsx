@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import useAxiosPublic from './../../../hooks/axiosPublic/useAxiosPublic';
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import toast from "react-hot-toast";
+import { UsePhoto } from "../../../hooks/imageHosting/ImageHosting";
 
 
 const AddProperty = () => {
@@ -16,9 +17,11 @@ const AddProperty = () => {
   const currentDate = new Date();
   const localDate = currentDate.toISOString().split('T')[0];
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async(event) => {
     event.preventDefault();
     const form = event.target;
+    const img = form.bannerImage.files[0];
+    const bannerImage = await UsePhoto(img);
     //base information
     const title = form.title.value;
     const address = form.address.value;
@@ -38,7 +41,7 @@ const AddProperty = () => {
     const place = form.place.value;
     const description = form.description.value;
     const thumImage = form.thumImage.value;
-    const bannerImage = form.bannerImage.value;
+    // const bannerImage = form.bannerImage.value;
     const facilImage = form.facilImage.value;
     const mapCode = form.mapCode.value;
     const PropertyTypes = form.PropertyTypes.value;
@@ -236,12 +239,10 @@ const AddProperty = () => {
               <select name="purpose" className="select">
                 <option selected >Select Purpose</option>
                 <option value="Rent"> Rent</option>
-                <option value="Sell"> Sell </option>
+                <option value="Sell"> Sale </option>
 
               </select>
             </div>
-
-
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Price</span>
@@ -394,10 +395,10 @@ const AddProperty = () => {
                   <span className="label-text">Bannner Image</span>
                 </label>
                 <input
-                  type="text"
+                  type="file"
                   name="bannerImage"
                   placeholder="Enter Bannner Image"
-                  className="input input-bordered w-full"
+                  className="input input-bordered py-2 w-full"
                 />
               </div>
 

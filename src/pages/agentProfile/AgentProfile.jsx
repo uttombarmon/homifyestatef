@@ -10,6 +10,7 @@ import { AuthContext } from './../../utils/provider/AuthProvider';
 import useAxiosPrivate from './../../hooks/axiosPrivate/useAxiosPrivate';
 import toast from "react-hot-toast";
 import useAxiosPublic from './../../hooks/axiosPublic/useAxiosPublic';
+import { UsePhoto } from "../../hooks/imageHosting/ImageHosting";
 
 
 
@@ -38,10 +39,14 @@ const AgentProfile = () => {
   const handelsubmit = async (e) => {
     e.preventDefault();
     const from = e.target;
+    const imgloc = from.photo.files[0];
+    console.log(imgloc);
+    const photo = await UsePhoto(imgloc);
+    console.log(photo);
     const name = from.name.value || user?.displayName;
     const phone = from.phone.value;
     const description = from.description.value || "";
-    const photo = from.photo.value || user?.photoURL;
+    // const photo = from.photo.value || user?.photoURL;
 
     const allInfo = {
       name,
@@ -71,8 +76,8 @@ const AgentProfile = () => {
       {/* start */}
       <div className="lg:flex xl:flex md:flex flex-row cursor-pointer gap-5  mb-5 px-7  justify-center ">
 
-        <div className=" w-[350px]  lg:W-[300px] md:w-[480px] xl:w-[500px] relative ">
-          <img src={properties?.photoURL} alt="" className="w-full lg:w-[500px] h-full  " />
+        <div className=" w-[350px]  lg:W-[150px] h-[380px] md:w-[450px] xl:w-[500px] relative ">
+          <img src={properties?.photoURL} alt="" className="w-full  h-full  " />
 
           <div className="xl:bottom-[150px] lg:bottom-[170px] absolute md:bottom-[150px] bottom-[170px]  ml-8 text-xl  ">
           <a href="https://www.facebook.com"><p className="mt-4 mb-3  bg-yellow-300 hover:bg-yellow-600 p-1 py-2 "> <FaFacebook className="rounded-full  "></FaFacebook> </p></a>
@@ -121,7 +126,7 @@ const AgentProfile = () => {
                         </label>
                         <input
                           name="photo"
-                          type="text"
+                          type="file"
                           placeholder="Photo"
                           className="input items-center py-2 input-bordered"
                         />
