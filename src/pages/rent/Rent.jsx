@@ -9,7 +9,7 @@ const Rent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosPublic.get("/home/checkout");
+        const response = await axiosPublic.get("/home/checkouttt");
         const data = response.data;
         const filteredProperties = data.filter(
           (property) => property.property_status === Status

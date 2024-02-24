@@ -54,28 +54,28 @@ const UserProfile = () => {
     fetchData();
   }, [axiosPrivate, user]);
   return (
-    <div className="bg-[#f2f2ec7d] font-poppins ">
-      <div className="w-full p-0 m-0  mx-auto px-8">
+    <div className="bg-[#f2f2ec7d] overflow-x-hidden font-poppins ">
+      <div className="w-full p-0 m-0  mx-auto px-2">
         <h1 className=" text-2xl mb-10  flex justify-center font-bold">
           Personalized Information
         </h1>
         {/* profile card  */}
         <div
-          className="lg:flex mt-4 rounded-md w-[calc(100%-20px)] mx-auto bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
+          className="lg:flex mt-4 rounded-md w-[calc(100%-2px)] mx-auto bg-slate-300  py-4 xl:flex md:flex  flex-row cursor-pointer gap-10  mb-5  relative justify-start"
         >
-          <div className=" ml-3">
+          <div className=" ml-3 xl:h-[320px] lg:h-[300px]  ">
             <img
               src={userInfo.photoURL}
               alt=""
-              className=" xl:w-[285px] h-[150px] md:h-full mx-auto rounded-full lg:rounded-none lg:w-[300px] md:w-[330px] w-[150px] text-center"
+              className=" xl:w-[270px] md:h-full mx-auto rounded-full md:rounded-none lg:rounded-none lg:w-[300px] md:w-[330px] w-[150px] text-center"
             />
           </div>
-          <div className=" px-5">
+          <div className=" px-3">
             <h1 className="xl:text-3xl text-2xl font-bold mt-1 ">
               {userInfo.name}
             </h1>
             <p className="text-[17px] flex gap-20  mt-4 ">
-              <span className="font-semibold tex-[22px] mr-3 "> Email :</span>
+              <span className="font-semibold tex-[22px] mr-3 "> Email:</span>
               {userInfo.email}
             </p>
             <p className="text-[17px]  flex gap-20  mt-4 justify-start ">
@@ -114,7 +114,7 @@ const UserProfile = () => {
 
         {/* from start */}
 
-        <div className=" xl:mt-14   w-[calc(100%-20px)] mx-auto px-1 ">
+        <div className=" xl:mt-14   w-[calc(100%-2px)] mx-auto px-1 ">
           {/* <h1 className="  font-bold"> Leave a Comment  </h1> */}
 
           <div className=" border px-4 py-3 rounded-md bg-[#eaebe5dd] ">

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import { MdOutlineKeyboardArrowLeft ,MdOutlineKeyboardArrowRight} from "react-icons/md";
 
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
@@ -32,8 +33,8 @@ const Wishlist = () => {
         <button
           key={i}
           onClick={() => paginate(i)}
-          className={`btn btn-outline border-none bg-blue-100 text-black font-medium mx-2 ${
-            currentPage === i ? "bg-blue-300" : ""
+          className={` border-none rounded-full w-[38px]   font-medium mx-2 ${
+            currentPage === i ? " bg-gray-100 py-2" : ""
           }`}
         >
           {i}
@@ -75,7 +76,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="w-full h-[100vh] mx-auto overflow-x-auto bg-[#f2f8b85b] px-2">
+      <div className="w-full relative h-[100vh] mx-auto overflow-x-auto bg-[#f2f8b85b] px-2">
         <h1 className="text-2xl font-bold mb-6 mt-3 text-center"> Wishlist </h1>
         <div className="table-responsive">
           <table className="w-full border-4 table">
@@ -141,21 +142,21 @@ const Wishlist = () => {
         </div>
       </div>
 
-      <div className=" flex  text-center mt-[40vh] items-center mb-10  w-full mx-auto justify-center  gap-5">
+      <div className=" flex absolute bottom-5  text-center  items-center  w-full mx-auto justify-center  gap-5">
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
-          className="btn bg-orange-300 text-black font-medium w-20"
+          className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
         >
-          Previous
+          <MdOutlineKeyboardArrowLeft></MdOutlineKeyboardArrowLeft>
         </button>
         <div className="flex space-x-2">{renderPageNumbers()}</div>
         <button
           onClick={() => paginate(currentPage + 1)}
           disabled={indexOfLastItem >= properties.length}
-          className="btn bg-green-300 font-medium w-20"
+          className="   rounded-full w-[30px] h-8 px-1 py-1 font-medium bg-white border-2 hover:bg-orange-400 hover:border-none "
         >
-          Next
+          <MdOutlineKeyboardArrowRight></MdOutlineKeyboardArrowRight>
         </button>
       </div>
     </>

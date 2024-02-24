@@ -28,7 +28,7 @@ const Slider = () => {
     <div >
       <div className='text-center py-5'>
         <h2 className='font-extrabold text-3xl mb-3 '><span className='text-yellow-400'>Our</span> Project</h2>
-        <p className='font-semibold justify-center items-center'>{sliderData?.description}</p>
+        <p className='font-semibold xl:w-[55%] lg:w-[77%]  mx-auto text-center flex justify-center '>{sliderData?.description}</p>
       </div>
 
       <div className='mx-3'>

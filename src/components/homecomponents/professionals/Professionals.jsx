@@ -34,11 +34,11 @@ const Professionals = () => {
         </h1>
         <div className="grid justify-center mx-auto md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-2">
           {
-            personInfos.map((personInfo, index) =>
+            personInfos?.map((personInfo, index) =>
               <div key={index} className="card  mx-auto xl:w-[320px] w-[375px] lg:w-[450px] mt-7 bg-white border">
                 <div className="group w-full  h-full relative border-slate-500 overflow-hidden">
                   <img
-                    src="https://i.ibb.co/Yh6KSBk/images-2.jpg"
+                    src={personInfo.img}
                     alt=""
                     className="w-full h-full rounded-t-md" />
                   <div className="absolute top-0 right-full rounded-t-md w-full h-full group-hover:right-0 bg-[#29404788] backdrop-blur-[5px]  p-7 flex flex-col justify-center ">

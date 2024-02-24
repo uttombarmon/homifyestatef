@@ -8,12 +8,13 @@ import Property from "../../sharedcomponents/Property";
 const Sell = () => {
 
     const [properties, setProperties] = useState([]);
+    console.log(properties);
     const axiosPublic = useAxiosPublic();
-    const Status = 'For Sale';
+    const Status = 'Sale';
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axiosPublic.get("/home/checkout");
+          const response = await axiosPublic.get("/home/checkouttt");
           const data = response.data;
           const filteredProperties = data.filter(property => property.property_status === Status);
           setProperties(filteredProperties);
