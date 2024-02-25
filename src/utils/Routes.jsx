@@ -30,6 +30,7 @@ import Rent from "../pages/rent/Rent";
 import MakeOffer from "../components/dashboard/user/MakeOffer";
 import Privacy from "../pages/privacy-Policy/Privacy";
 import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
+import AgentRequest from "../components/dashboard/user/AgentRequest";
 
 
 export const router = createBrowserRouter([
@@ -166,6 +167,10 @@ export const router = createBrowserRouter([
         path: "addProperty",
         element: <AddProperty />,
       },
+      {
+        path:'tobeagent',
+        element:<AgentRequest></AgentRequest>
+      }
     ],
   },
 ]);

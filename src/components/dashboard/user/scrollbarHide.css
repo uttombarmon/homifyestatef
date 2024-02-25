@@ -1,0 +1,7 @@
+/* ComponentWithHiddenScrollbar.css */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  /* Optional: Add additional styles for scrollbar appearance */
+  
