@@ -239,7 +239,7 @@ const AddProperty = () => {
               <select name="purpose" className="select">
                 <option selected >Select Purpose</option>
                 <option value="Rent"> Rent</option>
-                <option value="Sell"> Sale </option>
+                <option value="Sale"> Sale </option>
 
               </select>
             </div>
