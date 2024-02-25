@@ -30,7 +30,7 @@ import Rent from "../pages/rent/Rent";
 import MakeOffer from "../components/dashboard/user/MakeOffer";
 import Privacy from "../pages/privacy-Policy/Privacy";
 import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
-
+import Profilejs from".././sharedcomponents/Profilejs"
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/agentProfiles/:id",
+        element: <Profilejs></Profilejs>,
       },
       {
         path: "/Privacy",
