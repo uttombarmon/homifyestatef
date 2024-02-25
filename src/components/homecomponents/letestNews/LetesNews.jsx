@@ -25,9 +25,6 @@ const LetesNews = () => {
 
     fetchData();
   }, [axiosPublic]);
-
-
-
   return (
     <>
       <h1 className=" items-center text-4xl font-bold mb-2 mt-10 text-center w-full ">
@@ -68,12 +65,8 @@ const LetesNews = () => {
                 </div>
               </div>
             </div>
-
-
           )
         }
-
-
       </div>
     </>
   );
