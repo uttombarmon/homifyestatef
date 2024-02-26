@@ -120,7 +120,7 @@ const Properties = () => {
  </div>
 </div> 
  <Features></Features>
-  {/* kk */}
+ {/* hello */}
     </>
   );
 
