@@ -15,7 +15,8 @@ const Professionals = () => {
   useEffect(() => {
     axiosPublic.get('/users/all/agent')
       .then(data => {
-        setPersonInfos(data.data)
+        const newData = data.data.slice(0,4);
+        setPersonInfos(newData)
       })
   }, [axiosPublic]);
 

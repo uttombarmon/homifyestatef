@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
 const Allagent = () => {
+    // const [addProperty, setAddProperty] = useState([])
+    // console.log(addProperty);
     const [personInfos, setPersonInfos] = useState([]);
     console.log(personInfos);
     const axiosPublic = useAxiosPublic();
@@ -24,6 +26,14 @@ const Allagent = () => {
         }
         fetchData()
     }, [axiosPublic])
+
+    // useEffect(() => {
+    //     if (personInfos?.email) {
+    //       axiosPublic.get(`/home/checkout/${personInfos?.email.email}`)
+    //         .then(data => setAddProperty(data.data))
+    //         .catch(error => console.error('Error fetching addProperty data:', error));
+    //     }
+    //   }, [personInfos?.email, axiosPublic]);
 
 
     return (
@@ -73,7 +83,7 @@ const Allagent = () => {
                                 <div className=" mt-4 px-6 ">
                                     <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" font-bold text-xl ">
                                         {personInfo?.name}
-                                        <div className="badge badge-secondary ml-3 ">{personInfo?.personalInfo?.listing} listing</div>
+                                        {/* {addProperty ? <div className="badge badge-secondary ml-3 ">{addProperty.length} listing</div> : null} */}
                                     </h2></Link>
                                     <p className="font-medium">{personInfo?.role}</p>
                                     <hr className=" bg-black mt-3 " />
