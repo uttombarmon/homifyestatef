@@ -1,15 +1,9 @@
 import { IoHome } from "react-icons/io5";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { FaTwitter } from "react-icons/fa";
-import { MdCall } from "react-icons/md";
-import { BiLogoGmail } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
+import AgentCard from "./AgentCard";
 const Allagent = () => {
-    // const [addProperty, setAddProperty] = useState([])
-    // console.log(addProperty);
+
     const [personInfos, setPersonInfos] = useState([]);
     console.log(personInfos);
     const axiosPublic = useAxiosPublic();
@@ -27,15 +21,6 @@ const Allagent = () => {
         fetchData()
     }, [axiosPublic])
 
-    // useEffect(() => {
-    //     if (personInfos?.email) {
-    //       axiosPublic.get(`/home/checkout/${personInfos?.email.email}`)
-    //         .then(data => setAddProperty(data.data))
-    //         .catch(error => console.error('Error fetching addProperty data:', error));
-    //     }
-    //   }, [personInfos?.email, axiosPublic]);
-
-
     return (
         <>
             <section
@@ -50,7 +35,6 @@ const Allagent = () => {
                 <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
                     <h1 className=" text-5xl "> All Agent</h1>
                     <span className=" items-center flex  justify-center gap-1 text-SM mt-7">
-                        {" "}
                         <IoHome></IoHome> Home .AGENTPROFILE
                     </span>
                 </div>
@@ -58,49 +42,8 @@ const Allagent = () => {
             <div>
                 <div className="grid justify-center mb-12 px-5 mx-auto md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-2">
                     {
-                        personInfos?.map((personInfo, index) =>
-                            <div key={index} className="card  mx-auto xl:w-[320px] w-[375px] lg:w-[450px] mt-7 bg-white border">
-                                <div className="group w-full  h-[300px] relative border-slate-500 overflow-hidden">
-                                    <img
-                                        src={personInfo.photoURL}
-                                        alt=""
-                                        className="w-full object-cover h-full rounded-t-md" />
-                                    <div className="absolute top-0 right-full rounded-t-md w-full h-full group-hover:right-0 bg-[#29404788] backdrop-blur-[5px]  p-7 flex flex-col justify-center ">
-                                        <div className=" items-center flex text-xl text-white text-center gap-5">
-                                            <button className=" ml-[15%] rounded-full  hover:bg-orange-600 bg-orange-400 p-2 ">
-                                                <Link to='https://twitter.com'><FaTwitter></FaTwitter></Link>
-                                            </button>
+                        personInfos?.map((personInfo) => <AgentCard key={personInfo._id} personInfo={personInfo} ></AgentCard>
 
-                                            <button className="rounded-full bg-gray-300 p-2  hover:bg-gray-500 text-red-500 ">
-                                                <Link to='https://facebook.com'><FaFacebook></FaFacebook></Link>
-                                            </button>
-                                            <button className=" rounded-full hover:bg-orange-600 bg-orange-400 p-2 ">
-                                                <Link to='https://linkedin.com'><FaLinkedinIn></FaLinkedinIn></Link>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className=" mt-4 px-6 ">
-                                    <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" font-bold text-xl ">
-                                        {personInfo?.name}
-                                        {/* {addProperty ? <div className="badge badge-secondary ml-3 ">{addProperty.length} listing</div> : null} */}
-                                    </h2></Link>
-                                    <p className="font-medium">{personInfo?.role}</p>
-                                    <hr className=" bg-black mt-3 " />
-                                    <div className=" justify-start mt-3 mb-3">
-                                        <div className="flex items-center gap-2 font-semibold">
-                                            <MdCall></MdCall>
-                                            <h3> {personInfo?.phone} </h3>
-                                        </div>
-                                        <div className=" overflow-hidden flex items-center gap-2 font-semibold">
-                                            <h5>
-                                                <BiLogoGmail></BiLogoGmail>
-                                            </h5>
-                                            {personInfo?.email}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         )
                     }
                 </div>

@@ -19,7 +19,6 @@ const Professionals = () => {
         setPersonInfos(newData)
       })
   }, [axiosPublic]);
-
   return (
     <>
       <div>
@@ -51,7 +50,7 @@ const Professionals = () => {
                   </div>
                 </div>
                 <div className=" mt-4 px-6 ">
-                  <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" font-bold text-xl ">
+                  <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" hover:underline font-bold text-xl ">
                     {personInfo?.name}
                     <div className="badge badge-secondary ml-3 ">{personInfo?.personalInfo?.listing} listing</div>
                   </h2></Link>

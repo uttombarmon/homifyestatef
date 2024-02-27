@@ -8,11 +8,13 @@ import { IoHome } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
-import Features from "../components/homecomponents/features/Features";
+// import Features from "../components/homecomponents/features/Features";
+import Property from "./Property";
 
 const Properties = () => {
   const [blog, setBlog] = useState();
-  // console.log(blog);
+  const [card, setCard] = useState([]);
+  console.log(card);
 
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
@@ -23,6 +25,8 @@ const Properties = () => {
         try {
           const response = await axiosPublic.get(`/users/all/agent/id/${id}`);
           // console.log(response.data);
+          const res = await axiosPublic.get(`/home/checkout/${response.data?.email}`);
+           setCard(res.data)
           setBlog(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -74,7 +78,7 @@ const Properties = () => {
         </div>
 
         <div className="lg:w-[65%] md:w-[50%] ">
-          <h1 className="text-3xl font-bold mt-4  "> {blog?.name} </h1>
+          <h1 className="text-3xl font-bold mt-4   "> {blog?.name} </h1>
           <p className="mb-6 mt-1 text-gray-500"> {blog?.role} </p>
 
           <p className="text-[20px] font-semibold">
@@ -111,7 +115,9 @@ const Properties = () => {
           </div>
         </div>
       </div>
-      <Features></Features>
+      <div className="grid relative  w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mx-auto bg-slate-100 gap-5">
+          {card?.map((properties) => <Property key={properties._id} properties={properties}></Property>)}
+        </div>
     </>
   );
 
