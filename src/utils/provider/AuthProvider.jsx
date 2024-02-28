@@ -17,8 +17,8 @@ const AuthProvider = ({ children }) => {
                 console.log(cuser?.email);
                 const email = cuser?.email;
                 if(email){
-                    // await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
                     await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    // await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
                     // .then(async res=>{
                     //     console.log(res.data);
                     //     .then(res=>{
