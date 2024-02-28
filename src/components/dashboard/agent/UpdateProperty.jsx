@@ -20,6 +20,7 @@ const UpdateProperty = () => {
     console.log(featuredType);
 
     const [updateProperty, setUpdateProperty] = useState(null);
+    const [locationdata,setLocationData]=useState(null)
 
     if (updateProperty) {
         
@@ -35,6 +36,7 @@ const UpdateProperty = () => {
             setCountryType(resData.location);
             setPurposeType(resData.property_status);
             setFeaturedType(resData.featured);
+            setLocationData(resData.location.split(","));
         })
 
         .catch(error => console.log(error.message));
@@ -117,17 +119,18 @@ const UpdateProperty = () => {
                             </label>
                             <select
                                 name="country"
-                                value={countryType} 
+                                // value={countryType}
+                                value={locationdata? locationdata[2].toLowerCase() :''} 
                                 onChange={(e) =>  setCountryType(e.target.value)}
                                 
-                                className="select"
+                                className="select disabled"
                             >
                                 <option selected>Select Country</option>
-                                <option value="Bangladesh"> Bangladesh </option>
-                                <option value="Russia"> Russia </option>
-                                <option value="Japan"> Japan </option>
-                                <option value="India"> India</option>
-                                <option value="Malaysia">Malaysia </option>
+                                <option value="bangladesh"> Bangladesh </option>
+                                <option value="russia"> Russia </option>
+                                <option value="japan"> Japan </option>
+                                <option value="india"> India</option>
+                                <option value="malaysia">Malaysia </option>
                             </select>
                         </div>
 
@@ -138,7 +141,7 @@ const UpdateProperty = () => {
                             <input
                                 type="text"
                                 name="city"
-                                defaultValue={updateProperty?.location}
+                                defaultValue={locationdata? locationdata[0] :''}
                                 placeholder="city name"
                                 className="input input-bordered"
                             />
@@ -152,6 +155,7 @@ const UpdateProperty = () => {
                                 type="text"
                                 name="address"
                                 placeholder="Address"
+                                defaultValue={locationdata?locationdata[1]:''}
                                 className="input input-bordered"
                             />
                         </div>
