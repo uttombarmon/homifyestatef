@@ -21,12 +21,13 @@ import { FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import { LuClipboardCopy } from "react-icons/lu";
 import GoogleMapComponent from "../../components/propertiesdetails/googlemap/GoogleMap";
 import Reviews from "../../components/propertiesdetails/Review/Reviews";
-import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
+// import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import BannerSection from "../../components/propertiesdetails/bannerSection/bannerSection";
 import PropertyVideo from "../../components/propertiesdetails/propertyVideo/propertyVideo";
+import AgentProfiles from "../../components/propertiesdetails/agentprofile/AgentProfiles";
 const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
   const axiosPublic = useAxiosPublic();
@@ -298,11 +299,12 @@ const PropertyDetails = () => {
             </div>
 
             {/* schedule */}
-            <div className=" w-full lg:w-4/12 h-fit bg-white">
-              <ScheduleForm
+            <div className=" w-full lg:w-4/12 h-fit ">
+              {/* <ScheduleForm
                 price={property?.property_details?.price}
                 id={property._id}
-              ></ScheduleForm>
+              ></ScheduleForm> */}
+              <AgentProfiles></AgentProfiles>
             </div>
           </div>
         ) : (
