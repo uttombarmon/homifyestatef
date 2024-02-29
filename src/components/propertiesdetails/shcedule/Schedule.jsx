@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../../hooks/axiosPublic/useAxiosPublic';
-import AgentProfiles from '../agentprofile/AgentProfiles';
+// import AgentProfiles from '../agentprofile/AgentProfiles';
 
 const ScheduleForm = ({ price, id }) => {
   const { user } = useContext(AuthContext)
   const useAxios = useAxiosPublic()
   const currentDate = new Date();
   const localTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-  console.log(localTime);
+  // console.log(localTime);
   const localDate = currentDate.toISOString().split('T')[0]; // Getting the date in YYYY-MM-DD format
   const [formData, setFormData] = useState({
     date: localDate,
@@ -19,7 +19,6 @@ const ScheduleForm = ({ price, id }) => {
     message: '',
     property: id,
   });
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -152,7 +151,7 @@ const ScheduleForm = ({ price, id }) => {
     </div>
 
     <div className=' w-full mx-auto bg-slate-100 flex justify-center '>
-    <AgentProfiles></AgentProfiles>
+    {/* <AgentProfiles></AgentProfiles> */}
     </div>
     </div>
   );

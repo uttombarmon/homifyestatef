@@ -21,7 +21,7 @@ import { FaRegHeart, FaCheckCircle } from "react-icons/fa";
 import { LuClipboardCopy } from "react-icons/lu";
 import GoogleMapComponent from "../../components/propertiesdetails/googlemap/GoogleMap";
 import Reviews from "../../components/propertiesdetails/Review/Reviews";
-// import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
+import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -300,11 +300,11 @@ const PropertyDetails = () => {
 
             {/* schedule */}
             <div className=" w-full lg:w-4/12 h-fit ">
-              {/* <ScheduleForm
+              <ScheduleForm
                 price={property?.property_details?.price}
                 id={property._id}
-              ></ScheduleForm> */}
-              <AgentProfiles></AgentProfiles>
+              ></ScheduleForm>
+              <AgentProfiles profile={property?.author}  ></AgentProfiles>
             </div>
           </div>
         ) : (
