@@ -32,6 +32,7 @@ import Privacy from "../pages/privacy-Policy/Privacy";
 import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
 import Profilejs from".././sharedcomponents/Profilejs"
 import Allagent from "../sharedcomponents/Allagent";
+import VerifiedFile from "../components/dashboard/user/VerifiedFile";
 
 export const router = createBrowserRouter([
   {
@@ -175,6 +176,10 @@ export const router = createBrowserRouter([
         path: "addProperty",
         element: <AddProperty />,
       },
+      {
+        path:"download",
+        element:<VerifiedFile></VerifiedFile>
+      }
     ],
   },
 ]);

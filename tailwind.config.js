@@ -7,8 +7,12 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        poppins:"'Poppins', sans-serif"
-      }
+        poppins:"'Poppins', sans-serif",
+        KodeMono:["Kode Mono", "monospace"]
+      },
+      backgroundImage: {
+        'my-background-image': "url('/public/homify-logo.png')",
+      },
     },
   },
   plugins: [require("daisyui")],

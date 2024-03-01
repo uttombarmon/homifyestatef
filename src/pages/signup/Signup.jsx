@@ -27,8 +27,9 @@ const Signup = () => {
     const img = await UsePhoto(imgloc);
     data.photoURL=img
     creatuserwithemail(data.email, data.password)
-      .then(async (result) => {
-        if (result.user) {
+    .then(async (result) => {
+      if (result.user) {
+          data.uid = result.user?.uid
           const res = await axiosPublic.post("/users/user", data);
           console.log(res);
         }
