@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { MdOutlineKeyboardArrowLeft ,MdOutlineKeyboardArrowRight} from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 
 import { AuthContext } from "../../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
@@ -129,7 +132,7 @@ const Wishlist = () => {
                       Delete
                     </button>
                     <br />
-                    <Link to={`/properties/${property.propety}`}>
+                    <Link to={`/dashboard/payment/${property.propety}`}>
                       <button className=" border-2 bg-[#87e2639b]  hover:bg-green-600 my-0 btn-md btn  text-[17px] text-center px-1">
                         Make offer
                       </button>

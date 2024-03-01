@@ -30,9 +30,14 @@ import Rent from "../pages/rent/Rent";
 import MakeOffer from "../components/dashboard/user/MakeOffer";
 import Privacy from "../pages/privacy-Policy/Privacy";
 import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
+
+
+import PaymentForm from "../components/dashboard/user/PaymentForm";
+
 import Profilejs from".././sharedcomponents/Profilejs"
 import Allagent from "../sharedcomponents/Allagent";
 import VerifiedFile from "../components/dashboard/user/VerifiedFile";
+
 
 export const router = createBrowserRouter([
   {
@@ -70,14 +75,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "sell",
-        element: <Sell></Sell>
+        element: <Sell></Sell>,
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
-      }, {
+        element: <Contact></Contact>,
+      },
+      {
         path: "/about",
-        element: <About></About>
+        element: <About></About>,
       },
       {
         path: "/rent",
@@ -128,9 +134,10 @@ export const router = createBrowserRouter([
       {
         path: "agentProfile",
         element: <AgentProfile></AgentProfile>,
-      }, {
+      },
+      {
         path: "updateOrder/:id",
-        element: <UpdateProperty></UpdateProperty>
+        element: <UpdateProperty></UpdateProperty>,
       },
       {
         path: "agentOrder",
@@ -150,7 +157,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "makeOffer/:id",
-        element: <MakeOffer></MakeOffer>
+        element: <MakeOffer></MakeOffer>,
       },
       {
         path: "allproperties",
@@ -171,6 +178,10 @@ export const router = createBrowserRouter([
       {
         path: "order",
         element: <Order></Order>,
+      },
+      {
+        path: "payment/:id",
+        element: <PaymentForm></PaymentForm>,
       },
       {
         path: "addProperty",
