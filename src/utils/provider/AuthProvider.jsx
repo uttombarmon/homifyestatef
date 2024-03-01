@@ -13,40 +13,41 @@ import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [searchInfo, setSearchInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [userInfo, setInfo] = useState(null);
-  //check user
-  useEffect(() => {
-    const unSubcribe = () => {
-      onAuthStateChanged(auth, async (cuser) => {
-        setUser(cuser);
-        console.log(cuser?.email);
-        const email = cuser?.email;
-        if (email) {
-          // await axios.post('https://homifyestates.vercel.app/jwt/signIn',{email},{withCredentials:true})
-          await axios.post(
-            "https://homifyestates.vercel.app/jwt/signIn",
-            { email },
-            { withCredentials: true }
-          );
-          // .then(async res=>{
-          //     console.log(res.data);
-          //     .then(res=>{
-          //         setInfo(res.data);
-          //         console.log(res.data)
-          //     })
-          //     .catch(err=>console.log(err.message))
-          // })
-          // .catch(err=> console.log(err.message))
-          // const result =await axios.get(`https://homifyestates.vercel.app/users/${email}`, {withCredentials:true})
-          const result = await axios.get(
-            `https://homifyestates.vercel.app/users/${email}`,
-            { withCredentials: true }
-          );
-          setInfo(result.data);
-          // console.log(result.data);
+
+  
+     
+
+    const [user, setUser] = useState(null);
+    const [searchInfo ,setSearchInfo] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [userInfo, setInfo]= useState(null)
+    //check user
+    useEffect(() => {
+        const unSubcribe = () => {
+            onAuthStateChanged(auth, async cuser => {
+                setUser(cuser);
+                console.log(cuser?.email);
+                const email = cuser?.email;
+                if(email){
+                    await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    // await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
+                    // .then(async res=>{
+                    //     console.log(res.data);
+                    //     .then(res=>{
+                    //         setInfo(res.data);
+                    //         console.log(res.data)
+                    //     })
+                    //     .catch(err=>console.log(err.message))
+                    // })
+                    // .catch(err=> console.log(err.message))
+                    // const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
+                    const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
+                    setInfo(result.data)
+                }
+            
+                setLoading(false);
+            })
+
         }
 
         setLoading(false);
