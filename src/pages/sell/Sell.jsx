@@ -64,7 +64,7 @@ const Sell = () => {
         <>
         
             <div className=" ">
-              <img src="https://i.ibb.co/Mgnqm3W/Brown-Modern-Real-Estate-Banner.png" className=" w-full  h-full " />
+              <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
             </div>
                  {/* card section */}
                  <div className=" w-full py-10 ">
