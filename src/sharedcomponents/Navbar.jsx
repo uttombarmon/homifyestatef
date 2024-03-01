@@ -42,51 +42,49 @@ const Navbar = () => {
     <li><NavLink to={'sell'}>Sale</NavLink></li>
     <li><NavLink to={'contact'}>contact</NavLink></li>
     <li><NavLink to={'about'}>About</NavLink></li>
-    
+
     {
       user &&
       <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
   return (
-    <>
-      <div className="navbar w-full bg-[#2119198d]  xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-[200]">
-        <div className="navbar-start">
-          <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+    <div className="navbar w-full bg-white xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 z-[200]">
+      <div className="navbar-start">
+        <Link to={''} className=" mx-4 font-bold font-serif text-2xl">HomifyEstate</Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {
+            navlink
+          }
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </div>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             {
               navlink
             }
+            <li className="btn justify-center btn-info font-bold">        {
+              user ?
+                <button className="btn" onClick={onSignout}>SignOut</button>
+                :
+                <a className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</a>
+            }</li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content right-0 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              {
-                navlink
-              }
-              <li className="btn justify-center btn-info font-bold">        {
-                user ?
-                  <button className="btn" onClick={onSignout}>SignOut</button>
-                  :
-                  <a className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</a>
-              }</li>
-            </ul>
-          </div>
-          {
-            user ?
-              <button className="btn" onClick={onSignout}>SignOut</button>
-              :
-              <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
-          }
-        </div>
+        {
+          user ?
+            <button className="btn" onClick={onSignout}>SignOut</button>
+            :
+            <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
+        }
       </div>
-    </>
+    </div>
   );
 };
 

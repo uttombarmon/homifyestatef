@@ -14,7 +14,7 @@ const UpdateProperty = () => {
     const { user } = useContext(AuthContext);
 
     const [propertyType, setPropertyType] = useState(null);
-    const [countryType, setCountryType] = useState(null);
+    // const [countryType, setCountryType] = useState(null);
     const [purposeType, setPurposeType] = useState(null);
     const [featuredType, setFeaturedType] = useState(null);
     console.log(featuredType);
@@ -32,13 +32,13 @@ const UpdateProperty = () => {
         axiosPublic.get(`/home/checkoutt/${id}`)
         .then(res => {setUpdateProperty(res.data)
             const resData = res.data;
+            console.log(resData);
             setPropertyType(resData.type);
-            setCountryType(resData.location);
+            // setCountryType(resData.location);
             setPurposeType(resData.property_status);
             setFeaturedType(resData.featured);
             setLocationData(resData.location.split(","));
         })
-
         .catch(error => console.log(error.message));
     },[axiosPublic,id]);
 
@@ -121,7 +121,7 @@ const UpdateProperty = () => {
                                 name="country"
                                 // value={countryType}
                                 value={locationdata? locationdata[2].toLowerCase() :''} 
-                                onChange={(e) =>  setCountryType(e.target.value)}
+                                // onChange={(e) =>  setCountryType(e.target.value)}
                                 
                                 className="select disabled"
                             >
@@ -165,7 +165,7 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
-                                defaultValue={updateProperty?.author.phone}
+                                defaultValue={updateProperty?.author?.phone}
                                 name="phone"
                                 placeholder="Phone "
                                 className="input input-bordered"
@@ -177,7 +177,7 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
-                                defaultValue={updateProperty?.author.contact}
+                                defaultValue={updateProperty?.author?.contact}
                                 name="email"
                                 placeholder="Email"
                                 className="input input-bordered"
@@ -205,7 +205,7 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
-                                defaultValue={updateProperty?.property_details.price} 
+                                defaultValue={updateProperty?.property_details?.price} 
                                 name="price"
                                 placeholder="Price "
                                 className="input input-bordered"
@@ -223,7 +223,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.size}
+                                    defaultValue={updateProperty?.property_details?.size}
                                     name="totalArea"
                                     placeholder="Total Area(Square Feet)"
                                     className="input input-bordered"
@@ -235,7 +235,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.unit}
+                                    defaultValue={updateProperty?.property_details?.unit}
                                     name="unit"
                                     placeholder="Total Unit"
                                     className="input input-bordered"
@@ -247,7 +247,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.rooms}
+                                    defaultValue={updateProperty?.property_details?.rooms}
                                     name="room"
                                     placeholder="Total Room "
                                     className="input input-bordered"
@@ -259,7 +259,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.bed_rooms}
+                                    defaultValue={updateProperty?.property_details?.bed_rooms}
                                     name="bedroom"
                                     placeholder="Bedroom"
                                     className="input input-bordered"
@@ -271,7 +271,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.baths}
+                                    defaultValue={updateProperty?.property_details?.baths}
                                     name="bathroom"
                                     placeholder="Bathroom"
                                     className="input input-bordered"
@@ -283,7 +283,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.floor}
+                                    defaultValue={updateProperty?.property_details?.floor}
                                     name="floor"
                                     placeholder="Total Floor "
                                     className="input input-bordered"
@@ -295,7 +295,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.kitchen}
+                                    defaultValue={updateProperty?.property_details?.kitchen}
                                     name="kitchen"
                                     placeholder="Kitchen"
                                     className="input input-bordered"
@@ -307,7 +307,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.balcony}
+                                    defaultValue={updateProperty?.property_details?.balcony}
                                     name="balcony"
                                     placeholder="Balcony"
                                     className="input input-bordered"
@@ -320,7 +320,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.property_details.garages}
+                                    defaultValue={updateProperty?.property_details?.garages}
                                     name="place"
                                     placeholder="Parking Place"
                                     className="input input-bordered"
@@ -346,7 +346,7 @@ const UpdateProperty = () => {
                                 <input
                                 
                                     type="file"
-                                    defaultValue={updateProperty?.property_details.thumImage}
+                                    defaultValue={updateProperty?.property_details?.thumImage}
                                     name="thumImage"
                                     placeholder="Enter Thumbnail Image"
                                     className="input input-bordered py-2 w-full"
@@ -385,7 +385,7 @@ const UpdateProperty = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    defaultValue={updateProperty?.floor_plan.image}
+                                    defaultValue={updateProperty?.floor_plan?.image}
                                     name="facilImage"
                                     placeholder="Enter Facilities image"
                                     className="input input-bordered w-full"

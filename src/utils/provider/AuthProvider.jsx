@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase-auth/firebaseauthentication";
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({ children }) => {
@@ -14,7 +15,6 @@ const AuthProvider = ({ children }) => {
         const unSubcribe = () => {
             onAuthStateChanged(auth, async cuser => {
                 setUser(cuser);
-                console.log(cuser?.email);
                 const email = cuser?.email;
                 if(email){
                     await axios.post('http://localhost:5000/jwt/signIn',{email},{withCredentials:true})
@@ -31,13 +31,20 @@ const AuthProvider = ({ children }) => {
                     // const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
                     const result =await axios.get(`http://localhost:5000/users/${email}`, {withCredentials:true})
                     setInfo(result.data)
+                    if (cuser?.photoURL) {
+                        updateProfile(auth ,{
+                            photoURL: userInfo?.photoURL, displayName: userInfo?.name      
+                        })
+                        .then(()=> toast('Profile Updated'))
+                        .catch(e=> toast(e))
+                    }
                 }
             
                 setLoading(false);
             })
         }
         return unSubcribe();
-    }, []);
+    }, [userInfo]);
 
     //signin by email and password
     const creatuserwithemail = (email, password) => {
