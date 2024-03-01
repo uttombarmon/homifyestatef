@@ -11,21 +11,19 @@ const AgentProperties = () => {
 
   const [properties, setProperties] = useState([]);
 
-  const { user } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
-  const email = user?.email;
 
   //checkoutcollections map 
   useEffect(() => {
-    if (email) {
-      axiosPublic.get('/home/checkout/')
+    if (userInfo?.email) {
+      axiosPublic.get(`/home/checkout/${userInfo.email}`)
         .then(data => {
-          // console.log(data);
           setProperties(data.data)
 
         })
     }
-  }, [axiosPublic, email]);
+  }, [axiosPublic, userInfo]);
 
   const handelDelete = (id) => {
     // console.log("hedete api");
