@@ -25,7 +25,6 @@ const Sell = () => {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, [axiosPublic]);
 
@@ -70,6 +69,14 @@ const Sell = () => {
       </div>
       {/* card section */}
       <div className=" w-full py-10 ">
+    return (
+        <>
+        
+            <div className=" ">
+              <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
+            </div>
+                 {/* card section */}
+                 <div className=" w-full py-10 ">
         <div className=" flex justify-between px-2 mb-4">
           {/* section title and description */}
           <div>

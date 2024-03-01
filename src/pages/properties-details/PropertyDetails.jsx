@@ -27,6 +27,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import BannerSection from "../../components/propertiesdetails/bannerSection/bannerSection";
 import PropertyVideo from "../../components/propertiesdetails/propertyVideo/propertyVideo";
+import AgentProfiles from "../../components/propertiesdetails/agentprofile/AgentProfiles";
 const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
   const axiosPublic = useAxiosPublic();
@@ -298,11 +299,12 @@ const PropertyDetails = () => {
             </div>
 
             {/* schedule */}
-            <div className=" w-full lg:w-4/12 h-fit bg-white">
+            <div className=" w-full lg:w-4/12 h-fit ">
               <ScheduleForm
                 price={property?.property_details?.price}
                 id={property._id}
               ></ScheduleForm>
+              <AgentProfiles profile={property?.author}  ></AgentProfiles>
             </div>
           </div>
         ) : (
