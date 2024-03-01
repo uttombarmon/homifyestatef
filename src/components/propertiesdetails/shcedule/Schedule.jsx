@@ -1,23 +1,31 @@
+
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../utils/provider/AuthProvider';
 import useAxiosPublic from '../../../hooks/axiosPublic/useAxiosPublic';
 // import AgentProfiles from '../agentprofile/AgentProfiles';
 
+
 const ScheduleForm = ({ price, id }) => {
-  const { user } = useContext(AuthContext)
-  const useAxios = useAxiosPublic()
+  const { user } = useContext(AuthContext);
+  const useAxios = useAxiosPublic();
   const currentDate = new Date();
+
+
+
   const localTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
   // console.log(localTime);
   const localDate = currentDate.toISOString().split('T')[0]; // Getting the date in YYYY-MM-DD format
+
   const [formData, setFormData] = useState({
     date: localDate,
     time: localTime,
-    name: user?.displayName || '',
-    phone: '',
-    email: user?.email || '',
-    message: '',
+    name: user?.displayName || "",
+    phone: "",
+    email: user?.email || "",
+    message: "",
     property: id,
+    company: "",
+    adress: "",
   });
   const handleChange = (e) => {
     setFormData({
@@ -31,14 +39,14 @@ const ScheduleForm = ({ price, id }) => {
     // Add your form submission logic here
     function extractNumbersFromString(inputString) {
       // Check if the input is already a number
-      if (typeof inputString === 'number') {
+      if (typeof inputString === "number") {
         // If it's a number, return the same value
         return inputString;
       }
       // Use a regular expression to match numeric characters
       const numericPart = inputString.match(/\d+/g);
       // Join the matched numeric characters into a single string
-      const result = numericPart ? numericPart.join('') : '';
+      const result = numericPart ? numericPart.join("") : "";
 
       return result;
     }
@@ -46,14 +54,13 @@ const ScheduleForm = ({ price, id }) => {
     const numericPart = extractNumbersFromString(stringWithNumbers);
     console.log(numericPart);
 
-    formData.amount = parseInt(numericPart)
+    formData.amount = parseInt(numericPart);
     console.log(formData);
     // console.log(import.meta.env.VITE_SERVER);
-    useAxios.post(`/order`, { formData })
-      .then(data => {
-        console.log(data)
-        window.location.href = data.data.url;
-      })
+    useAxios.post(`/order`, { formData }).then((data) => {
+      console.log(data);
+      window.location.href = data.data.url;
+    });
   };
 
   return (
