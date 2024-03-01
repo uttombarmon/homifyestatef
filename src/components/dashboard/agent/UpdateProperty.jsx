@@ -14,10 +14,10 @@ const UpdateProperty = () => {
     const { user } = useContext(AuthContext);
 
     const [propertyType, setPropertyType] = useState(null);
-    const [countryType, setCountryType] = useState(null);
+    const [countryType, setCountryType] = useState("");
     const [purposeType, setPurposeType] = useState(null);
     const [featuredType, setFeaturedType] = useState(null);
-    console.log(featuredType);
+    // console.log(featuredType);
 
     const [updateProperty, setUpdateProperty] = useState(null);
 
@@ -25,7 +25,8 @@ const UpdateProperty = () => {
         
         console.log(updateProperty);
     }
-    
+    const location = countryType?.split(",");
+    console.log(location);
 
     useEffect(()=>{
         axiosPublic.get(`/home/checkoutt/${id}`)
@@ -117,9 +118,9 @@ const UpdateProperty = () => {
                             </label>
                             <select
                                 name="country"
-                                value={countryType} 
+                                value={location[2]}
                                 onChange={(e) =>  setCountryType(e.target.value)}
-                                
+                               
                                 className="select"
                             >
                                 <option selected>Select Country</option>
@@ -138,7 +139,7 @@ const UpdateProperty = () => {
                             <input
                                 type="text"
                                 name="city"
-                                defaultValue={updateProperty?.location}
+                                defaultValue={location[0]}
                                 placeholder="city name"
                                 className="input input-bordered"
                             />
