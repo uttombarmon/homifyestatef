@@ -42,25 +42,24 @@ const Navbar = () => {
     <li><NavLink to={'sell'}>Sale</NavLink></li>
     <li><NavLink to={'contact'}>contact</NavLink></li>
     <li><NavLink to={'about'}>About</NavLink></li>
-    
+
     {
       user &&
       <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
   return (
-    <>
-      <div className="navbar w-full bg-[#2119198d]  xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 fixed z-[200]">
-        <div className="navbar-start">
-          <a className="btn btn-ghost font-bold font-serif text-2xl">HomifyEstate</a>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal py-1 ">
-            {
-              navlink
-            }
-          </ul>
-        </div>
+    <div className="navbar w-full bg-white xl:max-w-[1440px] lg:max-w-[1024px] text-amber-300 z-[200]">
+      <div className="navbar-start">
+        <Link to={''} className=" mx-4 font-bold font-serif text-2xl">HomifyEstate</Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {
+            navlink
+          }
+        </ul>
+      </div>
         <div className="navbar-end">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -86,7 +85,7 @@ const Navbar = () => {
           }
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

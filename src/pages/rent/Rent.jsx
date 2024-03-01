@@ -59,9 +59,9 @@ const Rent = () => {
 
   return (
     <>
-      <div className=" ">
+      <div className=" bg-black ">
         <img
-          src="https://i.ibb.co/16ybbd9/rent-4.jpg"
+          src="https://i.ibb.co/gDV2fks/rent-4.jpg"
           className=" w-full  h-full "
         />
       </div>

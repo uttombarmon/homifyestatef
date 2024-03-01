@@ -36,6 +36,7 @@ const SignIn = () => {
           email: res?.user?.email,
           role: "user",
           method: "google",
+          uid: res?.user?.uid
         };
         const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
         const userFromDB = getUser?.data?.email;

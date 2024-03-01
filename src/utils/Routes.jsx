@@ -36,6 +36,7 @@ import PaymentForm from "../components/dashboard/user/PaymentForm";
 
 import Profilejs from".././sharedcomponents/Profilejs"
 import Allagent from "../sharedcomponents/Allagent";
+import VerifiedFile from "../components/dashboard/user/VerifiedFile";
 
 
 export const router = createBrowserRouter([
@@ -186,6 +187,10 @@ export const router = createBrowserRouter([
         path: "addProperty",
         element: <AddProperty />,
       },
+      {
+        path:"download",
+        element:<VerifiedFile></VerifiedFile>
+      }
     ],
   },
 ]);
