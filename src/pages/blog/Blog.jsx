@@ -6,15 +6,20 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
+import useAxiosPrivate from "../../hooks/axiosPrivate/useAxiosPrivate";
+import { AuthContext } from "../../utils/provider/AuthProvider";
 
 const Blog = () => {
   const [bloge, setBloge] = useState(null);
   // console.log(bloge);
+  const axiosPrivate = useAxiosPrivate()
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
+  const {user}= useContext(AuthContext)
+  console.log(user?.email);
   // console.log(id);
 
   useEffect(() => {
@@ -47,6 +52,36 @@ const Blog = () => {
 
     fetchData();
   }, [axiosPublic]);
+
+  // dynamic comment 
+   const handelCommne = (e) =>{
+       e.preventDefault()
+       const from = e.target;
+       const name = from.name.value;
+       const email = from.email.value;
+       const phone = from.phone.value;
+       const comment= from.comment.value;
+       const subjcet = from.subjcet.value;
+      //  console.log(name, email,phone,comment, subjcet);
+        const data = {
+         name, 
+         email,
+          phone,
+           comment ,
+            subjcet ,
+             id
+        }
+        console.log(data);
+        axiosPrivate.post('/home/reviews',data)
+        .then(e => console.log(e.data))
+        .catch(err => console.log(err.message))
+     
+   }
+
+
+
+
+
 
   return (
     <>
@@ -250,16 +285,19 @@ const Blog = () => {
           <h1 className=" text-xl  xl:ml-0 lg:ml-0 md:ml-3 ml-20 font-medium ">
             Leave a Comment
           </h1>
-
+      <form onSubmit={handelCommne}>
           <div className="">
             <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
               <input
                 type="text"
                 placeholder="Name*"
+                name="name"
                 className=" border w-[50%] border-black py-2 px-2  "
               />
               <input
                 type="email"
+                name="email"
+                defaultValue={user?.email}
                 placeholder="Email*"
                 className=" w-[50%] border border-black py-2 px-2  "
               />
@@ -267,11 +305,13 @@ const Blog = () => {
             <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
               <input
                 type="text"
+                name="phone"
                 placeholder="Phone*"
                 className=" border w-[50%] border-black py-2 px-2  "
               />
               <input
                 type="text"
+                name="subjcet"
                 placeholder="subjcet*"
                 className=" w-[50%] border border-black py-2 px-2  "
               />
@@ -279,6 +319,7 @@ const Blog = () => {
             <div className=" mt-3 ml-6 flex gap-9 justify-between ">
               <textarea
                 placeholder="comment"
+                name="comment"
                 className="textarea textarea-bordered textarea-lg w-full max-w-xs"
               ></textarea>
             </div>
@@ -291,8 +332,9 @@ const Blog = () => {
                 i comment
               </p>
             </div>
-            <button className="  btn  mt-4 ml-8  ">submit comment</button>
+            <button type="submit" className="  btn  mt-4 ml-8  ">submit comment</button>
           </div>
+          </form>
         </div>
       </div>
     </>
