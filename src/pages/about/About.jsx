@@ -161,9 +161,8 @@ const About = () => {
             fireplace <PiSwimmingPool></PiSwimmingPool>
           </p>
         </div>
-
         <h1 className="text-center border w-[170px] mb-5 items-center xl:ml-[45%] lg:ml-[40%] md:ml-[39%] ml-36 font-bold btn btn-outline justify-center flex ">
-          Prowse Property
+          Browse Property
         </h1>
       </div>
 
@@ -203,11 +202,7 @@ const About = () => {
             </p>
           </div>
           <p className=" mb-2 border-r">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit <br />
-            nobis maiores deleniti, magni pariatur quibusdam vero, quos sred
-            hkek <br />
-            perspiciatis labore molestiae nostrum minus? <br />
-            Ab ratione dolor corporis, ullam tempore odit.
+            I had a fantastic experience using RealEstateManagementSite.com. The user-friendly interface, robust search, and seamless communication made selling my property a breeze. Secure transactions, digital paperwork, and excellent customer support set this platform apart. Highly recommended for a smooth real estate journey!
           </p>
         </div>
 

@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../utils/provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-// const axiosPrivate = axios.create({ baseURL: "https://homifyestates.vercel.app",withCredentials:true})
+// const axiosPrivate = axios.create({ baseURL: "http://localhost:5000",withCredentials:true})
 const axiosPrivate = axios.create({
-  baseURL: "https://homifyestates.vercel.app",
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 const useAxiosPrivate = () => {

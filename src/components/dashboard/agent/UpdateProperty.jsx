@@ -142,9 +142,9 @@ const UpdateProperty = () => {
                             </label>
                             <input
                                 type="text"
-                                name="city
+                                name="city"
                                 defaultValue={locationdata? locationdata[0] :''}
-                                placeholder="city name"
+                                placeholder="city "
                                 className="input input-bordered"
                             />
                         </div>

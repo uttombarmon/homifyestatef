@@ -1,24 +1,24 @@
-import html2canvas from 'html2canvas';
+
 
 const VerifiedFile = () => {
-    const convertToImage = () => {
-        const element = document.getElementById('your-html-element-id');
+    // const convertToImage = () => {
+    //     const element = document.getElementById('your-html-element-id');
 
-        if (element) {
-            html2canvas(element, { allowTaint: true })
-                .then((canvas) => {
-                    const dataUrl = canvas.toDataURL();
-                    const img = new Image();
-                    img.src = dataUrl;
+    //     if (element) {
+    //         html2canvas(element, { allowTaint: true })
+    //             .then((canvas) => {
+    //                 const dataUrl = canvas.toDataURL();
+    //                 const img = new Image();
+    //                 img.src = dataUrl;
 
-                    // You can append img to the DOM or perform other actions with the image
-                    document.body.appendChild(img);
-                })
-                .catch((error) => {
-                    console.error('Error converting to image:', error);
-                });
-        }
-    };
+    //                 // You can append img to the DOM or perform other actions with the image
+    //                 document.body.appendChild(img);
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Error converting to image:', error);
+    //             });
+    //     }
+    // };
 
     return (
         <div>

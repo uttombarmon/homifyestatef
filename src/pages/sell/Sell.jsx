@@ -48,9 +48,8 @@ const Sell = () => {
         <button
           key={i}
           onClick={() => paginate(i)}
-          className={`border-none rounded-full w-[38px]   font-medium mx-2 ${
-            currentPage === i ? " bg-gray-100 py-2" : ""
-          }`}
+          className={`border-none rounded-full w-[38px]   font-medium mx-2 ${currentPage === i ? " bg-gray-100 py-2" : ""
+            }`}
         >
           {i}
         </button>
@@ -62,21 +61,10 @@ const Sell = () => {
   return (
     <>
       <div className=" ">
-        <img
-          src="https://i.ibb.co/Mgnqm3W/Brown-Modern-Real-Estate-Banner.png"
-          className=" w-full  h-full "
-        />
+        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
       </div>
       {/* card section */}
       <div className=" w-full py-10 ">
-    return (
-        <>
-        
-            <div className=" ">
-              <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
-            </div>
-                 {/* card section */}
-                 <div className=" w-full py-10 ">
         <div className=" flex justify-between px-2 mb-4">
           {/* section title and description */}
           <div>

@@ -25,8 +25,8 @@ import ScheduleForm from "../../components/propertiesdetails/shcedule/Schedule";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import BannerSection from "../../components/propertiesdetails/bannerSection/bannerSection";
-import PropertyVideo from "../../components/propertiesdetails/propertyVideo/propertyVideo";
+import BannerSection from "../../components/propertiesdetails/bannerSection/BannerSection";
+import PropertyVideo from "../../components/propertiesdetails/propertyVideo/PropertyVideo";
 import AgentProfiles from "../../components/propertiesdetails/agentprofile/AgentProfiles";
 const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
@@ -49,7 +49,7 @@ const PropertyDetails = () => {
     fetchData();
   }, [axiosPublic, params]);
 
- 
+
 
 
   return (
