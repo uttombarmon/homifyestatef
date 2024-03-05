@@ -1,4 +1,4 @@
-import { IoHome } from "react-icons/io5";
+
 import {
   BsFillChatSquareFill,
   BsFillEnvelopeFill,
@@ -40,14 +40,14 @@ const Contact = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 700px",
           backgroundPosition: "center",
-          backgroundImage: "url(https://i.ibb.co/8PmVZMt/banner-bg.jpg)",
+          backgroundImage: "url(https://i.ibb.co/TKpzWqV/contact-us1.jpg)",
         }}
       >
         <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
-          <h1 className=" text-5xl "> Contact Us </h1>
-          <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
+          {/* <h1 className=" text-5xl "> Contact Us </h1> */}
+          {/* <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
             <IoHome></IoHome> Home . Contact Us
-          </span>
+          </span> */}
         </div>
       </section>
 

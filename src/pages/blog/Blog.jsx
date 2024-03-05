@@ -9,17 +9,19 @@ import { FaUser } from "react-icons/fa6";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
-import useAxiosPrivate from "../../hooks/axiosPrivate/useAxiosPrivate";
 import { AuthContext } from "../../utils/provider/AuthProvider";
+// import useAxiosPrivate from "../../hooks/axiosPrivate/useAxiosPrivate";
+import toast from "react-hot-toast";
+
 
 const Blog = () => {
   const [bloge, setBloge] = useState(null);
   // console.log(bloge);
-  const axiosPrivate = useAxiosPrivate()
+  // const axiosPrivate = useAxiosPrivate()
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
-  const {user}= useContext(AuthContext)
-  console.log(user?.email);
+  const {user} = useContext(AuthContext)
+  console.log(user?.photoURL);
   // console.log(id);
 
   useEffect(() => {
@@ -53,28 +55,51 @@ const Blog = () => {
     fetchData();
   }, [axiosPublic]);
 
+
+  // time 
+  const currentDate = new Date();
+  const defaultTime = {
+    hours: 12,  // Set your default hour
+    minutes: 0, // Set your default minutes
+    seconds: 0, // Set your default seconds
+  };
+
+  // Create a new Date object with the current date and default time
+  const defaultDateTime = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate(),
+    defaultTime.hours,
+    defaultTime.minutes,
+    defaultTime.seconds
+  );
   // dynamic comment 
-   const handelCommne = (e) =>{
+   const handelCommne = async (e) =>{
        e.preventDefault()
        const from = e.target;
        const name = from.name.value;
-       const email = from.email.value;
        const phone = from.phone.value;
-       const comment= from.comment.value;
-       const subjcet = from.subjcet.value;
+       const msge= from.comment.value;
       //  console.log(name, email,phone,comment, subjcet);
-        const data = {
+        const commentData = {
          name, 
-         email,
+         photo:user?.photoUrl,
           phone,
-           comment ,
-            subjcet ,
-             id
+           comment:msge,
+             id ,
+          dateTime: defaultDateTime,
         }
-        console.log(data);
-        axiosPrivate.post('/home/reviews',data)
-        .then(e => console.log(e.data))
-        .catch(err => console.log(err.message))
+        console.log(commentData);
+        try {
+          const response = await axiosPublic.put(`/home/latestNews/comment/${id}`, {  feedback: commentData });
+          // const response = await axiosPublic.put(`/home/latestNews/comment/id?=${id}`, { feedback: commentData });
+          const data = response.data;
+          console.log(data);
+          toast.success("Successfully added comment");
+      } catch (error) {
+          console.log(error);
+          toast.error('Error adding comment');
+      }
      
    }
 
@@ -116,7 +141,7 @@ const Blog = () => {
                 <FaUser></FaUser> 1520-Dhaka Dinajpure
               </p>
               <p className="flex items-center gap-1">
-                <FaRegCommentDots></FaRegCommentDots> {bloge?.comment} Comment
+                <FaRegCommentDots></FaRegCommentDots>  Comment
               </p>
             </div>
             {/* discription image text */}
@@ -292,6 +317,7 @@ const Blog = () => {
                 type="text"
                 placeholder="Name*"
                 name="name"
+                defaultValue={user?.displayName}
                 className=" border w-[50%] border-black py-2 px-2  "
               />
               <input
@@ -309,13 +335,7 @@ const Blog = () => {
                 placeholder="Phone*"
                 className=" border w-[50%] border-black py-2 px-2  "
               />
-              <input
-                type="text"
-                name="subjcet"
-                placeholder="subjcet*"
-                className=" w-[50%] border border-black py-2 px-2  "
-              />
-            </div>
+               </div>
             <div className=" mt-3 ml-6 flex gap-9 justify-between ">
               <textarea
                 placeholder="comment"
@@ -332,7 +352,7 @@ const Blog = () => {
                 i comment
               </p>
             </div>
-            <button type="submit" className="  btn  mt-4 ml-8  ">submit comment</button>
+            <button type="submit" className="  btn btn-outline  mt-4 ml-8  ">submit comment</button>
           </div>
           </form>
         </div>

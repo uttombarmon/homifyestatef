@@ -14,14 +14,14 @@ const LetesNews = () => {
   const axiosPublic = useAxiosPublic()
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          const response = await axiosPublic.get(`/home/latestNews`);
-          // console.log(response.data);
-          setLatestNews(response.data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+      try {
+        const response = await axiosPublic.get(`/home/latestNews`);
+        // console.log(response.data);
+        setLatestNews(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
+    }
 
     fetchData();
   }, [axiosPublic]);
@@ -56,9 +56,9 @@ const LetesNews = () => {
                   </h2>
                   <div className=" flex justify-between  mt-2 mb-3">
                     <Link to={`blog/${latestNew?._id}`}>
-                      <div className="flex justify-center border bg-gray-200  p-1 rounded px-2 hover:bg-orange-300 items-center gap-2">
-                        <button className="font-semibold">Read more</button>
-                        <FaArrowRight className="rounded-full bg-base-300"></FaArrowRight>
+                      <div className="flex hover:translate-x-1 justify-center  font-semibold p-1 rounded px-1 hover:bg-orange-300 items-center gap-2">
+                        <button className="text-[15px] ">Read more</button>
+                        <FaArrowRight className="  "></FaArrowRight>
                       </div>
                     </Link>
                   </div>
