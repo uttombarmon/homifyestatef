@@ -21,7 +21,7 @@ const Blog = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const {user} = useContext(AuthContext)
-  console.log(user?.photoURL);
+  console.log(user);
   // console.log(id);
 
   useEffect(() => {
@@ -92,7 +92,6 @@ const Blog = () => {
         console.log(commentData);
         try {
           const response = await axiosPublic.put(`/home/latestNews/comment/${id}`, {  feedback: commentData });
-          // const response = await axiosPublic.put(`/home/latestNews/comment/id?=${id}`, { feedback: commentData });
           const data = response.data;
           console.log(data);
           toast.success("Successfully added comment");
@@ -278,8 +277,10 @@ const Blog = () => {
           </div>
         </div>
         {/* comment section */}
+        {/* { */}
 
-        <div className="mt-5  px-4">
+          {/* bloge?.map((comment)=>  */}
+           <div className="mt-5  px-4">
           <h1 className=" text-xl font-medium">2 Commnets</h1>
 
           <div className=" flex mt-5 items-center gap-4 px-4">
@@ -290,7 +291,7 @@ const Blog = () => {
               />
             </div>
             <h1 className=" text-xl font-medium ">
-              Douglas Lyphe <br />
+             {bloge?.feedback?.name} <br />
               <span className="  text-[12px] ">march 26,2024 At 10.25pm</span>
             </h1>
           </div>
@@ -301,7 +302,9 @@ const Blog = () => {
           <h1 className=" border w-[55px] px-2 mb-4 py-1 border-b-green-500 text-[13px]  mt-4  ml-[130px] hover:bg-amber-300">
             replay
           </h1>
-        </div>
+        </div> 
+       
+         {/* } */}
 
         {/* secound comment */}
         <hr className="mb-4 mt-4 px-8" />
