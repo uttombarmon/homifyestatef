@@ -17,9 +17,9 @@ const Searching = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex bg-[#dfdfdf74] text-white w-full lg:w-3/4 py-8 mt-4 lg:mt-20 rounded-lg lg:justify-between mx-auto px-5"
       >
-        <div className=" grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 md:gap-6 lg:grid-cols-4 ">
+        <div className=" grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 md:gap-6 lg:grid-cols-4 md:mx-auto">
           {/* want section  */}
-          <div className="w-full mx-2 my-2 lg:mx-0">
+          <div className="w-full  my-2 lg:mx-0">
             <label htmlFor="want" className=" w-full font-bold">
               Want
             </label>
@@ -35,7 +35,7 @@ const Searching = () => {
           </div>
 
           {/* property type section  */}
-          <div className="w-full mx-2 lg:mx-0 my-2">
+          <div className="w-full  lg:mx-0 my-2">
             <label htmlFor="type" className=" w-full font-bold">
               Property Type
             </label>
@@ -54,7 +54,7 @@ const Searching = () => {
           </div>
 
           {/* location section  */}
-          <div className="w-full   mx-2 lg:mx-0 my-2 ">
+          <div className="w-full    lg:mx-0 my-2 ">
             <label htmlFor="want" className=" w-full font-bold">
               Location
             </label>
@@ -65,8 +65,8 @@ const Searching = () => {
               className=" w-full bg-slate-800 rounded-md p-2 mt-4"
             />
           </div>
-          <div className="flex items-center pb-1  justify-center md:justify-start ">
-            <button className=" btn bg-amber-300 font-bold border-none self-end">
+          <div className="flex items-center text-center mx-auto pb-1  justify-center md:justify-start ">
+            <button className=" btn md:w-[200px] lg:w-[150px] bg-amber-300 font-bold border-none self-end">
               Search
             </button>
           </div>
