@@ -5,10 +5,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/axiosPublic/useAxiosPublic";
 
-
-
-
-
 const LetesNews = () => {
   const [latestNews, setLatestNews] = useState([]);
   const axiosPublic = useAxiosPublic()
