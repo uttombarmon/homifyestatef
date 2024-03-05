@@ -34,9 +34,13 @@ import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
 
 import PaymentForm from "../components/dashboard/user/PaymentForm";
 
-import Profilejs from".././sharedcomponents/Profilejs"
+import Profilejs from ".././sharedcomponents/Profilejs"
 import Allagent from "../sharedcomponents/Allagent";
 import VerifiedFile from "../components/dashboard/user/VerifiedFile";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AdminRole from "./UserRoleRoutes/AdminRole";
+import AgentRole from "./UserRoleRoutes/AgentRole";
+import UserRole from "./UserRoleRoutes/UserRole";
 
 
 export const router = createBrowserRouter([
@@ -55,11 +59,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allagent",
-        element: <Allagent></Allagent>,
+        element: <PrivateRoute><Allagent></Allagent></PrivateRoute>,
       },
       {
         path: "/blog/:id",
-        element: <Blog></Blog>,
+        element: <PrivateRoute><Blog></Blog></PrivateRoute>,
       },
       {
         path: "/signup",
@@ -71,11 +75,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/properties/:id",
-        element: <PropertyDetails></PropertyDetails>,
+        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
       },
       {
         path: "sell",
-        element: <Sell></Sell>,
+        element: <PrivateRoute><Sell></Sell></PrivateRoute>,
       },
       {
         path: "/contact",
@@ -87,7 +91,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/rent",
-        element: <Rent></Rent>,
+        element: <PrivateRoute><Rent></Rent></PrivateRoute>,
       },
       {
         path: "/contact",
@@ -99,7 +103,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/agentProfiles/:id",
-        element: <Profilejs></Profilejs>,
+        element: <PrivateRoute><Profilejs></Profilejs></PrivateRoute>,
       },
       {
         path: "/Privacy",
@@ -107,15 +111,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/payment/success/:transId",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: <PrivateRoute><PaymentSuccess></PaymentSuccess></PrivateRoute>,
       },
       {
         path: "/payment/fail/:transId",
-        element: <PaymentFailed></PaymentFailed>,
+        element: <PrivateRoute><PaymentFailed></PaymentFailed></PrivateRoute>,
       },
       {
         path: "/agentProfile",
-        element: <AgentProfile></AgentProfile>,
+        element: <PrivateRoute><AgentProfile></AgentProfile></PrivateRoute>,
       },
     ],
   },
@@ -123,73 +127,78 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardLayout></DashboardLayout>,
     children: [
+      // admin routes 
       {
         path: "",
-        element: <Dashboard></Dashboard>,
-      },
-      {
-        path: "agentDashboard",
-        element: <AgentDashboard></AgentDashboard>,
-      },
-      {
-        path: "agentProfile",
-        element: <AgentProfile></AgentProfile>,
-      },
-      {
-        path: "updateOrder/:id",
-        element: <UpdateProperty></UpdateProperty>,
-      },
-      {
-        path: "agentOrder",
-        element: <AgentOderList></AgentOderList>,
-      },
-      {
-        path: "agentProperties",
-        element: <AgentProperties></AgentProperties>,
-      },
-      {
-        path: "profile",
-        element: <UserProfile></UserProfile>,
-      },
-      {
-        path: "wishlist",
-        element: <Wishlist></Wishlist>,
-      },
-      {
-        path: "makeOffer/:id",
-        element: <MakeOffer></MakeOffer>,
+        element: <PrivateRoute><AdminRole><Dashboard></Dashboard></AdminRole></PrivateRoute>,
       },
       {
         path: "allproperties",
-        element: <AllProperties></AllProperties>,
+        element: <PrivateRoute><AdminRole><AllProperties></AllProperties></AdminRole></PrivateRoute>,
       },
       {
         path: "manageusers",
-        element: <ManageUsers></ManageUsers>,
+        element: <PrivateRoute><AdminRole><ManageUsers></ManageUsers></AdminRole></PrivateRoute>,
       },
       {
         path: "managereviews",
-        element: <ManageReviews></ManageReviews>,
+        element: <PrivateRoute><AdminRole><ManageReviews></ManageReviews></AdminRole></PrivateRoute>,
       },
       {
         path: "alltransiction",
-        element: <Transections></Transections>,
+        element: <PrivateRoute><AdminRole><Transections></Transections></AdminRole></PrivateRoute>,
+      },
+
+      // agent routes 
+      {
+        path: "agentDashboard",
+        element: <PrivateRoute><AgentRole><AgentDashboard></AgentDashboard></AgentRole></PrivateRoute>,
+      },
+      {
+        path: "agentProfile",
+        element: <PrivateRoute><AgentRole><AgentProfile></AgentProfile></AgentRole></PrivateRoute>,
+      },
+      {
+        path: "updateOrder/:id",
+        element: <PrivateRoute><AgentRole><UpdateProperty></UpdateProperty></AgentRole></PrivateRoute>,
+      },
+      {
+        path: "agentOrder",
+        element: <PrivateRoute><AgentRole><AgentOderList></AgentOderList></AgentRole></PrivateRoute>,
+      },
+      {
+        path: "agentProperties",
+        element: <PrivateRoute><AgentRole><AgentProperties></AgentProperties></AgentRole></PrivateRoute>,
+      },
+      {
+        path: "addProperty",
+        element: <PrivateRoute><AgentRole><AddProperty/></AgentRole></PrivateRoute>,
+      },
+
+      // user routes 
+      {
+        path: "profile",
+        element: <PrivateRoute><UserRole><UserProfile></UserProfile></UserRole></PrivateRoute>,
+      },
+      {
+        path: "wishlist",
+        element: <PrivateRoute><UserRole><Wishlist></Wishlist></UserRole></PrivateRoute>,
+      },
+      {
+        path: "makeOffer/:id",
+        element: <PrivateRoute><UserRole><MakeOffer></MakeOffer></UserRole></PrivateRoute>,
       },
       {
         path: "order",
-        element: <Order></Order>,
+        element: <PrivateRoute><UserRole><Order></Order></UserRole></PrivateRoute>,
       },
       {
         path: "payment/:id",
         element: <PaymentForm></PaymentForm>,
       },
       {
-        path: "addProperty",
-        element: <AddProperty />,
-      },
-      {
-        path:"download",
-        element:<VerifiedFile></VerifiedFile>
+        path: "download",
+        element: <VerifiedFile></VerifiedFile>
       }
     ],
   },
