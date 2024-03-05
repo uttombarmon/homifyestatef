@@ -22,8 +22,7 @@ const Contact = () => {
         () => {
           console.log('SUCCESS!');
           toast.success('Successfully Email send!')
-          
-
+          form.current.reset();
         },
         (error) => {
           console.log('FAILED...', error.text);

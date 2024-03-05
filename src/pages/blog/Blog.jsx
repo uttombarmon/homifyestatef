@@ -6,22 +6,27 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { AuthContext } from "../../utils/provider/AuthProvider";
 // import useAxiosPrivate from "../../hooks/axiosPrivate/useAxiosPrivate";
 import toast from "react-hot-toast";
+import BlogeComment from "./BlogeComment";
+import BlogePropular from "./BlogePropular";
+import BlogePopuler from "./BlogePopuler";
+import BlogeBanner from "./BlogeBanner";
 
 
 const Blog = () => {
   const [bloge, setBloge] = useState(null);
+  const formRef = useRef();
   // console.log(bloge);
   // const axiosPrivate = useAxiosPrivate()
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
-  const {user} = useContext(AuthContext)
-  console.log(user);
+  const { userInfo } = useContext(AuthContext)
+  console.log(userInfo);
   // console.log(id);
 
   useEffect(() => {
@@ -74,57 +79,35 @@ const Blog = () => {
     defaultTime.seconds
   );
   // dynamic comment 
-   const handelCommne = async (e) =>{
-       e.preventDefault()
-       const from = e.target;
-       const name = from.name.value;
-       const phone = from.phone.value;
-       const msge= from.comment.value;
-      //  console.log(name, email,phone,comment, subjcet);
-        const commentData = {
-         name, 
-         photo:user?.photoUrl,
-          phone,
-           comment:msge,
-             id ,
-          dateTime: defaultDateTime,
-        }
-        console.log(commentData);
-        try {
-          const response = await axiosPublic.put(`/home/latestNews/comment/${id}`, {  feedback: commentData });
-          const data = response.data;
-          console.log(data);
-          toast.success("Successfully added comment");
-      } catch (error) {
-          console.log(error);
-          toast.error('Error adding comment');
-      }
-     
-   }
-
-
-
-
-
+  const handelCommne = async (e) => {
+    e.preventDefault()
+    const from = e.target;
+    const name = from.name.value;
+    const msge = from.comment.value;
+    //  console.log(name, email,phone,comment, subjcet);
+    const commentData = {
+      name,
+      photo: userInfo?.photoURL,
+      comment: msge,
+      id,
+      dateTime: defaultDateTime,
+    }
+    // console.log(commentData);
+    try {
+      const response = await axiosPublic.put(`/home/latestNews/comment/${id}`, { feedback: commentData });
+      const data = response.data;
+      console.log(data);
+      toast.success("Successfully added comment");
+      formRef.current.reset();
+    } catch (error) {
+      // console.log(error);
+      toast.error('Error adding comment');
+    }
+  }
 
   return (
     <>
-      <section
-        className="bg-gray-100 mb-12  h-[320px] md:h-[350px]  relative border-4 grid items-end"
-        style={{
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 380px",
-          backgroundPosition: "center",
-          backgroundImage: "url(https://i.ibb.co/z5QV2NY/breadcrumbs-bg.jpg)",
-        }}
-      >
-        <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[10%] absolute">
-          <h1 className=" xl:text-5xl text-3xl "> Blog Details </h1>
-          <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
-            <IoHome></IoHome> Home . Blog details
-          </span>
-        </div>
-      </section>
+      <BlogeBanner></BlogeBanner>
 
       <div className="  mt-5   ">
         {/* right site picethure */}
@@ -162,52 +145,19 @@ const Blog = () => {
               <h1 className=" xl:text-2xl lg:text-2xl text-xl  xl:mb-10 mb-3 font-medium ">
                 Popular Blog
               </h1>
-              {/* card section  */}
+              {/* popular card card section  */}
               <div className="gap-4 space-y-3 mb-3">
                 {latestNews?.map((populer) => (
-                  <div key={populer} className="  flex gap-5">
-                    <div>
-                      <img
-                        src={populer.img2}
-                        className=" lg:w-[150px] w-[130px] h-[90px]    "
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <p className=" xl:text-[17px] text-sm    flex items-center gap-2 mb-3">
-                        <BsCalendarDate></BsCalendarDate> {populer.date}
-                      </p>
-                      <h1 className="  text-[15px]   font-semibold">
-                        {populer.title}
-                      </h1>
-                    </div>
-                  </div>
+                  <BlogePopuler key={populer} populer={populer} ></BlogePopuler>
                 ))}
               </div>
-
-              {/* card tow setion */}
             </div>
             {/* poperty Catagories */}
-            <div className=" mb-10">
-              <h1 className="xl:text-2xl lg:text-2xl  text-xl font-medium ">
-                Property Categories
-              </h1>
-
-              <h1 className=" border p-2 px-7  text-[15px] font-semibold mt-5 flex justify-between ">
-                Real Estate <span> ({bloge?.realestate} properties) </span>
-              </h1>
-              <h1 className=" border p-2 px-7  text-[15px]  font-semibold mt-5 flex justify-between ">
-                House <span> ( {bloge?.House} properties) </span>
-              </h1>
-              <h1 className=" border p-2 px-7  text-[15px] font-semibold mt-5 flex justify-between ">
-                Home Land <span> ({bloge?.HomeLand} properties) </span>
-              </h1>
-              <h1 className=" border p-2 px-7  text-[15px] font-semibold mt-5 flex justify-between ">
-                Bath Beds <span> ({bloge?.Bath} properties) </span>
-              </h1>
+            <div>
+              <BlogePropular bloge={bloge}></BlogePropular>
             </div>
-            {/* popular Tags */}
 
+            {/* popular Tags */}
             <div className=" lg:mb-16 w-[450px]  ">
               <h1 className=" xl:text-2xl lg:text-2xl text-xl font-medium mb-4 mt-10 ">
                 Popular Tags
@@ -229,10 +179,8 @@ const Blog = () => {
       {/* secound image state section  */}
       <div
         key={bloge?.id}
-        className="  mb-6 mt-2  xl:w-[800px] px-6 lg:w-[500px]  md:w-[590px] h-full"
-      >
+        className="  mb-6 mt-2  xl:w-[800px] px-6 lg:w-[500px]  md:w-[590px] h-full">
         <img src={bloge?.img2} className=" w-[95%] h-full" alt="" />
-
         <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
           {bloge?.maintitle}
         </h1>
@@ -253,7 +201,6 @@ const Blog = () => {
             <span>{bloge?.pointhree}</span>
           </p>
         </div>
-
         {/* post tages */}
         <div className="mt-6 cursor-pointer  xl:flex justify-between items-center ">
           <div className="flex gap-3 items-center font-semibold text-xl  ">
@@ -277,35 +224,7 @@ const Blog = () => {
           </div>
         </div>
         {/* comment section */}
-        {/* { */}
-
-          {/* bloge?.map((comment)=>  */}
-           <div className="mt-5  px-4">
-          <h1 className=" text-xl font-medium">2 Commnets</h1>
-
-          <div className=" flex mt-5 items-center gap-4 px-4">
-            <div className=" w-10 ">
-              <img
-                src="../../../public/Screenshot 2024-01-23 232016.png"
-                className="rounded-full"
-              />
-            </div>
-            <h1 className=" text-xl font-medium ">
-             {bloge?.feedback?.name} <br />
-              <span className="  text-[12px] ">march 26,2024 At 10.25pm</span>
-            </h1>
-          </div>
-          <p className="px-8 ml-24 mt-1 text-[15px] font-serif">
-            Exceptional real estate professionals! Sold eeds!
-          </p>
-
-          <h1 className=" border w-[55px] px-2 mb-4 py-1 border-b-green-500 text-[13px]  mt-4  ml-[130px] hover:bg-amber-300">
-            replay
-          </h1>
-        </div> 
-       
-         {/* } */}
-
+        {bloge?.feedback?.map((comment) => <BlogeComment key={comment.name} comment={comment}></BlogeComment>)}
         {/* secound comment */}
         <hr className="mb-4 mt-4 px-8" />
         {/* leave comment section  */}
@@ -313,50 +232,42 @@ const Blog = () => {
           <h1 className=" text-xl  xl:ml-0 lg:ml-0 md:ml-3 ml-20 font-medium ">
             Leave a Comment
           </h1>
-      <form onSubmit={handelCommne}>
-          <div className="">
-            <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
-              <input
-                type="text"
-                placeholder="Name*"
-                name="name"
-                defaultValue={user?.displayName}
-                className=" border w-[50%] border-black py-2 px-2  "
-              />
-              <input
-                type="email"
-                name="email"
-                defaultValue={user?.email}
-                placeholder="Email*"
-                className=" w-[50%] border border-black py-2 px-2  "
-              />
+          <form ref={formRef} onSubmit={handelCommne}>
+            <div className="">
+              <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
+                <input
+                  type="text"
+                  placeholder="Name*"
+                  name="name"
+                  defaultValue={userInfo?.name}
+                  className=" border w-[50%] border-black py-2 px-2  "
+                />
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={userInfo?.email}
+                  placeholder="Email*"
+                  className=" w-[50%] border border-black py-2 px-2  "
+                />
+              </div>
+              <div className=" mt-3 ml-6 flex gap-9 justify-between ">
+                <textarea
+                  placeholder="comment"
+                  name="comment"
+                  className="textarea textarea-bordered textarea-lg w-full max-w-xs"
+                ></textarea>
+              </div>
+              <div className="flex gap-3 items-center mt-2 ml-7">
+                <label className="label cursor-pointer">
+                  <input type="checkbox" defaultChecked className="checkbox" />
+                </label>
+                <p className=" font-medium text-[14px] ">
+                  save my name ,email and website inthis browser for the next time
+                  i comment
+                </p>
+              </div>
+              <button type="submit" className="btn btn-outline mt-4 ml-8">submit comment</button>
             </div>
-            <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone*"
-                className=" border w-[50%] border-black py-2 px-2  "
-              />
-               </div>
-            <div className=" mt-3 ml-6 flex gap-9 justify-between ">
-              <textarea
-                placeholder="comment"
-                name="comment"
-                className="textarea textarea-bordered textarea-lg w-full max-w-xs"
-              ></textarea>
-            </div>
-            <div className="flex gap-3 items-center mt-2 ml-7">
-              <label className="label cursor-pointer">
-                <input type="checkbox" defaultChecked className="checkbox" />
-              </label>
-              <p className=" font-medium text-[14px] ">
-                save my name ,email and website inthis browser for the next time
-                i comment
-              </p>
-            </div>
-            <button type="submit" className="  btn btn-outline  mt-4 ml-8  ">submit comment</button>
-          </div>
           </form>
         </div>
       </div>
