@@ -1,10 +1,8 @@
 import { BsCalendarDate } from "react-icons/bs";
-import { MdOutlineStarPurple500 } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaRegCommentDots } from "react-icons/fa";
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
-import { IoHome } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -16,6 +14,8 @@ import BlogeComment from "./BlogeComment";
 import BlogePropular from "./BlogePropular";
 import BlogePopuler from "./BlogePopuler";
 import BlogeBanner from "./BlogeBanner";
+import BlogePoint from "./BlogePoint";
+import BlogeTag from "./BlogeTag";
 
 
 const Blog = () => {
@@ -68,7 +68,6 @@ const Blog = () => {
     minutes: 0, // Set your default minutes
     seconds: 0, // Set your default seconds
   };
-
   // Create a new Date object with the current date and default time
   const defaultDateTime = new Date(
     currentDate.getFullYear(),
@@ -104,11 +103,10 @@ const Blog = () => {
       toast.error('Error adding comment');
     }
   }
-
   return (
     <>
+      {/* banner section */}
       <BlogeBanner></BlogeBanner>
-
       <div className="  mt-5   ">
         {/* right site picethure */}
         <div className="px-8 w-full mx-auto flex flex-col md:flex-row lg:flex-row gap-6  justify-between  ">
@@ -123,7 +121,7 @@ const Blog = () => {
                 <FaUser></FaUser> 1520-Dhaka Dinajpure
               </p>
               <p className="flex items-center gap-1">
-                <FaRegCommentDots></FaRegCommentDots>  Comment
+                <FaRegCommentDots></FaRegCommentDots>{bloge?.feedback?.length} comment
               </p>
             </div>
             {/* discription image text */}
@@ -156,22 +154,9 @@ const Blog = () => {
             <div>
               <BlogePropular bloge={bloge}></BlogePropular>
             </div>
-
             {/* popular Tags */}
-            <div className=" lg:mb-16 w-[450px]  ">
-              <h1 className=" xl:text-2xl lg:text-2xl text-xl font-medium mb-4 mt-10 ">
-                Popular Tags
-              </h1>
-              <div className=" grid gap-3 justify-between text-center items-center xl:grid-cols-3 lg:grid-cols-3 grid-cols-3 ">
-                {bloge?.tag.map((taged) => (
-                  <p
-                    key={taged}
-                    className=" text-sm  border px-2 font-bold py-2 hover:bg-orange-400 "
-                  >
-                    {taged}
-                  </p>
-                ))}
-              </div>
+            <div>
+            <BlogeTag bloge={bloge}></BlogeTag>
             </div>
           </div>
         </div>
@@ -184,23 +169,10 @@ const Blog = () => {
         <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
           {bloge?.maintitle}
         </h1>
-        <p className=" ">{bloge?.mainoverview}</p>
+        <p>{bloge?.mainoverview}</p>
 
-        {/* start section  */}
-        <div className=" mt-12">
-          <p className="flex items-center gap-3  font-serif">
-            <MdOutlineStarPurple500></MdOutlineStarPurple500>
-            <span>{bloge?.pointOne}</span>
-          </p>
-          <p className="flex items-center gap-3 mt-2 mb-2   font-serif ">
-            <MdOutlineStarPurple500></MdOutlineStarPurple500>
-            <span>{bloge?.pointTow}</span>
-          </p>
-          <p className="flex items-center gap-3   font-serif">
-            <MdOutlineStarPurple500></MdOutlineStarPurple500>
-            <span>{bloge?.pointhree}</span>
-          </p>
-        </div>
+        {/* Pointer section  */}
+        <BlogePoint bloge={bloge}></BlogePoint>
         {/* post tages */}
         <div className="mt-6 cursor-pointer  xl:flex justify-between items-center ">
           <div className="flex gap-3 items-center font-semibold text-xl  ">
