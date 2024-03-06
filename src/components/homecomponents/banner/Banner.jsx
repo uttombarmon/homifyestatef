@@ -1,7 +1,6 @@
-import Searching from '../../../sharedcomponents/Searching';
-import bgimage from './bg.jpg'
+import Searching from "../../../sharedcomponents/Searching";
+import bgimage from "./bg.jpg";
 const Banner = () => {
-
     return (
         <div className=" w-full h-[500px] lg:h-[600px] text-slate-100">
             <div className=' relative h-full'>

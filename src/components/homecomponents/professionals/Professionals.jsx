@@ -30,12 +30,12 @@ const Professionals = () => {
           {
             personInfos?.map((personInfo) =>
               <div key={personInfo._id} className="card  mx-auto xl:w-[320px] w-[375px] lg:w-[450px] mt-7 bg-white border">
-                <div className="group w-full   h-[300px] relative border-slate-500 overflow-hidden">
+                <div className="group w-full h-[300px] relative border-slate-100 overflow-hidden">
                   <img
                     src={personInfo.photoURL}
                     alt=""
-                    className="w-full h-full object-cover rounded-t-md" />
-                  <div className="absolute top-0 right-full rounded-t-md w-full h-full group-hover:right-0 bg-[#29404788] backdrop-blur-[5px]  p-7 flex flex-col justify-center ">
+                    className="w-full h-full object-cover rounded-t-lg" />
+                  <div className="absolute top-0 right-full rounded-t-md w-full h-full group-hover:right-0 bg-[#29404729] backdrop-blur-[2px]  p-7 flex flex-col justify-center ">
                     <div className=" items-center flex text-xl text-white text-center gap-5">
                       <button className=" ml-[15%] rounded-full  hover:bg-orange-600 bg-orange-400 p-2 ">
                         <Link to='https://twitter.com'><FaTwitter></FaTwitter></Link>

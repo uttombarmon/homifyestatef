@@ -9,7 +9,7 @@ import {
 
 const Sell = () => {
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
   const axiosPublic = useAxiosPublic();
   const Status = "Sale";
   useEffect(() => {

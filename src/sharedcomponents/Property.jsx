@@ -68,7 +68,7 @@ const Property = ({ properties }) => {
       <div className="lg:w-full md:w-[300px] top-0 h-[300px]   shadow-xl relative" >
         <img
           src={properties?.property_image}
-          className=" h-full  w-full rounded-t-md "
+          className=" h-full  w-full  rounded-t-md hover:scale-105 transform transition-transform duration-300 ease-in-out "
           alt=""
         />
       </div>

@@ -1,4 +1,4 @@
-import { IoHome } from "react-icons/io5";
+
 import { FaSolarPanel } from "react-icons/fa";
 import { FaWalkieTalkie } from "react-icons/fa6";
 import { PiElevatorBold } from "react-icons/pi";
@@ -24,9 +24,7 @@ const About = () => {
       >
         <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
           <h1 className=" text-5xl "> About Us </h1>
-          <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
-            About Us Home . <IoHome></IoHome>
-          </span>
+         
         </div>
       </section>
 
