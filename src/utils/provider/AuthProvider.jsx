@@ -5,10 +5,6 @@ import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-
-
-
-
     const [user, setUser] = useState(null);
     const [searchInfo, setSearchInfo] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -18,6 +14,7 @@ const AuthProvider = ({ children }) => {
         const unSubcribe = () => {
             onAuthStateChanged(auth, async cuser => {
                 setUser(cuser);
+                console.log(cuser);
                 const email = cuser?.email;
                 if (email) {
                     await axios.post('http://localhost:5000/jwt/signIn', { email }, { withCredentials: true })
@@ -35,6 +32,16 @@ const AuthProvider = ({ children }) => {
                     const result = await axios.get(`http://localhost:5000/users/${email}`, { withCredentials: true })
                     setInfo(result.data)
                     console.log(result.data);
+                    if (!result.data.email) {
+                        signout()
+                            .then(() => {
+                                axios.post('http://localhost:5000/jwt/clear-token', { email: result?.data?.email })
+                                .then(()=>{
+                                    History.push('/signin')
+                                })
+                            })
+                            .catch(err => console.log(err))
+                    }
                     // if (cuser?.photoURL) {
                     //     updateProfile(auth, {
                     //         photoURL: userInfo?.photoURL, displayName: userInfo?.name
