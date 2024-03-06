@@ -5,7 +5,7 @@ import {
   BsFillTelephoneFill,
 } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
-
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
 import toast from "react-hot-toast";
@@ -33,6 +33,13 @@ const Contact = () => {
 
     return (
         <>
+        {/* messanger chart */}
+        <div>
+  <MessengerCustomerChat
+    pageId="103365232464560"
+    appId="763941302317239" />
+      </div>
+
   <div> <img src="https://i.ibb.co/TKpzWqV/contact-us1.jpg" alt="" /> </div>
 
       <h1 className=" lg:text-2xl xl:text-3xl text-xl mb-7 font-bold text-center py-2 lg:py-5">
