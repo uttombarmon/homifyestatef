@@ -37,7 +37,7 @@ const Features = () => {
   return (
     <>
       <div className=" w-full py-10 ">
-        <div className=" md:flex md:justify-between px-2 mb-4">
+        <div className=" md:flex md:justify-between px-2 mb-4" data-aos="fade-right" data-aos-duration="1000">
 
           {/* section title and description */}
           <div className="w-full">

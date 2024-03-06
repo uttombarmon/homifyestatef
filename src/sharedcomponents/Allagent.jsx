@@ -1,4 +1,4 @@
-import { IoHome } from "react-icons/io5";
+
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
 import AgentCard from "./AgentCard";
@@ -34,9 +34,6 @@ const Allagent = () => {
             >
                 <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
                     <h1 className=" text-5xl "> All Agent</h1>
-                    <span className=" items-center flex  justify-center gap-1 text-SM mt-7">
-                        <IoHome></IoHome> Home .AGENTPROFILE
-                    </span>
                 </div>
             </section>
             <div>

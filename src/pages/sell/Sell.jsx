@@ -9,7 +9,7 @@ import {
 
 const Sell = () => {
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
   const axiosPublic = useAxiosPublic();
   const Status = "Sale";
   useEffect(() => {
@@ -60,7 +60,7 @@ const Sell = () => {
 
   return (
     <>
-      <div className=" ">
+      <div  data-aos="zoom-in">
         <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
       </div>
       {/* card section */}

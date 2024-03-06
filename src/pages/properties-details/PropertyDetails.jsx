@@ -73,12 +73,12 @@ const PropertyDetails = () => {
           //    </div>
           <div className="flex justify-between flex-wrap">
             {/* banner */}
-            <BannerSection property={property} ></BannerSection>
+            <BannerSection property={property}  ></BannerSection>
 
             <div className="w-full md:w-7/12 flex flex-wrap mx-4 my-4">
               {/* title, price, location section */}
               <div className="flex bg-white flex-wrap w-full px-2 py-3">
-                <div className=" w-full md:w-4/6">
+                <div className=" w-full md:w-4/6"data-aos="fade-up" data-aos-duration="2500">
                   <p className=" text-lg font-bold">{property.title}</p>
                   <p className="flex justify-between flex-wrap">
                     <span className=" flex self-center">
@@ -112,7 +112,7 @@ const PropertyDetails = () => {
                   </p>
                 </div>
                 {/* share on social */}
-                <div className=" w-full md:w-2/6 flex flex-wrap md:justify-end">
+                <div className=" w-full md:w-2/6 flex flex-wrap md:justify-end" data-aos="fade-up"data-aos-duration="2500">
                   <div className=" w-full flex justify-start md:justify-end">
                     <span className="p-2 rounded-full border-[1px] border-black h-fit mr-2">
                       <FaRegHeart className="" />
@@ -211,12 +211,12 @@ const PropertyDetails = () => {
                 </div>
               </div>
               {/* description section  */}
-              <div className=" bg-white rounded-sm my-3 p-4 w-full">
+              <div className=" bg-white rounded-sm my-3 p-4 w-full"data-aos="fade-up"data-aos-duration="2500">
                 <h1 className=" text-xl font-bold">Description</h1>
                 <p>{property?.description}</p>
               </div>
               {/* property details & facilities section  */}
-              <div className=" bg-white rounded-sm my-3 p-4 w-full">
+              <div className=" bg-white rounded-sm my-3 p-4 w-full"data-aos="fade-up"  data-aos-duration="2500">
                 <div>
                   <h1 className=" text-xl font-bold my-2">Property Details</h1>
                   <div className=" grid grid-cols-2 md:grid-cols-3 justify-between">
@@ -272,7 +272,7 @@ const PropertyDetails = () => {
               </div>
 
               {/* floor design image  */}
-              <div className=" bg-white rounded-sm my-3 p-4 w-full">
+              <div className=" bg-white rounded-sm my-3 p-4 w-full"data-aos="fade-up"data-aos-duration="2500">
                 <h1 className=" text-xl font-bold">Floor Plan</h1>
                 <div>
                   <img src={property?.floor_plan?.image} alt="" />
@@ -280,12 +280,12 @@ const PropertyDetails = () => {
               </div>
 
               {/* property video  */}
-              <div>
+              <div data-aos="fade-up"data-aos-duration="2500">
                 <PropertyVideo embedId="AMYU_zfzRbc"></PropertyVideo>
               </div>
 
               {/* map location  */}
-              <div className=" bg-white rounded-sm my-3 p-4 w-full">
+              <div className=" bg-white rounded-sm my-3 p-4 w-full" data-aos="fade-up"data-aos-duration="2500">
                 <h1 className=" text-xl font-bold">Map Location</h1>
                 <div className=" w-full">
                   <GoogleMapComponent></GoogleMapComponent>
@@ -293,13 +293,13 @@ const PropertyDetails = () => {
               </div>
 
               {/* review section  */}
-              <div className="bg-white rounded-sm my-3 p-4 w-full ">
+              <div className="bg-white rounded-sm my-3 p-4 w-full " data-aos="fade-up"data-aos-duration="2500">
                 <Reviews id={params.id}></Reviews>
               </div>
             </div>
 
             {/* schedule */}
-            <div className=" w-full lg:w-4/12 h-fit ">
+            <div className=" w-full lg:w-4/12 h-fit " data-aos="fade-left">
               <ScheduleForm
                 price={property?.property_details?.price}
                 id={property._id}
