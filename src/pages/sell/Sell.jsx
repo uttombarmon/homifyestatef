@@ -60,8 +60,8 @@ const Sell = () => {
 
   return (
     <>
-      <div className=" h-full">
-        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full h-full " />
+      <div  data-aos="zoom-in">
+        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
       </div>
       {/* card section */}
       <div className=" w-full py-10 ">

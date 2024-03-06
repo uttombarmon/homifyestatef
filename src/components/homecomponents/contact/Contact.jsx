@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Contact = () => {
   return (
-    <div className="mx-auto items-center py-5 bg-gray-100">
+    <div className="mx-auto items-center py-5 bg-gray-100"data-aos="fade-up"data-aos-duration="1000">
       <div className="grid md:grid-cols-2 grid-cols-1 justify-between lg:p-20 p-10 gap-9 items-center text-center">
         <div className="items-center text-center">
           <h1 className="lg:text-2xl text-xl font-bold text-black mb-1">Need help? Talk to our Expert.</h1>
