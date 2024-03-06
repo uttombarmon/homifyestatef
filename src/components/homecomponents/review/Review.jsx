@@ -20,7 +20,7 @@ const Review = () => {
   }, [axiospublic]);
 
   return (
-    <div className="mt-8 mb-7 md:mx-5">
+    <div className="mt-8 mb-7 md:mx-5" data-aos="fade-up"data-aos-duration="2000">
       <h2 className="text-center font-semibold text-3xl">Latest User Review</h2>
 
       <Swiper

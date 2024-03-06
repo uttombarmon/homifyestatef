@@ -26,14 +26,14 @@ const LetesNews = () => {
     fetchData();
   }, [axiosPublic]);
   return (
-    <>
-      <h1 className=" items-center text-4xl font-bold mb-2 mt-10 text-center w-full ">
+    <div >
+      <h1 className=" items-center text-4xl font-bold mb-2 mt-10 text-center w-full " data-aos="fade-left">
         Latest News & Articles
       </h1>
-      <div className=" w-full lg:w-[calc(100%-20px)] lg:p-7 mt-8 lg:px-0 mb-3 md:gap-2 md:px-1 gap-3 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-3 grid-cols-1 ">
+      <div className=" w-full lg:w-[calc(100%-20px)] lg:p-7 mt-8 lg:px-0 mb-3 md:gap-2 md:px-1 gap-3 mx-auto grid lg:grid-cols-3 justify-center md:grid-cols-3 grid-cols-1 " >
         {
           latestNews?.map((latestNew) =>
-            <div key={latestNew.id} className=" relative rounded w-full lg:w-full mx-auto h-[400px] justify-center ">
+            <div key={latestNew.id} className=" relative rounded w-full lg:w-full mx-auto h-[400px] justify-center " data-aos="fade-up">
               <div className=" w-[calc(100%-20px)] mx-auto md:w-full top-0 h-[300px] bg-cover  shadow-xl relative">
                 <img
                   src={latestNew?.img1}
@@ -68,7 +68,7 @@ const LetesNews = () => {
           )
         }
       </div>
-    </>
+    </div>
   );
 };
 

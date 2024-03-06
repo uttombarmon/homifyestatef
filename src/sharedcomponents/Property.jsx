@@ -63,9 +63,9 @@ const Property = ({ properties }) => {
   return (
     <div
       key={properties?._id}
-      className="  p-2 relative  rounded  lg:w-full md:w-[300px] w-[350px] mx-auto h-[400px] justify-center "
+      className="  p-2 relative  rounded  lg:w-full md:w-[300px] w-[350px] mx-auto h-[400px] justify-center " data-aos="zoom-in" data-aos-duration="1000"
     >
-      <div className="lg:w-full md:w-[300px] top-0 h-[300px]   shadow-xl relative">
+      <div className="lg:w-full md:w-[300px] top-0 h-[300px]   shadow-xl relative" >
         <img
           src={properties?.property_image}
           className=" h-full  w-full rounded-t-md "
@@ -74,11 +74,11 @@ const Property = ({ properties }) => {
       </div>
       {/* description part */}
       <div className=" absolute bottom-[20px] w-full flex justify-center">
-        <div className="px-3   py-3 rounded-md shadow-lg bg-white lg:w-3/4 mr-3 md:w-[280px] xl:mr-4 md:mr-0 lg:mr-4  items-center   ">
+        <div className="px-3   py-3 rounded-md shadow-lg bg-white lg:w-3/4 mr-3 md:w-[280px] xl:mr-4 md:mr-0 lg:mr-4  items-center " >
           <h2 className=" mt-2 lg:text-[18px] text-sm mb-2 font-semibold">
             {/* Hemosa Casa al Norte */} {titles}
           </h2>
-          <div>
+          <div >
             <p className=" font-semibold flex text-sm  items-center gap-1 mb-1 text-center">
               <IoLocationSharp></IoLocationSharp> {properties?.location}
             </p>

@@ -16,10 +16,10 @@ const Searching = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className=' bg-[#dfdfdf74] text-white w-full lg:w-3/4 py-8 flex flex-wrap justify-between mt-4 lg:mt-20 rounded-lg px-5 mx-auto'>
+            <form onSubmit={handleSubmit(onSubmit)} className=' bg-[#dfdfdf74] text-white w-full lg:w-3/4 py-8 flex flex-wrap justify-between mt-4 lg:mt-20 rounded-lg px-5 mx-auto' data-aos="zoom-in">
 
                 {/* want section  */}
-                <div className=' flex flex-wrap w-1/3 mx-2 my-2 lg:mx-0 lg:w-1/4 border-r-[1px]'>
+                <div className=' flex flex-wrap w-1/3 mx-2 my-2 lg:mx-0 lg:w-1/4 border-r-[1px]' >
                     <label htmlFor="want" className=' w-full font-bold'>Want</label>
                     <select /* name="want" */ {...register("want", { required: true })} id="" className=' bg-slate-800 rounded-md p-2 mt-4'>
                         {/* <option value="buy">Buy</option> */}

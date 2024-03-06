@@ -59,7 +59,7 @@ const Blog = () => {
           backgroundImage: "url(https://i.ibb.co/z5QV2NY/breadcrumbs-bg.jpg)",
         }}
       >
-        <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[10%] absolute">
+        <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[10%] absolute" data-aos="fade-down" data-aos-duration="3000">
           <h1 className=" xl:text-5xl text-3xl "> Blog Details </h1>
           <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
             <IoHome></IoHome> Home . Blog details
@@ -71,9 +71,9 @@ const Blog = () => {
         {/* right site picethure */}
         <div className="px-8 w-full mx-auto flex flex-col md:flex-row lg:flex-row gap-6  justify-between  ">
           <div className=" xl:w-[840px] lg:w-[500px]  md:w-[590px] xl:h-[500px]  h-full ">
-            <img src={bloge?.img1} alt="" className=" w-full h-full " />
+            <img src={bloge?.img1} alt="" className=" w-full h-full " data-aos="zoom-in" data-aos-duration="3000" />
             {/* comment and date imge */}
-            <div className="flex text-sm gap-3 mt-2 ml-2 font-semibold">
+            <div className="flex text-sm gap-3 mt-2 ml-2 font-semibold" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
               <p className="flex items-center gap-1">
                 <BsCalendarDate></BsCalendarDate> {bloge?.date}
               </p>
@@ -85,14 +85,16 @@ const Blog = () => {
               </p>
             </div>
             {/* discription image text */}
-            <div className=" mt-5">
+            <div className=" mt-5" data-aos="fade-up"
+              data-aos-anchor-placement="center-bottom">
               <h1 className=" xl:text-2xl lg:text-xl text-xl  font-bold ">
                 How to stage your home for a quick sale
               </h1>
               <p className=" mt-3  text-[16px]  ">{bloge?.overview}</p>
             </div>
             {/*  "" cotetion text imag disc... */}
-            <div className=" xl:mt-10 mt-7 text-[16px] xl:px-20">
+            <div className=" xl:mt-10 mt-7 text-[16px] xl:px-20" data-aos="fade-up"
+              data-aos-anchor-placement="center-bottom">
               <p className="  py-1">{bloge?.shortover}</p>
             </div>
           </div>
@@ -100,11 +102,11 @@ const Blog = () => {
           <div key={bloge?.id} className="xl:w-[450px] lg:w-[520px] ">
             {/* card 1 number */}
             <div className="">
-              <h1 className=" xl:text-2xl lg:text-2xl text-xl  xl:mb-10 mb-3 font-medium ">
+              <h1 className=" xl:text-2xl lg:text-2xl text-xl  xl:mb-10 mb-3 font-medium " data-aos="fade-left" data-aos-duration="2500">
                 Popular Blog
               </h1>
               {/* card section  */}
-              <div className="gap-4 space-y-3 mb-3">
+              <div className="gap-4 space-y-3 mb-3" data-aos="fade-left" data-aos-duration="3000">
                 {latestNews?.map((populer) => (
                   <div key={populer} className="  flex gap-5">
                     <div>
@@ -129,7 +131,7 @@ const Blog = () => {
               {/* card tow setion */}
             </div>
             {/* poperty Catagories */}
-            <div className=" mb-10">
+            <div className=" mb-10" data-aos="fade-left" data-aos-duration="3000">
               <h1 className="xl:text-2xl lg:text-2xl  text-xl font-medium ">
                 Property Categories
               </h1>
@@ -149,7 +151,7 @@ const Blog = () => {
             </div>
             {/* popular Tags */}
 
-            <div className=" lg:mb-16 w-[450px]  ">
+            <div className=" lg:mb-16 w-[450px]" data-aos="fade-left" data-aos-duration="3000">
               <h1 className=" xl:text-2xl lg:text-2xl text-xl font-medium mb-4 mt-10 ">
                 Popular Tags
               </h1>
@@ -170,17 +172,18 @@ const Blog = () => {
       {/* secound image state section  */}
       <div
         key={bloge?.id}
-        className="  mb-6 mt-2  xl:w-[800px] px-6 lg:w-[500px]  md:w-[590px] h-full"
-      >
-        <img src={bloge?.img2} className=" w-[95%] h-full" alt="" />
+        className="  mb-6 mt-2  xl:w-[800px] px-6 lg:w-[500px]  md:w-[590px] h-full" >
+        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
+          <img src={bloge?.img2} className=" w-[95%] h-full" alt="" />
 
-        <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
-          {bloge?.maintitle}
-        </h1>
-        <p className=" ">{bloge?.mainoverview}</p>
+          <h1 className=" xl:text-2xl lg:text-xl text-xl font-bold mt-4  mb-5 ">
+            {bloge?.maintitle}
+          </h1>
+          <p className=" ">{bloge?.mainoverview}</p>
+        </div>
 
         {/* start section  */}
-        <div className=" mt-12">
+        <div className=" mt-12" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
           <p className="flex items-center gap-3  font-serif">
             <MdOutlineStarPurple500></MdOutlineStarPurple500>
             <span>{bloge?.pointOne}</span>
@@ -196,7 +199,7 @@ const Blog = () => {
         </div>
 
         {/* post tages */}
-        <div className="mt-6 cursor-pointer  xl:flex justify-between items-center ">
+        <div className="mt-6 cursor-pointer  xl:flex justify-between items-center" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
           <div className="flex gap-3 items-center font-semibold text-xl  ">
             <h1 className="text-xl font-medium "> Post Tags : </h1>
             <p className=" text-[12px]  border px-1 font-bold   hover:bg-orange-300  ">
@@ -219,7 +222,7 @@ const Blog = () => {
         </div>
         {/* comment section */}
 
-        <div className="mt-5  px-4">
+        <div className="mt-5  px-4" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
           <h1 className=" text-xl font-medium">2 Commnets</h1>
 
           <div className=" flex mt-5 items-center gap-4 px-4">
@@ -246,12 +249,12 @@ const Blog = () => {
         {/* secound comment */}
         <hr className="mb-4 mt-4 px-8" />
         {/* leave comment section  */}
-        <div className="">
+        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="3000">
           <h1 className=" text-xl  xl:ml-0 lg:ml-0 md:ml-3 ml-20 font-medium ">
             Leave a Comment
           </h1>
 
-          <div className="">
+          <div>
             <div className="mt-4 xl:flex lg:flex flex  gap-8 ml-6">
               <input
                 type="text"

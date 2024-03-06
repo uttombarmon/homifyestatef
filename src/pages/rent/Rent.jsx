@@ -59,7 +59,7 @@ const Rent = () => {
 
   return (
     <>
-      <div className=" bg-black ">
+      <div className=" bg-black " data-aos="zoom-in">
         <img
           src="https://i.ibb.co/gDV2fks/rent-4.jpg"
           className=" w-full  h-full "

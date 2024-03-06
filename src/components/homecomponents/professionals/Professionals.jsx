@@ -15,13 +15,14 @@ const Professionals = () => {
   useEffect(() => {
     axiosPublic.get('/users/all/agent')
       .then(data => {
-        const newData = data.data.slice(0,4);
+        const newData = data.data.slice(0, 4);
         setPersonInfos(newData)
       })
   }, [axiosPublic]);
   return (
     <>
-      <div>
+      <div data-aos="fade-up"
+        data-aos-anchor-placement="bottom-bottom">
         <h1 className=" items-center mt-5 mb-6 text-center font-black lg:text-4xl  text-xl ">
           Meet the Realty Professionals
         </h1>
