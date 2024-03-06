@@ -9,7 +9,7 @@ import {
 
 const Sell = () => {
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
   const axiosPublic = useAxiosPublic();
   const Status = "Sale";
   useEffect(() => {
@@ -60,8 +60,8 @@ const Sell = () => {
 
   return (
     <>
-      <div className=" ">
-        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
+      <div className=" h-full">
+        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full h-full " />
       </div>
       {/* card section */}
       <div className=" w-full py-10 ">

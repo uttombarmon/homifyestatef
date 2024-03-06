@@ -33,22 +33,7 @@ const Contact = () => {
 
     return (
         <>
-      <section
-        className="bg-gray-100 mb-10  h-[320px] md:h-[400px] relative border-4 grid items-end"
-        style={{
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 700px",
-          backgroundPosition: "center",
-          backgroundImage: "url(https://i.ibb.co/TKpzWqV/contact-us1.jpg)",
-        }}
-      >
-        <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
-          {/* <h1 className=" text-5xl "> Contact Us </h1> */}
-          {/* <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
-            <IoHome></IoHome> Home . Contact Us
-          </span> */}
-        </div>
-      </section>
+  <div> <img src="https://i.ibb.co/TKpzWqV/contact-us1.jpg" alt="" /> </div>
 
       <h1 className=" lg:text-2xl xl:text-3xl text-xl mb-7 font-bold text-center py-2 lg:py-5">
         Have Questions? CONTACT US
