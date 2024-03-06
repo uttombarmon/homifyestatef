@@ -7,7 +7,7 @@ import useAxiosPrivate from "../hooks/axiosPrivate/useAxiosPrivate";
 
 const Navbar = () => {
 
-  const { user, userInfo, signout } = useContext(AuthContext)
+  const {userInfo, signout } = useContext(AuthContext)
   const navigate = useNavigate();
   const [dynamic, setDynamic] = useState('')
   const axiosPrivate = useAxiosPrivate();
@@ -25,8 +25,8 @@ const Navbar = () => {
   const onSignout = () => {
     signout()
       .then(() => {
-        if (user?.email) {
-          axiosPrivate.post('/jwt/clear-token', { email: user?.email })
+        if (userInfo?.email) {
+          axiosPrivate.post('/jwt/clear-token', { email: userInfo?.email })
             .then(res => {
               if (res.data.success) {
                 navigate('/signin')
@@ -44,12 +44,12 @@ const Navbar = () => {
     <li><NavLink to={'about'}>About</NavLink></li>
 
     {
-      user &&
+      userInfo &&
       <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
   return (
-    <div className="navbar z-[1000] w-full bg-[#0e0a0ac5] xl:max-w-[1440px] fixed lg:max-w-[1024px] px-6 text-[#f5df14e4] ">
+    <div className="navbar w-full bg-[#716b6b4b] xl:max-w-[1440px] lg:max-w-[1024px] text-black z-[200]">
       <div className="navbar-start">
         <Link to={''} className=" mx-4 font-bold font-serif text-2xl">HomifyEstate</Link>
       </div>
@@ -70,16 +70,16 @@ const Navbar = () => {
               navlink
             }
             <li className=" justify-center  font-bold">        {
-              user ?
-                <button className="btn py-3 " onClick={onSignout}>SignOut</button>
+              userInfo ?
+                <button className="btn" onClick={onSignout}>SignOut</button>
                 :
                 <a className="btn  border-none lg:flex bg-amber-300 py-3 mt-3  font-bold">Sign In</a>
             }</li>
           </ul>
         </div>
         {
-          user ?
-            <button className="border p-2 px-3 bg-[#f5df14e4] hover:bg-[#f5e453] hidden lg:inline-block shadow-md rounded-lg text-black " onClick={onSignout}>SignOut</button>
+          userInfo ?
+            <button className="btn" onClick={onSignout}>SignOut</button>
             :
             <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
         }
