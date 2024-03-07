@@ -9,7 +9,7 @@ import {
 
 const Sell = () => {
   const [properties, setProperties] = useState([]);
-  console.log(properties);
+  // console.log(properties);
   const axiosPublic = useAxiosPublic();
   const Status = "Sale";
   useEffect(() => {
@@ -25,7 +25,6 @@ const Sell = () => {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, [axiosPublic]);
 
@@ -49,9 +48,8 @@ const Sell = () => {
         <button
           key={i}
           onClick={() => paginate(i)}
-          className={`border-none rounded-full w-[38px]   font-medium mx-2 ${
-            currentPage === i ? " bg-gray-100 py-2" : ""
-          }`}
+          className={`border-none rounded-full w-[38px]   font-medium mx-2 ${currentPage === i ? " bg-gray-100 py-2" : ""
+            }`}
         >
           {i}
         </button>
@@ -62,11 +60,8 @@ const Sell = () => {
 
   return (
     <>
-      <div className=" ">
-        <img
-          src="https://i.ibb.co/Mgnqm3W/Brown-Modern-Real-Estate-Banner.png"
-          className=" w-full  h-full "
-        />
+      <div  data-aos="zoom-in">
+        <img src="https://i.ibb.co/qjTbPpn/sale-photo.jpg" className=" w-full  h-full " />
       </div>
       {/* card section */}
       <div className=" w-full py-10 ">

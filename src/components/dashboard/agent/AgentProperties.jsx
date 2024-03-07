@@ -11,21 +11,19 @@ const AgentProperties = () => {
 
   const [properties, setProperties] = useState([]);
 
-  const { user } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
-  const email = user?.email;
 
   //checkoutcollections map 
   useEffect(() => {
-    if (email) {
-      axiosPublic.get('/home/checkout/')
+    if (userInfo?.email) {
+      axiosPublic.get(`/home/checkout/${userInfo.email}`)
         .then(data => {
-          // console.log(data);
           setProperties(data.data)
 
         })
     }
-  }, [axiosPublic, email]);
+  }, [axiosPublic, userInfo]);
 
   const handelDelete = (id) => {
     // console.log("hedete api");
@@ -41,7 +39,7 @@ const AgentProperties = () => {
   }
 
   return (
-    <div className="w-full xl:w-[1000px] mx-auto overflow-x-auto bg-gray-100 px-2">
+    <div className="w-full mx-auto overflow-x-auto bg-gray-100 px-2">
       <div className="flex justify-between mt-7 items-center px-4">
         <h1 className="text-xl font-bold mb-6 mt-3 "> My Properties </h1>
         <Link to={"/dashboard/addProperty"}>

@@ -1,28 +1,25 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/provider/AuthProvider";
 import useAxiosPublic from "../../hooks/axiosPublic/useAxiosPublic";
 import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } =
-    useContext(AuthContext);
+  const { register, handleSubmit, formState: { errors }, } = useForm();
+  const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const loca = useLocation()
+  const location = loca?.state?.from?.pathname || "/"
 
   const onSubmit = (data) => {
     console.log(data);
     signinWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        navigate("/");
-        toast.success("Success full Login")
+        navigate(location);
+        toast.success("Successfully Logged!")
       })
       .catch((err) => console.log(err.message));
   };
@@ -36,15 +33,16 @@ const SignIn = () => {
           email: res?.user?.email,
           role: "user",
           method: "google",
+          uid: res?.user?.uid
         };
         const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
         const userFromDB = getUser?.data?.email;
         // console.log(getUser?.data?.role)
         if (!userFromDB) {
           await axiosPublic.post(`/users/user`, data);
-          toast.success("Success full Login")
+          toast.success("Successfully Logged!")
         }
-        navigate("/");
+        navigate(location);
         toast.success("Success full Login");
       })
       .catch((err) => console.log(err));
@@ -113,7 +111,7 @@ const SignIn = () => {
                   {...register("password", { required: true })}
                   placeholder="password"
                   className="input input-bordered"
-                  // value={generatedPassword}
+                // value={generatedPassword}
                 />
 
                 <span className="relative w-[30px] text-xl flex justify-end -top-8 left-[90%] ">

@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import Property from "./Property";
 import useAxiosPublic from "../../../../hooks/axiosPublic/useAxiosPublic";
+import toast from "react-hot-toast";
 
 function Allproperties() {
     const [properties, setProperties] = useState(null)
     const axiosPublic = useAxiosPublic()
     useEffect(() => {
-        axiosPublic.get('/home/checkout')
+        axiosPublic.get('/home/allcheckout')
             .then(e => {
                 setProperties(e.data)
             })
             .catch(e => console.log(e.message))
     }, [axiosPublic])
+    const deleteProperty = (id)=>{
+        axiosPublic.delete(`/admin/property/delete?id=${id}`)
+        .then(e=>{
+            if (e.data.deletedCount) {
+                const datas = properties.filter(d => d._id !== id)
+                setProperties(datas)
+                toast.success('Successfuly, Property removed')
+            }
+        })
+    }
     return (
         <>
             <div>
@@ -32,7 +43,7 @@ function Allproperties() {
                                 </thead>
                                 {/* row 1 */}
                                 <tbody>{
-                                    properties.map((d,index )=> <Property index={index} d={d} key={d._id}></Property>)
+                                    properties.map((d,index )=> <Property deleteProperty={deleteProperty} index={index} d={d} key={d._id}></Property>)
                                 }
                                 </tbody>
                             </table>

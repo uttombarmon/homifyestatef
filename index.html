@@ -15,9 +15,13 @@
   <meta property="og:url" content="https://homifyestate-8556d.web.app">
   <meta property="og:type" content="website">
   <title>HomifyEstate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
-<body>
+<body class="overflow-x-hidden">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -29,6 +33,18 @@
       });
     })();
   </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 120, 
+        delay: 300, 
+        duration: 2000, 
+        easing: 'ease', 
+        once: false, 
+        mirror: false, 
+        anchorPlacement: 'top-bottom', 
+});
+    </script>
 </body>
 
 </html>

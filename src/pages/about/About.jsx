@@ -1,4 +1,4 @@
-import { IoHome } from "react-icons/io5";
+
 import { FaSolarPanel } from "react-icons/fa";
 import { FaWalkieTalkie } from "react-icons/fa6";
 import { PiElevatorBold } from "react-icons/pi";
@@ -24,9 +24,7 @@ const About = () => {
       >
         <div className=" opacity-80 text-black  z-10    w-full items-center text-center mb-[15%] absolute">
           <h1 className=" text-5xl "> About Us </h1>
-          <span className=" items-center flex  justify-center gap-1 text-xl mt-7">
-            About Us Home . <IoHome></IoHome>
-          </span>
+         
         </div>
       </section>
 
@@ -34,14 +32,18 @@ const About = () => {
 
       <div className="mt-6">
         <div className=" grid lg:grid-cols-2 grid-cols-1 gap-8 lg:px-20 px-6 ">
-          <div>
+          <div data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine">
             <img
               src="https://i.ibb.co/NLq9Lth/modern-residential-district-with-green-roof-balcony-generated-by-ai.jpg"
               alt="image"
               className=" w-full"
             />
           </div>
-          <div className="  ">
+          <div data-aos="fade-left"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="300">
             <h2 className="text-2xl font-serif mb-4">
               {" "}
               <span className="font-bold">ABOUT</span>HOMIFY{" "}
@@ -69,9 +71,9 @@ const About = () => {
         {/* foure coards
          */}
 
-        <div className=" grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-11 mb-8 lg:px-20 px-6 w-full gap-8 mx-auto lg:grid-cols-2 items-center">
+        <div className=" grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-11 mb-8 lg:px-20 px-6 w-full gap-8 mx-auto lg:grid-cols-2 items-center" data-aos="fade-down" data-aos-duration="600">
           {/*  fast card */}
-          <div className=" flex gap-6 border-2 py-2 px-4 ">
+          <div className=" flex gap-6 border-2 py-2 px-4 " >
             <p className="mt-2 text-4xl  ">
               <IoMdCheckmark className=" bg-green-500 rounded-full p-1 text-white">
                 {" "}
@@ -118,7 +120,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div data-aos="fade-down" data-aos-duration="600">
         <h3 className="items-center   mt-10 text-center font-bold mb-10 lg:text-2xl text-xl">
           Discovery your ideal home based on amenities
         </h3>
@@ -161,18 +163,19 @@ const About = () => {
             fireplace <PiSwimmingPool></PiSwimmingPool>
           </p>
         </div>
-
         <h1 className="text-center border w-[170px] mb-5 items-center xl:ml-[45%] lg:ml-[40%] md:ml-[39%] ml-36 font-bold btn btn-outline justify-center flex ">
-          Prowse Property
+          Browse Property
         </h1>
       </div>
 
       <div className="xl:grid-cols-2 bg-gray-300 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-36 mt-14 lg:px-20 xl:px-28 p-9 items-center justify-center ">
         {/* review section  */}
-        <div className=" justify-end   ">
+        <div className=" justify-end " data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine">
           <h3 className="underline mb-2 font-semibold "> Client Feedback </h3>
 
-          <div className="justify-end items-end text-end mb-2">
+          <div className="justify-end items-end text-end mb-2" >
             <p className="rating">
               <input
                 type="radio"
@@ -203,17 +206,15 @@ const About = () => {
             </p>
           </div>
           <p className=" mb-2 border-r">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit <br />
-            nobis maiores deleniti, magni pariatur quibusdam vero, quos sred
-            hkek <br />
-            perspiciatis labore molestiae nostrum minus? <br />
-            Ab ratione dolor corporis, ullam tempore odit.
+            I had a fantastic experience using RealEstateManagementSite.com. The user-friendly interface, robust search, and seamless communication made selling my property a breeze. Secure transactions, digital paperwork, and excellent customer support set this platform apart. Highly recommended for a smooth real estate journey!
           </p>
         </div>
 
         {/* feedback form */}
 
-        <div>
+        <div data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine">
           <h1 className=" text-end xl:text-3xl lg:text-2xl text-xl font-bold justify-end flex">
             Feedback From <br />
             .Satisfied Customers

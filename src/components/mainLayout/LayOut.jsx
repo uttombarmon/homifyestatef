@@ -7,14 +7,11 @@ import { Toaster } from "react-hot-toast";
 
 const LayOut = () => {
     return (
-        <div className=" w-full lg:max-w-[1024px] bg-slate-50 overflow-x-hidden xl:max-w-[1440px] mx-auto font-poppins">
-            <div>
+        <div className=" relative w-full lg:max-w-[1024px] bg-slate-50 overflow-x-hidden xl:max-w-[1440px] mx-auto font-poppins">
             <Navbar></Navbar>
-            
             <Outlet></Outlet>
-            </div>
             <Footer></Footer>
-           <Toaster/>
+            <Toaster />
         </div>
     );
 };
