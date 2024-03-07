@@ -1,0 +1,10 @@
+.active{
+    color: rgb(246, 211, 37) !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    background-color: rgb(102, 102, 97);
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border-radius: 5px;
+    
+}

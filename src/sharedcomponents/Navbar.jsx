@@ -4,10 +4,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../utils/provider/AuthProvider";
 // import useAxiosPublic from "../hooks/axiosPublic/useAxiosPublic";
 import useAxiosPrivate from "../hooks/axiosPrivate/useAxiosPrivate";
+import "./navbar.css";
 
 const Navbar = () => {
 
-  const {userInfo, signout } = useContext(AuthContext)
+  const { userInfo, signout } = useContext(AuthContext)
   const navigate = useNavigate();
   const [dynamic, setDynamic] = useState('')
   const axiosPrivate = useAxiosPrivate();
@@ -45,16 +46,16 @@ const Navbar = () => {
 
     {
       userInfo &&
-      <li><Link to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
+      <li><Link className="navlink" to={`/dashboard/${dynamic}`}>Dashboard</Link></li>
     }
   </>
   return (
-    <div className="navbar w-full bg-[#716b6b4b] xl:max-w-[1440px] lg:max-w-[1024px] text-black z-[200]">
+    <div className="navbar w-full bg-white xl:max-w-[1440px] lg:max-w-[1024px] text-black z-[200]">
       <div className="navbar-start">
-        <Link to={''} className=" mx-4 font-bold font-serif text-2xl">HomifyEstate</Link>
+        <Link to={''} className=" mx-4 font-bold font-serif text-yellow-400 text-2xl">HomifyEstate</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu text-white menu-horizontal">
+        <ul className="menu menu-horizontal">
           {
             navlink
           }
@@ -69,9 +70,9 @@ const Navbar = () => {
             {
               navlink
             }
-            <li className=" justify-center  font-bold">        {
+            <li className=" justify-center font-bold">        {
               userInfo ?
-                <button className="btn" onClick={onSignout}>SignOut</button>
+                <button className=" btn py-3 bg-amber-100 hover:bg-amber-300" onClick={onSignout}>SignOut</button>
                 :
                 <a className="btn  border-none lg:flex bg-amber-300 py-3 mt-3  font-bold">Sign In</a>
             }</li>
@@ -79,7 +80,7 @@ const Navbar = () => {
         </div>
         {
           userInfo ?
-            <button className="btn" onClick={onSignout}>SignOut</button>
+            <button className="btn hidden lg:flex" onClick={onSignout}>SignOut</button>
             :
             <Link to={'/signin'} className="btn hidden border-none lg:flex bg-amber-300  font-bold">Sign In</Link>
         }
