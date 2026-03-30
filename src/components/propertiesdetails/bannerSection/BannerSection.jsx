@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,7 +12,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-export default function BannerSection() {
+export default function BannerSection({property}) {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
@@ -25,13 +22,17 @@ export default function BannerSection() {
 
     const [images, setImages] = useState([])
     useEffect(() => {
-        fetch('/detailsBanner.json')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setImages(data)
-            })
-    }, [])
+        // fetch('/detailsBanner.json')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         setImages(data)
+        //     })
+        if (property) {
+            console.log(property?.property_details?.thumImage)
+            setImages(property?.property_details?.thumImage)
+        }
+    }, [property])
     return (
         <>
             <Swiper  style={{ height: '500px',transition:'width  1s'}}
@@ -52,7 +53,7 @@ export default function BannerSection() {
                 className="mySwiper autoplay-progress"
             > <span ref={progressContent}></span>
                 {
-                    images?.map((img,inx)=><SwiperSlide key={inx}><img style={{height:'100%',width:'100%'}} src={img.image} alt="" /></SwiperSlide>)
+                    images?.map((img,inx)=><SwiperSlide key={inx}><img style={{height:'100%',width:'100%'}} src={img} alt="" /></SwiperSlide>)
                 }
                 
                 <div className="autoplay-progress" slot="container-end">

@@ -17,11 +17,16 @@ const AddProperty = () => {
   const currentDate = new Date();
   const localDate = currentDate.toISOString().split('T')[0];
 
-  const handleSubmit =async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const img = form.bannerImage.files[0];
+    const img = form.image.files[0];
     const bannerImage = await UsePhoto(img);
+    const bannerImage2 = await UsePhoto(form.image2.files[0])
+    const bannerImage3 = await UsePhoto(form.image3.files[0])
+    const thumImage = await UsePhoto(form.thumImage.files[0])
+    // floor plan 
+    const facilImage = await UsePhoto(form.floorplan.files[0])
     //base information
     const title = form.title.value;
     const address = form.address.value;
@@ -40,24 +45,24 @@ const AddProperty = () => {
     const balcony = form.balcony.value;
     const place = form.place.value;
     const description = form.description.value;
-    const thumImage = form.thumImage.value;
+    // const thumImage = form.thumImage.value;
     // const bannerImage = form.bannerImage.value;
-    const facilImage = form.facilImage.value;
+    // const facilImage = form.facilImage.value;
     const mapCode = form.mapCode.value;
     const PropertyTypes = form.PropertyTypes.value;
     const country = form.country.value;
     const purpose = form.purpose.value;
-    const featured = form.featured.value;
+    // const featured = form.featured.value;
 
 
 
     const allProperties = {
       "title": `${title}`,
-      "email":`${email}`,
+      "email": `${email}`,
       "location": `${address},${city},${country}`,
       "property_status": `${purpose}`,
       "description": `${description}`,
-      "property_image": `${bannerImage}`,
+      "property_image": `${thumImage}`,
       "property_details": {
         "rooms": `${room}`,
         "status": "Available",
@@ -72,9 +77,9 @@ const AddProperty = () => {
         "floor": `${floor}`,
         "kitchen": `${kitchen}`,
         "balcony": `${balcony}`,
-        "thumImage": `${thumImage}`,
+        "thumImage": [bannerImage,bannerImage2,bannerImage3],
         "unit": `${unit}`,
-        "featured": `${featured}`
+        "featured": `yes`
 
       },
       "facilities": [`${checkData}`],
@@ -94,9 +99,9 @@ const AddProperty = () => {
     // send data to the server site
 
     axiosPublic.post("/home/checkout", allProperties)
-      .then(data =>{
+      .then(data => {
         console.log(data.data)
-        if(data.data) {
+        if (data.data) {
           toast.success("Thank You! Your property added Success!");
         }
       }
@@ -172,9 +177,6 @@ const AddProperty = () => {
 
               </select>
             </div>
-
-
-
             <div className="form-control">
               <label className="label">
                 <span className="label-text">City</span>
@@ -187,12 +189,6 @@ const AddProperty = () => {
                 required
               />
             </div>
-
-
-
-
-
-
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Address</span>
@@ -383,22 +379,22 @@ const AddProperty = () => {
                   <span className="label-text"> Thumbnail Image </span>
                 </label>
                 <input
-                  type="text"
+                  type="file"
                   name="thumImage"
                   placeholder="Enter Thumbnail Image"
-                  className="input input-bordered w-full"
+                  className="file-input file-input-bordered file-input-info w-full"
                 />
 
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Bannner Image</span>
+                  <span className="label-text">Image 1</span>
                 </label>
                 <input
                   type="file"
-                  name="bannerImage"
+                  name="image"
                   placeholder="Enter Bannner Image"
-                  className="input input-bordered py-2 w-full"
+                  className="file-input file-input-bordered file-input-info w-full"
                 />
               </div>
 
@@ -406,25 +402,36 @@ const AddProperty = () => {
               {/* Featured n0 */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Featured</span>
+                  <span className="label-text">Image 2</span>
                 </label>
-                <select name="featured" className="select">
-                  <option selected >Select Featured</option>
-                  <option value="yes"> Yes</option>
-                  <option value="no"> No </option>
-
-                </select>
+                <input
+                  type="file"
+                  name="image2"
+                  placeholder="Enter Facilities image"
+                  className="file-input file-input-bordered file-input-info w-full"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text"> Facilities image</span>
+                  <span className="label-text">Image 3</span>
                 </label>
                 <input
-                  type="text"
-                  name="facilImage"
+                  type="file"
+                  name="image3"
                   placeholder="Enter Facilities image"
-                  className="input input-bordered w-full"
+                  className="file-input file-input-bordered file-input-info w-full"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text"> Floor Plan</span>
+                </label>
+                <input
+                  type="file"
+                  name="floorplan"
+                  placeholder="Enter Facilities image"
+                  className="file-input file-input-bordered file-input-info w-full"
                 />
               </div>
 
@@ -594,8 +601,7 @@ const AddProperty = () => {
           </div>
 
           <button className=" mt-9 font-bold text-xl px-2 hover:bg-yellow-500 rounded bg-yellow-400 w-[110px] h-12 mb-6 ">
-            {" "}
-            Submit{" "}
+            Submit
           </button>
         </div>
       </form>

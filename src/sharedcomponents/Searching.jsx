@@ -10,26 +10,36 @@ const Searching = () => {
     console.log(data);
     setSearchInfo(data);
   };
-    return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} className=' bg-[#dfdfdf74] text-white w-full lg:w-3/4 py-8 flex flex-wrap justify-between mt-4 lg:mt-20 rounded-lg px-5 mx-auto' data-aos="zoom-in">
+  return (
+    <div data-aos="zoom-in">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex bg-[#dfdfdf74] text-white w-full lg:w-3/4 py-4 md:py-8 mt-4 lg:mt-20 rounded-lg lg:justify-between mx-auto px-5"
+      >
+        <div className=" grid grid-cols-2 md:grid-cols-2 gap-2 lg:gap-6 md:gap-6 lg:grid-cols-4 md:mx-auto">
+          {/* want section  */}
+          <div className="w-full  my-2 lg:mx-0">
+            <label htmlFor="want" className=" w-full font-bold">
+              Want
+            </label>
+            <select
+            /* name="want" */ {...register("want", { required: true })}
+              id=""
+              className="w-full bg-slate-800 rounded-md p-2 mt-4"
+            >
+              {/* <option value="buy">Buy</option> */}
+              <option value="rent">Rent</option>
+              <option value="sale">sale</option>
+            </select>
+          </div>
 
-                {/* want section  */}
-                <div className=' flex flex-wrap w-1/3 mx-2 my-2 lg:mx-0 lg:w-1/4 border-r-[1px]' >
-                    <label htmlFor="want" className=' w-full font-bold'>Want</label>
-                    <select /* name="want" */ {...register("want", { required: true })} id="" className=' bg-slate-800 rounded-md p-2 mt-4'>
-                        {/* <option value="buy">Buy</option> */}
-                        <option value="rent">Rent</option>
-                        <option value="sale">sale</option>
-                    </select>
-                </div>
           {/* property type section  */}
           <div className="w-full  lg:mx-0 my-2">
             <label htmlFor="type" className=" w-full font-bold">
               Property Type
             </label>
             <select
-              /* name="want" */ {...register("type", { required: true })}
+            /* name="want" */ {...register("type", { required: true })}
               id=""
               className=" w-full bg-slate-800 rounded-md p-2 mt-4"
             >
@@ -41,6 +51,7 @@ const Searching = () => {
               <option value="Office">Office</option>
             </select>
           </div>
+
           {/* location section  */}
           <div className="w-full    lg:mx-0 my-2 ">
             <label htmlFor="want" className=" w-full font-bold">

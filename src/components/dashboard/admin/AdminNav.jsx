@@ -10,7 +10,7 @@ const AdminNav = () => {
         <div className=' w-full h-fit'>
             <ul className=" menu mt-0 top-0 p-0 font-semibold text-lg w-full">
                 <li className='w-full pt-2'>
-                    <NavLink className=" px-0" to={"/dashboard/profile"}>
+                    <NavLink className=" px-0" to={"/dashboard/adminprofile"}>
                         <CgProfile></CgProfile>
                         Profile
                     </NavLink>

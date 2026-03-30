@@ -148,6 +148,10 @@ export const router = createBrowserRouter([
         path: "alltransiction",
         element: <PrivateRoute><AdminRole><Transections></Transections></AdminRole></PrivateRoute>,
       },
+      {
+        path: "adminprofile",
+        element: <PrivateRoute><AdminRole><UserProfile></UserProfile></AdminRole></PrivateRoute>,
+      },
 
       // agent routes 
       {

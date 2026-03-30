@@ -21,20 +21,19 @@ const Professionals = () => {
   }, [axiosPublic]);
   return (
     <>
-      <div data-aos="fade-up"
-        data-aos-anchor-placement="bottom-bottom">
+      <div>
         <h1 className=" items-center mt-5 mb-6 text-center font-black lg:text-4xl  text-xl ">
           Meet the Realty Professionals
         </h1>
-        <div className="grid justify-center mx-auto md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-2">
+        <div className="grid justify-center mx-2 md:mx-auto md:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-2">
           {
             personInfos?.map((personInfo) =>
-              <div key={personInfo._id} className="card  mx-auto xl:w-[320px] w-[375px] lg:w-[450px] mt-7 bg-white border">
-                <div className="group w-full h-[300px] relative border-slate-100 overflow-hidden">
+              <div key={personInfo._id} data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" className="card mx-auto xl:w-[320px] w-[300px] sm:w-[400px] md:w-[350px]  lg:w-[450px] mt-7 bg-white border">
+                <div className="group w-full h-[200px] md:h-[300px] relative border-slate-100 overflow-hidden">
                   <img
                     src={personInfo.photoURL}
                     alt=""
-                    className="w-full h-full object-cover rounded-t-lg" />
+                    className="w-full h-full object-fit rounded-t-lg" />
                   <div className="absolute top-0 right-full rounded-t-md w-full h-full group-hover:right-0 bg-[#29404729] backdrop-blur-[2px]  p-7 flex flex-col justify-center ">
                     <div className=" items-center flex text-xl text-white text-center gap-5">
                       <button className=" ml-[15%] rounded-full  hover:bg-orange-600 bg-orange-400 p-2 ">
@@ -50,8 +49,8 @@ const Professionals = () => {
                     </div>
                   </div>
                 </div>
-                <div className=" mt-4 px-6 ">
-                  <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" hover:underline font-bold text-xl ">
+                <div className=" mt-4 text-sm lg:text-base px-6 ">
+                  <Link to={`/agentProfiles/${personInfo?._id}`}><h2 className=" hover:underline font-bold text-base lg:text-xl ">
                     {personInfo?.name}
                     <div className="badge badge-secondary ml-3 ">{personInfo?.personalInfo?.listing} listing</div>
                   </h2></Link>
