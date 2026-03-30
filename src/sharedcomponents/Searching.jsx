@@ -58,7 +58,6 @@ const Searching = () => {
               Search
             </button>
           </div>
-        </div>
       </form>
     </div>
   );
