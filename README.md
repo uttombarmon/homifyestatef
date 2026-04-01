@@ -8,4 +8,4 @@
 - Don't take any action in the main branch
 
 # .env.local
-[Link...](https://drive.google.com/file/d/1YOAhQ5U0fpXxWqI0FTCj7rwSRZYV2NMq/view?usp=sharing)
+[Link...]()
