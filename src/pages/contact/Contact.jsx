@@ -1,12 +1,10 @@
-
 import {
   BsFillChatSquareFill,
   BsFillEnvelopeFill,
   BsFillTelephoneFill,
 } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import toast from "react-hot-toast";
 const Contact = () => {
@@ -15,32 +13,27 @@ const Contact = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_zt3es0s', 'template_ih4zkgp', form.current, {
-        publicKey: '_M-Xno-tG5TitAcIS',
+      .sendForm("service_zt3es0s", "template_ih4zkgp", form.current, {
+        publicKey: "_M-Xno-tG5TitAcIS",
       })
       .then(
         () => {
-          console.log('SUCCESS!');
-          toast.success('Successfully Email send!')
+          console.log("SUCCESS!");
+          toast.success("Successfully Email send!");
           form.current.reset();
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          console.log("FAILED...", error.text);
         },
       );
   };
 
-
-    return (
-        <>
-        {/* messanger chart */}
-        <div>
-  <MessengerCustomerChat
-    pageId="103365232464560"
-    appId="763941302317239" />
+  return (
+    <>
+      <div>
+        {" "}
+        <img src="https://i.ibb.co/TKpzWqV/contact-us1.jpg" alt="" />{" "}
       </div>
-
-  <div> <img src="https://i.ibb.co/TKpzWqV/contact-us1.jpg" alt="" /> </div>
 
       <h1 className=" lg:text-2xl xl:text-3xl text-xl mb-7 font-bold text-center py-2 lg:py-5">
         Have Questions? CONTACT US
@@ -94,20 +87,24 @@ const Contact = () => {
                   <h2>hrhridoyroy@gmail.com </h2>
                 </div>
 
-                <button className="btn mt-6 bg-green-500 btn-outline btn-secondary">
-               
+                <a
+                  href="https://m.me/103365232464560"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn mt-6 bg-green-500 btn-outline btn-secondary"
+                >
                   <span>
                     <BsFillChatSquareFill></BsFillChatSquareFill>
                   </span>
-                  Start Live chart
-                </button>
+                  Start Live chat
+                </a>
               </div>
             </div>
           </div>
           <div data-aos="fade-left">
             <div className="w-full">
               <div className="card shrink-0  ">
-                <form ref={form} onSubmit={sendEmail} >
+                <form ref={form} onSubmit={sendEmail}>
                   <div className=" grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
                     <div className="form-control">
                       <label className="label"></label>
@@ -116,7 +113,6 @@ const Contact = () => {
                         name="from_name"
                         placeholder="Your Name"
                         className="input"
-                       
                       />
                     </div>
                     <div className="form-control">
@@ -127,7 +123,6 @@ const Contact = () => {
                         placeholder="Your Email"
                         className="input"
                         required
-
                       />
                     </div>
                     <div className="form-control">
@@ -146,21 +141,22 @@ const Contact = () => {
                         name="from_subjcet"
                         placeholder="Subjcet"
                         className="input"
-
-                 
                       />
                     </div>
                     <div className="form-control">
-                      <label className="label"></label>                  
-                      <textarea name="message" className="textarea textarea-bordered" 
-
-                      placeholder="Write Message"></textarea>
+                      <label className="label"></label>
+                      <textarea
+                        name="message"
+                        className="textarea textarea-bordered"
+                        placeholder="Write Message"
+                      ></textarea>
                     </div>
                     <div className="form-control mt-6"></div>
                   </div>
                   <button
-                  type="submit"
-                    className="btn btn-primary w-full btn-outline mt-7 " >
+                    type="submit"
+                    className="btn btn-primary w-full btn-outline mt-7 "
+                  >
                     Send Massagge
                   </button>
                 </form>
@@ -170,7 +166,7 @@ const Contact = () => {
         </div>
       </div>
     </>
-    );
+  );
 };
 
 export default Contact;

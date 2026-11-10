@@ -7,19 +7,24 @@ import { FaEye, FaEyeSlash, FaFacebook } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
-  const { register, handleSubmit, formState: { errors }, } = useForm();
-  const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { signupWihtGoogle, signupWithFacebook, signinWithEmailAndPassword } =
+    useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const loca = useLocation()
-  const location = loca?.state?.from?.pathname || "/"
+  const loca = useLocation();
+  const location = loca?.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     console.log(data);
     signinWithEmailAndPassword(data.email, data.password)
       .then(() => {
         navigate(location);
-        toast.success("Successfully Logged!")
+        toast.success("Successfully Logged!");
       })
       .catch((err) => console.log(err.message));
   };
@@ -33,14 +38,14 @@ const SignIn = () => {
           email: res?.user?.email,
           role: "user",
           method: "google",
-          uid: res?.user?.uid
+          uid: res?.user?.uid,
         };
         const getUser = await axiosPublic.get(`/users/${res?.user?.email}`);
         const userFromDB = getUser?.data?.email;
         // console.log(getUser?.data?.role)
         if (!userFromDB) {
           await axiosPublic.post(`/users/user`, data);
-          toast.success("Successfully Logged!")
+          toast.success("Successfully Logged!");
         }
         navigate(location);
         toast.success("Success full Login");
@@ -52,11 +57,11 @@ const SignIn = () => {
     signupWithFacebook()
       .then((result) => {
         console.log(result);
-        toast.success("Successfully, logged")
+        toast.success("Successfully, logged");
       })
       .catch((error) => {
         console.log(error.message);
-        toast.error("Logged failed")
+        toast.error("Logged failed");
       });
   };
 
@@ -71,11 +76,9 @@ const SignIn = () => {
       <div className="hero min-h-screen pb-4">
         <div className=" flex-col items-center md:w-[480px]">
           <div className="">
-            <img
-              className="w-[100px] mx-auto h-[100px]"
-              src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png"
-              alt=""
-            />
+            <div className="mx-auto flex h-[100px] w-[100px] items-center justify-center rounded-2xl bg-orange-100 text-5xl shadow-md">
+              🏠
+            </div>
             <h1 className="text-center font-bold text-2xl my-4">
               Sign in to your account
             </h1>
@@ -111,7 +114,7 @@ const SignIn = () => {
                   {...register("password", { required: true })}
                   placeholder="password"
                   className="input input-bordered"
-                // value={generatedPassword}
+                  // value={generatedPassword}
                 />
 
                 <span className="relative w-[30px] text-xl flex justify-end -top-8 left-[90%] ">
@@ -187,32 +190,25 @@ const SignIn = () => {
 
               {/* or line */}
               <div className="flex justify-between items-center text-center mt-3">
-                <div className="flex-1">
-                  <img
-                    src="https://i.ibb.co/GspjGPV/divider.png"
-                    alt=""
-                    className="h-5 w-32"
-                  />
+                <div className="flex-1 border-t border-slate-300" />
+                <div className="flex-1 px-2 text-sm text-slate-500">
+                  Or continue with
                 </div>
-                <div className="flex-1">Or continue with</div>
-                <div className="flex-1">
-                  <img
-                    src="https://i.ibb.co/GspjGPV/divider.png"
-                    alt=""
-                    className="h-5 w-32"
-                  />
-                </div>
+                <div className="flex-1 border-t border-slate-300" />
               </div>
 
               {/* social login  */}
               <div className="text-center">
                 <div className="text-center mt-3">
-                  <button onClick={signInWithGoogle} className="px-4">
-                    <img
-                      className="w-10"
-                      src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png"
-                      alt=""
-                    />
+                  <button
+                    onClick={signInWithGoogle}
+                    className="px-4"
+                    type="button"
+                    aria-label="Continue with Google"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-lg font-bold text-red-500 shadow-sm">
+                      G
+                    </div>
                   </button>
                   <button onClick={facebookSignin} className="px-4">
                     <FaFacebook className="text-[43px] bg-white rounded-[20px] text-blue-400"></FaFacebook>

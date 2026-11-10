@@ -31,10 +31,9 @@ import MakeOffer from "../components/dashboard/user/MakeOffer";
 import Privacy from "../pages/privacy-Policy/Privacy";
 import UpdateProperty from "../components/dashboard/agent/UpdateProperty";
 
-
 import PaymentForm from "../components/dashboard/user/PaymentForm";
 
-import Profilejs from ".././sharedcomponents/Profilejs"
+import Profilejs from ".././sharedcomponents/Profilejs";
 import Allagent from "../sharedcomponents/Allagent";
 import VerifiedFile from "../components/dashboard/user/VerifiedFile";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -42,168 +41,306 @@ import AdminRole from "./UserRoleRoutes/AdminRole";
 import AgentRole from "./UserRoleRoutes/AgentRole";
 import UserRole from "./UserRoleRoutes/UserRole";
 
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <LayOut></LayOut>,
+      errorElement: <ErrorPage></ErrorPage>,
+      children: [
+        {
+          path: "",
+          element: <Home></Home>,
+        },
+        {
+          path: "/properties",
+          element: <Properties></Properties>,
+        },
+        {
+          path: "/allagent",
+          element: (
+            <PrivateRoute>
+              <Allagent></Allagent>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/blog/:id",
+          element: (
+            <PrivateRoute>
+              <Blog></Blog>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/signup",
+          element: <Signup></Signup>,
+        },
+        {
+          path: "/signin",
+          element: <SignIn></SignIn>,
+        },
+        {
+          path: "/properties/:id",
+          element: (
+            <PrivateRoute>
+              <PropertyDetails></PropertyDetails>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "sell",
+          element: (
+            <PrivateRoute>
+              <Sell></Sell>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/contact",
+          element: <Contact></Contact>,
+        },
+        {
+          path: "/about",
+          element: <About></About>,
+        },
+        {
+          path: "/rent",
+          element: (
+            <PrivateRoute>
+              <Rent></Rent>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/contact",
+          element: <Contact></Contact>,
+        },
+        {
+          path: "/about",
+          element: <About></About>,
+        },
+        {
+          path: "/agentProfiles/:id",
+          element: (
+            <PrivateRoute>
+              <Profilejs></Profilejs>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/Privacy",
+          element: <Privacy></Privacy>,
+        },
+        {
+          path: "/payment/success/:transId",
+          element: (
+            <PrivateRoute>
+              <PaymentSuccess></PaymentSuccess>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/payment/fail/:transId",
+          element: (
+            <PrivateRoute>
+              <PaymentFailed></PaymentFailed>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/agentProfile",
+          element: (
+            <PrivateRoute>
+              <AgentProfile></AgentProfile>
+            </PrivateRoute>
+          ),
+        },
+      ],
+    },
+    {
+      path: "dashboard",
+      element: <DashboardLayout></DashboardLayout>,
+      children: [
+        // admin routes
+        {
+          path: "",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <Dashboard></Dashboard>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "allproperties",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <AllProperties></AllProperties>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "manageusers",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <ManageUsers></ManageUsers>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "managereviews",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <ManageReviews></ManageReviews>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "alltransiction",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <Transections></Transections>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "adminprofile",
+          element: (
+            <PrivateRoute>
+              <AdminRole>
+                <UserProfile></UserProfile>
+              </AdminRole>
+            </PrivateRoute>
+          ),
+        },
 
-export const router = createBrowserRouter([
+        // agent routes
+        {
+          path: "agentDashboard",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <AgentDashboard></AgentDashboard>
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "agentProfile",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <AgentProfile></AgentProfile>
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "updateOrder/:id",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <UpdateProperty></UpdateProperty>
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "agentOrder",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <AgentOderList></AgentOderList>
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "agentProperties",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <AgentProperties></AgentProperties>
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "addProperty",
+          element: (
+            <PrivateRoute>
+              <AgentRole>
+                <AddProperty />
+              </AgentRole>
+            </PrivateRoute>
+          ),
+        },
+
+        // user routes
+        {
+          path: "profile",
+          element: (
+            <PrivateRoute>
+              <UserRole>
+                <UserProfile></UserProfile>
+              </UserRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "wishlist",
+          element: (
+            <PrivateRoute>
+              <UserRole>
+                <Wishlist></Wishlist>
+              </UserRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "makeOffer/:id",
+          element: (
+            <PrivateRoute>
+              <UserRole>
+                <MakeOffer></MakeOffer>
+              </UserRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "order",
+          element: (
+            <PrivateRoute>
+              <UserRole>
+                <Order></Order>
+              </UserRole>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "payment/:id",
+          element: <PaymentForm></PaymentForm>,
+        },
+        {
+          path: "download",
+          element: <VerifiedFile></VerifiedFile>,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <LayOut></LayOut>,
-    errorElement: <ErrorPage></ErrorPage>,
-    children: [
-      {
-        path: "",
-        element: <Home></Home>,
-      },
-      {
-        path: "/properties",
-        element: <Properties></Properties>,
-      },
-      {
-        path: "/allagent",
-        element: <PrivateRoute><Allagent></Allagent></PrivateRoute>,
-      },
-      {
-        path: "/blog/:id",
-        element: <PrivateRoute><Blog></Blog></PrivateRoute>,
-      },
-      {
-        path: "/signup",
-        element: <Signup></Signup>,
-      },
-      {
-        path: "/signin",
-        element: <SignIn></SignIn>,
-      },
-      {
-        path: "/properties/:id",
-        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-      },
-      {
-        path: "sell",
-        element: <PrivateRoute><Sell></Sell></PrivateRoute>,
-      },
-      {
-        path: "/contact",
-        element: <Contact></Contact>,
-      },
-      {
-        path: "/about",
-        element: <About></About>,
-      },
-      {
-        path: "/rent",
-        element: <PrivateRoute><Rent></Rent></PrivateRoute>,
-      },
-      {
-        path: "/contact",
-        element: <Contact></Contact>,
-      },
-      {
-        path: "/about",
-        element: <About></About>,
-      },
-      {
-        path: "/agentProfiles/:id",
-        element: <PrivateRoute><Profilejs></Profilejs></PrivateRoute>,
-      },
-      {
-        path: "/Privacy",
-        element: <Privacy></Privacy>,
-      },
-      {
-        path: "/payment/success/:transId",
-        element: <PrivateRoute><PaymentSuccess></PaymentSuccess></PrivateRoute>,
-      },
-      {
-        path: "/payment/fail/:transId",
-        element: <PrivateRoute><PaymentFailed></PaymentFailed></PrivateRoute>,
-      },
-      {
-        path: "/agentProfile",
-        element: <PrivateRoute><AgentProfile></AgentProfile></PrivateRoute>,
-      },
-    ],
+    future: {
+      v7_startTransition: true,
+    },
   },
-  {
-    path: "dashboard",
-    element: <DashboardLayout></DashboardLayout>,
-    children: [
-      // admin routes 
-      {
-        path: "",
-        element: <PrivateRoute><AdminRole><Dashboard></Dashboard></AdminRole></PrivateRoute>,
-      },
-      {
-        path: "allproperties",
-        element: <PrivateRoute><AdminRole><AllProperties></AllProperties></AdminRole></PrivateRoute>,
-      },
-      {
-        path: "manageusers",
-        element: <PrivateRoute><AdminRole><ManageUsers></ManageUsers></AdminRole></PrivateRoute>,
-      },
-      {
-        path: "managereviews",
-        element: <PrivateRoute><AdminRole><ManageReviews></ManageReviews></AdminRole></PrivateRoute>,
-      },
-      {
-        path: "alltransiction",
-        element: <PrivateRoute><AdminRole><Transections></Transections></AdminRole></PrivateRoute>,
-      },
-      {
-        path: "adminprofile",
-        element: <PrivateRoute><AdminRole><UserProfile></UserProfile></AdminRole></PrivateRoute>,
-      },
-
-      // agent routes 
-      {
-        path: "agentDashboard",
-        element: <PrivateRoute><AgentRole><AgentDashboard></AgentDashboard></AgentRole></PrivateRoute>,
-      },
-      {
-        path: "agentProfile",
-        element: <PrivateRoute><AgentRole><AgentProfile></AgentProfile></AgentRole></PrivateRoute>,
-      },
-      {
-        path: "updateOrder/:id",
-        element: <PrivateRoute><AgentRole><UpdateProperty></UpdateProperty></AgentRole></PrivateRoute>,
-      },
-      {
-        path: "agentOrder",
-        element: <PrivateRoute><AgentRole><AgentOderList></AgentOderList></AgentRole></PrivateRoute>,
-      },
-      {
-        path: "agentProperties",
-        element: <PrivateRoute><AgentRole><AgentProperties></AgentProperties></AgentRole></PrivateRoute>,
-      },
-      {
-        path: "addProperty",
-        element: <PrivateRoute><AgentRole><AddProperty/></AgentRole></PrivateRoute>,
-      },
-
-      // user routes 
-      {
-        path: "profile",
-        element: <PrivateRoute><UserRole><UserProfile></UserProfile></UserRole></PrivateRoute>,
-      },
-      {
-        path: "wishlist",
-        element: <PrivateRoute><UserRole><Wishlist></Wishlist></UserRole></PrivateRoute>,
-      },
-      {
-        path: "makeOffer/:id",
-        element: <PrivateRoute><UserRole><MakeOffer></MakeOffer></UserRole></PrivateRoute>,
-      },
-      {
-        path: "order",
-        element: <PrivateRoute><UserRole><Order></Order></UserRole></PrivateRoute>,
-      },
-      {
-        path: "payment/:id",
-        element: <PaymentForm></PaymentForm>,
-      },
-      {
-        path: "download",
-        element: <VerifiedFile></VerifiedFile>
-      }
-    ],
-  },
-]);
+);

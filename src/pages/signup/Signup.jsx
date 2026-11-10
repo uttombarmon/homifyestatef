@@ -13,7 +13,7 @@ const Signup = () => {
   const { creatuserwithemail } = useContext(AuthContext);
   const [generatedPassword, setGeneratedPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [ischecked, setChecked] = useState(false)
+  const [ischecked, setChecked] = useState(false);
   const {
     register,
     setValue,
@@ -21,20 +21,20 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     data.role = "user";
     const imgloc = data.photoURL[0];
     const img = await UsePhoto(imgloc);
-    data.photoURL=img
+    data.photoURL = img;
     creatuserwithemail(data.email, data.password)
-    .then(async (result) => {
-      if (result.user) {
-          data.uid = result.user?.uid
+      .then(async (result) => {
+        if (result.user) {
+          data.uid = result.user?.uid;
           const res = await axiosPublic.post("/users/user", data);
           console.log(res);
         }
         navigate("/");
-        toast.success("Successfully, account created")
+        toast.success("Successfully, account created");
       })
       .catch((err) => console.log(err));
   };
@@ -48,7 +48,9 @@ const Signup = () => {
     let pass = "";
     let string =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-      "abcdefghijklmnopqrstuvwxyz" + "0123456789" + "@#$%&*";
+      "abcdefghijklmnopqrstuvwxyz" +
+      "0123456789" +
+      "@#$%&*";
 
     for (let index = 1; index <= 12; index++) {
       let char = Math.floor(Math.random() * string.length + 1);
@@ -66,7 +68,7 @@ const Signup = () => {
 
   const cpyFunc = () => {
     navigator.clipboard.writeText(generatedPassword);
-    toast.success('Password Copied!')
+    toast.success("Password Copied!");
   };
 
   return (
@@ -74,18 +76,23 @@ const Signup = () => {
       <div className="hero h-fit py-10">
         <div className=" flex items-center flex-wrap md:w-full justify-around">
           <div className=" w-full mx-5 text-center md:w-2/5">
-            <img
-              className="w-[150px] mx-auto h-[100px]"
-              src="https://i.ibb.co/4psshzG/home-06-removebg-preview-removebg-preview-1.png"
-              alt=""
-            />
+            <div className="mx-auto flex h-[100px] w-[150px] items-center justify-center rounded-2xl bg-orange-100 text-5xl shadow-md">
+              🏠
+            </div>
             <h1 className="text-center font-bold text-2xl my-4">
               Join for Exclusive Deals
             </h1>
-            <p>Unlock your dream home with us! Join now for exclusive listings, personalized insights, and expert guidance. Your key to finding the perfect place to call home starts here.</p>
+            <p>
+              Unlock your dream home with us! Join now for exclusive listings,
+              personalized insights, and expert guidance. Your key to finding
+              the perfect place to call home starts here.
+            </p>
           </div>
           <div className="shadow-2xl bg-white rounded-xl mx-3 my-2 w-full md:w-2/5">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="card-body w-full"
+            >
               {/* Name input box */}
               <div className="form-control">
                 <label className="label">
@@ -109,7 +116,11 @@ const Signup = () => {
                 <label className="label">
                   <span className="label-text">Photo</span>
                 </label>
-                <input type="file"  {...register("photoURL", { required: true })} className="file-input file-input-bordered file-input-info w-full" />
+                <input
+                  type="file"
+                  {...register("photoURL", { required: true })}
+                  className="file-input file-input-bordered file-input-info w-full"
+                />
                 {errors.photoURL && (
                   <span className="text-red-600">Photo URL is required</span>
                 )}
@@ -166,7 +177,8 @@ const Signup = () => {
                   )}
                 </span>
                 <div className="flex gap-5">
-                  <button type="button"
+                  <button
+                    type="button"
                     onClick={generatorPassword}
                     className="flex border border-black rounded-lg p-3 bg-[#e0eaee] justify-center items-center gap-1 hover:bg-[white]"
                   >
@@ -207,7 +219,14 @@ const Signup = () => {
 
               {/* Terms and Conditions Checkbox */}
               <div className="mt-2">
-                <input type="checkbox" name="box" defaultChecked={ischecked} onClick={() => setChecked(!ischecked)} id="" className={`mr-1`} />
+                <input
+                  type="checkbox"
+                  name="box"
+                  defaultChecked={ischecked}
+                  onClick={() => setChecked(!ischecked)}
+                  id=""
+                  className={`mr-1`}
+                />
                 <label className="inline-block" htmlFor="remember-me">
                   I agree to the
                   <a className="underline" href="#">
@@ -218,7 +237,11 @@ const Signup = () => {
 
               {/* SignUp button  */}
               <div className="form-control mt-6">
-                <button disabled={!ischecked} type="submit" className={`btn bg-orange-400 disabled:text-slate-600 hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60`}>
+                <button
+                  disabled={!ischecked}
+                  type="submit"
+                  className={`btn bg-orange-400 disabled:text-slate-600 hover:bg-orange-500 border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-60`}
+                >
                   Sign up
                 </button>
               </div>
